@@ -1,16 +1,17 @@
 @import "tailwindcss";
 
 :root {
-  /* Parchment — warm undyed felt/paper, not generic cream */
-  --background: #efe6d3;
-  /* Ink — deep petrol-indigo, doubles as steppe-night dark bg */
-  --foreground: #1c2a2c;
-  --border: #d9cbac;
-  --muted: #6c6250;
-  --accent: #1f8f88;
-  --accent-warm: #a97a3f;
-  --accent-ink: #0e2426;
-  --surface: #f7f1e2;
+  /* Bright warm white — lets photos and vivid accents carry the energy */
+  --background: #fdfbf6;
+  --foreground: #1a1a2e;
+  --border: #e9e2d3;
+  --muted: #6b6b7a;
+  /* Coral — energetic, youthful primary accent */
+  --accent: #ff6b4a;
+  /* Vivid turquoise — secondary accent, keeps the connectivity motif */
+  --accent-warm: #00b8ac;
+  --accent-ink: #1a1a2e;
+  --surface: #fff6ee;
 }
 
 @theme inline {
@@ -28,14 +29,15 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    /* Steppe night — deep petrol-indigo dusk, not flat black */
-    --background: #14232b;
-    --foreground: #f2ead8;
-    --border: #2c3f43;
-    --muted: #9aa9a3;
-    --accent: #3fc3b8;
-    --accent-warm: #d3a25f;
-    --surface: #1a2e34;
+    /* Deep indigo night — accents stay vivid, never flat black */
+    --background: #171426;
+    --foreground: #f7f1e6;
+    --border: #332d4a;
+    --muted: #a9a3bf;
+    --accent: #ff7a5c;
+    --accent-warm: #2fd6c6;
+    --accent-ink: #1a1626;
+    --surface: #1e1a33;
   }
 }
 

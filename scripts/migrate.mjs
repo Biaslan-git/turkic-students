@@ -1,9 +1,12 @@
-const fs = require("fs");
-const path = require("path");
-const { Client } = require("pg");
+import { readFileSync } from "node:fs";
+import { fileURLToPath } from "node:url";
+import path from "node:path";
+import { Client } from "pg";
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 async function main() {
-  const sql = fs.readFileSync(path.join(__dirname, "migrate.sql"), "utf8");
+  const sql = readFileSync(path.join(__dirname, "migrate.sql"), "utf8");
   const client = new Client({ connectionString: process.env.DATABASE_URL });
   await client.connect();
   await client.query(sql);
