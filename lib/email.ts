@@ -1,10 +1,14 @@
 import { Resend } from "resend";
 import { TELEGRAM_CHANNEL_URL } from "./constants";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 export async function sendWelcomeEmail(email: string, name: string) {
+  if (!process.env.RESEND_API_KEY) {
+    console.warn("RESEND_API_KEY is not set — skipping welcome email");
+    return;
+  }
+
   try {
+    const resend = new Resend(process.env.RESEND_API_KEY);
     await resend.emails.send({
       from: "TURKIC STUDENTS <hello@turkicstudents.org>",
       to: email,
