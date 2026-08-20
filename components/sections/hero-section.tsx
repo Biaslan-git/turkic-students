@@ -10,12 +10,12 @@ export function HeroSection() {
           При поддержке ТЮРКСОЙ
         </p>
         <h1 className="max-w-3xl text-balance font-display text-[2.5rem] font-bold leading-[1.08] tracking-tight sm:text-5xl md:text-6xl">
-          Гранты, фестивали и стажировки тюркского мира — в одном месте
+          Гранты и фестивали тюркского мира. Без пропущенных дедлайнов
         </h1>
         <p className="max-w-xl text-pretty text-lg text-muted">
-          Вместо десятков разрозненных сайтов университетов, фестивалей и
-          грантовых программ — единая платформа для студентов. Оставьте
-          email и узнайте первыми о запуске.
+          Информация разбросана по десяткам сайтов и чатов — и кто-то
+          успевает подать заявку раньше тебя. TURKIC STUDENTS собирает всё
+          в одном месте. Оставь имя и email — узнаешь о запуске первым.
         </p>
         <a
           href="#waitlist"
@@ -24,16 +24,22 @@ export function HeroSection() {
           Зарегистрироваться первым
         </a>
 
-        <div className="relative mt-4 w-full max-w-3xl overflow-hidden rounded-3xl">
-          <Image
-            src="https://images.unsplash.com/photo-1622352496174-9e1d969b1945?auto=format&fit=crop&w=1600&q=80"
-            alt="Молодые студенты смеются вместе на закате"
-            width={1600}
-            height={900}
-            priority
-            className="h-auto w-full object-cover"
-            sizes="(min-width: 768px) 768px, 100vw"
+        <div className="relative mt-4 w-full max-w-3xl">
+          <div
+            aria-hidden="true"
+            className="absolute -right-3 -top-3 h-full w-full rounded-3xl bg-accent-warm/25 sm:-right-5 sm:-top-5"
           />
+          <div className="relative overflow-hidden rounded-3xl [clip-path:polygon(0_0,100%_0,100%_92%,92%_100%,0_100%)]">
+            <Image
+              src="https://images.unsplash.com/photo-1581155250123-32707511523f?auto=format&fit=crop&w=1600&q=80"
+              alt="Большая энергичная толпа студентов на мероприятии"
+              width={1600}
+              height={900}
+              priority
+              className="h-auto w-full object-cover"
+              sizes="(min-width: 768px) 768px, 100vw"
+            />
+          </div>
         </div>
       </div>
     </section>

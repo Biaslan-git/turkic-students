@@ -5,6 +5,7 @@ import { SolutionSection } from "@/components/sections/solution-section";
 import { CycleSection } from "@/components/sections/cycle-section";
 import { AudienceSection } from "@/components/sections/audience-section";
 import { PrinciplesSection } from "@/components/sections/principles-section";
+import { ObjectionsSection } from "@/components/sections/objections-section";
 import { WaitlistSection } from "@/components/sections/waitlist-section";
 import { Footer } from "@/components/sections/footer";
 
@@ -19,6 +20,7 @@ export default function Home() {
         <CycleSection />
         <AudienceSection />
         <PrinciplesSection />
+        <ObjectionsSection />
         <WaitlistSection />
       </main>
       <Footer />

@@ -16,6 +16,18 @@ const initialDetailsState: WaitlistDetailsState = { status: "idle" };
 const inputClass =
   "w-full rounded-xl border border-border bg-background px-4 py-3.5 text-base outline-none transition-colors focus:border-accent focus:ring-2 focus:ring-accent/25";
 
+const copy = {
+  privacyNote: "Твои данные используются только для регистрации на платформе.",
+  step2Intro:
+    "Расскажи о себе, чтобы мы показывали тебе подходящие возможности с самого запуска.",
+  step2Cta: "Зарегистрироваться",
+  skipLabel: "Пропустить",
+  successTitle: "Спасибо! Ты в списке TURKIC STUDENTS",
+  successSubtitle:
+    "Подпишись на наш Telegram-канал, чтобы не пропустить запуск платформы.",
+  telegramCta: "Подписаться на Telegram",
+};
+
 export function WaitlistForm() {
   const [basicState, basicAction, basicPending] = useActionState(
     submitWaitlistBasic,
@@ -83,9 +95,7 @@ export function WaitlistForm() {
               autoComplete="email"
               className={inputClass}
             />
-            <p className="text-xs text-muted">
-              Ваши данные используются только для регистрации на платформе.
-            </p>
+            <p className="text-xs text-muted">{copy.privacyNote}</p>
           </div>
 
           {/* Honeypot — hidden from real users via CSS, not display:none */}
@@ -131,9 +141,7 @@ function StepTwoForm({
     <form action={action} className="flex flex-col gap-4">
       <input type="hidden" name="id" value={id} />
 
-      <p className="text-sm text-muted">
-        Расскажите о себе, чтобы мы показывали вам подходящие возможности.
-      </p>
+      <p className="text-sm text-muted">{copy.step2Intro}</p>
 
       <div className="flex flex-col gap-1.5">
         <label htmlFor="country" className="text-sm font-medium">
@@ -164,7 +172,7 @@ function StepTwoForm({
 
       <div className="flex flex-col gap-1.5">
         <label htmlFor="interestArea" className="text-sm font-medium">
-          Что вам интереснее всего
+          Что тебе интереснее всего
         </label>
         <select
           id="interestArea"
@@ -194,7 +202,7 @@ function StepTwoForm({
         disabled={pending}
         className="w-full rounded-xl bg-foreground px-6 py-3.5 text-base font-semibold text-background transition-opacity disabled:opacity-60"
       >
-        {pending ? "Сохраняем…" : "Зарегистрироваться"}
+        {pending ? "Сохраняем…" : copy.step2Cta}
       </button>
 
       <button
@@ -204,7 +212,7 @@ function StepTwoForm({
         className="text-center text-sm text-muted underline underline-offset-2"
         onClick={() => trackEvent("waitlist_step2_skipped")}
       >
-        Пропустить
+        {copy.skipLabel}
       </button>
     </form>
   );
@@ -213,20 +221,15 @@ function StepTwoForm({
 function SuccessScreen() {
   return (
     <div className="flex flex-col items-center gap-4 text-center">
-      <h3 className="font-display text-xl font-bold">
-        Спасибо! Вы в списке TURKIC STUDENTS
-      </h3>
-      <p className="text-muted">
-        Подпишитесь на наш Telegram-канал, чтобы не пропустить запуск
-        платформы.
-      </p>
+      <h3 className="font-display text-xl font-bold">{copy.successTitle}</h3>
+      <p className="text-muted">{copy.successSubtitle}</p>
       <a
         href={TELEGRAM_CHANNEL_URL}
         target="_blank"
         rel="noopener noreferrer"
         className="w-full rounded-xl bg-accent px-6 py-3.5 text-base font-semibold text-accent-ink"
       >
-        Подписаться на Telegram
+        {copy.telegramCta}
       </a>
     </div>
   );

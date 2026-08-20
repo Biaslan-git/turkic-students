@@ -1,41 +1,73 @@
+import Image from "next/image";
+import { RelievedFaceIcon } from "@/components/mood-icons/relieved-face";
+
 const BENEFITS = [
   {
     title: "Единый каталог",
     description:
-      "Гранты, обмены, фестивали и стажировки — в одном месте, со ссылками на источник.",
+      "Гранты, обмены, фестивали и стажировки — в одном месте, со ссылкой на источник.",
   },
   {
-    title: "Профиль под вас",
-    description:
-      "Указываете страну, вуз и интересы — платформа показывает то, что подходит именно вам.",
+    title: "Профиль под тебя",
+    description: "Укажи страну, вуз и интересы — увидишь только то, что подходит тебе.",
   },
   {
     title: "Люди, а не только объявления",
-    description:
-      "Находите единомышленников и команды для совместных проектов после знакомства на мероприятии.",
+    description: "Находи единомышленников и собирай команду уже после мероприятия.",
   },
 ];
 
 export function SolutionSection() {
   return (
-    <section className="mx-auto flex max-w-4xl flex-col gap-10 px-5 py-16 sm:px-8 sm:py-24 md:px-12">
-      <div className="flex flex-col gap-4">
-        <h2 className="max-w-2xl text-balance font-display text-3xl font-bold tracking-tight sm:text-4xl">
-          TURKIC STUDENTS не заменяет эти сайты — она их связывает
-        </h2>
-        <p className="max-w-2xl text-pretty text-lg text-muted">
-          Информация остаётся у своих источников. Мы делаем её видимой и
-          собранной в одном месте специально для студентов.
-        </p>
-      </div>
-      <div className="grid grid-cols-1 gap-8 sm:grid-cols-3">
-        {BENEFITS.map((benefit) => (
-          <div key={benefit.title} className="flex flex-col gap-2">
-            <div className="h-1 w-8 rounded-full bg-accent-warm" />
-            <h3 className="font-display text-lg font-bold">{benefit.title}</h3>
-            <p className="text-sm text-muted">{benefit.description}</p>
+    <section className="relative overflow-hidden bg-background">
+      <RelievedFaceIcon className="pointer-events-none absolute -left-12 -bottom-16 h-56 w-56 select-none text-accent-warm/[0.08] sm:h-72 sm:w-72" />
+      <div className="reveal-on-scroll relative mx-auto max-w-5xl px-5 py-16 sm:px-8 sm:py-24 md:px-12">
+        <div className="grid grid-cols-1 items-center gap-10 md:grid-cols-12 md:gap-8">
+          <div className="flex flex-col gap-4 md:col-span-7">
+            <span className="w-fit rounded-full border border-accent-warm/30 bg-surface px-3 py-1 text-xs font-semibold uppercase tracking-[0.14em] text-accent-warm">
+              Решение
+            </span>
+            <h2 className="max-w-xl text-balance font-display text-3xl font-bold tracking-tight sm:text-4xl">
+              TURKIC STUDENTS не заменяет эти сайты — она их связывает
+            </h2>
+            <p className="max-w-xl text-pretty text-lg text-muted">
+              Информация остаётся у вузов, фестивалей и программ — мы просто
+              собираем её в одном месте. И превращаем в среду, где
+              знакомства не исчезают вместе с закрытой вкладкой.
+            </p>
           </div>
-        ))}
+          <div className="relative md:col-span-5">
+            <div
+              aria-hidden="true"
+              className="absolute -bottom-4 -left-4 h-full w-full rounded-3xl bg-accent/20 sm:-bottom-6 sm:-left-6"
+            />
+            <div className="relative aspect-[4/5] overflow-hidden rounded-3xl [clip-path:polygon(8%_0,100%_0,100%_100%,0_100%,0_18%)]">
+              <Image
+                src="https://images.unsplash.com/photo-1752650735506-befbb7049252?auto=format&fit=crop&w=1000&q=80"
+                alt="Две студентки вместе изучают что-то на ноутбуке"
+                fill
+                className="object-cover"
+                sizes="(min-width: 768px) 360px, 100vw"
+              />
+            </div>
+          </div>
+        </div>
+        <div className="relative mt-14 grid grid-cols-1 gap-5 sm:grid-cols-3">
+          <div
+            aria-hidden="true"
+            className="absolute left-0 right-0 top-1/2 hidden h-px -translate-y-1/2 bg-border sm:block"
+          />
+          {BENEFITS.map((benefit) => (
+            <div
+              key={benefit.title}
+              className="relative flex flex-col gap-2 rounded-2xl border border-border bg-surface p-5"
+            >
+              <div className="h-1 w-8 rounded-full bg-accent-warm" />
+              <h3 className="font-display text-lg font-bold">{benefit.title}</h3>
+              <p className="text-sm text-muted">{benefit.description}</p>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );

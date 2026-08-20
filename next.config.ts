@@ -9,6 +9,11 @@ const nextConfig: NextConfig = {
         hostname: "images.unsplash.com",
       },
     ],
+    // Unsplash URLs already request the right size/quality via query params
+    // (w=, q=), and the Dokploy server can't reliably reach images.unsplash.com
+    // itself to re-optimize server-side (upstream image response timed out).
+    // Let visitors' browsers fetch directly from Unsplash's CDN instead.
+    unoptimized: true,
   },
 };
 
