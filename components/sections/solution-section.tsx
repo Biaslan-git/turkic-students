@@ -1,11 +1,16 @@
 import Image from "next/image";
 import { RelievedFaceIcon } from "@/components/mood-icons/relieved-face";
+import { ChangedText } from "@/components/changed-text";
 
 const BENEFITS = [
   {
     title: "Единый каталог",
-    description:
-      "Гранты, обмены, фестивали и стажировки — в одном месте, со ссылкой на источник.",
+    description: (
+      <>
+        <ChangedText old="Гранты, обмены">Обмены</ChangedText>, фестивали и стажировки — в одном месте,
+        со ссылкой на источник.
+      </>
+    ),
   },
   {
     title: "Профиль под тебя",
@@ -28,12 +33,16 @@ export function SolutionSection() {
               Решение
             </span>
             <h2 className="max-w-xl text-balance font-display text-3xl font-bold tracking-tight sm:text-4xl">
-              TURKIC STUDENTS не заменяет эти сайты — она их связывает
+              <ChangedText old="TURKIC">TÜRKSOY</ChangedText> STUDENTS не заменяет эти сайты — она их
+              связывает
             </h2>
             <p className="max-w-xl text-pretty text-lg text-muted">
               Информация остаётся у вузов, фестивалей и программ — мы просто
-              собираем её в одном месте. И превращаем в среду, где
-              знакомства не исчезают вместе с закрытой вкладкой.
+              собираем её в одном месте<ChangedText old=". И"> и</ChangedText> превращаем в среду, где
+              знакомства{" "}
+              <ChangedText old="не исчезают вместе с закрытой вкладкой.">
+                продолжаются и после фестиваля!
+              </ChangedText>
             </p>
           </div>
           <div className="relative md:col-span-5">
@@ -43,8 +52,8 @@ export function SolutionSection() {
             />
             <div className="relative aspect-[4/5] overflow-hidden rounded-3xl [clip-path:polygon(8%_0,100%_0,100%_100%,0_100%,0_18%)]">
               <Image
-                src="https://images.unsplash.com/photo-1752650735506-befbb7049252?auto=format&fit=crop&w=1000&q=80"
-                alt="Две студентки вместе изучают что-то на ноутбуке"
+                src="https://im2.kommersant.ru/Issues.photo/REGIONS/KAZAN_Online/2025/03/24/KKZ_004142_00046_1_t218_144341.jpg"
+                alt="Двое участников фестиваля в национальных костюмах тюркских народов"
                 fill
                 className="object-cover"
                 sizes="(min-width: 768px) 360px, 100vw"

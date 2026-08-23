@@ -1,8 +1,9 @@
 import { FrustratedFaceIcon } from "@/components/mood-icons/frustrated-face";
+import { ChangedText } from "@/components/changed-text";
 
 const SOURCES = [
   "Сайты университетов",
-  "Госресурсы с грантами",
+  "Программы обмена",
   "Страницы отдельных фестивалей",
   "Каналы со стажировками",
   "Десятки чатов и групп",
@@ -15,15 +16,15 @@ export function ProblemSection() {
       <div className="reveal-on-scroll relative mx-auto flex max-w-4xl flex-col gap-10 px-5 py-16 sm:px-8 sm:py-24 md:px-12">
         <div className="flex flex-col gap-4 md:max-w-xl">
           <span className="w-fit rounded-full border border-accent/30 bg-background px-3 py-1 text-xs font-semibold uppercase tracking-[0.14em] text-accent">
-            Проблема
+            <ChangedText old="Проблема">Трудность</ChangedText>
           </span>
           <h2 className="text-balance font-display text-3xl font-bold tracking-tight sm:text-4xl">
             Возможности есть. Найти их вовремя — целая работа
           </h2>
           <p className="text-pretty text-lg text-muted">
-            Грант — на сайте вуза. Фестиваль — в Telegram-канале. Стажировка
-            — в чате, который ты давно не открывал. Пока собираешь всё по
-            кусочкам, дедлайн уже прошёл.
+            <ChangedText old="Грант">Обмен</ChangedText> — на сайте вуза. Фестиваль — в Telegram-канале.
+            Стажировка — в чате, который ты давно не открывал. Пока
+            собираешь всё по кусочкам, дедлайн уже прошёл.
           </p>
         </div>
         <ul className="flex flex-wrap gap-3 sm:gap-4">
@@ -34,13 +35,17 @@ export function ProblemSection() {
                 i % 2 === 0 ? "-rotate-1" : "rotate-1"
               } ${i % 3 === 1 ? "sm:mt-4" : ""}`}
             >
-              {source}
+              {i === 1 ? <ChangedText old="Госресурсы с грантами">{source}</ChangedText> : source}
             </li>
           ))}
         </ul>
         <p className="text-sm text-muted">
-          И это только одна страна. Про остальные пять ты, скорее всего,
-          даже не знаешь.
+          И это только{" "}
+          <ChangedText old="одна страна.">
+            <strong className="font-bold text-accent">твоя</strong> страна!
+          </ChangedText>{" "}
+          Про остальные пять ты, скорее всего, даже не{" "}
+          <ChangedText old="знаешь">подозреваешь</ChangedText>.
         </p>
       </div>
     </section>

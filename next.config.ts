@@ -8,6 +8,22 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "images.unsplash.com",
       },
+      {
+        protocol: "https",
+        hostname: "tatar-congress.org",
+      },
+      {
+        protocol: "https",
+        hostname: "im2.kommersant.ru",
+      },
+      {
+        protocol: "https",
+        hostname: "roza.kg",
+      },
+      {
+        protocol: "https",
+        hostname: "static.tildacdn.com",
+      },
     ],
     // Unsplash URLs already request the right size/quality via query params
     // (w=, q=), and the Dokploy server can't reliably reach images.unsplash.com

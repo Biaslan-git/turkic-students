@@ -1,9 +1,14 @@
 import Image from "next/image";
 import { SmilingFaceIcon } from "@/components/mood-icons/smiling-face";
+import { ChangedText } from "@/components/changed-text";
 
 const SEGMENTS = [
   "Уже был на фестивалях или обменах — и не хочешь, чтобы знакомства обрывались.",
-  "Ещё не пробовал — и не знаешь, с чего начать.",
+  <>
+    <ChangedText old="Ещё не пробовал — и не знаешь, с чего начать.">
+      Хочешь превращать случайные знакомства в постоянные связи.
+    </ChangedText>
+  </>,
   "Организуешь события или ведёшь проект — и ищешь партнёров в других странах.",
 ];
 
@@ -19,8 +24,8 @@ export function AudienceSection() {
           />
           <div className="relative aspect-[3/4] overflow-hidden rounded-[3rem_1rem_3rem_1rem] shadow-[0_20px_48px_-24px_rgba(26,26,46,0.35)]">
             <Image
-              src="https://images.unsplash.com/photo-1714976327304-2a9637fbce98?auto=format&fit=crop&w=1000&q=80"
-              alt="Четверо молодых специалистов улыбаются вместе"
+              src="https://static.tildacdn.com/tild3331-3562-4436-a235-643137326361/494105372_1068739198.jpg"
+              alt="Дети в национальных костюмах исполняют народный танец на фестивале"
               fill
               className="object-cover"
               sizes="(min-width: 768px) 320px, 100vw"
@@ -37,12 +42,14 @@ export function AudienceSection() {
             Для кого
           </span>
           <h2 className="text-balance font-display text-3xl font-bold tracking-tight sm:text-4xl">
-            Был ты на фестивале или только слышал — это для тебя
+            <ChangedText old="Был ты на фестивале или только слышал — это для тебя">
+              Ты на фестивале — значит, это для тебя
+            </ChangedText>
           </h2>
           <p className="text-pretty text-muted">Например, если ты:</p>
           <ul className="flex flex-col gap-3">
-            {SEGMENTS.map((segment) => (
-              <li key={segment} className="flex gap-3 text-pretty text-base text-muted">
+            {SEGMENTS.map((segment, i) => (
+              <li key={i} className="flex gap-3 text-pretty text-base text-muted">
                 <span aria-hidden="true" className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
                 {segment}
               </li>

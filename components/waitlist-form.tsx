@@ -9,6 +9,7 @@ import {
 } from "@/app/actions";
 import { INTEREST_AREAS, TELEGRAM_CHANNEL_URL } from "@/lib/constants";
 import { trackEvent } from "@/lib/analytics";
+import { ChangedText } from "@/components/changed-text";
 
 const initialBasicState: WaitlistBasicState = { status: "idle" };
 const initialDetailsState: WaitlistDetailsState = { status: "idle" };
@@ -22,7 +23,6 @@ const copy = {
     "Расскажи о себе, чтобы мы показывали тебе подходящие возможности с самого запуска.",
   step2Cta: "Зарегистрироваться",
   skipLabel: "Пропустить",
-  successTitle: "Спасибо! Ты в списке TURKIC STUDENTS",
   successSubtitle:
     "Подпишись на наш Telegram-канал, чтобы не пропустить запуск платформы.",
   telegramCta: "Подписаться на Telegram",
@@ -221,7 +221,9 @@ function StepTwoForm({
 function SuccessScreen() {
   return (
     <div className="flex flex-col items-center gap-4 text-center">
-      <h3 className="font-display text-xl font-bold">{copy.successTitle}</h3>
+      <h3 className="font-display text-xl font-bold">
+        Спасибо! Ты в списке <ChangedText old="TURKIC">TÜRKSOY</ChangedText> STUDENTS
+      </h3>
       <p className="text-muted">{copy.successSubtitle}</p>
       <a
         href={TELEGRAM_CHANNEL_URL}

@@ -1,5 +1,7 @@
+import Image from "next/image";
 import { RouteLinesBackdrop } from "@/components/route-lines";
 import { HandshakeIcon } from "@/components/mood-icons/handshake-icon";
+import { ChangedText } from "@/components/changed-text";
 
 const PRINCIPLES = [
   {
@@ -16,7 +18,12 @@ const PRINCIPLES = [
   },
   {
     title: "Достоверность",
-    description: "Только проверяемая информация — со ссылкой на источник.",
+    description: (
+      <>
+        Только <ChangedText old="проверяемая">проверенная</ChangedText> информация — со ссылкой на
+        источник.
+      </>
+    ),
   },
   {
     title: "Нейтральность",
@@ -24,7 +31,12 @@ const PRINCIPLES = [
   },
   {
     title: "Международность",
-    description: "Система нескольких стран с первого дня, а не проект одной страны.",
+    description: (
+      <>
+        <ChangedText old="Система нескольких">Общее пространство шести</ChangedText> стран с первого
+        дня, а не проект одной страны.
+      </>
+    ),
   },
 ];
 
@@ -42,14 +54,27 @@ export function PrinciplesSection() {
       <div className="reveal-on-scroll relative mx-auto flex max-w-4xl flex-col gap-10 px-5 py-16 sm:px-8 sm:py-24 md:px-12">
         <div className="flex flex-col gap-4">
           <span className="w-fit rounded-full border border-white/20 bg-white/5 px-3 py-1 text-xs font-semibold uppercase tracking-[0.14em] text-accent-warm">
-            При поддержке ТЮРКСОЙ
+            <ChangedText old="При поддержке ТЮРКСОЙ">Принципы</ChangedText>
           </span>
           <h2 className="max-w-2xl text-balance font-display text-3xl font-bold tracking-tight sm:text-4xl">
             Принципы, на которых строится платформа
           </h2>
           <p className="max-w-2xl text-pretty text-lg text-white/70">
-            При поддержке Международной организации тюркской культуры
-            (ТЮРКСОЙ) — сразу как пространство нескольких стран.
+            При поддержке Международной организации тюркской культуры (ТЮРКСОЙ) —{" "}
+            <ChangedText old="сразу как пространство нескольких стран.">
+              общими усилиями шести стран, а не одной.
+            </ChangedText>
+          </p>
+          <p className="flex flex-wrap items-center gap-x-1.5 gap-y-1 text-xs text-white/50">
+            <Image
+              src="/turksoy-emblem.png"
+              alt=""
+              aria-hidden="true"
+              width={14}
+              height={14}
+              className="h-3.5 w-3.5"
+            />
+            Азербайджан · Казахстан · Кыргызстан · Туркменистан · Турция · Узбекистан
           </p>
         </div>
         <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">

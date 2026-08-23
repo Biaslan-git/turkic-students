@@ -1,6 +1,7 @@
 import { WaitlistForm } from "@/components/waitlist-form";
 import { RouteLinesBackdrop } from "@/components/route-lines";
 import { RocketIcon } from "@/components/mood-icons/rocket-icon";
+import { ChangedText } from "@/components/changed-text";
 
 export function WaitlistSection() {
   return (
@@ -12,11 +13,10 @@ export function WaitlistSection() {
       <div className="reveal-on-scroll relative mx-auto flex max-w-4xl flex-col items-center gap-8 px-5 py-16 text-center sm:px-8 sm:py-24 md:px-12">
         <div className="flex flex-col gap-4">
           <h2 className="text-balance font-display text-3xl font-bold tracking-tight sm:text-4xl">
-            Зарегистрируйся первым
+            <ChangedText old="Зарегистрируйся первым">Присоединяйся</ChangedText>
           </h2>
           <p className="max-w-xl text-pretty text-lg text-muted">
-            Платформа в разработке. Оставь имя и email — узнаешь о запуске
-            одним из первых.
+            Оставь имя и email — узнаешь о запуске одним из первых.
           </p>
         </div>
         <div className="relative w-full max-w-md">

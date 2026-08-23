@@ -1,4 +1,4 @@
-export const TELEGRAM_CHANNEL_URL = "https://t.me/turkicstudents";
+export const TELEGRAM_CHANNEL_URL = "https://t.me/turksoy_students";
 
 export const INTEREST_AREAS = [
   { value: "education", label: "Образование" },

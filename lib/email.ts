@@ -10,9 +10,9 @@ export async function sendWelcomeEmail(email: string, name: string) {
   try {
     const resend = new Resend(process.env.RESEND_API_KEY);
     await resend.emails.send({
-      from: "TURKIC STUDENTS <hello@turkicstudents.org>",
+      from: "TÜRKSOY STUDENTS <hello@turkicstudents.org>",
       to: email,
-      subject: "Вы в списке TURKIC STUDENTS",
+      subject: "Вы в списке TÜRKSOY STUDENTS",
       html: `
         <p>Здравствуйте, ${escapeHtml(name)}!</p>
         <p>Спасибо за регистрацию. Мы напишем вам, как только платформа откроется.</p>

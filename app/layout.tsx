@@ -15,9 +15,9 @@ const body = Manrope({
   subsets: ["latin", "cyrillic"],
 });
 
-const title = "TURKIC STUDENTS — единая платформа для студентов тюркского мира";
+const title = "TÜRKSOY STUDENTS — единая платформа для студентов тюркского мира";
 const description =
-  "Гранты, фестивали, стажировки и международные проекты тюркского мира — в одном месте. Зарегистрируйтесь и узнайте о запуске первыми.";
+  "Фестивали, стажировки и международные проекты тюркского мира — в одном месте. Зарегистрируйтесь и узнайте о запуске первыми.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     title,
     description,
     url: SITE_URL,
-    siteName: "TURKIC STUDENTS",
+    siteName: "TÜRKSOY STUDENTS",
     locale: "ru_RU",
     type: "website",
   },

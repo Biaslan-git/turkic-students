@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { FireIcon } from "@/components/mood-icons/fire-icon";
+import { ChangedText } from "@/components/changed-text";
 
 const CYCLE_STEPS = [
   { title: "Фестиваль", description: "Знакомство на реальном мероприятии" },
@@ -7,7 +8,10 @@ const CYCLE_STEPS = [
   { title: "Сообщество", description: "Находишь единомышленников из других стран тюркского мира" },
   { title: "Сотрудничество", description: "Совместная идея находит соавторов" },
   { title: "Новые проекты", description: "Идея превращается в инициативу с командой" },
-  { title: "Новый фестиваль", description: "Ты возвращаешься не участником — а автором своего проекта" },
+  {
+    title: "Новый фестиваль",
+    description: "Сегодня — гость, через год — выступаешь сам",
+  },
 ];
 
 export function CycleSection() {
@@ -19,8 +23,8 @@ export function CycleSection() {
           <div className="relative md:order-1 md:col-span-7">
             <div className="relative aspect-video overflow-hidden rounded-3xl [clip-path:polygon(0_0,92%_0,100%_15%,100%_100%,0_100%)] sm:aspect-[16/10]">
               <Image
-                src="https://images.unsplash.com/photo-1758523981408-dc19e8f78752?auto=format&fit=crop&w=1200&q=80"
-                alt="Силуэты людей с поднятыми руками на закате"
+                src="https://roza.kg/media/images/press/%D1%82%D1%8E%D1%80%D0%BA%D1%81%D0%BE%D0%B9.jpg"
+                alt="Группа участников в национальных костюмах перед зданием ТЮРКСОЙ"
                 fill
                 className="object-cover"
                 sizes="(min-width: 768px) 480px, 100vw"
@@ -58,12 +62,20 @@ export function CycleSection() {
 
         <ol className="grid grid-cols-2 gap-x-6 gap-y-8 sm:grid-cols-3 md:grid-cols-6">
           {CYCLE_STEPS.map((step, index) => (
-            <li key={step.title} className="relative flex flex-col gap-1">
+            <li key={step.title} className="relative flex min-w-0 flex-col gap-1">
               <span className="flex h-9 w-9 items-center justify-center rounded-full border-2 border-background bg-accent font-display text-sm font-bold text-white shadow-[0_6px_16px_-6px_var(--accent)]">
                 {index + 1}
               </span>
-              <h3 className="mt-2 font-display text-base font-bold">{step.title}</h3>
-              <p className="text-xs text-muted">{step.description}</p>
+              <h3 className="mt-2 break-words font-display text-base font-bold">{step.title}</h3>
+              <p className="text-xs text-muted">
+                {index === CYCLE_STEPS.length - 1 ? (
+                  <ChangedText old="Ты возвращаешься не участником — а автором своего проекта">
+                    {step.description}
+                  </ChangedText>
+                ) : (
+                  step.description
+                )}
+              </p>
               {index < CYCLE_STEPS.length - 1 && (
                 <span
                   aria-hidden="true"
@@ -75,8 +87,9 @@ export function CycleSection() {
         </ol>
 
         <p className="w-fit rounded-full border border-dashed border-accent-warm/50 bg-background px-5 py-2.5 text-sm text-muted">
-          Сегодня ты ищешь фестиваль. Через год, возможно, ты его
-          организуешь.
+          <ChangedText old="Сегодня ты ищешь фестиваль. Через год, возможно, ты его организуешь.">
+            Каждый фестиваль — начало следующего.
+          </ChangedText>
         </p>
       </div>
     </section>

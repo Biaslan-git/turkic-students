@@ -1,4 +1,6 @@
+import Image from "next/image";
 import { RouteLinesBackdrop } from "@/components/route-lines";
+import { ChangedText } from "@/components/changed-text";
 
 export function Footer() {
   return (
@@ -7,8 +9,9 @@ export function Footer() {
         <RouteLinesBackdrop />
       </div>
       <div className="relative mx-auto flex max-w-4xl flex-col items-center gap-4 px-5 py-12 text-center text-sm text-muted sm:px-8 md:px-12">
-        <span className="font-display text-sm font-bold tracking-tight text-foreground">
-          TURKIC STUDENTS
+        <span className="flex items-center gap-2 font-display text-sm font-bold tracking-tight text-foreground">
+          <Image src="/turksoy-logo.svg" alt="Эмблема ТЮРКСОЙ" width={24} height={24} className="h-6 w-6" />
+          <ChangedText old="TURKIC">TÜRKSOY</ChangedText> STUDENTS
         </span>
         <p className="max-w-md">
           Цифровая платформа, которая соединяет студентов тюркского мира:
@@ -17,7 +20,9 @@ export function Footer() {
         <a href="#waitlist" className="font-medium text-accent underline underline-offset-4">
           Зарегистрироваться
         </a>
-        <p>© {new Date().getFullYear()} TURKIC STUDENTS</p>
+        <p>
+          © {new Date().getFullYear()} <ChangedText old="TURKIC">TÜRKSOY</ChangedText> STUDENTS
+        </p>
         <p className="text-xs text-muted/70">
           Иконки: emoji-иллюстрации by{" "}
           <a
@@ -29,6 +34,17 @@ export function Footer() {
             OpenMoji
           </a>{" "}
           — CC BY-SA 4.0
+        </p>
+        <p className="text-xs text-muted/70">
+          Разработал{" "}
+          <a
+            href="https://void-tech.ru"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline underline-offset-2"
+          >
+            Байрамкулов Биаслан
+          </a>
         </p>
       </div>
     </footer>

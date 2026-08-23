@@ -25,10 +25,10 @@ export default async function Image() {
         }}
       >
         <div style={{ fontSize: 72, fontWeight: 700, letterSpacing: -2 }}>
-          TURKIC STUDENTS
+          TÜRKSOY STUDENTS
         </div>
         <div style={{ fontSize: 32, color: "#9aa9a3", maxWidth: 900, textAlign: "center" }}>
-          Гранты, фестивали и стажировки тюркского мира — в одном месте
+          Фестивали, стажировки и события тюркского мира — в одном месте
         </div>
         <div
           style={{
