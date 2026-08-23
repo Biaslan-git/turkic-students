@@ -1,4 +1,6 @@
 import { ImageResponse } from "next/og";
+import { readFile } from "node:fs/promises";
+import { join } from "node:path";
 
 export const size = {
   width: 1200,
@@ -6,6 +8,9 @@ export const size = {
 };
 
 export const contentType = "image/png";
+
+const emblemData = await readFile(join(process.cwd(), "public/turksoy-emblem.png"), "base64");
+const emblemSrc = `data:image/png;base64,${emblemData}`;
 
 export default async function Image() {
   return new ImageResponse(
@@ -24,6 +29,19 @@ export default async function Image() {
           fontFamily: "sans-serif",
         }}
       >
+        <div
+          style={{
+            display: "flex",
+            width: 96,
+            height: 96,
+            borderRadius: 999,
+            background: "#fff",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          <img src={emblemSrc} alt="" width={64} height={64} />
+        </div>
         <div style={{ fontSize: 72, fontWeight: 700, letterSpacing: -2 }}>
           TÜRKSOY STUDENTS
         </div>
