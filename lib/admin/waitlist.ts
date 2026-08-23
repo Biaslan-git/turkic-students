@@ -36,6 +36,11 @@ export async function listAllWaitlistSignups(): Promise<WaitlistSignupRecord[]> 
   }));
 }
 
+export async function deleteWaitlistSignup(id: string): Promise<boolean> {
+  const result = await pool.query(`DELETE FROM waitlist_signups WHERE id = $1`, [id]);
+  return (result.rowCount ?? 0) > 0;
+}
+
 export type WaitlistStats = {
   total: number;
   byInterestArea: { key: string; count: number }[];

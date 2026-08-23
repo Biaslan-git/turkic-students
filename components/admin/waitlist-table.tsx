@@ -1,9 +1,11 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import { useRouter } from "next/navigation";
 import { INTEREST_AREAS } from "@/lib/constants";
 import type { WaitlistSignupRecord } from "@/lib/admin/waitlist";
 import { Select } from "@/components/ui/select";
+import { deleteSignup } from "@/app/admin/actions";
 
 type SortKey = "name" | "email" | "country" | "createdAt";
 
@@ -20,10 +22,13 @@ const inputClass =
   "rounded-lg border border-border bg-background px-3 py-2 text-sm outline-none transition-colors focus:border-accent focus:ring-2 focus:ring-accent/25";
 
 export function WaitlistTable({ records }: { records: WaitlistSignupRecord[] }) {
+  const router = useRouter();
   const [search, setSearch] = useState("");
   const [interestFilter, setInterestFilter] = useState("");
   const [sortKey, setSortKey] = useState<SortKey>("createdAt");
   const [sortDir, setSortDir] = useState<"asc" | "desc">("desc");
+  const [deletingId, setDeletingId] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
 
   const filtered = useMemo(() => {
     const q = search.trim().toLowerCase();
@@ -51,6 +56,22 @@ export function WaitlistTable({ records }: { records: WaitlistSignupRecord[] }) 
     }
   }
 
+  async function handleDelete(record: WaitlistSignupRecord) {
+    if (!confirm(`Удалить заявку «${record.name}» (${record.email})?`)) return;
+
+    setError(null);
+    setDeletingId(record.id);
+    const result = await deleteSignup(record.id);
+    setDeletingId(null);
+
+    if (result.status === "error") {
+      setError(result.message ?? "Не удалось удалить");
+      return;
+    }
+
+    router.refresh();
+  }
+
   return (
     <div className="flex flex-col gap-4">
       <div className="flex flex-wrap items-center gap-3">
@@ -73,6 +94,12 @@ export function WaitlistTable({ records }: { records: WaitlistSignupRecord[] }) 
         </span>
       </div>
 
+      {error && (
+        <p role="alert" className="text-sm text-red-600">
+          {error}
+        </p>
+      )}
+
       <div className="overflow-x-auto rounded-2xl border border-border">
         <table className="w-full min-w-max border-collapse text-sm">
           <thead>
@@ -91,6 +118,7 @@ export function WaitlistTable({ records }: { records: WaitlistSignupRecord[] }) 
               ))}
               <th className="px-4 py-3 font-medium">Вуз</th>
               <th className="px-4 py-3 font-medium">Интерес</th>
+              <th className="px-4 py-3 font-medium" />
             </tr>
           </thead>
           <tbody>
@@ -106,11 +134,21 @@ export function WaitlistTable({ records }: { records: WaitlistSignupRecord[] }) 
                 <td className="px-4 py-3">
                   {r.interestArea ? (interestLabels.get(r.interestArea) ?? r.interestArea) : "—"}
                 </td>
+                <td className="px-4 py-3 text-right">
+                  <button
+                    type="button"
+                    disabled={deletingId === r.id}
+                    onClick={() => handleDelete(r)}
+                    className="text-red-600 underline underline-offset-2 disabled:opacity-50"
+                  >
+                    {deletingId === r.id ? "Удаляем…" : "Удалить"}
+                  </button>
+                </td>
               </tr>
             ))}
             {filtered.length === 0 && (
               <tr>
-                <td colSpan={6} className="px-4 py-8 text-center text-muted">
+                <td colSpan={7} className="px-4 py-8 text-center text-muted">
                   Ничего не найдено
                 </td>
               </tr>

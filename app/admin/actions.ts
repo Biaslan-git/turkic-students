@@ -7,7 +7,9 @@ import {
   SESSION_COOKIE_NAME,
   SESSION_COOKIE_OPTIONS,
   createSessionCookieValue,
+  verifySessionCookieValue,
 } from "@/lib/admin/session";
+import { deleteWaitlistSignup } from "@/lib/admin/waitlist";
 
 export type LoginState = { status: "idle" | "error"; message?: string };
 
@@ -25,4 +27,20 @@ export async function login(_prevState: LoginState, formData: FormData): Promise
 export async function logout(): Promise<void> {
   (await cookies()).delete(SESSION_COOKIE_NAME);
   redirect("/admin/login");
+}
+
+export type DeleteSignupResult = { status: "success" | "error"; message?: string };
+
+export async function deleteSignup(id: string): Promise<DeleteSignupResult> {
+  const store = await cookies();
+  if (!verifySessionCookieValue(store.get(SESSION_COOKIE_NAME)?.value)) {
+    return { status: "error", message: "Не авторизовано" };
+  }
+
+  const deleted = await deleteWaitlistSignup(id);
+  if (!deleted) {
+    return { status: "error", message: "Запись не найдена" };
+  }
+
+  return { status: "success" };
 }
