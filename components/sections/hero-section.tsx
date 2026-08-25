@@ -1,6 +1,5 @@
 import Image from "next/image";
 import { RouteLinesBackdrop } from "@/components/route-lines";
-import { ChangedText } from "@/components/changed-text";
 
 export function HeroSection() {
   return (
@@ -21,15 +20,12 @@ export function HeroSection() {
           Под эгидой и при поддержке ТЮРКСОЙ
         </p>
         <h1 className="max-w-3xl text-balance font-display text-[2.5rem] font-bold leading-[1.08] tracking-tight sm:text-5xl md:text-6xl">
-          <ChangedText old="Одна платформа. Весь тюркский мир. Связи, которые остаются.">
-            Фестивали, стажировки и связи тюркского мира —{" "}
-            <span className="text-accent">в одном месте</span>
-          </ChangedText>
+          Фестивали, стажировки и связи тюркского мира —{" "}
+          <span className="text-accent">в одном месте</span>
         </h1>
         <p className="max-w-xl text-pretty text-lg text-muted">
           Фестивали, стажировки и события тюркского мира разбросаны по
-          десяткам сайтов и чатов — а нужные{" "}
-          <ChangedText old="знакомства">связи</ChangedText> теряются вместе с
+          десяткам сайтов и чатов — а нужные связи теряются вместе с
           ними. TÜRKSOY STUDENTS собирает всё в одном месте. Оставь имя
           и email — узнаешь о запуске одним из первых.
         </p>
@@ -37,7 +33,7 @@ export function HeroSection() {
           href="#waitlist"
           className="rounded-full bg-gradient-to-r from-accent to-[#ff8a63] px-8 py-4 text-base font-semibold text-white shadow-[0_10px_28px_-8px_var(--accent)] transition-transform hover:scale-[1.02]"
         >
-          <ChangedText old="Зарегистрироваться сейчас">Забронировать место</ChangedText>
+          Забронировать место
         </a>
 
         <div className="relative mt-4 w-full max-w-3xl">

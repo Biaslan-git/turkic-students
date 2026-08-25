@@ -1,5 +1,4 @@
 import { FrustratedFaceIcon } from "@/components/mood-icons/frustrated-face";
-import { ChangedText } from "@/components/changed-text";
 
 const SOURCES = [
   "Сайты университетов",
@@ -19,9 +18,7 @@ export function ProblemSection() {
             Трудность
           </span>
           <h2 className="text-balance font-display text-3xl font-bold tracking-tight sm:text-4xl">
-            <ChangedText old="Возможности есть. Найти их вовремя — целая работа">
-              Пока ты искал — кто-то другой уже поехал
-            </ChangedText>
+            Пока ты искал — кто-то другой уже поехал
           </h2>
           <p className="text-pretty text-lg text-muted">
             Обмен — на сайте вуза. Фестиваль — в Telegram-канале.

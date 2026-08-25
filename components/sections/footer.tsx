@@ -1,6 +1,5 @@
 import Image from "next/image";
 import { RouteLinesBackdrop } from "@/components/route-lines";
-import { ChangedText } from "@/components/changed-text";
 
 export function Footer() {
   return (
@@ -18,7 +17,7 @@ export function Footer() {
           образование, фестивали, стажировки и совместные проекты.
         </p>
         <a href="#waitlist" className="font-medium text-accent underline underline-offset-4">
-          <ChangedText old="Зарегистрироваться">Забронировать место</ChangedText>
+          Забронировать место
         </a>
         <p>
           © {new Date().getFullYear()} TÜRKSOY STUDENTS

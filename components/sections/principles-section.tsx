@@ -1,7 +1,6 @@
 import Image from "next/image";
 import { RouteLinesBackdrop } from "@/components/route-lines";
 import { HandshakeIcon } from "@/components/mood-icons/handshake-icon";
-import { ChangedText } from "@/components/changed-text";
 
 const COUNTRIES = [
   "Азербайджан",
@@ -56,9 +55,7 @@ export function PrinciplesSection() {
             Принципы
           </span>
           <h2 className="max-w-2xl text-balance font-display text-3xl font-bold tracking-tight sm:text-4xl">
-            <ChangedText old="Принципы, на которых строится платформа">
-              Шесть стран, один тюркский мир
-            </ChangedText>
+            Шесть стран, один тюркский мир
           </h2>
           <p className="max-w-2xl text-pretty text-lg text-white/70">
             При поддержке Международной организации тюркской культуры (ТЮРКСОЙ) — общими усилиями

@@ -1,6 +1,5 @@
 import Image from "next/image";
 import { RelievedFaceIcon } from "@/components/mood-icons/relieved-face";
-import { ChangedText } from "@/components/changed-text";
 
 const BENEFITS = [
   {
@@ -28,15 +27,12 @@ export function SolutionSection() {
               Решение
             </span>
             <h2 className="max-w-xl text-balance font-display text-3xl font-bold tracking-tight sm:text-4xl">
-              <ChangedText old="Весь тюркский мир — теперь в одном месте">
-                Весь тюркский мир — без хаоса из вкладок и чатов
-              </ChangedText>
+              Весь тюркский мир — в одном месте
             </h2>
             <p className="max-w-xl text-pretty text-lg text-muted">
               Информация остаётся у вузов, фестивалей и программ — мы просто
-              собираем её в одном месте и превращаем в среду, где{" "}
-              <ChangedText old="знакомства">связи</ChangedText> продолжаются и
-              после фестиваля!
+              собираем её в одном месте и превращаем в среду, где связи
+              продолжаются и после фестиваля!
             </p>
           </div>
           <div className="relative md:col-span-5">

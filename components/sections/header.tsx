@@ -1,5 +1,4 @@
 import Image from "next/image";
-import { ChangedText } from "@/components/changed-text";
 
 export function Header() {
   return (
@@ -12,7 +11,7 @@ export function Header() {
         href="#waitlist"
         className="rounded-full bg-accent px-4 py-2 text-sm font-semibold text-white shadow-[0_6px_16px_-8px_var(--accent)] transition-transform hover:scale-[1.04]"
       >
-        <ChangedText old="Зарегистрироваться">Забронировать место</ChangedText>
+        Забронировать место
       </a>
     </header>
   );

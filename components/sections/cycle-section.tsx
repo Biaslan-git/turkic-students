@@ -1,14 +1,8 @@
 import Image from "next/image";
 import { FireIcon } from "@/components/mood-icons/fire-icon";
-import { ChangedText } from "@/components/changed-text";
 
 const CYCLE_STEPS = [
-  {
-    title: "Фестиваль",
-    description: (
-      <ChangedText old="Знакомство на реальном мероприятии">Встреча на реальном мероприятии</ChangedText>
-    ),
-  },
+  { title: "Фестиваль", description: "Встреча на реальном мероприятии" },
   { title: "Контакт", description: "Общение продолжается и после того, как ты уехал домой" },
   { title: "Сообщество", description: "Находишь единомышленников из других стран тюркского мира" },
   { title: "Сотрудничество", description: "Совместная идея находит соавторов" },
@@ -55,9 +49,7 @@ export function CycleSection() {
               Круглый год
             </span>
             <h2 className="text-balance font-display text-3xl font-bold tracking-tight sm:text-4xl">
-              <ChangedText old="Связи остаются, потому что каждый фестиваль ведёт к следующему">
-                Один фестиваль ведёт к следующему
-              </ChangedText>
+              Один фестиваль ведёт к следующему
             </h2>
             <p className="text-pretty text-lg text-muted">
               Без постоянной среды между фестивалями всё каждый раз

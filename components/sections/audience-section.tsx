@@ -1,16 +1,9 @@
 import Image from "next/image";
 import { SmilingFaceIcon } from "@/components/mood-icons/smiling-face";
-import { ChangedText } from "@/components/changed-text";
 
 const SEGMENTS = [
-  <span key="obryv">
-    Уже был на фестивалях или обменах — и не хочешь, чтобы{" "}
-    <ChangedText old="знакомства">связи</ChangedText> обрывались.
-  </span>,
-  <span key="vstrechi">
-    Хочешь превращать случайные{" "}
-    <ChangedText old="знакомства">встречи</ChangedText> в постоянные связи.
-  </span>,
+  "Уже был на фестивалях или обменах — и не хочешь, чтобы связи обрывались.",
+  "Хочешь превращать случайные встречи в постоянные связи.",
   "Организуешь события или ведёшь проект — и ищешь партнёров в других странах.",
 ];
 
