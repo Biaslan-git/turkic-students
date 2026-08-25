@@ -10,3 +10,5 @@ CREATE TABLE IF NOT EXISTS waitlist_signups (
 
 CREATE UNIQUE INDEX IF NOT EXISTS waitlist_signups_email_idx
   ON waitlist_signups (lower(email));
+
+ALTER TABLE waitlist_signups ADD COLUMN IF NOT EXISTS registered_at TIMESTAMPTZ;

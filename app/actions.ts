@@ -52,6 +52,10 @@ export async function submitWaitlistBasic(
     return { status: "error", message: "Не удалось сохранить, попробуйте ещё раз" };
   }
 
+  if (record.isRegistered) {
+    return { status: "error", message: "Вы уже зарегистрированы в списке ожидания" };
+  }
+
   return { status: "step2", id: record.id };
 }
 
@@ -80,7 +84,9 @@ export async function submitWaitlistDetails(
     return { status: "error", message: "Заявка не найдена" };
   }
 
-  void sendWelcomeEmail(updated.email, updated.name);
+  if (!updated.alreadyRegistered) {
+    void sendWelcomeEmail(updated.email, updated.name);
+  }
 
   return { status: "success" };
 }

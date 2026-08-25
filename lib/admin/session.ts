@@ -2,13 +2,18 @@ import { createHmac, timingSafeEqual } from "node:crypto";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import { NextResponse } from "next/server";
+import { SITE_URL } from "@/lib/constants";
 
 export const SESSION_COOKIE_NAME = "admin_session";
 export const SESSION_TTL_SECONDS = 60 * 60 * 24 * 14; // 14 days, refreshed on every admin request
 
+// `secure` must match the protocol the browser actually sees, not NODE_ENV: a `Secure`
+// cookie set over plain HTTP is silently dropped, which looked like "session vanishes
+// on refresh" when testing a production build locally (SITE_URL=http://localhost:...).
+// SITE_URL is already the single source of truth for our public origin (see opengraph-image.tsx).
 export const SESSION_COOKIE_OPTIONS = {
   httpOnly: true,
-  secure: process.env.NODE_ENV === "production",
+  secure: SITE_URL.startsWith("https://"),
   sameSite: "lax" as const,
   path: "/",
   maxAge: SESSION_TTL_SECONDS,
