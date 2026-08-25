@@ -4,23 +4,14 @@ const OBJECTIONS = [
   {
     id: "why-now",
     question: "Платформы ведь ещё нет — зачем регистрироваться сейчас?",
-    answer: (
-      <>
-        Чем раньше наберётся аудитория, тем быстрее платформа заработает — а ты узнаешь о запуске{" "}
-        <ChangedText old="первым">одним из первых</ChangedText>.
-      </>
-    ),
+    answer:
+      "Чем раньше наберётся аудитория, тем быстрее платформа заработает — а ты узнаешь о запуске одним из первых.",
   },
   {
     id: "will-it-close",
     question: "Не станет ли это очередным порталом, который закроется через полгода?",
-    answer: (
-      <>
-        Платформа создаётся при поддержке ТЮРКСОЙ — сразу как система шести стран: Азербайджана,
-        Казахстана, <ChangedText old="Киргизии">Кыргызстана</ChangedText>, Туркменистана, Турции и
-        Узбекистана.
-      </>
-    ),
+    answer:
+      "Платформа создаётся при поддержке ТЮРКСОЙ — сразу как система шести стран: Азербайджана, Казахстана, Кыргызстана, Туркменистана, Турции и Узбекистана.",
   },
   {
     id: "data",
@@ -29,18 +20,11 @@ const OBJECTIONS = [
   },
   {
     id: "why-need-it",
-    question: (
-      <>
-        У меня и так получается находить{" "}
-        <ChangedText old="гранты и фестивали">фестивали и стажировки</ChangedText> — зачем мне это?
-      </>
-    ),
+    question: "У меня и так получается находить фестивали и стажировки — зачем мне это?",
     answer: (
       <>
-        <ChangedText old="Дело не только в поиске. После фестиваля или стажировки знакомства обычно обрываются сами собой.">
-          После фестиваля или стажировки знакомства обычно обрываются.
-        </ChangedText>{" "}
-        <ChangedText old="TURKIC">TÜRKSOY</ChangedText> STUDENTS — про то, что происходит после.
+        После фестиваля или стажировки <ChangedText old="знакомства">связи</ChangedText> обычно
+        обрываются. TÜRKSOY STUDENTS — про то, что происходит после.
       </>
     ),
   },
@@ -51,7 +35,7 @@ export function ObjectionsSection() {
     <section className="bg-background">
       <div className="reveal-on-scroll mx-auto flex max-w-4xl flex-col gap-10 px-5 py-16 sm:px-8 sm:py-24 md:px-12">
         <h2 className="text-balance font-display text-3xl font-bold tracking-tight sm:text-4xl">
-          Прежде чем оставить email
+          <ChangedText old="Прежде чем оставить email">Коротко, если сомневаешься</ChangedText>
         </h2>
         <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
           {OBJECTIONS.map((item) => (

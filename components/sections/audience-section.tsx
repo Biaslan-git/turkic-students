@@ -3,12 +3,14 @@ import { SmilingFaceIcon } from "@/components/mood-icons/smiling-face";
 import { ChangedText } from "@/components/changed-text";
 
 const SEGMENTS = [
-  "Уже был на фестивалях или обменах — и не хочешь, чтобы знакомства обрывались.",
-  <>
-    <ChangedText old="Ещё не пробовал — и не знаешь, с чего начать.">
-      Хочешь превращать случайные знакомства в постоянные связи.
-    </ChangedText>
-  </>,
+  <span key="obryv">
+    Уже был на фестивалях или обменах — и не хочешь, чтобы{" "}
+    <ChangedText old="знакомства">связи</ChangedText> обрывались.
+  </span>,
+  <span key="vstrechi">
+    Хочешь превращать случайные{" "}
+    <ChangedText old="знакомства">встречи</ChangedText> в постоянные связи.
+  </span>,
   "Организуешь события или ведёшь проект — и ищешь партнёров в других странах.",
 ];
 
@@ -42,9 +44,7 @@ export function AudienceSection() {
             Для кого
           </span>
           <h2 className="text-balance font-display text-3xl font-bold tracking-tight sm:text-4xl">
-            <ChangedText old="Был ты на фестивале или только слышал — это для тебя">
-              Ты на фестивале — значит, это для тебя
-            </ChangedText>
+            Ты на фестивале — значит, это для тебя
           </h2>
           <p className="text-pretty text-muted">Например, если ты:</p>
           <ul className="flex flex-col gap-3">

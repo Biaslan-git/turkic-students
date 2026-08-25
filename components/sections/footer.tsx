@@ -11,17 +11,17 @@ export function Footer() {
       <div className="relative mx-auto flex max-w-4xl flex-col items-center gap-4 px-5 py-12 text-center text-sm text-muted sm:px-8 md:px-12">
         <span className="flex items-center gap-2 font-display text-sm font-bold tracking-tight text-foreground">
           <Image src="/turksoy-logo.svg" alt="Эмблема ТЮРКСОЙ" width={24} height={24} className="h-6 w-6" />
-          <ChangedText old="TURKIC">TÜRKSOY</ChangedText> STUDENTS
+          TÜRKSOY STUDENTS
         </span>
         <p className="max-w-md">
           Цифровая платформа, которая соединяет студентов тюркского мира:
           образование, фестивали, стажировки и совместные проекты.
         </p>
         <a href="#waitlist" className="font-medium text-accent underline underline-offset-4">
-          Зарегистрироваться
+          <ChangedText old="Зарегистрироваться">Забронировать место</ChangedText>
         </a>
         <p>
-          © {new Date().getFullYear()} <ChangedText old="TURKIC">TÜRKSOY</ChangedText> STUDENTS
+          © {new Date().getFullYear()} TÜRKSOY STUDENTS
         </p>
         <p className="text-xs text-muted/70">
           Иконки: emoji-иллюстрации by{" "}

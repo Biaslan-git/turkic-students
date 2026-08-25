@@ -9,7 +9,6 @@ import {
 } from "@/app/actions";
 import { INTEREST_AREAS, TELEGRAM_CHANNEL_URL } from "@/lib/constants";
 import { trackEvent } from "@/lib/analytics";
-import { ChangedText } from "@/components/changed-text";
 
 const initialBasicState: WaitlistBasicState = { status: "idle" };
 const initialDetailsState: WaitlistDetailsState = { status: "idle" };
@@ -116,7 +115,7 @@ export function WaitlistForm() {
           <button
             type="submit"
             disabled={basicPending}
-            className="w-full rounded-xl bg-foreground px-6 py-3.5 text-base font-semibold text-background transition-opacity disabled:opacity-60"
+            className="w-full rounded-xl bg-gradient-to-r from-accent to-[#ff8a63] px-6 py-3.5 text-base font-semibold text-white shadow-[0_10px_28px_-10px_var(--accent)] transition-opacity disabled:opacity-60"
           >
             {basicPending ? "Отправляем…" : "Далее"}
           </button>
@@ -200,7 +199,7 @@ function StepTwoForm({
       <button
         type="submit"
         disabled={pending}
-        className="w-full rounded-xl bg-foreground px-6 py-3.5 text-base font-semibold text-background transition-opacity disabled:opacity-60"
+        className="w-full rounded-xl bg-gradient-to-r from-accent to-[#ff8a63] px-6 py-3.5 text-base font-semibold text-white shadow-[0_10px_28px_-10px_var(--accent)] transition-opacity disabled:opacity-60"
       >
         {pending ? "Сохраняем…" : copy.step2Cta}
       </button>
@@ -222,7 +221,7 @@ function SuccessScreen() {
   return (
     <div className="flex flex-col items-center gap-4 text-center">
       <h3 className="font-display text-xl font-bold">
-        Спасибо! Ты в списке <ChangedText old="TURKIC">TÜRKSOY</ChangedText> STUDENTS
+        Спасибо! Ты в списке TÜRKSOY STUDENTS
       </h3>
       <p className="text-muted">{copy.successSubtitle}</p>
       <a

@@ -18,30 +18,26 @@ export function HeroSection() {
               className="h-3 w-3"
             />
           </span>
-          <ChangedText old="">Под эгидой и </ChangedText>при поддержке ТЮРКСОЙ
+          Под эгидой и при поддержке ТЮРКСОЙ
         </p>
         <h1 className="max-w-3xl text-balance font-display text-[2.5rem] font-bold leading-[1.08] tracking-tight sm:text-5xl md:text-6xl">
-          Фестивали тюркского мира.{" "}
-          <ChangedText old="Без пропущенных дедлайнов">
-            Знакомства, которые не обрываются
+          <ChangedText old="Одна платформа. Весь тюркский мир. Связи, которые остаются.">
+            Фестивали, стажировки и связи тюркского мира —{" "}
+            <span className="text-accent">в одном месте</span>
           </ChangedText>
         </h1>
         <p className="max-w-xl text-pretty text-lg text-muted">
-          <ChangedText old="Информация разбросана по десяткам сайтов и чатов — и кто-то успевает подать заявку раньше тебя.">
-            Фестивали, стажировки и события тюркского мира разбросаны по
-            десяткам сайтов и чатов — а нужные знакомства теряются вместе с
-            ними.
-          </ChangedText>{" "}
-          <ChangedText old="TURKIC">TÜRKSOY</ChangedText> STUDENTS собирает всё в одном месте. Оставь имя
-          и email — узнаешь о запуске{" "}
-          <ChangedText old="первым">одним из первых</ChangedText>.
+          Фестивали, стажировки и события тюркского мира разбросаны по
+          десяткам сайтов и чатов — а нужные{" "}
+          <ChangedText old="знакомства">связи</ChangedText> теряются вместе с
+          ними. TÜRKSOY STUDENTS собирает всё в одном месте. Оставь имя
+          и email — узнаешь о запуске одним из первых.
         </p>
-        {/* было: "Зарегистрироваться первым" */}
         <a
           href="#waitlist"
-          className="rounded-full bg-accent px-8 py-4 text-base font-semibold text-white shadow-[0_8px_24px_-8px_var(--accent)] transition-transform hover:scale-[1.02]"
+          className="rounded-full bg-gradient-to-r from-accent to-[#ff8a63] px-8 py-4 text-base font-semibold text-white shadow-[0_10px_28px_-8px_var(--accent)] transition-transform hover:scale-[1.02]"
         >
-          Зарегистрироваться сейчас
+          <ChangedText old="Зарегистрироваться сейчас">Забронировать место</ChangedText>
         </a>
 
         <div className="relative mt-4 w-full max-w-3xl">

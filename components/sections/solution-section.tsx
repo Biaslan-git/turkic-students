@@ -5,12 +5,7 @@ import { ChangedText } from "@/components/changed-text";
 const BENEFITS = [
   {
     title: "Единый каталог",
-    description: (
-      <>
-        <ChangedText old="Гранты, обмены">Обмены</ChangedText>, фестивали и стажировки — в одном месте,
-        со ссылкой на источник.
-      </>
-    ),
+    description: "Обмены, фестивали и стажировки — в одном месте, со ссылкой на источник.",
   },
   {
     title: "Профиль под тебя",
@@ -33,16 +28,15 @@ export function SolutionSection() {
               Решение
             </span>
             <h2 className="max-w-xl text-balance font-display text-3xl font-bold tracking-tight sm:text-4xl">
-              <ChangedText old="TURKIC">TÜRKSOY</ChangedText> STUDENTS не заменяет эти сайты — она их
-              связывает
+              <ChangedText old="Весь тюркский мир — теперь в одном месте">
+                Весь тюркский мир — без хаоса из вкладок и чатов
+              </ChangedText>
             </h2>
             <p className="max-w-xl text-pretty text-lg text-muted">
               Информация остаётся у вузов, фестивалей и программ — мы просто
-              собираем её в одном месте<ChangedText old=". И"> и</ChangedText> превращаем в среду, где
-              знакомства{" "}
-              <ChangedText old="не исчезают вместе с закрытой вкладкой.">
-                продолжаются и после фестиваля!
-              </ChangedText>
+              собираем её в одном месте и превращаем в среду, где{" "}
+              <ChangedText old="знакомства">связи</ChangedText> продолжаются и
+              после фестиваля!
             </p>
           </div>
           <div className="relative md:col-span-5">

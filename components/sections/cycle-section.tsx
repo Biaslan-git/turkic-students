@@ -3,7 +3,12 @@ import { FireIcon } from "@/components/mood-icons/fire-icon";
 import { ChangedText } from "@/components/changed-text";
 
 const CYCLE_STEPS = [
-  { title: "Фестиваль", description: "Знакомство на реальном мероприятии" },
+  {
+    title: "Фестиваль",
+    description: (
+      <ChangedText old="Знакомство на реальном мероприятии">Встреча на реальном мероприятии</ChangedText>
+    ),
+  },
   { title: "Контакт", description: "Общение продолжается и после того, как ты уехал домой" },
   { title: "Сообщество", description: "Находишь единомышленников из других стран тюркского мира" },
   { title: "Сотрудничество", description: "Совместная идея находит соавторов" },
@@ -50,8 +55,9 @@ export function CycleSection() {
               Круглый год
             </span>
             <h2 className="text-balance font-display text-3xl font-bold tracking-tight sm:text-4xl">
-              Платформа работает 365 дней в году — не только во время
-              фестиваля
+              <ChangedText old="Связи остаются, потому что каждый фестиваль ведёт к следующему">
+                Один фестиваль ведёт к следующему
+              </ChangedText>
             </h2>
             <p className="text-pretty text-lg text-muted">
               Без постоянной среды между фестивалями всё каждый раз
@@ -67,15 +73,7 @@ export function CycleSection() {
                 {index + 1}
               </span>
               <h3 className="mt-2 break-words font-display text-base font-bold">{step.title}</h3>
-              <p className="text-xs text-muted">
-                {index === CYCLE_STEPS.length - 1 ? (
-                  <ChangedText old="Ты возвращаешься не участником — а автором своего проекта">
-                    {step.description}
-                  </ChangedText>
-                ) : (
-                  step.description
-                )}
-              </p>
+              <p className="text-xs text-muted">{step.description}</p>
               {index < CYCLE_STEPS.length - 1 && (
                 <span
                   aria-hidden="true"
@@ -87,9 +85,7 @@ export function CycleSection() {
         </ol>
 
         <p className="w-fit rounded-full border border-dashed border-accent-warm/50 bg-background px-5 py-2.5 text-sm text-muted">
-          <ChangedText old="Сегодня ты ищешь фестиваль. Через год, возможно, ты его организуешь.">
-            Каждый фестиваль — начало следующего.
-          </ChangedText>
+          Каждый фестиваль — начало следующего.
         </p>
       </div>
     </section>

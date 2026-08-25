@@ -16,13 +16,15 @@ export function ProblemSection() {
       <div className="reveal-on-scroll relative mx-auto flex max-w-4xl flex-col gap-10 px-5 py-16 sm:px-8 sm:py-24 md:px-12">
         <div className="flex flex-col gap-4 md:max-w-xl">
           <span className="w-fit rounded-full border border-accent/30 bg-background px-3 py-1 text-xs font-semibold uppercase tracking-[0.14em] text-accent">
-            <ChangedText old="Проблема">Трудность</ChangedText>
+            Трудность
           </span>
           <h2 className="text-balance font-display text-3xl font-bold tracking-tight sm:text-4xl">
-            Возможности есть. Найти их вовремя — целая работа
+            <ChangedText old="Возможности есть. Найти их вовремя — целая работа">
+              Пока ты искал — кто-то другой уже поехал
+            </ChangedText>
           </h2>
           <p className="text-pretty text-lg text-muted">
-            <ChangedText old="Грант">Обмен</ChangedText> — на сайте вуза. Фестиваль — в Telegram-канале.
+            Обмен — на сайте вуза. Фестиваль — в Telegram-канале.
             Стажировка — в чате, который ты давно не открывал. Пока
             собираешь всё по кусочкам, дедлайн уже прошёл.
           </p>
@@ -35,17 +37,14 @@ export function ProblemSection() {
                 i % 2 === 0 ? "-rotate-1" : "rotate-1"
               } ${i % 3 === 1 ? "sm:mt-4" : ""}`}
             >
-              {i === 1 ? <ChangedText old="Госресурсы с грантами">{source}</ChangedText> : source}
+              {source}
             </li>
           ))}
         </ul>
         <p className="text-sm text-muted">
           И это только{" "}
-          <ChangedText old="одна страна.">
-            <strong className="font-bold text-accent">твоя</strong> страна!
-          </ChangedText>{" "}
-          Про остальные пять ты, скорее всего, даже не{" "}
-          <ChangedText old="знаешь">подозреваешь</ChangedText>.
+          <strong className="font-bold text-accent">твоя</strong> страна!{" "}
+          Про остальные пять ты, скорее всего, даже не подозреваешь.
         </p>
       </div>
     </section>
