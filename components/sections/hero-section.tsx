@@ -33,7 +33,7 @@ export function HeroSection() {
           href="#waitlist"
           className="rounded-full bg-gradient-to-r from-accent to-[#ff8a63] px-8 py-4 text-base font-semibold text-white shadow-[0_10px_28px_-8px_var(--accent)] transition-transform hover:scale-[1.02]"
         >
-          Забронировать место
+          Зарегистрироваться
         </a>
 
         <div className="relative mt-4 w-full max-w-3xl">

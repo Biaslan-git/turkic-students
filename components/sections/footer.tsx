@@ -17,7 +17,7 @@ export function Footer() {
           образование, фестивали, стажировки и совместные проекты.
         </p>
         <a href="#waitlist" className="font-medium text-accent underline underline-offset-4">
-          Забронировать место
+          Зарегистрироваться
         </a>
         <p>
           © {new Date().getFullYear()} TÜRKSOY STUDENTS
