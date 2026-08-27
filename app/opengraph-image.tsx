@@ -46,7 +46,7 @@ export default async function Image() {
           TÜRKSOY STUDENTS
         </div>
         <div style={{ fontSize: 32, color: "#9aa9a3", maxWidth: 900, textAlign: "center" }}>
-          Фестивали, стажировки и события тюркского мира — в одном месте
+          Фестивали и связи тюркского мира — в одном месте
         </div>
         <div
           style={{

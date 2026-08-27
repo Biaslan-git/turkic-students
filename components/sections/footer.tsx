@@ -14,7 +14,7 @@ export function Footer() {
         </span>
         <p className="max-w-md">
           Цифровая платформа, которая соединяет студентов тюркского мира:
-          образование, фестивали, стажировки и совместные проекты.
+          образование, фестивали и совместные проекты.
         </p>
         <a href="#waitlist" className="font-medium text-accent underline underline-offset-4">
           Зарегистрироваться

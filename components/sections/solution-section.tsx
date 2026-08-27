@@ -27,7 +27,7 @@ export function SolutionSection() {
               Решение
             </span>
             <h2 className="max-w-xl text-balance font-display text-3xl font-bold tracking-tight sm:text-4xl">
-              Весь тюркский мир — в одном месте
+              Весь тюркский мир — на одной платформе
             </h2>
             <p className="max-w-xl text-pretty text-lg text-muted">
               Информация остаётся у вузов, фестивалей и программ — мы просто
