@@ -6,16 +6,6 @@ export function HeroSection() {
     <section className="relative overflow-hidden">
       <RouteLinesBackdrop />
       <div className="relative flex flex-col items-center gap-7 px-5 py-16 text-center sm:px-8 sm:py-20 md:px-12 md:py-24">
-        <span className="flex items-center gap-3 font-display text-2xl font-bold tracking-tight sm:text-3xl">
-          <Image
-            src="/turksoy-logo.svg"
-            alt="Эмблема ТЮРКСОЙ"
-            width={48}
-            height={48}
-            className="h-10 w-10 sm:h-12 sm:w-12"
-          />
-          TÜRKSOY STUDENTS
-        </span>
         <p className="inline-flex items-center gap-2 rounded-full border border-border bg-surface px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.14em] text-muted">
           <span className="flex h-4 w-4 items-center justify-center rounded-full bg-white p-0.5">
             <Image
