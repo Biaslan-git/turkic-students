@@ -6,17 +6,14 @@ export function HeroSection() {
     <section className="relative overflow-hidden">
       <RouteLinesBackdrop />
       <div className="relative flex flex-col items-center gap-7 px-5 py-16 text-center sm:px-8 sm:py-20 md:px-12 md:py-24">
+        <Image
+          src="/turksoy-logo.svg"
+          alt="Эмблема ТЮРКСОЙ"
+          width={128}
+          height={128}
+          className="h-20 w-20 sm:h-24 sm:w-24 md:h-28 md:w-28"
+        />
         <p className="inline-flex items-center gap-2 rounded-full border border-border bg-surface px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.14em] text-muted">
-          <span className="flex h-4 w-4 items-center justify-center rounded-full bg-white p-0.5">
-            <Image
-              src="/turksoy-emblem.png"
-              alt=""
-              aria-hidden="true"
-              width={12}
-              height={12}
-              className="h-3 w-3"
-            />
-          </span>
           Под эгидой и при поддержке ТЮРКСОЙ
         </p>
         <h1 className="max-w-3xl text-balance font-display text-[2.5rem] font-bold leading-[1.08] tracking-tight sm:text-5xl md:text-6xl">
