@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-export function Header() {
+export function Header({ ctaLabel }: { ctaLabel: string }) {
   return (
     <header className="sticky top-0 z-40 flex items-center justify-between border-b border-border/60 bg-background/80 px-5 py-4 backdrop-blur-md sm:px-8 sm:py-5 md:px-12">
       <span className="flex items-center gap-2 font-display text-base font-bold tracking-tight sm:text-lg">
@@ -11,7 +11,7 @@ export function Header() {
         href="#waitlist"
         className="rounded-full bg-accent px-4 py-2 text-sm font-semibold text-white shadow-[0_6px_16px_-8px_var(--accent)] transition-transform hover:scale-[1.04]"
       >
-        Зарегистрироваться
+        {ctaLabel}
       </a>
     </header>
   );

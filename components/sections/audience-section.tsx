@@ -1,13 +1,15 @@
 import Image from "next/image";
 import { SmilingFaceIcon } from "@/components/mood-icons/smiling-face";
 
-const SEGMENTS = [
-  "Уже был на фестивалях или обменах — и не хочешь, чтобы связи обрывались.",
-  "Хочешь превращать случайные встречи в постоянные связи.",
-  "Организуешь события или ведёшь проект — и ищешь партнёров в других странах.",
-];
+type AudienceSectionProps = {
+  badge: string;
+  title: string;
+  intro: string;
+  segments: string[];
+  outro: string;
+};
 
-export function AudienceSection() {
+export function AudienceSection({ badge, title, intro, segments, outro }: AudienceSectionProps) {
   return (
     <section className="relative overflow-hidden bg-surface">
       <SmilingFaceIcon className="pointer-events-none absolute -right-10 -top-14 h-56 w-56 select-none text-accent-ink/[0.06] sm:h-72 sm:w-72" />
@@ -34,23 +36,21 @@ export function AudienceSection() {
         </div>
         <div className="flex flex-col gap-6 md:w-3/5">
           <span className="w-fit rounded-full border border-border bg-background px-3 py-1 text-xs font-semibold uppercase tracking-[0.14em] text-muted">
-            Для кого
+            {badge}
           </span>
           <h2 className="text-balance font-display text-3xl font-bold tracking-tight sm:text-4xl">
-            Ты на фестивале — значит, это для тебя
+            {title}
           </h2>
-          <p className="text-pretty text-muted">Например, если ты:</p>
+          <p className="text-pretty text-muted">{intro}</p>
           <ul className="flex flex-col gap-3">
-            {SEGMENTS.map((segment, i) => (
+            {segments.map((segment, i) => (
               <li key={i} className="flex gap-3 text-pretty text-base text-muted">
                 <span aria-hidden="true" className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
                 {segment}
               </li>
             ))}
           </ul>
-          <p className="text-pretty text-sm text-muted">
-            Позже подключатся вузы и организации. Но начинается всё с тебя.
-          </p>
+          <p className="text-pretty text-sm text-muted">{outro}</p>
         </div>
       </div>
     </section>

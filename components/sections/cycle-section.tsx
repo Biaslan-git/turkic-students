@@ -1,19 +1,17 @@
 import Image from "next/image";
 import { FireIcon } from "@/components/mood-icons/fire-icon";
 
-const CYCLE_STEPS = [
-  { title: "Фестиваль", description: "Встреча на реальном мероприятии" },
-  { title: "Контакт", description: "Общение продолжается и после того, как ты уехал домой" },
-  { title: "Сообщество", description: "Находишь единомышленников из других стран тюркского мира" },
-  { title: "Сотрудничество", description: "Совместная идея находит соавторов" },
-  { title: "Новые проекты", description: "Идея превращается в инициативу с командой" },
-  {
-    title: "Новый фестиваль",
-    description: "Сегодня — гость, через год — выступаешь сам",
-  },
-];
+type CycleStep = { title: string; text: string };
 
-export function CycleSection() {
+type CycleSectionProps = {
+  badge: string;
+  title: string;
+  text: string;
+  note: string;
+  steps: CycleStep[];
+};
+
+export function CycleSection({ badge, title, text, note, steps }: CycleSectionProps) {
   return (
     <section className="relative overflow-hidden bg-tint-teal">
       <FireIcon className="pointer-events-none absolute -right-12 -bottom-16 h-56 w-56 select-none text-accent/[0.08] sm:h-72 sm:w-72" />
@@ -46,27 +44,24 @@ export function CycleSection() {
           </div>
           <div className="flex flex-col gap-4 md:order-2 md:col-span-5">
             <span className="w-fit rounded-full border border-accent/30 bg-background px-3 py-1 text-xs font-semibold uppercase tracking-[0.14em] text-accent">
-              Круглый год
+              {badge}
             </span>
             <h2 className="text-balance font-display text-3xl font-bold tracking-tight sm:text-4xl">
-              Один фестиваль ведёт к следующему
+              {title}
             </h2>
-            <p className="text-pretty text-lg text-muted">
-              Без постоянной среды между фестивалями всё каждый раз
-              начинается с нуля — мы это меняем.
-            </p>
+            <p className="text-pretty text-lg text-muted">{text}</p>
           </div>
         </div>
 
         <ol className="grid grid-cols-2 gap-x-6 gap-y-8 sm:grid-cols-3 md:grid-cols-6">
-          {CYCLE_STEPS.map((step, index) => (
-            <li key={step.title} className="relative flex min-w-0 flex-col gap-1">
+          {steps.map((step, index) => (
+            <li key={index} className="relative flex min-w-0 flex-col gap-1">
               <span className="flex h-9 w-9 items-center justify-center rounded-full border-2 border-background bg-accent font-display text-sm font-bold text-white shadow-[0_6px_16px_-6px_var(--accent)]">
                 {index + 1}
               </span>
               <h3 className="mt-2 break-words font-display text-base font-bold">{step.title}</h3>
-              <p className="text-xs text-muted">{step.description}</p>
-              {index < CYCLE_STEPS.length - 1 && (
+              <p className="text-xs text-muted">{step.text}</p>
+              {index < steps.length - 1 && (
                 <span
                   aria-hidden="true"
                   className="absolute right-[-14px] top-4 hidden h-px w-6 bg-gradient-to-r from-accent to-accent-warm sm:block"
@@ -77,7 +72,7 @@ export function CycleSection() {
         </ol>
 
         <p className="w-fit rounded-full border border-dashed border-accent-warm/50 bg-background px-5 py-2.5 text-sm text-muted">
-          Каждый фестиваль — начало следующего.
+          {note}
         </p>
       </div>
     </section>

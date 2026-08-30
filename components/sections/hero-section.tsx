@@ -1,7 +1,15 @@
 import Image from "next/image";
 import { RouteLinesBackdrop } from "@/components/route-lines";
 
-export function HeroSection() {
+type HeroSectionProps = {
+  ctaLabel: string;
+  badge: string;
+  titleMain: string;
+  titleAccent: string;
+  subtitle: string;
+};
+
+export function HeroSection({ ctaLabel, badge, titleMain, titleAccent, subtitle }: HeroSectionProps) {
   return (
     <section className="relative overflow-hidden">
       <RouteLinesBackdrop />
@@ -14,23 +22,18 @@ export function HeroSection() {
           className="h-20 w-20 sm:h-24 sm:w-24 md:h-28 md:w-28"
         />
         <p className="inline-flex items-center gap-2 rounded-full border border-border bg-surface px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.14em] text-muted">
-          Под эгидой и при поддержке ТЮРКСОЙ
+          {badge}
         </p>
         <h1 className="max-w-3xl text-balance font-display text-[2.5rem] font-bold leading-[1.08] tracking-tight sm:text-5xl md:text-6xl">
-          Фестивали и связи тюркского мира —{" "}
-          <span className="text-accent">в одном месте</span>
+          {titleMain}
+          <span className="text-accent">{titleAccent}</span>
         </h1>
-        <p className="max-w-xl text-pretty text-lg text-muted">
-          Фестивали и события тюркского мира разбросаны по
-          десяткам сайтов и чатов — а нужные связи теряются вместе с
-          ними. TÜRKSOY STUDENTS собирает всё в одном месте. Оставь имя
-          и email — узнаешь о запуске одним из первых.
-        </p>
+        <p className="max-w-xl text-pretty text-lg text-muted">{subtitle}</p>
         <a
           href="#waitlist"
           className="rounded-full bg-gradient-to-r from-accent to-[#ff8a63] px-8 py-4 text-base font-semibold text-white shadow-[0_10px_28px_-8px_var(--accent)] transition-transform hover:scale-[1.02]"
         >
-          Зарегистрироваться
+          {ctaLabel}
         </a>
 
         <div className="relative mt-4 w-full max-w-3xl">

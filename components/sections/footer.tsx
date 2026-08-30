@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { RouteLinesBackdrop } from "@/components/route-lines";
 
-export function Footer() {
+export function Footer({ ctaLabel, text }: { ctaLabel: string; text: string }) {
   return (
     <footer className="relative overflow-hidden border-t border-border bg-tint-teal">
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 opacity-[0.1]">
@@ -12,12 +12,9 @@ export function Footer() {
           <Image src="/turksoy-logo.svg" alt="Эмблема ТЮРКСОЙ" width={24} height={24} className="h-6 w-6" />
           TÜRKSOY STUDENTS
         </span>
-        <p className="max-w-md">
-          Цифровая платформа, которая соединяет студентов тюркского мира:
-          образование, фестивали и совместные проекты.
-        </p>
+        <p className="max-w-md">{text}</p>
         <a href="#waitlist" className="font-medium text-accent underline underline-offset-4">
-          Зарегистрироваться
+          {ctaLabel}
         </a>
         <p>
           © {new Date().getFullYear()} TÜRKSOY STUDENTS

@@ -1,22 +1,16 @@
 import Image from "next/image";
 import { RelievedFaceIcon } from "@/components/mood-icons/relieved-face";
 
-const BENEFITS = [
-  {
-    title: "Единый каталог",
-    description: "Обмены, фестивали и стажировки — в одном месте, со ссылкой на источник.",
-  },
-  {
-    title: "Профиль под тебя",
-    description: "Укажи страну, вуз и интересы — увидишь только то, что подходит тебе.",
-  },
-  {
-    title: "Люди, а не только объявления",
-    description: "Находи единомышленников и собирай команду уже после мероприятия.",
-  },
-];
+type Benefit = { title: string; text: string };
 
-export function SolutionSection() {
+type SolutionSectionProps = {
+  badge: string;
+  title: string;
+  text: string;
+  benefits: Benefit[];
+};
+
+export function SolutionSection({ badge, title, text, benefits }: SolutionSectionProps) {
   return (
     <section className="relative overflow-hidden bg-background">
       <RelievedFaceIcon className="pointer-events-none absolute -left-12 -bottom-16 h-56 w-56 select-none text-accent-warm/[0.08] sm:h-72 sm:w-72" />
@@ -24,16 +18,12 @@ export function SolutionSection() {
         <div className="grid grid-cols-1 items-center gap-10 md:grid-cols-12 md:gap-8">
           <div className="flex flex-col gap-4 md:col-span-7">
             <span className="w-fit rounded-full border border-accent-warm/30 bg-surface px-3 py-1 text-xs font-semibold uppercase tracking-[0.14em] text-accent-warm">
-              Решение
+              {badge}
             </span>
             <h2 className="max-w-xl text-balance font-display text-3xl font-bold tracking-tight sm:text-4xl">
-              Весь тюркский мир — на одной платформе
+              {title}
             </h2>
-            <p className="max-w-xl text-pretty text-lg text-muted">
-              Информация остаётся у вузов, фестивалей и программ — мы просто
-              собираем её в одном месте и превращаем в среду, где связи
-              продолжаются и после фестиваля!
-            </p>
+            <p className="max-w-xl text-pretty text-lg text-muted">{text}</p>
           </div>
           <div className="relative md:col-span-5">
             <div
@@ -56,14 +46,14 @@ export function SolutionSection() {
             aria-hidden="true"
             className="absolute left-0 right-0 top-1/2 hidden h-px -translate-y-1/2 bg-border sm:block"
           />
-          {BENEFITS.map((benefit) => (
+          {benefits.map((benefit, i) => (
             <div
-              key={benefit.title}
+              key={i}
               className="relative flex flex-col gap-2 rounded-2xl border border-border bg-surface p-5"
             >
               <div className="h-1 w-8 rounded-full bg-accent-warm" />
               <h3 className="font-display text-lg font-bold">{benefit.title}</h3>
-              <p className="text-sm text-muted">{benefit.description}</p>
+              <p className="text-sm text-muted">{benefit.text}</p>
             </div>
           ))}
         </div>
