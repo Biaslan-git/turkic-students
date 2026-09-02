@@ -1,14 +1,18 @@
 "use client";
 
-import { useActionState, useEffect } from "react";
+import { useActionState, useEffect, useState, useSyncExternalStore } from "react";
 import {
   submitWaitlistBasic,
   submitWaitlistDetails,
   type WaitlistBasicState,
   type WaitlistDetailsState,
 } from "@/app/actions";
-import { INTEREST_AREAS, TELEGRAM_CHANNEL_URL } from "@/lib/constants";
+import { FESTIVAL_ROLES, OPINION_CATEGORIES, TELEGRAM_CHANNEL_URL } from "@/lib/constants";
 import { trackEvent } from "@/lib/analytics";
+import { Select } from "@/components/ui/select";
+import type { University } from "@/lib/universities";
+
+const JOINED_STORAGE_KEY = "tvoi-golos-joined";
 
 const initialBasicState: WaitlistBasicState = { status: "idle" };
 const initialDetailsState: WaitlistDetailsState = { status: "idle" };
@@ -19,15 +23,30 @@ const inputClass =
 const copy = {
   privacyNote: "Твои данные используются только для регистрации на платформе.",
   step2Intro:
-    "Расскажи о себе, чтобы мы показывали тебе подходящие возможности с самого запуска.",
+    "Расскажи о себе — так мы учтём тебя в аудитории твоего университета и покажем подходящие возможности с самого запуска.",
   step2Cta: "Зарегистрироваться",
-  skipLabel: "Пропустить",
   successSubtitle:
     "Подпишись на наш Telegram-канал, чтобы не пропустить запуск платформы.",
   telegramCta: "Подписаться на Telegram",
 };
 
-export function WaitlistForm() {
+function subscribeNoop() {
+  return () => {};
+}
+
+function readAlreadyJoined(): boolean {
+  try {
+    return localStorage.getItem(JOINED_STORAGE_KEY) === "1";
+  } catch {
+    return false;
+  }
+}
+
+function readAlreadyJoinedServer(): boolean {
+  return false;
+}
+
+export function WaitlistForm({ universities }: { universities: University[] }) {
   const [basicState, basicAction, basicPending] = useActionState(
     submitWaitlistBasic,
     initialBasicState,
@@ -36,6 +55,12 @@ export function WaitlistForm() {
     submitWaitlistDetails,
     initialDetailsState,
   );
+  const alreadyJoined = useSyncExternalStore(
+    subscribeNoop,
+    readAlreadyJoined,
+    readAlreadyJoinedServer,
+  );
+  const [forceForm, setForceForm] = useState(false);
 
   useEffect(() => {
     if (basicState.status === "step2") {
@@ -46,11 +71,32 @@ export function WaitlistForm() {
   useEffect(() => {
     if (detailsState.status === "success") {
       trackEvent("waitlist_step2_completed");
+      try {
+        localStorage.setItem(JOINED_STORAGE_KEY, "1");
+      } catch {
+        // недоступность localStorage не критична — это лишь UX-подсказка, не защита
+      }
     }
   }, [detailsState.status]);
 
   const showSuccess = detailsState.status === "success";
   const showStepTwo = basicState.status === "step2" && basicState.id;
+
+  if (alreadyJoined && !forceForm && !showStepTwo && !showSuccess) {
+    return (
+      <div className="w-full max-w-md rounded-2xl border border-border bg-surface p-6 text-center shadow-[0_16px_40px_-24px_rgba(0,0,0,0.35)] sm:p-8">
+        <h3 className="font-display text-xl font-bold">Вы уже с нами 🎉</h3>
+        <p className="mt-2 text-sm text-muted">Этот браузер уже отмечен как зарегистрированный.</p>
+        <button
+          type="button"
+          onClick={() => setForceForm(true)}
+          className="mt-4 text-sm text-muted underline underline-offset-2"
+        >
+          Зарегистрировать другого человека
+        </button>
+      </div>
+    );
+  }
 
   return (
     <div className="w-full max-w-md rounded-2xl border border-border bg-surface p-6 shadow-[0_16px_40px_-24px_rgba(0,0,0,0.35)] sm:p-8">
@@ -62,6 +108,7 @@ export function WaitlistForm() {
           action={detailsAction}
           pending={detailsPending}
           error={detailsState.status === "error" ? detailsState.message : undefined}
+          universities={universities}
         />
       ) : (
         <form action={basicAction} className="flex flex-col gap-4">
@@ -130,12 +177,18 @@ function StepTwoForm({
   action,
   pending,
   error,
+  universities,
 }: {
   id: string;
   action: (formData: FormData) => void;
   pending: boolean;
   error?: string;
+  universities: University[];
 }) {
+  const [role, setRole] = useState<string>(FESTIVAL_ROLES[0].value);
+  const [universityId, setUniversityId] = useState("");
+  const [opinionCategory, setOpinionCategory] = useState("");
+
   return (
     <form action={action} className="flex flex-col gap-4">
       <input type="hidden" name="id" value={id} />
@@ -143,51 +196,97 @@ function StepTwoForm({
       <p className="text-sm text-muted">{copy.step2Intro}</p>
 
       <div className="flex flex-col gap-1.5">
-        <label htmlFor="country" className="text-sm font-medium">
-          Страна
-        </label>
-        <input
-          id="country"
-          name="country"
-          type="text"
-          maxLength={100}
-          autoComplete="country-name"
-          className={inputClass}
-        />
-      </div>
-
-      <div className="flex flex-col gap-1.5">
-        <label htmlFor="placeOfStudy" className="text-sm font-medium">
-          Вуз / место учёбы
-        </label>
-        <input
-          id="placeOfStudy"
-          name="placeOfStudy"
-          type="text"
-          maxLength={200}
-          className={inputClass}
-        />
-      </div>
-
-      <div className="flex flex-col gap-1.5">
-        <label htmlFor="interestArea" className="text-sm font-medium">
-          Что тебе интереснее всего
-        </label>
-        <select
-          id="interestArea"
-          name="interestArea"
-          defaultValue=""
-          className={inputClass}
-        >
-          <option value="" disabled>
-            Выберите вариант
-          </option>
-          {INTEREST_AREAS.map((area) => (
-            <option key={area.value} value={area.value}>
-              {area.label}
-            </option>
+        <span className="text-sm font-medium">Кто вы?</span>
+        <div className="flex gap-2">
+          {FESTIVAL_ROLES.map((r) => (
+            <label
+              key={r.value}
+              className={`flex-1 cursor-pointer rounded-xl border px-4 py-3 text-center text-sm font-medium transition-colors ${
+                role === r.value ? "border-accent bg-accent/10" : "border-border bg-background"
+              }`}
+            >
+              <input
+                type="radio"
+                name="role"
+                value={r.value}
+                required
+                checked={role === r.value}
+                onChange={() => setRole(r.value)}
+                className="sr-only"
+              />
+              {r.label}
+            </label>
           ))}
-        </select>
+        </div>
+      </div>
+
+      <div className="flex flex-col gap-1.5">
+        <label htmlFor="universityId" className="text-sm font-medium">
+          Университет
+        </label>
+        <Select
+          value={universityId}
+          onChange={setUniversityId}
+          options={universities.map((u) => ({ value: u.id, label: `${u.name} (${u.country})` }))}
+          placeholder="Выберите университет"
+        />
+        <input type="hidden" name="universityId" value={universityId} required />
+      </div>
+
+      {role === "alumnus" && (
+        <div className="flex flex-col gap-1.5">
+          <label htmlFor="graduationYear" className="text-sm font-medium">
+            Год окончания <span className="font-normal text-muted">(необязательно)</span>
+          </label>
+          <input
+            id="graduationYear"
+            name="graduationYear"
+            type="number"
+            min={1950}
+            max={new Date().getFullYear()}
+            className={inputClass}
+          />
+        </div>
+      )}
+
+      <div className="flex flex-col gap-2 border-t border-border pt-4">
+        <p className="text-sm font-medium">
+          Хочешь поделиться мнением о фестивале? <span className="font-normal text-muted">(необязательно)</span>
+        </p>
+        <div className="grid grid-cols-2 gap-2">
+          {OPINION_CATEGORIES.map((c) => (
+            <label
+              key={c.value}
+              className={`cursor-pointer rounded-xl border px-3 py-2.5 text-center text-xs font-semibold uppercase tracking-wide transition-colors ${
+                opinionCategory === c.value
+                  ? "border-accent-warm bg-accent-warm/10"
+                  : "border-border bg-background"
+              }`}
+            >
+              <input
+                type="radio"
+                name="opinionCategory"
+                value={c.value}
+                checked={opinionCategory === c.value}
+                onChange={() => setOpinionCategory(c.value)}
+                className="sr-only"
+              />
+              {c.label}
+            </label>
+          ))}
+        </div>
+        {opinionCategory && (
+          <p className="text-xs text-muted">
+            {OPINION_CATEGORIES.find((c) => c.value === opinionCategory)?.question}
+          </p>
+        )}
+        <textarea
+          name="opinionText"
+          rows={3}
+          maxLength={2000}
+          placeholder="Коротко напиши свою мысль…"
+          className={`${inputClass} resize-none`}
+        />
       </div>
 
       {error && (
@@ -198,20 +297,10 @@ function StepTwoForm({
 
       <button
         type="submit"
-        disabled={pending}
+        disabled={pending || !universityId}
         className="w-full rounded-xl bg-gradient-to-r from-accent to-[#ff8a63] px-6 py-3.5 text-base font-semibold text-white shadow-[0_10px_28px_-10px_var(--accent)] transition-opacity disabled:opacity-60"
       >
         {pending ? "Сохраняем…" : copy.step2Cta}
-      </button>
-
-      <button
-        type="submit"
-        disabled={pending}
-        formNoValidate
-        className="text-center text-sm text-muted underline underline-offset-2"
-        onClick={() => trackEvent("waitlist_step2_skipped")}
-      >
-        {copy.skipLabel}
       </button>
     </form>
   );

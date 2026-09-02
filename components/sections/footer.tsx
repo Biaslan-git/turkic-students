@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { RouteLinesBackdrop } from "@/components/route-lines";
 
 export function Footer({ ctaLabel, text }: { ctaLabel: string; text: string }) {
@@ -16,6 +17,12 @@ export function Footer({ ctaLabel, text }: { ctaLabel: string; text: string }) {
         <a href="#waitlist" className="font-medium text-accent underline underline-offset-4">
           {ctaLabel}
         </a>
+        <Link href="/leaderboard" className="text-xs text-muted underline underline-offset-2">
+          Рейтинг вузов «Твой голос — твой фестиваль»
+        </Link>
+        <Link href="/opinion" className="text-xs text-muted underline underline-offset-2">
+          Оставить мнение о фестивале
+        </Link>
         <p>
           © {new Date().getFullYear()} TÜRKSOY STUDENTS
         </p>

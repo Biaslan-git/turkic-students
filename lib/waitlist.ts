@@ -34,17 +34,32 @@ export async function insertWaitlistSignup(
 
 export async function updateWaitlistDetails(
   id: string,
-  data: { country?: string; placeOfStudy?: string; interestArea?: string },
+  data: {
+    role: string;
+    universityId: string;
+    graduationYear?: number;
+    opinionCategory?: string;
+    opinionText?: string;
+  },
 ): Promise<{ email: string; name: string; alreadyRegistered: boolean } | null> {
   const updated = await pool.query<{ email: string; name: string }>(
     `UPDATE waitlist_signups
-     SET country = NULLIF($2, ''),
-         place_of_study = NULLIF($3, ''),
-         interest_area = NULLIF($4, ''),
+     SET role = $2,
+         university_id = $3,
+         graduation_year = $4,
+         opinion_category = NULLIF($5, ''),
+         opinion_text = NULLIF($6, ''),
          registered_at = now()
      WHERE id = $1 AND registered_at IS NULL
      RETURNING email, name`,
-    [id, data.country ?? "", data.placeOfStudy ?? "", data.interestArea ?? ""],
+    [
+      id,
+      data.role,
+      data.universityId,
+      data.graduationYear ?? null,
+      data.opinionCategory ?? "",
+      data.opinionText ?? "",
+    ],
   );
 
   if (updated.rows[0]) {

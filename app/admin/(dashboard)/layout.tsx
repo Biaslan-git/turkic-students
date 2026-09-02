@@ -26,6 +26,12 @@ export default async function AdminDashboardLayout({
             <a href="/admin/content" className="hover:underline">
               Тексты сайта
             </a>
+            <a href="/admin/opinions" className="hover:underline">
+              Мнения
+            </a>
+            <a href="/admin/universities" className="hover:underline">
+              Вузы
+            </a>
           </nav>
         </div>
         <form action={logout}>

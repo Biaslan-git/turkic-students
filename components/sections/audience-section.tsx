@@ -21,8 +21,8 @@ export function AudienceSection({ badge, title, intro, segments, outro }: Audien
           />
           <div className="relative aspect-[3/4] overflow-hidden rounded-[3rem_1rem_3rem_1rem] shadow-[0_20px_48px_-24px_rgba(26,26,46,0.35)]">
             <Image
-              src="https://static.tildacdn.com/tild3331-3562-4436-a235-643137326361/494105372_1068739198.jpg"
-              alt="Дети в национальных костюмах исполняют народный танец на фестивале"
+              src="https://static.yk-news.kz/images/20250616152907.jpeg"
+              alt="Девушки в национальных костюмах играют на бубне и национальном струнном инструменте на фестивале"
               fill
               className="object-cover"
               sizes="(min-width: 768px) 320px, 100vw"

@@ -1,10 +1,9 @@
 "use server";
 
-import { headers } from "next/headers";
 import { insertWaitlistSignup, updateWaitlistDetails } from "@/lib/waitlist";
-import { sendWelcomeEmail } from "@/lib/email";
 import { waitlistBasicSchema, waitlistDetailsSchema } from "@/lib/validation";
 import { isRateLimited } from "@/lib/rate-limit";
+import { getClientIp } from "@/lib/get-client-ip";
 
 export type WaitlistBasicState = {
   status: "idle" | "step2" | "error";
@@ -16,12 +15,6 @@ export type WaitlistDetailsState = {
   status: "idle" | "success" | "error";
   message?: string;
 };
-
-async function getClientIp(): Promise<string> {
-  const headerList = await headers();
-  const forwardedFor = headerList.get("x-forwarded-for");
-  return forwardedFor?.split(",")[0]?.trim() ?? "unknown";
-}
 
 export async function submitWaitlistBasic(
   _prevState: WaitlistBasicState,
@@ -65,27 +58,27 @@ export async function submitWaitlistDetails(
 ): Promise<WaitlistDetailsState> {
   const parsed = waitlistDetailsSchema.safeParse({
     id: formData.get("id"),
-    country: formData.get("country"),
-    placeOfStudy: formData.get("placeOfStudy"),
-    interestArea: formData.get("interestArea"),
+    role: formData.get("role"),
+    universityId: formData.get("universityId"),
+    graduationYear: formData.get("graduationYear"),
+    opinionCategory: formData.get("opinionCategory"),
+    opinionText: formData.get("opinionText"),
   });
 
   if (!parsed.success) {
-    return { status: "error", message: "Не удалось сохранить данные" };
+    return { status: "error", message: "Проверьте заполненные поля" };
   }
 
   const updated = await updateWaitlistDetails(parsed.data.id, {
-    country: parsed.data.country,
-    placeOfStudy: parsed.data.placeOfStudy,
-    interestArea: parsed.data.interestArea,
+    role: parsed.data.role,
+    universityId: parsed.data.universityId,
+    graduationYear: parsed.data.graduationYear,
+    opinionCategory: parsed.data.opinionCategory,
+    opinionText: parsed.data.opinionText,
   });
 
   if (!updated) {
     return { status: "error", message: "Заявка не найдена" };
-  }
-
-  if (!updated.alreadyRegistered) {
-    void sendWelcomeEmail(updated.email, updated.name);
   }
 
   return { status: "success" };

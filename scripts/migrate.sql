@@ -124,5 +124,64 @@ INSERT INTO site_content (key, value) VALUES
   ('waitlist_title', 'Регистрация открыта'),
   ('waitlist_text', 'Оставь имя и email — и попадёшь в число первых, кто получит доступ.'),
 
-  ('footer_text', 'Цифровая платформа, которая соединяет студентов тюркского мира: образование, фестивали и совместные проекты.')
+  ('footer_text', 'Цифровая платформа, которая соединяет студентов тюркского мира: образование, фестивали и совместные проекты.'),
+
+  ('tvoi_golos_badge', 'Международный студенческий театральный фестиваль в Туркестане'),
+  ('tvoi_golos_title', 'ТВОЙ ГОЛОС — ТВОЙ ФЕСТИВАЛЬ'),
+  ('tvoi_golos_subtitle', 'Выскажись. Предложи. Влияй.'),
+  ('tvoi_golos_text', 'Фестиваль — это не только спектакли и участники. Мы хотим услышать студентов: что ты думаешь о фестивале, каким хотел бы видеть его в будущем и что стоит изменить. Твоя идея может стать частью следующего фестиваля.'),
+  ('tvoi_golos_alumni_note', 'К инициативе может присоединиться не только нынешнее студенческое сообщество вашего университета, но и его выпускники — люди, для которых университет остаётся частью их личной истории.')
 ON CONFLICT (key) DO NOTHING;
+
+-- «ТВОЙ ГОЛОС — ТВОЙ ФЕСТИВАЛЬ»: единая регистрация — те же имя/email из waitlist_signups
+-- дополняются ролью, вузом и (опционально) мнением о фестивале. Отдельной таблицы
+-- регистраций больше нет: один человек = одна запись = одна цель "узнать о запуске".
+DROP TABLE IF EXISTS festival_registrations;
+
+CREATE TABLE IF NOT EXISTS festival_universities (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  name TEXT NOT NULL,
+  country TEXT NOT NULL,
+  is_active BOOLEAN NOT NULL DEFAULT true,
+  created_at TIMESTAMPTZ NOT NULL DEFAULT now()
+);
+
+CREATE UNIQUE INDEX IF NOT EXISTS festival_universities_name_country_idx
+  ON festival_universities (lower(name), lower(country));
+
+ALTER TABLE waitlist_signups ADD COLUMN IF NOT EXISTS role TEXT CHECK (role IN ('student', 'alumnus'));
+ALTER TABLE waitlist_signups ADD COLUMN IF NOT EXISTS university_id UUID REFERENCES festival_universities(id);
+ALTER TABLE waitlist_signups ADD COLUMN IF NOT EXISTS graduation_year INTEGER;
+ALTER TABLE waitlist_signups ADD COLUMN IF NOT EXISTS opinion_category TEXT CHECK (
+  opinion_category IN ('opinion', 'idea', 'proposal', 'viewpoint', 'missing', 'other')
+);
+ALTER TABLE waitlist_signups ADD COLUMN IF NOT EXISTS opinion_text TEXT;
+
+CREATE INDEX IF NOT EXISTS waitlist_signups_university_idx
+  ON waitlist_signups (university_id);
+
+-- Тестовый список вузов на старте — полный список клиент пришлёт позже, добавляется
+-- через /admin/universities. ON CONFLICT DO NOTHING не трогает то, что уже добавил админ.
+INSERT INTO festival_universities (name, country) VALUES
+  ('Международный казахско-турецкий университет им. Х.А. Ясави', 'Казахстан'),
+  ('Казахский национальный университет им. аль-Фараби', 'Казахстан'),
+  ('Евразийский национальный университет им. Л.Н. Гумилева', 'Казахстан'),
+  ('Бакинский государственный университет', 'Азербайджан'),
+  ('Кыргызский национальный университет им. Ж. Баласагына', 'Кыргызстан'),
+  ('Туркменский государственный университет им. Махтумкули', 'Туркменистан'),
+  ('Анкарский университет', 'Турция'),
+  ('Стамбульский университет', 'Турция'),
+  ('Национальный университет Узбекистана', 'Узбекистан')
+ON CONFLICT (lower(name), lower(country)) DO NOTHING;
+
+-- Открытая форма мнений (ссылка в футере) — без привязки к email/регистрации,
+-- поэтому отдельная таблица, а не колонки в waitlist_signups: сюда не нужна дедупликация
+-- и эти мнения намеренно не считаются в аудитории вуза.
+CREATE TABLE IF NOT EXISTS guest_opinions (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  category TEXT NOT NULL CHECK (
+    category IN ('opinion', 'idea', 'proposal', 'viewpoint', 'missing', 'other')
+  ),
+  text TEXT NOT NULL,
+  created_at TIMESTAMPTZ NOT NULL DEFAULT now()
+);

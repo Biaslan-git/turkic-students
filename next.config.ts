@@ -22,7 +22,7 @@ const nextConfig: NextConfig = {
       },
       {
         protocol: "https",
-        hostname: "static.tildacdn.com",
+        hostname: "static.yk-news.kz",
       },
     ],
     // Unsplash URLs already request the right size/quality via query params

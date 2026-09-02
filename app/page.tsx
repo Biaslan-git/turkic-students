@@ -6,9 +6,11 @@ import { CycleSection } from "@/components/sections/cycle-section";
 import { AudienceSection } from "@/components/sections/audience-section";
 import { PrinciplesSection } from "@/components/sections/principles-section";
 import { ObjectionsSection } from "@/components/sections/objections-section";
+import { FestivalSection } from "@/components/festival/festival-section";
 import { WaitlistSection } from "@/components/sections/waitlist-section";
 import { Footer } from "@/components/sections/footer";
 import { getSiteContent } from "@/lib/content/site-content";
+import { listActiveUniversities } from "@/lib/universities";
 
 // Текст секций хранится в БД и редактируется из /admin/content — DATABASE_URL недоступна
 // на этапе сборки Docker-образа (см. Dockerfile), поэтому страница не может быть
@@ -16,7 +18,7 @@ import { getSiteContent } from "@/lib/content/site-content";
 export const dynamic = "force-dynamic";
 
 export default async function Home() {
-  const c = await getSiteContent();
+  const [c, universities] = await Promise.all([getSiteContent(), listActiveUniversities()]);
 
   return (
     <div className="flex flex-1 flex-col">
@@ -105,7 +107,14 @@ export default async function Home() {
             { question: c.objections_item_4_question, answer: c.objections_item_4_answer },
           ]}
         />
-        <WaitlistSection title={c.waitlist_title} text={c.waitlist_text} />
+        <FestivalSection
+          badge={c.tvoi_golos_badge}
+          title={c.tvoi_golos_title}
+          subtitle={c.tvoi_golos_subtitle}
+          text={c.tvoi_golos_text}
+          alumniNote={c.tvoi_golos_alumni_note}
+        />
+        <WaitlistSection title={c.waitlist_title} text={c.waitlist_text} universities={universities} />
       </main>
       <Footer ctaLabel={c.cta_label} text={c.footer_text} />
     </div>

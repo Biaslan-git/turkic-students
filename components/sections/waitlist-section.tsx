@@ -1,8 +1,17 @@
 import { WaitlistForm } from "@/components/waitlist-form";
 import { RouteLinesBackdrop } from "@/components/route-lines";
 import { RocketIcon } from "@/components/mood-icons/rocket-icon";
+import type { University } from "@/lib/universities";
 
-export function WaitlistSection({ title, text }: { title: string; text: string }) {
+export function WaitlistSection({
+  title,
+  text,
+  universities,
+}: {
+  title: string;
+  text: string;
+  universities: University[];
+}) {
   return (
     <section id="waitlist" className="relative scroll-mt-20 overflow-hidden bg-tint-coral">
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 opacity-[0.15]">
@@ -21,7 +30,7 @@ export function WaitlistSection({ title, text }: { title: string; text: string }
             aria-hidden="true"
             className="absolute -right-6 -top-6 hidden h-24 w-24 rotate-6 rounded-3xl bg-accent-warm/25 sm:block"
           />
-          <WaitlistForm />
+          <WaitlistForm universities={universities} />
         </div>
       </div>
     </section>
