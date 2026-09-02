@@ -7,11 +7,10 @@ type CycleSectionProps = {
   badge: string;
   title: string;
   text: string;
-  note: string;
   steps: CycleStep[];
 };
 
-export function CycleSection({ badge, title, text, note, steps }: CycleSectionProps) {
+export function CycleSection({ badge, title, text, steps }: CycleSectionProps) {
   return (
     <section className="relative overflow-hidden bg-tint-teal">
       <FireIcon className="pointer-events-none absolute -right-12 -bottom-16 h-56 w-56 select-none text-accent/[0.08] sm:h-72 sm:w-72" />
@@ -70,10 +69,6 @@ export function CycleSection({ badge, title, text, note, steps }: CycleSectionPr
             </li>
           ))}
         </ol>
-
-        <p className="w-fit rounded-full border border-dashed border-accent-warm/50 bg-background px-5 py-2.5 text-sm text-muted">
-          {note}
-        </p>
       </div>
     </section>
   );

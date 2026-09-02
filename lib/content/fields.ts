@@ -59,7 +59,6 @@ export const CONTENT_FIELDS: ContentField[] = [
   { key: "cycle_step_5_text", section: "Круглый год", label: "Шаг 5: описание", multiline: true },
   { key: "cycle_step_6_title", section: "Круглый год", label: "Шаг 6: название" },
   { key: "cycle_step_6_text", section: "Круглый год", label: "Шаг 6: описание", multiline: true },
-  { key: "cycle_note", section: "Круглый год", label: "Заключительная фраза" },
 
   { key: "audience_badge", section: "Для кого", label: "Бейдж над заголовком" },
   { key: "audience_title", section: "Для кого", label: "Заголовок" },

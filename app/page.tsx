@@ -60,7 +60,6 @@ export default async function Home() {
           badge={c.cycle_badge}
           title={c.cycle_title}
           text={c.cycle_text}
-          note={c.cycle_note}
           steps={[
             { title: c.cycle_step_1_title, text: c.cycle_step_1_text },
             { title: c.cycle_step_2_title, text: c.cycle_step_2_text },
