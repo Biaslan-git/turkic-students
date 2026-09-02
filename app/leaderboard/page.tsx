@@ -172,7 +172,7 @@ function EmptyState() {
       </span>
       <p className="font-display text-xl font-bold">Пока никто не присоединился</p>
       <p className="max-w-sm text-sm text-muted">
-        Стань первым — и твой университет возглавит рейтинг.
+        Присоединяйся — и добавь свой университет в рейтинг.
       </p>
       <Link
         href="/#waitlist"

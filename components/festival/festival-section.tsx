@@ -91,10 +91,13 @@ function FestivalStatsCard({
             </a>
           </>
         ) : (
-          <div>
-            <p className="font-display text-2xl font-bold">Стань первым в списке</p>
-            <p className="mt-1 text-sm text-muted">
-              Присоединяйся — и твой университет возглавит рейтинг.
+          <div className="flex flex-col items-start gap-2">
+            <span className="text-4xl" aria-hidden="true">
+              🎓
+            </span>
+            <p className="font-display text-2xl font-bold">Список формируется</p>
+            <p className="text-sm text-muted">
+              Зарегистрируйся — и твой университет появится в рейтинге.
             </p>
           </div>
         )}
