@@ -83,15 +83,13 @@ export function ContentForm({ groups, values }: { groups: Group[]; values: SiteC
         {groups.map((group) => {
           const slug = sectionSlug(group.section);
           const hasMatch = !isSearching || group.fields.some((field) => matchesQuery(field, query));
-          if (!hasMatch) return null;
-
           const isOpen = isSearching || openSlugs.has(slug);
 
           return (
             <fieldset
               key={group.section}
               id={`section-${slug}`}
-              className="scroll-mt-24 rounded-2xl border border-border p-5"
+              className={`scroll-mt-24 rounded-2xl border border-border p-5 ${hasMatch ? "" : "hidden"}`}
             >
               <legend className="w-full px-1">
                 <button
@@ -110,42 +108,40 @@ export function ContentForm({ groups, values }: { groups: Group[]; values: SiteC
                 </button>
               </legend>
 
-              {isOpen && (
-                <div className="mt-3 flex flex-col gap-4">
-                  {group.fields.map((field) => {
-                    const highlighted = isSearching && matchesQuery(field, query);
-                    return (
-                      <div
-                        key={field.key}
-                        className={`flex flex-col gap-1.5 rounded-lg ${
-                          highlighted ? "-m-2 bg-accent/10 p-2" : ""
-                        }`}
-                      >
-                        <label htmlFor={field.key} className="text-sm font-medium">
-                          {field.label}
-                        </label>
-                        {field.multiline ? (
-                          <textarea
-                            id={field.key}
-                            name={field.key}
-                            rows={3}
-                            defaultValue={values[field.key] ?? ""}
-                            className={fieldClass}
-                          />
-                        ) : (
-                          <input
-                            id={field.key}
-                            name={field.key}
-                            type="text"
-                            defaultValue={values[field.key] ?? ""}
-                            className={fieldClass}
-                          />
-                        )}
-                      </div>
-                    );
-                  })}
-                </div>
-              )}
+              <div className={isOpen ? "mt-3 flex flex-col gap-4" : "hidden"}>
+                {group.fields.map((field) => {
+                  const highlighted = isSearching && matchesQuery(field, query);
+                  return (
+                    <div
+                      key={field.key}
+                      className={`flex flex-col gap-1.5 rounded-lg ${
+                        highlighted ? "-m-2 bg-accent/10 p-2" : ""
+                      }`}
+                    >
+                      <label htmlFor={field.key} className="text-sm font-medium">
+                        {field.label}
+                      </label>
+                      {field.multiline ? (
+                        <textarea
+                          id={field.key}
+                          name={field.key}
+                          rows={3}
+                          defaultValue={values[field.key] ?? ""}
+                          className={fieldClass}
+                        />
+                      ) : (
+                        <input
+                          id={field.key}
+                          name={field.key}
+                          type="text"
+                          defaultValue={values[field.key] ?? ""}
+                          className={fieldClass}
+                        />
+                      )}
+                    </div>
+                  );
+                })}
+              </div>
             </fieldset>
           );
         })}
