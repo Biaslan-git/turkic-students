@@ -1,4 +1,5 @@
 import { getFestivalLeaderboard, type UniversityLeaderboardEntry } from "@/lib/festival-stats";
+import { listActiveUniversities } from "@/lib/universities";
 
 type FestivalSectionProps = {
   badge: string;
@@ -11,10 +12,11 @@ type FestivalSectionProps = {
 export async function FestivalSection({ badge, title, subtitle, text, alumniNote }: FestivalSectionProps) {
   const leaderboard = await getFestivalLeaderboard();
   const topUniversities = leaderboard.universities.slice(0, 3);
+  const universities = await listActiveUniversities();
 
   return (
     <section id="tvoi-golos" className="relative scroll-mt-20 overflow-hidden bg-tint-teal">
-      <div className="reveal-on-scroll relative mx-auto flex max-w-4xl flex-col items-center gap-10 px-5 py-16 sm:px-8 sm:py-24 md:flex-row md:gap-12 md:px-12">
+      <div className="reveal-on-scroll relative mx-auto flex max-w-4xl flex-col items-center gap-10 px-5 pt-16 sm:px-8 sm:pt-24 md:flex-row md:gap-12 md:px-12">
         <FestivalStatsCard total={leaderboard.totalParticipants} universities={topUniversities} />
         <div className="flex flex-col gap-5 md:w-3/5">
           <span className="w-fit rounded-full border border-border bg-background px-3 py-1 text-xs font-semibold uppercase tracking-[0.14em] text-muted">
@@ -32,6 +34,21 @@ export async function FestivalSection({ badge, title, subtitle, text, alumniNote
           >
             Присоединиться <span aria-hidden="true">↓</span>
           </a>
+        </div>
+      </div>
+      <div className="relative mx-auto max-w-4xl px-5 pt-10 pb-16 sm:px-8 sm:pt-12 sm:pb-24 md:px-12">
+        <p className="mb-2 text-xs font-semibold uppercase tracking-[0.14em] text-muted">
+          Вузы-участники
+        </p>
+        <div className="flex flex-wrap gap-1.5">
+          {universities.map((university) => (
+            <span
+              key={university.id}
+              className="rounded-full border border-border bg-background px-2.5 py-1 text-[11px] font-medium text-muted"
+            >
+              {university.name}
+            </span>
+          ))}
         </div>
       </div>
     </section>
