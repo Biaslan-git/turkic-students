@@ -43,22 +43,6 @@
   }
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    /* Deep indigo night — accents stay vivid, never flat black */
-    --background: #171426;
-    --foreground: #f7f1e6;
-    --border: #332d4a;
-    --muted: #a9a3bf;
-    --accent: #ff7a5c;
-    --accent-warm: #2fd6c6;
-    --accent-ink: #1a1626;
-    --surface: #1e1a33;
-    --tint-coral: color-mix(in oklab, var(--accent) 10%, var(--background));
-    --tint-teal: color-mix(in oklab, var(--accent-warm) 10%, var(--background));
-  }
-}
-
 html {
   scroll-behavior: smooth;
 }

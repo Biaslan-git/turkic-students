@@ -9,7 +9,7 @@ export function RouteLinesBackdrop() {
       aria-hidden="true"
       viewBox="0 0 800 500"
       preserveAspectRatio="xMidYMid slice"
-      className="pointer-events-none absolute inset-0 h-full w-full opacity-[0.35] dark:opacity-[0.45]"
+      className="pointer-events-none absolute inset-0 h-full w-full opacity-[0.35]"
     >
       <g fill="none" strokeWidth="1.25" strokeLinecap="round">
         <path
