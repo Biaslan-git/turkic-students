@@ -45,9 +45,9 @@ export function ProblemSection({
           ))}
         </ul>
         <p className="text-sm text-muted">
-          {closingBefore}
-          <strong className="font-bold text-accent">{closingEmphasis}</strong>
-          {closingAfter}
+          {closingBefore.trim()}{" "}
+          <strong className="font-bold text-accent">{closingEmphasis.trim()}</strong>{" "}
+          {closingAfter.trim()}
         </p>
       </div>
     </section>

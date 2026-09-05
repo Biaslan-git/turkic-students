@@ -25,8 +25,8 @@ export function HeroSection({ ctaLabel, badge, titleMain, titleAccent, subtitle 
           {badge}
         </p>
         <h1 className="max-w-3xl text-balance font-display text-[2.5rem] font-bold leading-[1.08] tracking-tight sm:text-5xl md:text-6xl">
-          {titleMain}
-          <span className="text-accent">{titleAccent}</span>
+          {titleMain.trim()}{" "}
+          <span className="text-accent">{titleAccent.trim()}</span>
         </h1>
         <p className="max-w-xl text-pretty text-lg text-muted">{subtitle}</p>
         <a
