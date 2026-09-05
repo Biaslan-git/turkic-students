@@ -7,9 +7,9 @@ import {
   type WaitlistBasicState,
   type WaitlistDetailsState,
 } from "@/app/actions";
-import { FESTIVAL_ROLES, OPINION_CATEGORIES, TELEGRAM_CHANNEL_URL } from "@/lib/constants";
+import { FESTIVAL_ROLES, TELEGRAM_CHANNEL_URL } from "@/lib/constants";
 import { trackEvent } from "@/lib/analytics";
-import { Select } from "@/components/ui/select";
+import { CUSTOM_VALUE_PREFIX, Select } from "@/components/ui/select";
 import type { University } from "@/lib/universities";
 
 const JOINED_STORAGE_KEY = "tvoi-golos-joined";
@@ -187,7 +187,6 @@ function StepTwoForm({
 }) {
   const [role, setRole] = useState<string>(FESTIVAL_ROLES[0].value);
   const [universityId, setUniversityId] = useState("");
-  const [opinionCategory, setOpinionCategory] = useState("");
 
   return (
     <form action={action} className="flex flex-col gap-4">
@@ -229,8 +228,17 @@ function StepTwoForm({
           onChange={setUniversityId}
           options={universities.map((u) => ({ value: u.id, label: `${u.name} (${u.country})` }))}
           placeholder="Выберите университет"
+          allowCustom
         />
-        <input type="hidden" name="universityId" value={universityId} required />
+        {universityId.startsWith(CUSTOM_VALUE_PREFIX) ? (
+          <input
+            type="hidden"
+            name="universityOtherName"
+            value={universityId.slice(CUSTOM_VALUE_PREFIX.length)}
+          />
+        ) : (
+          <input type="hidden" name="universityId" value={universityId} />
+        )}
       </div>
 
       {role === "alumnus" && (
@@ -248,46 +256,6 @@ function StepTwoForm({
           />
         </div>
       )}
-
-      <div className="flex flex-col gap-2 border-t border-border pt-4">
-        <p className="text-sm font-medium">
-          Хочешь поделиться мнением о фестивале? <span className="font-normal text-muted">(необязательно)</span>
-        </p>
-        <div className="grid grid-cols-2 gap-2">
-          {OPINION_CATEGORIES.map((c) => (
-            <label
-              key={c.value}
-              className={`cursor-pointer rounded-xl border px-3 py-2.5 text-center text-xs font-semibold uppercase tracking-wide transition-colors ${
-                opinionCategory === c.value
-                  ? "border-accent-warm bg-accent-warm/10"
-                  : "border-border bg-background"
-              }`}
-            >
-              <input
-                type="radio"
-                name="opinionCategory"
-                value={c.value}
-                checked={opinionCategory === c.value}
-                onChange={() => setOpinionCategory(c.value)}
-                className="sr-only"
-              />
-              {c.label}
-            </label>
-          ))}
-        </div>
-        {opinionCategory && (
-          <p className="text-xs text-muted">
-            {OPINION_CATEGORIES.find((c) => c.value === opinionCategory)?.question}
-          </p>
-        )}
-        <textarea
-          name="opinionText"
-          rows={3}
-          maxLength={2000}
-          placeholder="Коротко напиши свою мысль…"
-          className={`${inputClass} resize-none`}
-        />
-      </div>
 
       {error && (
         <p role="alert" className="text-sm text-red-600">

@@ -21,7 +21,7 @@ export type FestivalLeaderboard = {
 async function loadFestivalLeaderboard(): Promise<FestivalLeaderboard> {
   const [totalResult, byUniversity] = await Promise.all([
     pool.query<{ count: string }>(
-      `SELECT count(*) AS count FROM waitlist_signups WHERE university_id IS NOT NULL`,
+      `SELECT count(*) AS count FROM waitlist_signups WHERE role IS NOT NULL`,
     ),
     pool.query<{
       university_id: string;

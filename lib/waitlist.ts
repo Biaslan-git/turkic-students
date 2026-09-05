@@ -36,29 +36,26 @@ export async function updateWaitlistDetails(
   id: string,
   data: {
     role: string;
-    universityId: string;
+    universityId?: string;
+    universityOtherName?: string;
     graduationYear?: number;
-    opinionCategory?: string;
-    opinionText?: string;
   },
 ): Promise<{ email: string; name: string; alreadyRegistered: boolean } | null> {
   const updated = await pool.query<{ email: string; name: string }>(
     `UPDATE waitlist_signups
      SET role = $2,
-         university_id = $3,
-         graduation_year = $4,
-         opinion_category = NULLIF($5, ''),
-         opinion_text = NULLIF($6, ''),
+         university_id = NULLIF($3, '')::uuid,
+         university_other_name = NULLIF($4, ''),
+         graduation_year = $5,
          registered_at = now()
      WHERE id = $1 AND registered_at IS NULL
      RETURNING email, name`,
     [
       id,
       data.role,
-      data.universityId,
+      data.universityId ?? "",
+      data.universityOtherName ?? "",
       data.graduationYear ?? null,
-      data.opinionCategory ?? "",
-      data.opinionText ?? "",
     ],
   );
 

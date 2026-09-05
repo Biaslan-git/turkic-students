@@ -13,11 +13,13 @@ export function WaitlistSection({
   universities: University[];
 }) {
   return (
-    <section id="waitlist" className="relative scroll-mt-20 overflow-hidden bg-tint-coral">
-      <div aria-hidden="true" className="pointer-events-none absolute inset-0 opacity-[0.15]">
-        <RouteLinesBackdrop />
+    <section id="waitlist" className="relative z-10 scroll-mt-20 bg-tint-coral">
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
+        <div className="absolute inset-0 opacity-[0.15]">
+          <RouteLinesBackdrop />
+        </div>
+        <RocketIcon className="absolute -left-12 -top-16 h-56 w-56 select-none text-accent/[0.1] sm:h-72 sm:w-72" />
       </div>
-      <RocketIcon className="pointer-events-none absolute -left-12 -top-16 h-56 w-56 select-none text-accent/[0.1] sm:h-72 sm:w-72" />
       <div className="reveal-on-scroll relative mx-auto flex max-w-4xl flex-col items-center gap-8 px-5 py-16 text-center sm:px-8 sm:py-24 md:px-12">
         <div className="flex flex-col gap-4">
           <h2 className="text-balance font-display text-3xl font-bold tracking-tight sm:text-4xl">

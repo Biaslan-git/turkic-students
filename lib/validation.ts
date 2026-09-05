@@ -12,17 +12,21 @@ export const waitlistBasicSchema = z.object({
 
 const currentYear = new Date().getFullYear();
 
-export const waitlistDetailsSchema = z.object({
-  id: z.string().uuid(),
-  role: z.enum(festivalRoleValues),
-  universityId: z.string().uuid("Выберите университет"),
-  graduationYear: z.preprocess(
-    (value) => (value === "" || value == null ? undefined : value),
-    z.coerce.number().int().min(1950).max(currentYear).optional(),
-  ),
-  opinionCategory: z.enum(opinionCategoryValues).optional().or(z.literal("")),
-  opinionText: z.string().trim().max(2000).optional().or(z.literal("")),
-});
+export const waitlistDetailsSchema = z
+  .object({
+    id: z.string().uuid(),
+    role: z.enum(festivalRoleValues),
+    universityId: z.string().uuid().optional().or(z.literal("")),
+    universityOtherName: z.string().trim().min(2, "Введите название вуза").max(200).optional().or(z.literal("")),
+    graduationYear: z.preprocess(
+      (value) => (value === "" || value == null ? undefined : value),
+      z.coerce.number().int().min(1950).max(currentYear).optional(),
+    ),
+  })
+  .refine((data) => Boolean(data.universityId) || Boolean(data.universityOtherName), {
+    message: "Выберите университет",
+    path: ["universityId"],
+  });
 
 export const festivalUniversitySchema = z.object({
   name: z.string().trim().min(2, "Введите название").max(200),

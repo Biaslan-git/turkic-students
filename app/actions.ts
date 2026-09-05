@@ -59,10 +59,9 @@ export async function submitWaitlistDetails(
   const parsed = waitlistDetailsSchema.safeParse({
     id: formData.get("id"),
     role: formData.get("role"),
-    universityId: formData.get("universityId"),
+    universityId: formData.get("universityId") ?? "",
+    universityOtherName: formData.get("universityOtherName") ?? "",
     graduationYear: formData.get("graduationYear"),
-    opinionCategory: formData.get("opinionCategory"),
-    opinionText: formData.get("opinionText"),
   });
 
   if (!parsed.success) {
@@ -72,9 +71,8 @@ export async function submitWaitlistDetails(
   const updated = await updateWaitlistDetails(parsed.data.id, {
     role: parsed.data.role,
     universityId: parsed.data.universityId,
+    universityOtherName: parsed.data.universityOtherName,
     graduationYear: parsed.data.graduationYear,
-    opinionCategory: parsed.data.opinionCategory,
-    opinionText: parsed.data.opinionText,
   });
 
   if (!updated) {

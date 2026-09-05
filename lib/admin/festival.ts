@@ -6,7 +6,7 @@ export type FestivalOpinionRecord = {
   name: string;
   email: string;
   universityName: string;
-  country: string;
+  country: string | null;
   opinionCategory: string;
   opinionText: string | null;
   createdAt: string;
@@ -19,15 +19,16 @@ export async function listFestivalOpinions(): Promise<FestivalOpinionRecord[]> {
     name: string;
     email: string;
     university_name: string;
-    country: string;
+    country: string | null;
     opinion_category: string;
     opinion_text: string | null;
     created_at: Date;
   }>(
-    `SELECT w.id, w.role, w.name, w.email, u.name AS university_name, u.country,
+    `SELECT w.id, w.role, w.name, w.email,
+            COALESCE(u.name, w.university_other_name) AS university_name, u.country,
             w.opinion_category, w.opinion_text, w.created_at
      FROM waitlist_signups w
-     JOIN festival_universities u ON u.id = w.university_id
+     LEFT JOIN festival_universities u ON u.id = w.university_id
      WHERE w.opinion_category IS NOT NULL
      ORDER BY w.created_at DESC`,
   );
@@ -96,6 +97,34 @@ export async function createFestivalUniversity(
   }
 
   return { status: "duplicate" };
+}
+
+export type OtherUniversitySubmission = {
+  name: string;
+  email: string;
+  universityOtherName: string;
+  createdAt: string;
+};
+
+export async function listOtherUniversitySubmissions(): Promise<OtherUniversitySubmission[]> {
+  const result = await pool.query<{
+    name: string;
+    email: string;
+    university_other_name: string;
+    created_at: Date;
+  }>(
+    `SELECT name, email, university_other_name, created_at
+     FROM waitlist_signups
+     WHERE university_other_name IS NOT NULL
+     ORDER BY created_at DESC`,
+  );
+
+  return result.rows.map((r) => ({
+    name: r.name,
+    email: r.email,
+    universityOtherName: r.university_other_name,
+    createdAt: r.created_at.toISOString(),
+  }));
 }
 
 export async function setFestivalUniversityActive(id: string, isActive: boolean): Promise<boolean> {

@@ -87,7 +87,7 @@ export function OpinionsTable({ records }: { records: FestivalOpinionRecord[] })
                 <td className="px-4 py-3">{r.role === "student" ? "Студент" : "Выпускник"}</td>
                 <td className="px-4 py-3">
                   {r.universityName}
-                  <div className="text-xs text-muted">{r.country}</div>
+                  <div className="text-xs text-muted">{r.country ?? "—"}</div>
                 </td>
                 <td className="px-4 py-3">
                   {categoryLabels.get(r.opinionCategory) ?? r.opinionCategory}
