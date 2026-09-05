@@ -4,13 +4,21 @@ export type ContentField = {
   section: string;
   label: string;
   multiline?: boolean;
+  /** Leading/trailing spaces are meaningful — this field is concatenated with a sibling field or an accent span. */
+  preserveWhitespace?: boolean;
 };
 
 export const CONTENT_FIELDS: ContentField[] = [
   { key: "cta_label", section: "Общее", label: "Текст кнопки регистрации (шапка, главный экран, футер)" },
 
   { key: "hero_badge", section: "Главный экран", label: "Бейдж над заголовком" },
-  { key: "hero_title_main", section: "Главный экран", label: "Заголовок, обычная часть", multiline: true },
+  {
+    key: "hero_title_main",
+    section: "Главный экран",
+    label: "Заголовок, обычная часть",
+    multiline: true,
+    preserveWhitespace: true,
+  },
   {
     key: "hero_title_accent",
     section: "Главный экран",
@@ -26,13 +34,24 @@ export const CONTENT_FIELDS: ContentField[] = [
   { key: "problem_source_3", section: "Трудность", label: "Пример источника 3" },
   { key: "problem_source_4", section: "Трудность", label: "Пример источника 4" },
   { key: "problem_source_5", section: "Трудность", label: "Пример источника 5" },
-  { key: "problem_closing_before", section: "Трудность", label: "Заключительная фраза: начало" },
+  {
+    key: "problem_closing_before",
+    section: "Трудность",
+    label: "Заключительная фраза: начало",
+    preserveWhitespace: true,
+  },
   {
     key: "problem_closing_emphasis",
     section: "Трудность",
     label: "Заключительная фраза: выделенное слово",
   },
-  { key: "problem_closing_after", section: "Трудность", label: "Заключительная фраза: конец", multiline: true },
+  {
+    key: "problem_closing_after",
+    section: "Трудность",
+    label: "Заключительная фраза: конец",
+    multiline: true,
+    preserveWhitespace: true,
+  },
 
   { key: "solution_badge", section: "Решение", label: "Бейдж над заголовком" },
   { key: "solution_title", section: "Решение", label: "Заголовок" },

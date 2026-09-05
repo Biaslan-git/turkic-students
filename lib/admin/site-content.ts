@@ -3,10 +3,12 @@ import { CONTENT_FIELDS } from "@/lib/content/fields";
 import { snapshotCurrentContent } from "@/lib/admin/site-content-history";
 
 export async function updateSiteContent(values: Record<string, string>): Promise<void> {
-  const known = new Set(CONTENT_FIELDS.map((f) => f.key));
-  const entries = Object.entries(values).filter(([key]) => known.has(key));
+  const fieldsByKey = new Map(CONTENT_FIELDS.map((f) => [f.key, f]));
+  const entries = Object.entries(values).filter(([key]) => fieldsByKey.has(key));
   const keys = entries.map(([key]) => key);
-  const trimmedValues = entries.map(([, value]) => value.trim());
+  const trimmedValues = entries.map(([key, value]) =>
+    fieldsByKey.get(key)!.preserveWhitespace ? value : value.trim(),
+  );
 
   const client = await pool.connect();
   try {
