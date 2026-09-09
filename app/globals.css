@@ -63,6 +63,9 @@ h1,
 h2,
 h3 {
   font-family: var(--font-display), var(--font-sans), sans-serif;
+  /* Агглютинативные языки (казахский, узбекский и т.д.) дают очень длинные
+     составные слова без пробелов — без переноса они вылезают за экран на мобильных. */
+  overflow-wrap: break-word;
 }
 
 /* Progressive-enhancement scroll reveal — pure CSS, degrades to static content */

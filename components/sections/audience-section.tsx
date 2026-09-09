@@ -36,7 +36,7 @@ export function AudienceSection({ badge, title, intro, segments, outro }: Audien
             <span className="h-5 w-5 rounded-full border-2 border-surface bg-accent-ink" />
           </span>
         </div>
-        <div className="flex flex-col gap-6 md:w-3/5">
+        <div className="flex w-full flex-col gap-6 md:w-3/5">
           <span className="w-fit rounded-full border border-border bg-background px-3 py-1 text-xs font-semibold uppercase tracking-[0.14em] text-muted">
             {badge}
           </span>

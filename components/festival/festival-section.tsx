@@ -30,7 +30,7 @@ export async function FestivalSection({ badge, title, subtitle, text, alumniNote
           t={t}
           locale={locale}
         />
-        <div className="flex flex-col gap-5 md:w-3/5">
+        <div className="flex w-full flex-col gap-5 md:w-3/5">
           <span className="w-fit rounded-full border border-border bg-background px-3 py-1 text-xs font-semibold uppercase tracking-[0.14em] text-muted">
             {badge}
           </span>
