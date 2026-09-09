@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
-import { routing, LOCALE_NAMES } from "@/i18n/routing";
+import { routing, LOCALE_NAMES, LOCALE_FLAGS } from "@/i18n/routing";
 import { usePathname, useRouter } from "@/i18n/navigation";
 
 export function LanguageSwitcher() {
@@ -47,10 +47,9 @@ export function LanguageSwitcher() {
         aria-expanded={open}
         aria-haspopup="listbox"
         onClick={() => setOpen((v) => !v)}
-        className="flex items-center gap-1 rounded-full border border-border bg-background px-2.5 py-1.5 text-xs font-semibold uppercase tracking-wide transition-colors hover:border-accent"
+        className="flex items-center rounded-full border border-border bg-background px-2 py-1.5 text-base leading-none transition-colors hover:border-accent"
       >
-        <span aria-hidden="true">🌐</span>
-        {locale}
+        <span aria-hidden="true">{LOCALE_FLAGS[locale]}</span>
       </button>
 
       {open && (
@@ -66,10 +65,11 @@ export function LanguageSwitcher() {
                 role="option"
                 aria-selected={l === locale}
                 onClick={() => handleSelect(l)}
-                className={`w-full rounded-lg px-3 py-2 text-left transition-colors hover:bg-accent/10 ${
+                className={`flex w-full items-center gap-2 rounded-lg px-3 py-2 text-left transition-colors hover:bg-accent/10 ${
                   l === locale ? "font-semibold text-accent" : ""
                 }`}
               >
+                <span aria-hidden="true">{LOCALE_FLAGS[l]}</span>
                 {LOCALE_NAMES[l]}
               </button>
             </li>

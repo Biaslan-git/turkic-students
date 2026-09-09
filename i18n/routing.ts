@@ -10,6 +10,18 @@ export const LOCALE_NAMES: Record<string, string> = {
   uz: "Oʻzbekcha",
 };
 
+// Флаги вместо двухбуквенных кодов в переключателе языка — "KK" (казахский) и "KY"
+// (киргизский) визуально почти неразличимы и ничего не говорят без объяснения.
+export const LOCALE_FLAGS: Record<string, string> = {
+  ru: "🇷🇺",
+  az: "🇦🇿",
+  kk: "🇰🇿",
+  ky: "🇰🇬",
+  tk: "🇹🇲",
+  tr: "🇹🇷",
+  uz: "🇺🇿",
+};
+
 export const NUMBER_LOCALE_TAGS: Record<string, string> = {
   ru: "ru-RU",
   az: "az-AZ",
