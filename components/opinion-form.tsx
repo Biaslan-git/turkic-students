@@ -1,6 +1,7 @@
 "use client";
 
 import { useActionState, useState } from "react";
+import { useTranslations } from "next-intl";
 import { submitGuestOpinion, type GuestOpinionState } from "@/app/opinion-actions";
 import { OPINION_CATEGORIES } from "@/lib/constants";
 
@@ -10,6 +11,8 @@ const inputClass =
   "w-full rounded-xl border border-border bg-background px-4 py-3.5 text-base outline-none transition-colors focus:border-accent-warm focus:ring-2 focus:ring-accent-warm/25";
 
 export function OpinionForm() {
+  const t = useTranslations("OpinionForm");
+  const tCategories = useTranslations("Constants.opinionCategories");
   const [state, action, pending] = useActionState(submitGuestOpinion, initialState);
   const [category, setCategory] = useState("");
 
@@ -19,8 +22,8 @@ export function OpinionForm() {
         <span className="text-4xl" aria-hidden="true">
           💬
         </span>
-        <h2 className="font-display text-xl font-bold">Спасибо! Мнение получено</h2>
-        <p className="text-sm text-muted">Мы обязательно его учтём.</p>
+        <h2 className="font-display text-xl font-bold">{t("successTitle")}</h2>
+        <p className="text-sm text-muted">{t("successText")}</p>
       </div>
     );
   }
@@ -31,7 +34,7 @@ export function OpinionForm() {
       className="flex flex-col gap-4 rounded-2xl border border-border bg-surface p-6 sm:p-8"
     >
       <div className="flex flex-col gap-2">
-        <span className="text-sm font-medium">Направление</span>
+        <span className="text-sm font-medium">{t("direction")}</span>
         <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">
           {OPINION_CATEGORIES.map((c) => (
             <label
@@ -51,20 +54,16 @@ export function OpinionForm() {
                 onChange={() => setCategory(c.value)}
                 className="sr-only"
               />
-              {c.label}
+              {tCategories(`${c.value}.label`)}
             </label>
           ))}
         </div>
-        {category && (
-          <p className="text-xs text-muted">
-            {OPINION_CATEGORIES.find((c) => c.value === category)?.question}
-          </p>
-        )}
+        {category && <p className="text-xs text-muted">{tCategories(`${category}.question`)}</p>}
       </div>
 
       <div className="flex flex-col gap-1.5">
         <label htmlFor="opinion-text" className="text-sm font-medium">
-          Мнение
+          {t("opinionLabel")}
         </label>
         <textarea
           id="opinion-text"
@@ -73,7 +72,7 @@ export function OpinionForm() {
           required
           minLength={2}
           maxLength={2000}
-          placeholder="Коротко напиши свою мысль…"
+          placeholder={t("placeholder")}
           className={`${inputClass} resize-none`}
         />
       </div>
@@ -95,7 +94,7 @@ export function OpinionForm() {
         disabled={pending || !category}
         className="w-full rounded-xl bg-gradient-to-r from-accent-warm to-[#00d6c8] px-6 py-3.5 text-base font-semibold text-accent-ink shadow-[0_10px_28px_-10px_var(--accent-warm)] transition-opacity disabled:opacity-60"
       >
-        {pending ? "Отправляем…" : "Отправить"}
+        {pending ? t("sending") : t("submit")}
       </button>
     </form>
   );

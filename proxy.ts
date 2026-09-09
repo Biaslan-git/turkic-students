@@ -1,5 +1,7 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
+import createIntlMiddleware from "next-intl/middleware";
+import { routing } from "@/i18n/routing";
 import {
   SESSION_COOKIE_NAME,
   SESSION_COOKIE_OPTIONS,
@@ -7,13 +9,23 @@ import {
   verifySessionCookieValue,
 } from "@/lib/admin/session";
 
+const intlProxy = createIntlMiddleware(routing);
+
 export const config = {
-  matcher: ["/admin/:path*"],
+  matcher: ["/((?!api|_next|_vercel|.*\\..*).*)"],
 };
 
 export function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
+  if (pathname.startsWith("/admin")) {
+    return adminProxy(request, pathname);
+  }
+
+  return intlProxy(request);
+}
+
+function adminProxy(request: NextRequest, pathname: string) {
   if (pathname === "/admin/login") {
     return NextResponse.next();
   }

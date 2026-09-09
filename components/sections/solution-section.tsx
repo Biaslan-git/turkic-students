@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 import { RelievedFaceIcon } from "@/components/mood-icons/relieved-face";
 
 type Benefit = { title: string; text: string };
@@ -11,6 +12,7 @@ type SolutionSectionProps = {
 };
 
 export function SolutionSection({ badge, title, text, benefits }: SolutionSectionProps) {
+  const t = useTranslations("Alt");
   return (
     <section className="relative overflow-hidden bg-background">
       <RelievedFaceIcon className="pointer-events-none absolute -left-12 -bottom-16 h-56 w-56 select-none text-accent-warm/[0.08] sm:h-72 sm:w-72" />
@@ -33,7 +35,7 @@ export function SolutionSection({ badge, title, text, benefits }: SolutionSectio
             <div className="relative aspect-[4/5] overflow-hidden rounded-3xl [clip-path:polygon(8%_0,100%_0,100%_100%,0_100%,0_18%)]">
               <Image
                 src="https://im2.kommersant.ru/Issues.photo/REGIONS/KAZAN_Online/2025/03/24/KKZ_004142_00046_1_t218_144341.jpg"
-                alt="Двое участников фестиваля в национальных костюмах тюркских народов"
+                alt={t("solutionPhoto")}
                 fill
                 className="object-cover"
                 sizes="(min-width: 768px) 360px, 100vw"

@@ -8,7 +8,7 @@ const MAX_HISTORY_ENTRIES = 20;
 export async function snapshotCurrentContent(client: PoolClient): Promise<void> {
   await client.query(
     `INSERT INTO site_content_history (content)
-     SELECT coalesce(jsonb_object_agg(key, value), '{}'::jsonb) FROM site_content`,
+     SELECT coalesce(jsonb_object_agg(key, value), '{}'::jsonb) FROM site_content WHERE locale = 'ru'`,
   );
   await client.query(
     `DELETE FROM site_content_history
@@ -49,9 +49,9 @@ export async function restoreContentSnapshot(id: string): Promise<boolean> {
 
     if (entries.length > 0) {
       await client.query(
-        `INSERT INTO site_content (key, value)
-         SELECT * FROM UNNEST($1::text[], $2::text[])
-         ON CONFLICT (key) DO UPDATE SET value = EXCLUDED.value, updated_at = now()`,
+        `INSERT INTO site_content (key, locale, value)
+         SELECT key, 'ru', value FROM UNNEST($1::text[], $2::text[]) AS t(key, value)
+         ON CONFLICT (key, locale) DO UPDATE SET value = EXCLUDED.value, updated_at = now()`,
         [entries.map(([k]) => k), entries.map(([, v]) => v)],
       );
     }

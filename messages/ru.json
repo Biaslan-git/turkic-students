@@ -1,0 +1,127 @@
+{
+  "Metadata": {
+    "title": "TÜRKSOY STUDENTS — единая платформа для студентов тюркского мира",
+    "description": "Фестивали и связи тюркского мира — в одном месте. Зарегистрируйтесь и узнайте о запуске первыми."
+  },
+  "OgImage": {
+    "tagline": "Фестивали и связи тюркского мира — в одном месте"
+  },
+  "Header": {
+    "logoAlt": "Эмблема ТЮРКСОЙ",
+    "languageSwitcherLabel": "Язык"
+  },
+  "Alt": {
+    "heroPhoto": "Большая группа людей в национальных костюмах тюркских народов с флагами на фестивале",
+    "audiencePhoto": "Девушки в национальных костюмах играют на бубне и национальном струнном инструменте на фестивале",
+    "cyclePhoto": "Группа участников в национальных костюмах перед зданием ТЮРКСОЙ",
+    "solutionPhoto": "Двое участников фестиваля в национальных костюмах тюркских народов"
+  },
+  "Footer": {
+    "logoAlt": "Эмблема ТЮРКСОЙ",
+    "leaderboardLink": "Рейтинг вузов «Твой голос — твой фестиваль»",
+    "opinionLink": "Оставить мнение о фестивале",
+    "copyright": "© {year} TÜRKSOY STUDENTS",
+    "iconsCredit": "Иконки: emoji-иллюстрации by <link>OpenMoji</link> — CC BY-SA 4.0",
+    "developedByPrefix": "Разработал"
+  },
+  "WaitlistForm": {
+    "nameLabel": "Имя",
+    "emailLabel": "Email",
+    "privacyNote": "Твои данные используются только для регистрации на платформе.",
+    "next": "Далее",
+    "sending": "Отправляем…",
+    "alreadyJoinedTitle": "Вы уже с нами 🎉",
+    "alreadyJoinedText": "Этот браузер уже отмечен как зарегистрированный.",
+    "registerAnother": "Зарегистрировать другого человека",
+    "step2Intro": "Расскажи о себе — так мы учтём тебя в аудитории твоего университета и покажем подходящие возможности с самого запуска.",
+    "whoAreYou": "Кто вы?",
+    "universityLabel": "Университет",
+    "universityPlaceholder": "Выберите университет",
+    "graduationYearLabel": "Год окончания",
+    "graduationYearOptional": "(необязательно)",
+    "noResultsLabel": "Ничего не найдено",
+    "customValueLabel": "Использовать «{query}» как есть",
+    "saving": "Сохраняем…",
+    "step2Cta": "Зарегистрироваться",
+    "successTitle": "Спасибо! Ты в списке TÜRKSOY STUDENTS",
+    "successSubtitle": "Подпишись на наш Telegram-канал, чтобы не пропустить запуск платформы.",
+    "telegramCta": "Подписаться на Telegram"
+  },
+  "OpinionForm": {
+    "direction": "Направление",
+    "opinionLabel": "Мнение",
+    "placeholder": "Коротко напиши свою мысль…",
+    "submit": "Отправить",
+    "sending": "Отправляем…",
+    "successTitle": "Спасибо! Мнение получено",
+    "successText": "Мы обязательно его учтём."
+  },
+  "Leaderboard": {
+    "badge": "Твой голос — твой фестиваль",
+    "title": "Рейтинг вузов",
+    "description": "Специальный приз TÜRKSOY присуждается университету, сформировавшему наиболее многочисленную подтверждённую аудиторию участников инициативы «Твой голос — твой фестиваль».",
+    "participants": "участников инициативы",
+    "studentsShort": "студ.",
+    "alumniShort": "вып.",
+    "emptyTitle": "Пока никто не присоединился",
+    "emptyText": "Присоединяйся — и добавь свой университет в рейтинг.",
+    "joinCta": "Присоединиться"
+  },
+  "OpinionPage": {
+    "badge": "Твой голос — твой фестиваль",
+    "title": "Поделись мнением о фестивале",
+    "description": "Регистрироваться не обязательно — просто напиши, что думаешь. Хочешь ещё и попасть в аудиторию своего университета? Загляни в основную <link>регистрацию</link>."
+  },
+  "FestivalSection": {
+    "join": "Присоединиться",
+    "participatingUniversities": "Вузы-участники",
+    "festivalAudience": "Аудитория фестиваля",
+    "joinedInitiative": "присоединились к инициативе",
+    "viewFullLeaderboard": "Смотреть весь рейтинг →",
+    "listBeingFormed": "Список формируется",
+    "registerToAppear": "Зарегистрируйся — и твой университет появится в рейтинге."
+  },
+  "Validation": {
+    "nameRequired": "Введите имя",
+    "emailRequired": "Введите email",
+    "emailInvalid": "Некорректный email",
+    "universityOtherNameRequired": "Введите название вуза",
+    "universityRequired": "Выберите университет",
+    "universityNameRequired": "Введите название",
+    "countryRequired": "Введите страну",
+    "opinionCategoryRequired": "Выберите категорию",
+    "opinionTextRequired": "Напишите пару слов"
+  },
+  "Errors": {
+    "checkNameEmail": "Проверьте имя и email",
+    "tooManyAttempts": "Слишком много попыток, попробуйте позже",
+    "saveFailed": "Не удалось сохранить, попробуйте ещё раз",
+    "alreadyRegistered": "Вы уже зарегистрированы в списке ожидания",
+    "checkFields": "Проверьте заполненные поля",
+    "applicationNotFound": "Заявка не найдена",
+    "chooseCategoryAndWrite": "Выберите категорию и напишите мнение"
+  },
+  "Constants": {
+    "festivalRoles": {
+      "student": "Студент",
+      "alumnus": "Выпускник"
+    },
+    "opinionCategories": {
+      "opinion": { "label": "МОЁ МНЕНИЕ", "question": "Что ты думаешь о фестивале?" },
+      "idea": { "label": "МОЯ ИДЕЯ", "question": "Как ты хотел бы видеть фестиваль в будущем?" },
+      "proposal": {
+        "label": "МОЁ ПРЕДЛОЖЕНИЕ",
+        "question": "Что необходимо изменить, добавить или создать?"
+      },
+      "viewpoint": {
+        "label": "МОЙ ВЗГЛЯД",
+        "question": "Каким должен быть современный международный студенческий театральный фестиваль?"
+      },
+      "missing": {
+        "label": "ЧЕГО НЕ ХВАТАЕТ?",
+        "question": "Какие мероприятия или форматы ты хотел бы увидеть?"
+      },
+      "other": { "label": "ДРУГОЕ", "question": "Свободное поле для любого предложения" }
+    }
+  }
+}

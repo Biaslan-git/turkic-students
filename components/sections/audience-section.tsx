@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 import { SmilingFaceIcon } from "@/components/mood-icons/smiling-face";
 
 type AudienceSectionProps = {
@@ -10,6 +11,7 @@ type AudienceSectionProps = {
 };
 
 export function AudienceSection({ badge, title, intro, segments, outro }: AudienceSectionProps) {
+  const t = useTranslations("Alt");
   return (
     <section className="relative overflow-hidden bg-surface">
       <SmilingFaceIcon className="pointer-events-none absolute -right-10 -top-14 h-56 w-56 select-none text-accent-ink/[0.06] sm:h-72 sm:w-72" />
@@ -22,7 +24,7 @@ export function AudienceSection({ badge, title, intro, segments, outro }: Audien
           <div className="relative aspect-[3/4] overflow-hidden rounded-[3rem_1rem_3rem_1rem] shadow-[0_20px_48px_-24px_rgba(26,26,46,0.35)]">
             <Image
               src="https://static.yk-news.kz/images/20250616152907.jpeg"
-              alt="Девушки в национальных костюмах играют на бубне и национальном струнном инструменте на фестивале"
+              alt={t("audiencePhoto")}
               fill
               className="object-cover"
               sizes="(min-width: 768px) 320px, 100vw"

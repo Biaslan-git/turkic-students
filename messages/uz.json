@@ -1,0 +1,127 @@
+{
+  "Metadata": {
+    "title": "TÜRKSOY STUDENTS — turkiy dunyo talabalari uchun yagona platforma",
+    "description": "Turkiy dunyoning festivallari va aloqalari — bir joyda. Roʻyxatdan oʻting va ishga tushirilishi haqida birinchilardan boʻlib bilib oling."
+  },
+  "OgImage": {
+    "tagline": "Turkiy dunyoning festivallari va aloqalari — bir joyda"
+  },
+  "Header": {
+    "logoAlt": "TURKSOY emblemasi",
+    "languageSwitcherLabel": "Til"
+  },
+  "Alt": {
+    "heroPhoto": "Festivalda bayroqlar bilan milliy liboslardagi katta odamlar guruhi",
+    "audiencePhoto": "Festivalda childirma va milliy torli cholgʻu asbobida chalayotgan milliy liboslardagi qizlar",
+    "cyclePhoto": "TURKSOY binosi oldida milliy liboslardagi ishtirokchilar guruhi",
+    "solutionPhoto": "Turkiy xalqlarning milliy libosidagi ikki festival ishtirokchisi"
+  },
+  "Footer": {
+    "logoAlt": "TURKSOY emblemasi",
+    "leaderboardLink": "OTMlar reytingi «Sening ovozing — sening festivaling»",
+    "opinionLink": "Festival haqida fikr qoldirish",
+    "copyright": "© {year} TÜRKSOY STUDENTS",
+    "iconsCredit": "Belgilar: <link>OpenMoji</link> tomonidan emoji-illyustratsiyalar — CC BY-SA 4.0",
+    "developedByPrefix": "Ishlab chiqdi"
+  },
+  "WaitlistForm": {
+    "nameLabel": "Ism",
+    "emailLabel": "Email",
+    "privacyNote": "Ma'lumotlaringiz faqat platformaga roʻyxatdan oʻtish uchun ishlatiladi.",
+    "next": "Keyingisi",
+    "sending": "Yuborilmoqda…",
+    "alreadyJoinedTitle": "Siz allaqachon biz bilansiz 🎉",
+    "alreadyJoinedText": "Bu brauzer allaqachon roʻyxatdan oʻtgan deb belgilangan.",
+    "registerAnother": "Boshqa odamni roʻyxatdan oʻtkazish",
+    "step2Intro": "Oʻzing haqingda gapirib ber — shunday qilib seni universitetingning auditoriyasida hisobga olamiz va ishga tushirilgan kundan boshlab mos imkoniyatlarni koʻrsatamiz.",
+    "whoAreYou": "Sen kimsan?",
+    "universityLabel": "Universitet",
+    "universityPlaceholder": "Universitetni tanlang",
+    "graduationYearLabel": "Bitirgan yili",
+    "graduationYearOptional": "(ixtiyoriy)",
+    "noResultsLabel": "Hech narsa topilmadi",
+    "customValueLabel": "«{query}» ni boʻlgani kabi ishlatish",
+    "saving": "Saqlanmoqda…",
+    "step2Cta": "Roʻyxatdan oʻtish",
+    "successTitle": "Rahmat! Siz TÜRKSOY STUDENTS roʻyxatidasiz",
+    "successSubtitle": "Platforma ishga tushirilishini oʻtkazib yubormaslik uchun Telegram kanalimizga obuna boʻling.",
+    "telegramCta": "Telegramga obuna boʻlish"
+  },
+  "OpinionForm": {
+    "direction": "Yoʻnalish",
+    "opinionLabel": "Fikr",
+    "placeholder": "Fikringizni qisqacha yozing…",
+    "submit": "Yuborish",
+    "sending": "Yuborilmoqda…",
+    "successTitle": "Rahmat! Fikringiz qabul qilindi",
+    "successText": "Uni albatta hisobga olamiz."
+  },
+  "Leaderboard": {
+    "badge": "Sening ovozing — sening festivaling",
+    "title": "OTMlar reytingi",
+    "description": "TÜRKSOY maxsus mukofoti «Sening ovozing — sening festivaling» tashabbusiga eng koʻp tasdiqlangan ishtirokchilar auditoriyasini shakllantirgan universitetga beriladi.",
+    "participants": "tashabbus ishtirokchisi",
+    "studentsShort": "tal.",
+    "alumniShort": "bit.",
+    "emptyTitle": "Hozircha hech kim qoʻshilmadi",
+    "emptyText": "Qoʻshiling — va universitetingizni reytingga qoʻshing.",
+    "joinCta": "Qoʻshilish"
+  },
+  "OpinionPage": {
+    "badge": "Sening ovozing — sening festivaling",
+    "title": "Festival haqidagi fikringizni ulashing",
+    "description": "Roʻyxatdan oʻtish shart emas — shunchaki fikringizni yozing. Universitetingiz auditoriyasiga ham qoʻshilmoqchimisiz? Asosiy <link>roʻyxatdan oʻtishga</link> qarang."
+  },
+  "FestivalSection": {
+    "join": "Qoʻshilish",
+    "participatingUniversities": "Ishtirokchi OTMlar",
+    "festivalAudience": "Festival auditoriyasi",
+    "joinedInitiative": "tashabbusga qoʻshildi",
+    "viewFullLeaderboard": "Toʻliq reytingni koʻrish →",
+    "listBeingFormed": "Roʻyxat shakllanmoqda",
+    "registerToAppear": "Roʻyxatdan oʻting — va universitetingiz reytingda paydo boʻlsin."
+  },
+  "Validation": {
+    "nameRequired": "Ismingizni kiriting",
+    "emailRequired": "Email kiriting",
+    "emailInvalid": "Email notoʻgʻri",
+    "universityOtherNameRequired": "OTM nomini kiriting",
+    "universityRequired": "Universitetni tanlang",
+    "universityNameRequired": "Nomini kiriting",
+    "countryRequired": "Davlatni kiriting",
+    "opinionCategoryRequired": "Kategoriyani tanlang",
+    "opinionTextRequired": "Bir necha soʻz yozing"
+  },
+  "Errors": {
+    "checkNameEmail": "Ism va emailni tekshiring",
+    "tooManyAttempts": "Juda koʻp urinish, keyinroq qayta urining",
+    "saveFailed": "Saqlanmadi, qayta urinib koʻring",
+    "alreadyRegistered": "Siz allaqachon kutish roʻyxatida roʻyxatdan oʻtgansiz",
+    "checkFields": "Toʻldirilgan maydonlarni tekshiring",
+    "applicationNotFound": "Ariza topilmadi",
+    "chooseCategoryAndWrite": "Kategoriyani tanlang va fikringizni yozing"
+  },
+  "Constants": {
+    "festivalRoles": {
+      "student": "Talaba",
+      "alumnus": "Bitiruvchi"
+    },
+    "opinionCategories": {
+      "opinion": { "label": "MENING FIKRIM", "question": "Festival haqida nima deb oʻylaysiz?" },
+      "idea": { "label": "MENING GʻOYAM", "question": "Festivalni kelajakda qanday koʻrishni xohlaysiz?" },
+      "proposal": {
+        "label": "MENING TAKLIFIM",
+        "question": "Nimani oʻzgartirish, qoʻshish yoki yaratish kerak?"
+      },
+      "viewpoint": {
+        "label": "MENING QARASHIM",
+        "question": "Zamonaviy xalqaro talabalar teatr festivali qanday boʻlishi kerak?"
+      },
+      "missing": {
+        "label": "NIMA YETISHMAYAPTI?",
+        "question": "Qanday tadbirlar yoki formatlarni koʻrishni xohlaysiz?"
+      },
+      "other": { "label": "BOSHQA", "question": "Har qanday taklif uchun erkin maydon" }
+    }
+  }
+}

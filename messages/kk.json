@@ -1,0 +1,127 @@
+{
+  "Metadata": {
+    "title": "TÜRKSOY STUDENTS — түркі әлемі студенттеріне арналған бірыңғай платформа",
+    "description": "Түркі әлемінің фестивальдері мен байланыстары — бір жерде. Тіркеліп, іске қосылу туралы бірінші болып біліңіз."
+  },
+  "OgImage": {
+    "tagline": "Түркі әлемінің фестивальдері мен байланыстары — бір жерде"
+  },
+  "Header": {
+    "logoAlt": "ТҮРКСОЙ эмблемасы",
+    "languageSwitcherLabel": "Тіл"
+  },
+  "Alt": {
+    "heroPhoto": "Фестивальде туларымен ұлттық киімдегі үлкен адамдар тобы",
+    "audiencePhoto": "Фестивальде дап пен ұлттық ішекті аспапта ойнап тұрған ұлттық киімдегі қыздар",
+    "cyclePhoto": "ТҮРКСОЙ ғимаратының алдында ұлттық киімдегі қатысушылар тобы",
+    "solutionPhoto": "Түркі халықтарының ұлттық киіміндегі екі фестиваль қатысушысы"
+  },
+  "Footer": {
+    "logoAlt": "ТҮРКСОЙ эмблемасы",
+    "leaderboardLink": "ЖОО-лар рейтингі «Сенің дауысың — сенің фестивалің»",
+    "opinionLink": "Фестиваль туралы пікір қалдыру",
+    "copyright": "© {year} TÜRKSOY STUDENTS",
+    "iconsCredit": "Иконкалар: <link>OpenMoji</link> эмодзи-иллюстрациялары — CC BY-SA 4.0",
+    "developedByPrefix": "Әзірледі"
+  },
+  "WaitlistForm": {
+    "nameLabel": "Аты",
+    "emailLabel": "Email",
+    "privacyNote": "Деректеріңіз тек платформаға тіркелу үшін пайдаланылады.",
+    "next": "Келесі",
+    "sending": "Жіберілуде…",
+    "alreadyJoinedTitle": "Сіз бізбенсіз 🎉",
+    "alreadyJoinedText": "Бұл браузер тіркелген деп белгіленген.",
+    "registerAnother": "Басқа адамды тіркеу",
+    "step2Intro": "Өзің туралы айтып бер — осылайша сені университетіңнің аудиториясында ескеріп, іске қосылған сәттен бастап сәйкес мүмкіндіктерді көрсетеміз.",
+    "whoAreYou": "Сен кімсің?",
+    "universityLabel": "Университет",
+    "universityPlaceholder": "Университетті таңдаңыз",
+    "graduationYearLabel": "Бітіру жылы",
+    "graduationYearOptional": "(міндетті емес)",
+    "noResultsLabel": "Ештеңе табылмады",
+    "customValueLabel": "«{query}» дегенді сол күйінде пайдалану",
+    "saving": "Сақталуда…",
+    "step2Cta": "Тіркелу",
+    "successTitle": "Рақмет! Сен TÜRKSOY STUDENTS тізімінде сің",
+    "successSubtitle": "Платформаның іске қосылуын өткізіп алмау үшін Telegram арнамызға жазыл.",
+    "telegramCta": "Telegram-ға жазылу"
+  },
+  "OpinionForm": {
+    "direction": "Бағыт",
+    "opinionLabel": "Пікір",
+    "placeholder": "Ойыңды қысқаша жаз…",
+    "submit": "Жіберу",
+    "sending": "Жіберілуде…",
+    "successTitle": "Рақмет! Пікіріңіз қабылданды",
+    "successText": "Оны міндетті түрде ескереміз."
+  },
+  "Leaderboard": {
+    "badge": "Сенің дауысың — сенің фестивалің",
+    "title": "ЖОО-лар рейтингі",
+    "description": "TÜRKSOY арнайы сыйлығы «Сенің дауысың — сенің фестивалің» бастамасына ең көп расталған қатысушылар аудиториясын қалыптастырған университетке беріледі.",
+    "participants": "бастама қатысушысы",
+    "studentsShort": "студ.",
+    "alumniShort": "түлек",
+    "emptyTitle": "Әзірге ешкім қосылған жоқ",
+    "emptyText": "Қосыл — және университетіңді рейтингке қос.",
+    "joinCta": "Қосылу"
+  },
+  "OpinionPage": {
+    "badge": "Сенің дауысың — сенің фестивалің",
+    "title": "Фестиваль туралы пікіріңмен бөліс",
+    "description": "Тіркелу міндетті емес — жай ғана ойыңды жаз. Университетіңнің аудиториясына да қосылғың келе ме? Негізгі <link>тіркеуге</link> қара."
+  },
+  "FestivalSection": {
+    "join": "Қосылу",
+    "participatingUniversities": "Қатысушы ЖОО-лар",
+    "festivalAudience": "Фестиваль аудиториясы",
+    "joinedInitiative": "бастамаға қосылды",
+    "viewFullLeaderboard": "Толық рейтингті көру →",
+    "listBeingFormed": "Тізім қалыптасуда",
+    "registerToAppear": "Тіркеліп, университетің рейтингте пайда болсын."
+  },
+  "Validation": {
+    "nameRequired": "Атыңызды енгізіңіз",
+    "emailRequired": "Email енгізіңіз",
+    "emailInvalid": "Email қате",
+    "universityOtherNameRequired": "ЖОО атауын енгізіңіз",
+    "universityRequired": "Университетті таңдаңыз",
+    "universityNameRequired": "Атауын енгізіңіз",
+    "countryRequired": "Елді енгізіңіз",
+    "opinionCategoryRequired": "Санатты таңдаңыз",
+    "opinionTextRequired": "Бірнеше сөз жазыңыз"
+  },
+  "Errors": {
+    "checkNameEmail": "Аты мен email-ді тексеріңіз",
+    "tooManyAttempts": "Тым көп әрекет, кейінірек қайталап көріңіз",
+    "saveFailed": "Сақталмады, қайталап көріңіз",
+    "alreadyRegistered": "Сіз күту тізімінде тіркелгенсіз",
+    "checkFields": "Толтырылған өрістерді тексеріңіз",
+    "applicationNotFound": "Өтінім табылмады",
+    "chooseCategoryAndWrite": "Санатты таңдап, пікіріңізді жазыңыз"
+  },
+  "Constants": {
+    "festivalRoles": {
+      "student": "Студент",
+      "alumnus": "Түлек"
+    },
+    "opinionCategories": {
+      "opinion": { "label": "МЕНІҢ ПІКІРІМ", "question": "Фестиваль туралы не ойлайсың?" },
+      "idea": { "label": "МЕНІҢ ИДЕЯМ", "question": "Фестивальді болашақта қалай көргің келеді?" },
+      "proposal": {
+        "label": "МЕНІҢ ҰСЫНЫСЫМ",
+        "question": "Нені өзгерту, қосу немесе құру керек?"
+      },
+      "viewpoint": {
+        "label": "МЕНІҢ КӨЗҚАРАСЫМ",
+        "question": "Заманауи халықаралық студенттік театр фестивалі қандай болуы керек?"
+      },
+      "missing": {
+        "label": "НЕ ЖЕТІСПЕЙДІ?",
+        "question": "Қандай іс-шараларды немесе форматтарды көргің келеді?"
+      },
+      "other": { "label": "БАСҚА", "question": "Кез келген ұсыныс үшін еркін өріс" }
+    }
+  }
+}

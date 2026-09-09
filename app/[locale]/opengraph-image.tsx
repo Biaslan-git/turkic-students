@@ -1,6 +1,7 @@
 import { ImageResponse } from "next/og";
 import { readFile } from "node:fs/promises";
 import { join } from "node:path";
+import { getTranslations } from "next-intl/server";
 
 export const size = {
   width: 1200,
@@ -12,7 +13,10 @@ export const contentType = "image/png";
 const emblemData = await readFile(join(process.cwd(), "public/turksoy-emblem.png"), "base64");
 const emblemSrc = `data:image/png;base64,${emblemData}`;
 
-export default async function Image() {
+export default async function Image({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "OgImage" });
+
   return new ImageResponse(
     (
       <div
@@ -46,7 +50,7 @@ export default async function Image() {
           TÜRKSOY STUDENTS
         </div>
         <div style={{ fontSize: 32, color: "#9aa9a3", maxWidth: 900, textAlign: "center" }}>
-          Фестивали и связи тюркского мира — в одном месте
+          {t("tagline")}
         </div>
         <div
           style={{

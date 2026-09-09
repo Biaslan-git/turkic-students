@@ -1,7 +1,8 @@
 "use server";
 
+import { getTranslations } from "next-intl/server";
 import { insertGuestOpinion } from "@/lib/guest-opinions";
-import { guestOpinionSchema } from "@/lib/validation";
+import { makeGuestOpinionSchema } from "@/lib/validation";
 import { isRateLimited } from "@/lib/rate-limit";
 import { getClientIp } from "@/lib/get-client-ip";
 
@@ -14,6 +15,16 @@ export async function submitGuestOpinion(
   _prevState: GuestOpinionState,
   formData: FormData,
 ): Promise<GuestOpinionState> {
+  const [tValidation, tErrors] = await Promise.all([
+    getTranslations("Validation"),
+    getTranslations("Errors"),
+  ]);
+
+  const guestOpinionSchema = makeGuestOpinionSchema({
+    opinionCategoryRequired: tValidation("opinionCategoryRequired"),
+    opinionTextRequired: tValidation("opinionTextRequired"),
+  });
+
   const parsed = guestOpinionSchema.safeParse({
     category: formData.get("category"),
     text: formData.get("text"),
@@ -21,7 +32,7 @@ export async function submitGuestOpinion(
   });
 
   if (!parsed.success) {
-    return { status: "error", message: "Выберите категорию и напишите мнение" };
+    return { status: "error", message: tErrors("chooseCategoryAndWrite") };
   }
 
   // Honeypot triggered — silently pretend nothing happened.
@@ -31,7 +42,7 @@ export async function submitGuestOpinion(
 
   const ip = await getClientIp();
   if (isRateLimited(`opinion:${ip}`)) {
-    return { status: "error", message: "Слишком много попыток, попробуйте позже" };
+    return { status: "error", message: tErrors("tooManyAttempts") };
   }
 
   await insertGuestOpinion(parsed.data.category, parsed.data.text);

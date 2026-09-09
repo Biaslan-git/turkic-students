@@ -1,0 +1,127 @@
+{
+  "Metadata": {
+    "title": "TÜRKSOY STUDENTS — türki dünýäniň talyplary üçin ýeke-täk platforma",
+    "description": "Türki dünýäniň festiwallary we gatnaşyklary — bir ýerde. Bellige al we işe girizilişi barada ilkinjileriň biri bol."
+  },
+  "OgImage": {
+    "tagline": "Türki dünýäniň festiwallary we gatnaşyklary — bir ýerde"
+  },
+  "Header": {
+    "logoAlt": "TÜRKSOY emblemasy",
+    "languageSwitcherLabel": "Dil"
+  },
+  "Alt": {
+    "heroPhoto": "Festiwalda baýdaklar bilen milli lybasda uly adamlar topary",
+    "audiencePhoto": "Festiwalda def we milli kirişli saz guralynda çalýan milli lybasly gyzlar",
+    "cyclePhoto": "TÜRKSOY binasynyň öňünde milli lybasda gatnaşyjylar topary",
+    "solutionPhoto": "Türki halklaryň milli lybasyndaky iki festiwal gatnaşyjysy"
+  },
+  "Footer": {
+    "logoAlt": "TÜRKSOY emblemasy",
+    "leaderboardLink": "Ýokary okuw jaýlarynyň reýtingi «Seniň sesiň — seniň festiwalyň»",
+    "opinionLink": "Festiwal barada pikir goýmak",
+    "copyright": "© {year} TÜRKSOY STUDENTS",
+    "iconsCredit": "Nyşanlar: <link>OpenMoji</link> tarapyndan emoji-illýustrasiýalar — CC BY-SA 4.0",
+    "developedByPrefix": "Işläp taýýarlan"
+  },
+  "WaitlistForm": {
+    "nameLabel": "Ady",
+    "emailLabel": "E-poçta",
+    "privacyNote": "Maglumatlaryň diňe platforma bellige almak üçin ulanylýar.",
+    "next": "Indiki",
+    "sending": "Iberilýär…",
+    "alreadyJoinedTitle": "Sen eýýäm biziň bilen 🎉",
+    "alreadyJoinedText": "Bu brauzer eýýäm bellige alnan diýip bellenildi.",
+    "registerAnother": "Başga bir adamy bellige almak",
+    "step2Intro": "Özüň barada gürrüň ber — şeýlelik bilen seni uniwersitetiňiň auditoriýasynda hasaba alarys we işe başlan pursatyndan degişli mümkinçilikleri görkezeris.",
+    "whoAreYou": "Sen kim?",
+    "universityLabel": "Uniwersitet",
+    "universityPlaceholder": "Uniwersiteti saýla",
+    "graduationYearLabel": "Gutaran ýyly",
+    "graduationYearOptional": "(hökmany däl)",
+    "noResultsLabel": "Hiç zat tapylmady",
+    "customValueLabel": "«{query}» diýeni bar bolşy ýaly ulan",
+    "saving": "Ýatda saklanýar…",
+    "step2Cta": "Bellige al",
+    "successTitle": "Sag bol! Sen TÜRKSOY STUDENTS sanawynda",
+    "successSubtitle": "Platformanyň işe girizilişini elden gidirmezlik üçin Telegram kanalymyza agza bol.",
+    "telegramCta": "Telegrama agza bolmak"
+  },
+  "OpinionForm": {
+    "direction": "Ugur",
+    "opinionLabel": "Pikir",
+    "placeholder": "Pikiriňi gysgaça ýaz…",
+    "submit": "Iber",
+    "sending": "Iberilýär…",
+    "successTitle": "Sag bol! Pikiriň kabul edildi",
+    "successText": "Ony hökman hasaba alarys."
+  },
+  "Leaderboard": {
+    "badge": "Seniň sesiň — seniň festiwalyň",
+    "title": "Ýokary okuw jaýlarynyň reýtingi",
+    "description": "TÜRKSOY ýörite baýragy «Seniň sesiň — seniň festiwalyň» başlangyjyna iň köp tassyklanan gatnaşyjylar auditoriýasyny emele getiren uniwersitete berilýär.",
+    "participants": "başlangyç gatnaşyjysy",
+    "studentsShort": "tal.",
+    "alumniShort": "gut.",
+    "emptyTitle": "Häzirlikçe hiç kim goşulmady",
+    "emptyText": "Goşul — we uniwersitetiňi reýtinge goş.",
+    "joinCta": "Goşulmak"
+  },
+  "OpinionPage": {
+    "badge": "Seniň sesiň — seniň festiwalyň",
+    "title": "Festiwal barada pikiriňi paýlaş",
+    "description": "Bellige almak hökmany däl — diňe pikiriňi ýaz. Uniwersitetiňiň auditoriýasyna hem goşulmak isleýärmiň? Esasy <link>bellige alşa</link> serediber."
+  },
+  "FestivalSection": {
+    "join": "Goşulmak",
+    "participatingUniversities": "Gatnaşyjy uniwersitetler",
+    "festivalAudience": "Festiwal auditoriýasy",
+    "joinedInitiative": "başlangyja goşuldy",
+    "viewFullLeaderboard": "Ähli reýtingi görmek →",
+    "listBeingFormed": "Sanaw düzülýär",
+    "registerToAppear": "Bellige al — we uniwersitetiň reýtingde peýda bolsun."
+  },
+  "Validation": {
+    "nameRequired": "Adyňy ýaz",
+    "emailRequired": "E-poçta giriz",
+    "emailInvalid": "Nädogry e-poçta",
+    "universityOtherNameRequired": "Uniwersitetiň adyny ýaz",
+    "universityRequired": "Uniwersiteti saýla",
+    "universityNameRequired": "Adyny ýaz",
+    "countryRequired": "Ýurdy ýaz",
+    "opinionCategoryRequired": "Kategoriýany saýla",
+    "opinionTextRequired": "Birnäçe söz ýaz"
+  },
+  "Errors": {
+    "checkNameEmail": "Ady we e-poçtany barla",
+    "tooManyAttempts": "Örän köp synanyşyk, soňrak gaýtadan synanyş",
+    "saveFailed": "Ýatda saklanmady, gaýtadan synanyş",
+    "alreadyRegistered": "Sen eýýäm garaşylýan sanawda bellige alyndyň",
+    "checkFields": "Doldurylan meýdanlary barla",
+    "applicationNotFound": "Arza tapylmady",
+    "chooseCategoryAndWrite": "Kategoriýany saýlap, pikiriňi ýaz"
+  },
+  "Constants": {
+    "festivalRoles": {
+      "student": "Talyp",
+      "alumnus": "Uniwersiteti gutaran"
+    },
+    "opinionCategories": {
+      "opinion": { "label": "MENIŇ PIKIRIM", "question": "Festiwal barada näme pikir edýärsiň?" },
+      "idea": { "label": "MENIŇ IDEÝAM", "question": "Festiwaly geljekde nähili görmek isleýärsiň?" },
+      "proposal": {
+        "label": "MENIŇ TEKLIBIM",
+        "question": "Näme üýtgedilmeli, goşulmaly ýa-da döredilmeli?"
+      },
+      "viewpoint": {
+        "label": "MENIŇ GARAÝYŞYM",
+        "question": "Häzirki zaman halkara talyp teatr festiwaly nähili bolmaly?"
+      },
+      "missing": {
+        "label": "NÄME ÝETENOK?",
+        "question": "Haýsy çäreleri ýa-da formatlary görmek isleýärsiň?"
+      },
+      "other": { "label": "BAŞGA", "question": "Islendik teklip üçin erkin meýdan" }
+    }
+  }
+}

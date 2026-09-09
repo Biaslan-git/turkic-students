@@ -1,0 +1,127 @@
+{
+  "Metadata": {
+    "title": "TÜRKSOY STUDENTS — türk dünyası tələbələri üçün vahid platforma",
+    "description": "Türk dünyasının festivalları və əlaqələri — bir yerdə. Qeydiyyatdan keç və lansman haqqında ilk bilənlərdən ol."
+  },
+  "OgImage": {
+    "tagline": "Türk dünyasının festivalları və əlaqələri — bir yerdə"
+  },
+  "Header": {
+    "logoAlt": "TÜRKSOY emblemi",
+    "languageSwitcherLabel": "Dil"
+  },
+  "Alt": {
+    "heroPhoto": "Festivalda bayraqlarla milli geyimdə böyük insan qrupu",
+    "audiencePhoto": "Festivalda milli geyimdə dəf və milli simli alət çalan qızlar",
+    "cyclePhoto": "TÜRKSOY binası qarşısında milli geyimdə iştirakçılar qrupu",
+    "solutionPhoto": "Türk xalqlarının milli geyimində iki festival iştirakçısı"
+  },
+  "Footer": {
+    "logoAlt": "TÜRKSOY emblemi",
+    "leaderboardLink": "Universitetlər reytinqi «Sənin Səsin — Sənin Festivalın»",
+    "opinionLink": "Festival haqqında rəy bildir",
+    "copyright": "© {year} TÜRKSOY STUDENTS",
+    "iconsCredit": "İkonlar: emoji-illüstrasiyalar <link>OpenMoji</link> tərəfindən — CC BY-SA 4.0",
+    "developedByPrefix": "Hazırladı"
+  },
+  "WaitlistForm": {
+    "nameLabel": "Ad",
+    "emailLabel": "E-poçt",
+    "privacyNote": "Məlumatların yalnız platformada qeydiyyat üçün istifadə olunur.",
+    "next": "İrəli",
+    "sending": "Göndərilir…",
+    "alreadyJoinedTitle": "Siz artıq bizimləsiniz 🎉",
+    "alreadyJoinedText": "Bu brauzer artıq qeydiyyatdan keçmiş kimi qeyd olunub.",
+    "registerAnother": "Başqa şəxsi qeydiyyatdan keçir",
+    "step2Intro": "Özün haqqında danış — beləliklə səni universitetinin auditoriyasında nəzərə alacağıq və lansmandan etibarən uyğun imkanları göstərəcəyik.",
+    "whoAreYou": "Sən kimsən?",
+    "universityLabel": "Universitet",
+    "universityPlaceholder": "Universitet seçin",
+    "graduationYearLabel": "Bitirmə ili",
+    "graduationYearOptional": "(məcburi deyil)",
+    "noResultsLabel": "Heç nə tapılmadı",
+    "customValueLabel": "«{query}» olduğu kimi istifadə et",
+    "saving": "Yadda saxlanılır…",
+    "step2Cta": "Qeydiyyatdan keç",
+    "successTitle": "Təşəkkürlər! Sən TÜRKSOY STUDENTS siyahısındasan",
+    "successSubtitle": "Platformanın lansmanını qaçırmamaq üçün Telegram kanalımıza abunə ol.",
+    "telegramCta": "Telegram-a abunə ol"
+  },
+  "OpinionForm": {
+    "direction": "İstiqamət",
+    "opinionLabel": "Rəy",
+    "placeholder": "Fikrini qısaca yaz…",
+    "submit": "Göndər",
+    "sending": "Göndərilir…",
+    "successTitle": "Təşəkkürlər! Rəyiniz qəbul olundu",
+    "successText": "Mütləq nəzərə alacağıq."
+  },
+  "Leaderboard": {
+    "badge": "Sənin Səsin — Sənin Festivalın",
+    "title": "Universitetlər reytinqi",
+    "description": "TÜRKSOY xüsusi mükafatı «Sənin Səsin — Sənin Festivalın» təşəbbüsünə ən çox təsdiqlənmiş iştirakçı auditoriyası toplayan universitetə verilir.",
+    "participants": "təşəbbüs iştirakçısı",
+    "studentsShort": "tələ.",
+    "alumniShort": "məz.",
+    "emptyTitle": "Hələ heç kim qoşulmayıb",
+    "emptyText": "Qoşul — və universitetini reytinqə əlavə et.",
+    "joinCta": "Qoşul"
+  },
+  "OpinionPage": {
+    "badge": "Sənin Səsin — Sənin Festivalın",
+    "title": "Festival haqqında fikrini bölüş",
+    "description": "Qeydiyyatdan keçmək məcburi deyil — sadəcə düşündüyünü yaz. Universitetinin auditoriyasına da qoşulmaq istəyirsən? Əsas <link>qeydiyyata</link> nəzər sal."
+  },
+  "FestivalSection": {
+    "join": "Qoşul",
+    "participatingUniversities": "İştirakçı universitetlər",
+    "festivalAudience": "Festival auditoriyası",
+    "joinedInitiative": "təşəbbüsə qoşuldu",
+    "viewFullLeaderboard": "Bütün reytinqə bax →",
+    "listBeingFormed": "Siyahı formalaşır",
+    "registerToAppear": "Qeydiyyatdan keç — və universitetin reytinqdə görünsün."
+  },
+  "Validation": {
+    "nameRequired": "Adınızı daxil edin",
+    "emailRequired": "E-poçtu daxil edin",
+    "emailInvalid": "Yanlış e-poçt",
+    "universityOtherNameRequired": "Universitetin adını daxil edin",
+    "universityRequired": "Universitet seçin",
+    "universityNameRequired": "Adı daxil edin",
+    "countryRequired": "Ölkəni daxil edin",
+    "opinionCategoryRequired": "Kateqoriya seçin",
+    "opinionTextRequired": "Bir neçə söz yazın"
+  },
+  "Errors": {
+    "checkNameEmail": "Ad və e-poçtu yoxlayın",
+    "tooManyAttempts": "Çox sayda cəhd, sonra yenidən cəhd edin",
+    "saveFailed": "Yadda saxlanmadı, yenidən cəhd edin",
+    "alreadyRegistered": "Siz artıq gözləmə siyahısındasınız",
+    "checkFields": "Doldurulan sahələri yoxlayın",
+    "applicationNotFound": "Müraciət tapılmadı",
+    "chooseCategoryAndWrite": "Kateqoriya seçin və rəyinizi yazın"
+  },
+  "Constants": {
+    "festivalRoles": {
+      "student": "Tələbə",
+      "alumnus": "Məzun"
+    },
+    "opinionCategories": {
+      "opinion": { "label": "MƏNİM RƏYİM", "question": "Festival haqqında nə düşünürsən?" },
+      "idea": { "label": "MƏNİM FİKRİM", "question": "Festivalı gələcəkdə necə görmək istərdin?" },
+      "proposal": {
+        "label": "MƏNİM TƏKLİFİM",
+        "question": "Nəyi dəyişmək, əlavə etmək və ya yaratmaq lazımdır?"
+      },
+      "viewpoint": {
+        "label": "MƏNİM BAXIŞIM",
+        "question": "Müasir beynəlxalq tələbə teatr festivalı necə olmalıdır?"
+      },
+      "missing": {
+        "label": "NƏ ÇATIŞMIR?",
+        "question": "Hansı tədbirləri və ya formatları görmək istərdin?"
+      },
+      "other": { "label": "DİGƏR", "question": "İstənilən təklif üçün sərbəst sahə" }
+    }
+  }
+}

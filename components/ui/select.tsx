@@ -13,6 +13,8 @@ export function Select({
   placeholder,
   className = "",
   allowCustom = false,
+  noResultsLabel = "Ничего не найдено",
+  customValueLabel = (query: string) => `Использовать «${query}» как есть`,
 }: {
   value: string;
   onChange: (value: string) => void;
@@ -20,6 +22,8 @@ export function Select({
   placeholder: string;
   className?: string;
   allowCustom?: boolean;
+  noResultsLabel?: string;
+  customValueLabel?: (query: string) => string;
 }) {
   const allOptions: SelectOption[] = [{ value: "", label: placeholder }, ...options];
 
@@ -48,7 +52,7 @@ export function Select({
     : allOptions;
   const customOption: SelectOption[] =
     allowCustom && trimmedQuery
-      ? [{ value: `${CUSTOM_VALUE_PREFIX}${trimmedQuery}`, label: `Использовать «${trimmedQuery}» как есть` }]
+      ? [{ value: `${CUSTOM_VALUE_PREFIX}${trimmedQuery}`, label: customValueLabel(trimmedQuery) }]
       : [];
   const visibleOptions = [...matchedOptions, ...customOption];
 
@@ -175,7 +179,7 @@ export function Select({
           className="absolute z-20 mt-1.5 max-h-64 w-full overflow-y-auto overflow-x-hidden rounded-lg border border-border bg-surface p-1 text-sm shadow-[0_16px_40px_-20px_rgba(0,0,0,0.4)]"
         >
           {visibleOptions.length === 0 && (
-            <li className="px-3 py-2 text-muted">Ничего не найдено</li>
+            <li className="px-3 py-2 text-muted">{noResultsLabel}</li>
           )}
           {visibleOptions.map((option, index) => (
             <li

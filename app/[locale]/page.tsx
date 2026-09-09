@@ -17,8 +17,9 @@ import { listActiveUniversities } from "@/lib/universities";
 // статически отрендерена во время `next build`.
 export const dynamic = "force-dynamic";
 
-export default async function Home() {
-  const [c, universities] = await Promise.all([getSiteContent(), listActiveUniversities()]);
+export default async function Home({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  const [c, universities] = await Promise.all([getSiteContent(locale), listActiveUniversities()]);
 
   return (
     <div className="flex flex-1 flex-col">

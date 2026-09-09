@@ -1,24 +1,42 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import { getTranslations } from "next-intl/server";
 import { Header } from "@/components/sections/header";
 import { Footer } from "@/components/sections/footer";
+import { Link } from "@/i18n/navigation";
+import { NUMBER_LOCALE_TAGS } from "@/i18n/routing";
 import { getSiteContent } from "@/lib/content/site-content";
 import { getFestivalLeaderboard, type UniversityLeaderboardEntry } from "@/lib/festival-stats";
 
-export const metadata: Metadata = {
-  title: "Рейтинг вузов — TÜRKSOY STUDENTS",
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "Leaderboard" });
+  return { title: `${t("title")} — TÜRKSOY STUDENTS` };
+}
 
-// Та же причина, что и у app/page.tsx — контент и статистика читаются из БД на каждый
-// запрос, а не на этапе сборки Docker-образа.
+// Та же причина, что и у app/[locale]/page.tsx — контент и статистика читаются из БД на
+// каждый запрос, а не на этапе сборки Docker-образа.
 export const dynamic = "force-dynamic";
 
-export default async function LeaderboardPage() {
-  const [c, leaderboard] = await Promise.all([getSiteContent(), getFestivalLeaderboard()]);
+export default async function LeaderboardPage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  const [c, leaderboard, t] = await Promise.all([
+    getSiteContent(locale),
+    getFestivalLeaderboard(),
+    getTranslations({ locale, namespace: "Leaderboard" }),
+  ]);
 
   const podium = leaderboard.universities.slice(0, 3);
   const rest = leaderboard.universities.slice(3);
   const max = Math.max(1, ...leaderboard.universities.map((u) => u.total));
+  const numberLocale = NUMBER_LOCALE_TAGS[locale] ?? "ru-RU";
 
   return (
     <div className="flex flex-1 flex-col">
@@ -39,16 +57,12 @@ export default async function LeaderboardPage() {
           <div className="reveal-on-scroll relative mx-auto flex max-w-4xl flex-col gap-12 px-5 py-16 sm:px-8 sm:py-24 md:px-12">
             <div className="flex flex-col items-center gap-4 text-center">
               <span className="w-fit rounded-full border border-border bg-background px-3 py-1 text-xs font-semibold uppercase tracking-[0.14em] text-muted">
-                Твой голос — твой фестиваль
+                {t("badge")}
               </span>
               <h1 className="text-balance font-display text-3xl font-bold tracking-tight sm:text-4xl">
-                Рейтинг вузов
+                {t("title")}
               </h1>
-              <p className="max-w-xl text-pretty text-muted">
-                Специальный приз TÜRKSOY присуждается университету, сформировавшему наиболее
-                многочисленную подтверждённую аудиторию участников инициативы «Твой голос — твой
-                фестиваль».
-              </p>
+              <p className="max-w-xl text-pretty text-muted">{t("description")}</p>
 
               <div className="relative mt-2 w-fit">
                 <div
@@ -61,19 +75,23 @@ export default async function LeaderboardPage() {
                   </span>
                   <div className="text-left">
                     <p className="font-display text-4xl font-bold">
-                      {leaderboard.totalParticipants.toLocaleString("ru-RU")}
+                      {leaderboard.totalParticipants.toLocaleString(numberLocale)}
                     </p>
-                    <p className="text-sm text-muted">участников инициативы</p>
+                    <p className="text-sm text-muted">{t("participants")}</p>
                   </div>
                 </div>
               </div>
             </div>
 
             {leaderboard.universities.length === 0 ? (
-              <EmptyState />
+              <EmptyState
+                emptyTitle={t("emptyTitle")}
+                emptyText={t("emptyText")}
+                joinCta={t("joinCta")}
+              />
             ) : (
               <>
-                <Podium entries={podium} />
+                <Podium entries={podium} studentsShort={t("studentsShort")} alumniShort={t("alumniShort")} />
                 {rest.length > 0 && (
                   <RestList entries={rest} max={max} startRank={podium.length + 1} />
                 )}
@@ -89,7 +107,15 @@ export default async function LeaderboardPage() {
 
 const MEDALS = ["🥇", "🥈", "🥉"];
 
-function Podium({ entries }: { entries: UniversityLeaderboardEntry[] }) {
+function Podium({
+  entries,
+  studentsShort,
+  alumniShort,
+}: {
+  entries: UniversityLeaderboardEntry[];
+  studentsShort: string;
+  alumniShort: string;
+}) {
   return (
     <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
       {entries.map((u, i) => (
@@ -115,7 +141,7 @@ function Podium({ entries }: { entries: UniversityLeaderboardEntry[] }) {
           <div className="mt-auto flex flex-col items-center gap-1 pt-2">
             <p className="font-display text-2xl font-bold text-accent-warm">{u.total}</p>
             <p className="text-xs text-muted">
-              студ. {u.students} / вып. {u.alumni}
+              {studentsShort} {u.students} / {alumniShort} {u.alumni}
             </p>
           </div>
         </div>
@@ -164,21 +190,27 @@ function RestList({
   );
 }
 
-function EmptyState() {
+function EmptyState({
+  emptyTitle,
+  emptyText,
+  joinCta,
+}: {
+  emptyTitle: string;
+  emptyText: string;
+  joinCta: string;
+}) {
   return (
     <div className="flex flex-col items-center gap-4 rounded-2xl border border-dashed border-border bg-surface p-10 text-center">
       <span className="text-5xl" aria-hidden="true">
         🏆
       </span>
-      <p className="font-display text-xl font-bold">Пока никто не присоединился</p>
-      <p className="max-w-sm text-sm text-muted">
-        Присоединяйся — и добавь свой университет в рейтинг.
-      </p>
+      <p className="font-display text-xl font-bold">{emptyTitle}</p>
+      <p className="max-w-sm text-sm text-muted">{emptyText}</p>
       <Link
         href="/#waitlist"
         className="rounded-xl bg-gradient-to-r from-accent-warm to-[#00d6c8] px-6 py-3 text-sm font-semibold text-accent-ink shadow-[0_10px_28px_-10px_var(--accent-warm)] transition-transform hover:scale-[1.02]"
       >
-        Присоединиться
+        {joinCta}
       </Link>
     </div>
   );

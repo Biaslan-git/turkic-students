@@ -1,6 +1,7 @@
 "use client";
 
 import { useActionState, useEffect, useState, useSyncExternalStore } from "react";
+import { useTranslations } from "next-intl";
 import {
   submitWaitlistBasic,
   submitWaitlistDetails,
@@ -20,16 +21,6 @@ const initialDetailsState: WaitlistDetailsState = { status: "idle" };
 const inputClass =
   "w-full rounded-xl border border-border bg-background px-4 py-3.5 text-base outline-none transition-colors focus:border-accent focus:ring-2 focus:ring-accent/25";
 
-const copy = {
-  privacyNote: "Твои данные используются только для регистрации на платформе.",
-  step2Intro:
-    "Расскажи о себе — так мы учтём тебя в аудитории твоего университета и покажем подходящие возможности с самого запуска.",
-  step2Cta: "Зарегистрироваться",
-  successSubtitle:
-    "Подпишись на наш Telegram-канал, чтобы не пропустить запуск платформы.",
-  telegramCta: "Подписаться на Telegram",
-};
-
 function subscribeNoop() {
   return () => {};
 }
@@ -47,6 +38,7 @@ function readAlreadyJoinedServer(): boolean {
 }
 
 export function WaitlistForm({ universities }: { universities: University[] }) {
+  const t = useTranslations("WaitlistForm");
   const [basicState, basicAction, basicPending] = useActionState(
     submitWaitlistBasic,
     initialBasicState,
@@ -85,14 +77,14 @@ export function WaitlistForm({ universities }: { universities: University[] }) {
   if (alreadyJoined && !forceForm && !showStepTwo && !showSuccess) {
     return (
       <div className="w-full max-w-md rounded-2xl border border-border bg-surface p-6 text-center shadow-[0_16px_40px_-24px_rgba(0,0,0,0.35)] sm:p-8">
-        <h3 className="font-display text-xl font-bold">Вы уже с нами 🎉</h3>
-        <p className="mt-2 text-sm text-muted">Этот браузер уже отмечен как зарегистрированный.</p>
+        <h3 className="font-display text-xl font-bold">{t("alreadyJoinedTitle")}</h3>
+        <p className="mt-2 text-sm text-muted">{t("alreadyJoinedText")}</p>
         <button
           type="button"
           onClick={() => setForceForm(true)}
           className="mt-4 text-sm text-muted underline underline-offset-2"
         >
-          Зарегистрировать другого человека
+          {t("registerAnother")}
         </button>
       </div>
     );
@@ -114,7 +106,7 @@ export function WaitlistForm({ universities }: { universities: University[] }) {
         <form action={basicAction} className="flex flex-col gap-4">
           <div className="flex flex-col gap-1.5">
             <label htmlFor="name" className="text-sm font-medium">
-              Имя
+              {t("nameLabel")}
             </label>
             <input
               id="name"
@@ -130,7 +122,7 @@ export function WaitlistForm({ universities }: { universities: University[] }) {
 
           <div className="flex flex-col gap-1.5">
             <label htmlFor="email" className="text-sm font-medium">
-              Email
+              {t("emailLabel")}
             </label>
             <input
               id="email"
@@ -141,7 +133,7 @@ export function WaitlistForm({ universities }: { universities: University[] }) {
               autoComplete="email"
               className={inputClass}
             />
-            <p className="text-xs text-muted">{copy.privacyNote}</p>
+            <p className="text-xs text-muted">{t("privacyNote")}</p>
           </div>
 
           {/* Honeypot — hidden from real users via CSS, not display:none */}
@@ -164,7 +156,7 @@ export function WaitlistForm({ universities }: { universities: University[] }) {
             disabled={basicPending}
             className="w-full rounded-xl bg-gradient-to-r from-accent to-[#ff8a63] px-6 py-3.5 text-base font-semibold text-white shadow-[0_10px_28px_-10px_var(--accent)] transition-opacity disabled:opacity-60"
           >
-            {basicPending ? "Отправляем…" : "Далее"}
+            {basicPending ? t("sending") : t("next")}
           </button>
         </form>
       )}
@@ -185,6 +177,8 @@ function StepTwoForm({
   error?: string;
   universities: University[];
 }) {
+  const t = useTranslations("WaitlistForm");
+  const tRoles = useTranslations("Constants.festivalRoles");
   const [role, setRole] = useState<string>(FESTIVAL_ROLES[0].value);
   const [universityId, setUniversityId] = useState("");
 
@@ -192,10 +186,10 @@ function StepTwoForm({
     <form action={action} className="flex flex-col gap-4">
       <input type="hidden" name="id" value={id} />
 
-      <p className="text-sm text-muted">{copy.step2Intro}</p>
+      <p className="text-sm text-muted">{t("step2Intro")}</p>
 
       <div className="flex flex-col gap-1.5">
-        <span className="text-sm font-medium">Кто вы?</span>
+        <span className="text-sm font-medium">{t("whoAreYou")}</span>
         <div className="flex gap-2">
           {FESTIVAL_ROLES.map((r) => (
             <label
@@ -213,7 +207,7 @@ function StepTwoForm({
                 onChange={() => setRole(r.value)}
                 className="sr-only"
               />
-              {r.label}
+              {tRoles(r.value)}
             </label>
           ))}
         </div>
@@ -221,14 +215,16 @@ function StepTwoForm({
 
       <div className="flex flex-col gap-1.5">
         <label htmlFor="universityId" className="text-sm font-medium">
-          Университет
+          {t("universityLabel")}
         </label>
         <Select
           value={universityId}
           onChange={setUniversityId}
           options={universities.map((u) => ({ value: u.id, label: `${u.name} (${u.country})` }))}
-          placeholder="Выберите университет"
+          placeholder={t("universityPlaceholder")}
           allowCustom
+          noResultsLabel={t("noResultsLabel")}
+          customValueLabel={(query) => t("customValueLabel", { query })}
         />
         {universityId.startsWith(CUSTOM_VALUE_PREFIX) ? (
           <input
@@ -244,7 +240,7 @@ function StepTwoForm({
       {role === "alumnus" && (
         <div className="flex flex-col gap-1.5">
           <label htmlFor="graduationYear" className="text-sm font-medium">
-            Год окончания <span className="font-normal text-muted">(необязательно)</span>
+            {t("graduationYearLabel")} <span className="font-normal text-muted">{t("graduationYearOptional")}</span>
           </label>
           <input
             id="graduationYear"
@@ -268,26 +264,26 @@ function StepTwoForm({
         disabled={pending || !universityId}
         className="w-full rounded-xl bg-gradient-to-r from-accent to-[#ff8a63] px-6 py-3.5 text-base font-semibold text-white shadow-[0_10px_28px_-10px_var(--accent)] transition-opacity disabled:opacity-60"
       >
-        {pending ? "Сохраняем…" : copy.step2Cta}
+        {pending ? t("saving") : t("step2Cta")}
       </button>
     </form>
   );
 }
 
 function SuccessScreen() {
+  const t = useTranslations("WaitlistForm");
+
   return (
     <div className="flex flex-col items-center gap-4 text-center">
-      <h3 className="font-display text-xl font-bold">
-        Спасибо! Ты в списке TÜRKSOY STUDENTS
-      </h3>
-      <p className="text-muted">{copy.successSubtitle}</p>
+      <h3 className="font-display text-xl font-bold">{t("successTitle")}</h3>
+      <p className="text-muted">{t("successSubtitle")}</p>
       <a
         href={TELEGRAM_CHANNEL_URL}
         target="_blank"
         rel="noopener noreferrer"
         className="w-full rounded-xl bg-accent px-6 py-3.5 text-base font-semibold text-accent-ink"
       >
-        {copy.telegramCta}
+        {t("telegramCta")}
       </a>
     </div>
   );

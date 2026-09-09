@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 import { RouteLinesBackdrop } from "@/components/route-lines";
 
 type HeroSectionProps = {
@@ -10,13 +11,15 @@ type HeroSectionProps = {
 };
 
 export function HeroSection({ ctaLabel, badge, titleMain, titleAccent, subtitle }: HeroSectionProps) {
+  const t = useTranslations("Alt");
+  const tHeader = useTranslations("Header");
   return (
     <section className="relative overflow-hidden">
       <RouteLinesBackdrop />
       <div className="relative flex flex-col items-center gap-7 px-5 py-16 text-center sm:px-8 sm:py-20 md:px-12 md:py-24">
         <Image
           src="/turksoy-logo.svg"
-          alt="Эмблема ТЮРКСОЙ"
+          alt={tHeader("logoAlt")}
           width={128}
           height={128}
           className="h-20 w-20 sm:h-24 sm:w-24 md:h-28 md:w-28"
@@ -44,7 +47,7 @@ export function HeroSection({ ctaLabel, badge, titleMain, titleAccent, subtitle 
           <div className="relative overflow-hidden rounded-3xl [clip-path:polygon(0_0,100%_0,100%_92%,92%_100%,0_100%)]">
             <Image
               src="https://tatar-congress.org/wp-content/uploads/2023/11/WhatsApp-Image-2023-11-03-at-15.30.49-1-e1699015757899.jpeg"
-              alt="Большая группа людей в национальных костюмах тюркских народов с флагами на фестивале"
+              alt={t("heroPhoto")}
               width={1600}
               height={900}
               priority

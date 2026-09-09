@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 import { FireIcon } from "@/components/mood-icons/fire-icon";
 
 type CycleStep = { title: string; text: string };
@@ -11,6 +12,7 @@ type CycleSectionProps = {
 };
 
 export function CycleSection({ badge, title, text, steps }: CycleSectionProps) {
+  const t = useTranslations("Alt");
   return (
     <section className="relative overflow-hidden bg-tint-teal">
       <FireIcon className="pointer-events-none absolute -right-12 -bottom-16 h-56 w-56 select-none text-accent/[0.08] sm:h-72 sm:w-72" />
@@ -20,7 +22,7 @@ export function CycleSection({ badge, title, text, steps }: CycleSectionProps) {
             <div className="relative aspect-video overflow-hidden rounded-3xl [clip-path:polygon(0_0,92%_0,100%_15%,100%_100%,0_100%)] sm:aspect-[16/10]">
               <Image
                 src="https://roza.kg/media/images/press/%D1%82%D1%8E%D1%80%D0%BA%D1%81%D0%BE%D0%B9.jpg"
-                alt="Группа участников в национальных костюмах перед зданием ТЮРКСОЙ"
+                alt={t("cyclePhoto")}
                 fill
                 className="object-cover"
                 sizes="(min-width: 768px) 480px, 100vw"

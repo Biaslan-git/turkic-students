@@ -1,7 +1,8 @@
 "use server";
 
+import { getTranslations } from "next-intl/server";
 import { insertWaitlistSignup, updateWaitlistDetails } from "@/lib/waitlist";
-import { waitlistBasicSchema, waitlistDetailsSchema } from "@/lib/validation";
+import { makeWaitlistBasicSchema, makeWaitlistDetailsSchema } from "@/lib/validation";
 import { isRateLimited } from "@/lib/rate-limit";
 import { getClientIp } from "@/lib/get-client-ip";
 
@@ -20,6 +21,17 @@ export async function submitWaitlistBasic(
   _prevState: WaitlistBasicState,
   formData: FormData,
 ): Promise<WaitlistBasicState> {
+  const [tValidation, tErrors] = await Promise.all([
+    getTranslations("Validation"),
+    getTranslations("Errors"),
+  ]);
+
+  const waitlistBasicSchema = makeWaitlistBasicSchema({
+    nameRequired: tValidation("nameRequired"),
+    emailRequired: tValidation("emailRequired"),
+    emailInvalid: tValidation("emailInvalid"),
+  });
+
   const parsed = waitlistBasicSchema.safeParse({
     name: formData.get("name"),
     email: formData.get("email"),
@@ -27,7 +39,7 @@ export async function submitWaitlistBasic(
   });
 
   if (!parsed.success) {
-    return { status: "error", message: "Проверьте имя и email" };
+    return { status: "error", message: tErrors("checkNameEmail") };
   }
 
   // Honeypot triggered — silently pretend nothing happened.
@@ -37,16 +49,16 @@ export async function submitWaitlistBasic(
 
   const ip = await getClientIp();
   if (isRateLimited(ip)) {
-    return { status: "error", message: "Слишком много попыток, попробуйте позже" };
+    return { status: "error", message: tErrors("tooManyAttempts") };
   }
 
   const record = await insertWaitlistSignup(parsed.data.name, parsed.data.email);
   if (!record) {
-    return { status: "error", message: "Не удалось сохранить, попробуйте ещё раз" };
+    return { status: "error", message: tErrors("saveFailed") };
   }
 
   if (record.isRegistered) {
-    return { status: "error", message: "Вы уже зарегистрированы в списке ожидания" };
+    return { status: "error", message: tErrors("alreadyRegistered") };
   }
 
   return { status: "step2", id: record.id };
@@ -56,6 +68,16 @@ export async function submitWaitlistDetails(
   _prevState: WaitlistDetailsState,
   formData: FormData,
 ): Promise<WaitlistDetailsState> {
+  const [tValidation, tErrors] = await Promise.all([
+    getTranslations("Validation"),
+    getTranslations("Errors"),
+  ]);
+
+  const waitlistDetailsSchema = makeWaitlistDetailsSchema({
+    universityOtherNameRequired: tValidation("universityOtherNameRequired"),
+    universityRequired: tValidation("universityRequired"),
+  });
+
   const parsed = waitlistDetailsSchema.safeParse({
     id: formData.get("id"),
     role: formData.get("role"),
@@ -65,7 +87,7 @@ export async function submitWaitlistDetails(
   });
 
   if (!parsed.success) {
-    return { status: "error", message: "Проверьте заполненные поля" };
+    return { status: "error", message: tErrors("checkFields") };
   }
 
   const updated = await updateWaitlistDetails(parsed.data.id, {
@@ -76,7 +98,7 @@ export async function submitWaitlistDetails(
   });
 
   if (!updated) {
-    return { status: "error", message: "Заявка не найдена" };
+    return { status: "error", message: tErrors("applicationNotFound") };
   }
 
   return { status: "success" };
