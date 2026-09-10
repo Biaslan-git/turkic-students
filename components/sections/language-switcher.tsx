@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
-import { routing, LOCALE_NAMES, LOCALE_FLAGS } from "@/i18n/routing";
+import { routing, LOCALE_NAMES, LOCALE_FLAGS, LOCALE_COUNTRY_CODES } from "@/i18n/routing";
 import { usePathname, useRouter } from "@/i18n/navigation";
 
 export function LanguageSwitcher() {
@@ -64,13 +64,14 @@ export function LanguageSwitcher() {
                 type="button"
                 role="option"
                 aria-selected={l === locale}
+                title={LOCALE_NAMES[l]}
                 onClick={() => handleSelect(l)}
                 className={`flex w-full items-center gap-2 rounded-lg px-3 py-2 text-left transition-colors hover:bg-accent/10 ${
                   l === locale ? "font-semibold text-accent" : ""
                 }`}
               >
                 <span aria-hidden="true">{LOCALE_FLAGS[l]}</span>
-                {LOCALE_NAMES[l]}
+                {LOCALE_COUNTRY_CODES[l]}
               </button>
             </li>
           ))}
