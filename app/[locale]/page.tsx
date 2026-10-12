@@ -7,10 +7,12 @@ import { AudienceSection } from "@/components/sections/audience-section";
 import { PrinciplesSection } from "@/components/sections/principles-section";
 import { ObjectionsSection } from "@/components/sections/objections-section";
 import { FestivalSection } from "@/components/festival/festival-section";
+import { GallerySection } from "@/components/sections/gallery-section";
 import { WaitlistSection } from "@/components/sections/waitlist-section";
 import { Footer } from "@/components/sections/footer";
 import { getSiteContent } from "@/lib/content/site-content";
 import { listActiveUniversities } from "@/lib/universities";
+import { listGalleryPhotos } from "@/lib/gallery";
 
 // Текст секций хранится в БД и редактируется из /admin/content — DATABASE_URL недоступна
 // на этапе сборки Docker-образа (см. Dockerfile), поэтому страница не может быть
@@ -19,7 +21,11 @@ export const dynamic = "force-dynamic";
 
 export default async function Home({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
-  const [c, universities] = await Promise.all([getSiteContent(locale), listActiveUniversities()]);
+  const [c, universities, galleryPhotos] = await Promise.all([
+    getSiteContent(locale),
+    listActiveUniversities(),
+    listGalleryPhotos(),
+  ]);
 
   return (
     <div className="flex flex-1 flex-col">
@@ -31,6 +37,9 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
           titleMain={c.hero_title_main}
           titleAccent={c.hero_title_accent}
           subtitle={c.hero_subtitle}
+          festivalTitle={c.hero_festival_title}
+          festivalDates={c.hero_festival_dates}
+          festivalPhotos={galleryPhotos.slice(0, 3)}
         />
         <ProblemSection
           badge={c.problem_badge}
@@ -114,6 +123,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
           text={c.tvoi_golos_text}
           alumniNote={c.tvoi_golos_alumni_note}
         />
+        <GallerySection photos={galleryPhotos} />
         <WaitlistSection title={c.waitlist_title} text={c.waitlist_text} universities={universities} />
       </main>
       <Footer ctaLabel={c.cta_label} text={c.footer_text} />

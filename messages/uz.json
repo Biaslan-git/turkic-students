@@ -14,11 +14,11 @@
     "heroPhoto": "Festivalda bayroqlar bilan milliy liboslardagi katta odamlar guruhi",
     "audiencePhoto": "Festivalda childirma va milliy torli cholgʻu asbobida chalayotgan milliy liboslardagi qizlar",
     "cyclePhoto": "TURKSOY binosi oldida milliy liboslardagi ishtirokchilar guruhi",
-    "solutionPhoto": "Turkiy xalqlarning milliy libosidagi ikki festival ishtirokchisi"
+    "solutionPhoto": "Turkiy xalqlarning milliy libosidagi ikki festival ishtirokchisi",
+    "galleryPhoto": "Festivaldan surat"
   },
   "Footer": {
     "logoAlt": "TURKSOY emblemasi",
-    "leaderboardLink": "OTMlar reytingi «Sening ovozing — sening festivaling»",
     "opinionLink": "Festival haqida fikr qoldirish",
     "copyright": "© {year} TÜRKSOY STUDENTS",
     "iconsCredit": "Belgilar: <link>OpenMoji</link> tomonidan emoji-illyustratsiyalar — CC BY-SA 4.0",
@@ -56,17 +56,6 @@
     "successTitle": "Rahmat! Fikringiz qabul qilindi",
     "successText": "Uni albatta hisobga olamiz."
   },
-  "Leaderboard": {
-    "badge": "Sening ovozing — sening festivaling",
-    "title": "OTMlar reytingi",
-    "description": "TÜRKSOY maxsus mukofoti «Sening ovozing — sening festivaling» tashabbusiga eng koʻp tasdiqlangan ishtirokchilar auditoriyasini shakllantirgan universitetga beriladi.",
-    "participants": "tashabbus ishtirokchisi",
-    "studentsShort": "tal.",
-    "alumniShort": "bit.",
-    "emptyTitle": "Hozircha hech kim qoʻshilmadi",
-    "emptyText": "Qoʻshiling — va universitetingizni reytingga qoʻshing.",
-    "joinCta": "Qoʻshilish"
-  },
   "OpinionPage": {
     "badge": "Sening ovozing — sening festivaling",
     "title": "Festival haqidagi fikringizni ulashing",
@@ -75,11 +64,11 @@
   "FestivalSection": {
     "join": "Qoʻshilish",
     "participatingUniversities": "Ishtirokchi OTMlar",
-    "festivalAudience": "Festival auditoriyasi",
-    "joinedInitiative": "tashabbusga qoʻshildi",
-    "viewFullLeaderboard": "Toʻliq reytingni koʻrish →",
-    "listBeingFormed": "Roʻyxat shakllanmoqda",
-    "registerToAppear": "Roʻyxatdan oʻting — va universitetingiz reytingda paydo boʻlsin."
+    "moreUniversities": "Roʻyxat yuqoridagilar bilan cheklanmaydi. Oʻz universitetingizni jalb qilishingizni soʻraymiz — qoʻshiling va boshqalarni ham taklif qiling."
+  },
+  "Gallery": {
+    "title": "Festival fotogalereyasi",
+    "subtitle": "Oʻtgan festivallardan lahzalar — har bir universitetdan"
   },
   "Validation": {
     "nameRequired": "Ismingizni kiriting",
@@ -107,8 +96,14 @@
       "alumnus": "Bitiruvchi"
     },
     "opinionCategories": {
-      "opinion": { "label": "MENING FIKRIM", "question": "Festival haqida nima deb oʻylaysiz?" },
-      "idea": { "label": "MENING GʻOYAM", "question": "Festivalni kelajakda qanday koʻrishni xohlaysiz?" },
+      "opinion": {
+        "label": "MENING FIKRIM",
+        "question": "Festival haqida nima deb oʻylaysiz?"
+      },
+      "idea": {
+        "label": "MENING GʻOYAM",
+        "question": "Festivalni kelajakda qanday koʻrishni xohlaysiz?"
+      },
       "proposal": {
         "label": "MENING TAKLIFIM",
         "question": "Nimani oʻzgartirish, qoʻshish yoki yaratish kerak?"
@@ -121,7 +116,10 @@
         "label": "NIMA YETISHMAYAPTI?",
         "question": "Qanday tadbirlar yoki formatlarni koʻrishni xohlaysiz?"
       },
-      "other": { "label": "BOSHQA", "question": "Har qanday taklif uchun erkin maydon" }
+      "other": {
+        "label": "BOSHQA",
+        "question": "Har qanday taklif uchun erkin maydon"
+      }
     }
   }
 }

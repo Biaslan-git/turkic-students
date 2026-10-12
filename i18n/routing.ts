@@ -33,16 +33,6 @@ export const LOCALE_COUNTRY_CODES: Record<string, string> = {
   uz: "UZ",
 };
 
-export const NUMBER_LOCALE_TAGS: Record<string, string> = {
-  ru: "ru-RU",
-  az: "az-AZ",
-  kk: "kk-KZ",
-  ky: "ky-KG",
-  tk: "tk-TM",
-  tr: "tr-TR",
-  uz: "uz-UZ",
-};
-
 export const routing = defineRouting({
   locales: ["ru", "az", "kk", "ky", "tk", "tr", "uz"],
   defaultLocale: "ru",

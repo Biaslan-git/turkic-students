@@ -756,6 +756,67 @@ WHERE (lower(name), lower(country)) IN (
   (lower('Национальный университет Узбекистана'), lower('Узбекистан'))
 );
 
+-- Правки лендинга по итогам разговора с заказчиком (вопрос «для чего мы это делаем»,
+-- поддержка Кыргызстана, плашка о прошедшем фестивале в хиро). Сид выше не перезаписывает
+-- существующие строки (ON CONFLICT DO NOTHING), а миграция гоняется на каждом старте —
+-- поэтому перезапись разовая, через маркер, чтобы не затирать последующие правки из админки.
+CREATE TABLE IF NOT EXISTS content_patches (
+  name TEXT PRIMARY KEY,
+  applied_at TIMESTAMPTZ NOT NULL DEFAULT now()
+);
+
+DO $patch$
+BEGIN
+  IF NOT EXISTS (SELECT 1 FROM content_patches WHERE name = '2026-10-client-notes') THEN
+    INSERT INTO site_content (key, locale, value) VALUES
+    ('objections_item_1_question', 'ru', 'Для чего мы это делаем?'),
+    ('objections_item_1_answer', 'ru', 'Сайт превратится в большую платформу для студентов тюркского мира. Следующий фестиваль пройдёт в Кыргызстане — и чтобы помочь ребятам, мы делимся своими идеями.'),
+    ('tvoi_golos_subtitle', 'ru', 'Следующий фестиваль — в Кыргызстане. Давайте поддержим ребят!'),
+    ('tvoi_golos_text', 'ru', 'Фестиваль — это не только спектакли и участники. Следующий фестиваль пройдёт в Кыргызстане, и чтобы помочь организаторам, мы собираем идеи студентов: что ты думаешь о фестивале, каким хотел бы видеть его в будущем и что стоит изменить. Поддержим кыргызских ребят — поделись своей идеей.'),
+    ('hero_festival_title', 'ru', 'IV студенческий фестиваль в Туркестане'),
+    ('hero_festival_dates', 'ru', 'Прошёл 5–9'),
+    ('objections_item_1_question', 'az', 'Bunu nə üçün edirik?'),
+    ('objections_item_1_answer', 'az', 'Sayt türk dünyası tələbələri üçün böyük platformaya çevriləcək. Növbəti festival Qırğızıstanda keçiriləcək — dostlarımıza kömək etmək üçün fikirlərimizi bölüşürük.'),
+    ('tvoi_golos_subtitle', 'az', 'Növbəti festival Qırğızıstanda. Gəlin dostlarımızı dəstəkləyək!'),
+    ('tvoi_golos_text', 'az', 'Festival təkcə tamaşalar və iştirakçılar demək deyil. Növbəti festival Qırğızıstanda keçiriləcək və təşkilatçılara kömək etmək üçün tələbələrin fikirlərini toplayırıq: festival haqqında nə düşünürsən, gələcəkdə onu necə görmək istərdin və nəyi dəyişmək lazımdır. Qırğız dostlarımızı dəstəkləyək — fikrini bölüş.'),
+    ('hero_festival_title', 'az', 'Türküstanda IV tələbə festivalı'),
+    ('hero_festival_dates', 'az', '5–9 tarixlərində keçirilib'),
+    ('objections_item_1_question', 'kk', 'Біз мұны не үшін жасаймыз?'),
+    ('objections_item_1_answer', 'kk', 'Сайт түркі әлемі студенттері үшін үлкен платформаға айналады. Келесі фестиваль Қырғызстанда өтеді — жігіттерге көмектесу үшін біз өз идеяларымызбен бөлісеміз.'),
+    ('tvoi_golos_subtitle', 'kk', 'Келесі фестиваль — Қырғызстанда. Жігіттерді қолдайық!'),
+    ('tvoi_golos_text', 'kk', 'Фестиваль — бұл тек қойылымдар мен қатысушылар ғана емес. Келесі фестиваль Қырғызстанда өтеді, ұйымдастырушыларға көмектесу үшін біз студенттердің идеяларын жинаймыз: фестиваль туралы не ойлайсың, оны болашақта қалай көргің келеді және нені өзгерту керек. Қырғыз жігіттерін қолдайық — өз идеяңмен бөліс.'),
+    ('hero_festival_title', 'kk', 'Түркістандағы IV студенттік фестиваль'),
+    ('hero_festival_dates', 'kk', '5–9 күндері өтті'),
+    ('objections_item_1_question', 'ky', 'Муну эмне үчүн кылабыз?'),
+    ('objections_item_1_answer', 'ky', 'Сайт түрк дүйнөсүнүн студенттери үчүн чоң платформага айланат. Кийинки фестиваль Кыргызстанда өтөт — балдарга жардам берүү үчүн өз идеяларыбыз менен бөлүшөбүз.'),
+    ('tvoi_golos_subtitle', 'ky', 'Кийинки фестиваль — Кыргызстанда. Балдарды колдойлу!'),
+    ('tvoi_golos_text', 'ky', 'Фестиваль — бул жөн гана спектаклдер жана катышуучулар эмес. Кийинки фестиваль Кыргызстанда өтөт, уюштуруучуларга жардам берүү үчүн студенттердин идеяларын чогултабыз: фестиваль тууралуу эмне ойлойсуң, келечекте аны кандай көргүң келет жана эмнени өзгөртүү керек. Кыргыз балдарын колдойлу — өз идеяң менен бөлүш.'),
+    ('hero_festival_title', 'ky', 'Түркстандагы IV студенттик фестиваль'),
+    ('hero_festival_dates', 'ky', '5–9 күндөрү өттү'),
+    ('objections_item_1_question', 'tk', 'Muny näme üçin edýäris?'),
+    ('objections_item_1_answer', 'tk', 'Sahypa türki dünýäsiniň talyplary üçin uly platforma öwrüler. Indiki festiwal Gyrgyzystanda geçiriler — ýigitlere kömek etmek üçin pikirlerimiz bilen paýlaşýarys.'),
+    ('tvoi_golos_subtitle', 'tk', 'Indiki festiwal — Gyrgyzystanda. Ýigitleri goldalyň!'),
+    ('tvoi_golos_text', 'tk', 'Festiwal diňe tomaşalar we gatnaşyjylar däl. Indiki festiwal Gyrgyzystanda geçiriler we guramaçylara kömek etmek üçin talyplaryň pikirlerini ýygnaýarys: festiwal barada näme pikir edýärsiň, ony geljekde nähili görmek isleýärsiň we näme üýtgetmeli. Gyrgyz ýigitlerini goldalyň — öz pikiriň bilen paýlaş.'),
+    ('hero_festival_title', 'tk', 'Türkistanda IV talyp festiwaly'),
+    ('hero_festival_dates', 'tk', '5–9 aralygynda geçirildi'),
+    ('objections_item_1_question', 'tr', 'Bunu ne için yapıyoruz?'),
+    ('objections_item_1_answer', 'tr', 'Bu site Türk dünyası öğrencileri için büyük bir platforma dönüşecek. Bir sonraki festival Kırgızistan’da yapılacak — arkadaşlara yardımcı olmak için fikirlerimizi paylaşıyoruz.'),
+    ('tvoi_golos_subtitle', 'tr', 'Bir sonraki festival Kırgızistan’da. Arkadaşlarımızı destekleyelim!'),
+    ('tvoi_golos_text', 'tr', 'Festival sadece gösteriler ve katılımcılardan ibaret değil. Bir sonraki festival Kırgızistan’da yapılacak ve organizatörlere yardımcı olmak için öğrencilerin fikirlerini topluyoruz: festival hakkında ne düşünüyorsun, gelecekte onu nasıl görmek istersin ve neyi değiştirmeli. Kırgız arkadaşlarımızı destekleyelim — fikrini paylaş.'),
+    ('hero_festival_title', 'tr', 'Türkistan’da IV. Öğrenci Festivali'),
+    ('hero_festival_dates', 'tr', '5–9 tarihlerinde gerçekleşti'),
+    ('objections_item_1_question', 'uz', 'Buni nima uchun qilamiz?'),
+    ('objections_item_1_answer', 'uz', 'Sayt turkiy dunyo talabalari uchun katta platformaga aylanadi. Keyingi festival Qirgʻizistonda oʻtadi — yigitlarga yordam berish uchun gʻoyalarimiz bilan boʻlishamiz.'),
+    ('tvoi_golos_subtitle', 'uz', 'Keyingi festival — Qirgʻizistonda. Yigitlarni qoʻllab-quvvatlaylik!'),
+    ('tvoi_golos_text', 'uz', 'Festival faqat tomoshalar va ishtirokchilar emas. Keyingi festival Qirgʻizistonda oʻtadi va tashkilotchilarga yordam berish uchun talabalarning gʻoyalarini yigʻamiz: festival haqida nima deb oʻylaysan, kelajakda uni qanday koʻrishni xohlaysan va nimani oʻzgartirish kerak. Qirgʻiz yigitlarini qoʻllab-quvvatlaylik — gʻoyangni ayt.'),
+    ('hero_festival_title', 'uz', 'Turkistonda IV talabalar festivali'),
+    ('hero_festival_dates', 'uz', '5–9 kunlari oʻtkazildi')
+    ON CONFLICT (key, locale) DO UPDATE SET value = EXCLUDED.value;
+    INSERT INTO content_patches (name) VALUES ('2026-10-client-notes');
+  END IF;
+END
+$patch$;
+
 CREATE TABLE IF NOT EXISTS guest_opinions (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   category TEXT NOT NULL CHECK (

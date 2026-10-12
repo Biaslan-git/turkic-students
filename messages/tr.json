@@ -14,11 +14,11 @@
     "heroPhoto": "Festivalde bayraklarla ulusal kıyafetler içinde büyük bir insan grubu",
     "audiencePhoto": "Festivalde ulusal kıyafetler içinde def ve ulusal telli çalgı çalan kızlar",
     "cyclePhoto": "TÜRKSOY binası önünde ulusal kıyafetler içinde katılımcı grubu",
-    "solutionPhoto": "Türk halklarının ulusal kıyafetleri içinde iki festival katılımcısı"
+    "solutionPhoto": "Türk halklarının ulusal kıyafetleri içinde iki festival katılımcısı",
+    "galleryPhoto": "Festivalden fotoğraf"
   },
   "Footer": {
     "logoAlt": "TÜRKSOY amblemi",
-    "leaderboardLink": "Üniversiteler sıralaması «Senin Sesin — Senin Festivalin»",
     "opinionLink": "Festival hakkında görüş bırak",
     "copyright": "© {year} TÜRKSOY STUDENTS",
     "iconsCredit": "Simgeler: emoji illüstrasyonları <link>OpenMoji</link> — CC BY-SA 4.0",
@@ -56,17 +56,6 @@
     "successTitle": "Teşekkürler! Görüşün alındı",
     "successText": "Mutlaka dikkate alacağız."
   },
-  "Leaderboard": {
-    "badge": "Senin Sesin — Senin Festivalin",
-    "title": "Üniversiteler sıralaması",
-    "description": "TÜRKSOY özel ödülü, «Senin Sesin — Senin Festivalin» girişimine en kalabalık doğrulanmış katılımcı kitlesini oluşturan üniversiteye verilir.",
-    "participants": "girişim katılımcısı",
-    "studentsShort": "öğr.",
-    "alumniShort": "mezun",
-    "emptyTitle": "Henüz kimse katılmadı",
-    "emptyText": "Katıl — ve üniversiteni sıralamaya ekle.",
-    "joinCta": "Katıl"
-  },
   "OpinionPage": {
     "badge": "Senin Sesin — Senin Festivalin",
     "title": "Festival hakkındaki görüşünü paylaş",
@@ -75,11 +64,11 @@
   "FestivalSection": {
     "join": "Katıl",
     "participatingUniversities": "Katılımcı üniversiteler",
-    "festivalAudience": "Festival kitlesi",
-    "joinedInitiative": "girişime katıldı",
-    "viewFullLeaderboard": "Tüm sıralamayı gör →",
-    "listBeingFormed": "Liste oluşturuluyor",
-    "registerToAppear": "Kayıt ol — ve üniversiten sıralamada görünsün."
+    "moreUniversities": "Liste yukarıdakilerle sınırlı değil. Kendi üniversitenizi de getirmenizi rica ediyoruz — katılın ve başkalarını da davet edin."
+  },
+  "Gallery": {
+    "title": "Festival fotoğraf galerisi",
+    "subtitle": "Geçmiş festivallerden anlar — her üniversiteden"
   },
   "Validation": {
     "nameRequired": "İsim girin",
@@ -107,8 +96,14 @@
       "alumnus": "Mezun"
     },
     "opinionCategories": {
-      "opinion": { "label": "GÖRÜŞÜM", "question": "Festival hakkında ne düşünüyorsun?" },
-      "idea": { "label": "FİKRİM", "question": "Festivali gelecekte nasıl görmek istersin?" },
+      "opinion": {
+        "label": "GÖRÜŞÜM",
+        "question": "Festival hakkında ne düşünüyorsun?"
+      },
+      "idea": {
+        "label": "FİKRİM",
+        "question": "Festivali gelecekte nasıl görmek istersin?"
+      },
       "proposal": {
         "label": "ÖNERİM",
         "question": "Neyin değiştirilmesi, eklenmesi veya oluşturulması gerekiyor?"
@@ -121,7 +116,10 @@
         "label": "NE EKSİK?",
         "question": "Hangi etkinlikleri veya formatları görmek istersin?"
       },
-      "other": { "label": "DİĞER", "question": "Herhangi bir öneri için serbest alan" }
+      "other": {
+        "label": "DİĞER",
+        "question": "Herhangi bir öneri için serbest alan"
+      }
     }
   }
 }

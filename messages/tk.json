@@ -14,11 +14,11 @@
     "heroPhoto": "Festiwalda baýdaklar bilen milli lybasda uly adamlar topary",
     "audiencePhoto": "Festiwalda def we milli kirişli saz guralynda çalýan milli lybasly gyzlar",
     "cyclePhoto": "TÜRKSOY binasynyň öňünde milli lybasda gatnaşyjylar topary",
-    "solutionPhoto": "Türki halklaryň milli lybasyndaky iki festiwal gatnaşyjysy"
+    "solutionPhoto": "Türki halklaryň milli lybasyndaky iki festiwal gatnaşyjysy",
+    "galleryPhoto": "Festiwaldan surat"
   },
   "Footer": {
     "logoAlt": "TÜRKSOY emblemasy",
-    "leaderboardLink": "Ýokary okuw jaýlarynyň reýtingi «Seniň sesiň — seniň festiwalyň»",
     "opinionLink": "Festiwal barada pikir goýmak",
     "copyright": "© {year} TÜRKSOY STUDENTS",
     "iconsCredit": "Nyşanlar: <link>OpenMoji</link> tarapyndan emoji-illýustrasiýalar — CC BY-SA 4.0",
@@ -56,17 +56,6 @@
     "successTitle": "Sag bol! Pikiriň kabul edildi",
     "successText": "Ony hökman hasaba alarys."
   },
-  "Leaderboard": {
-    "badge": "Seniň sesiň — seniň festiwalyň",
-    "title": "Ýokary okuw jaýlarynyň reýtingi",
-    "description": "TÜRKSOY ýörite baýragy «Seniň sesiň — seniň festiwalyň» başlangyjyna iň köp tassyklanan gatnaşyjylar auditoriýasyny emele getiren uniwersitete berilýär.",
-    "participants": "başlangyç gatnaşyjysy",
-    "studentsShort": "tal.",
-    "alumniShort": "gut.",
-    "emptyTitle": "Häzirlikçe hiç kim goşulmady",
-    "emptyText": "Goşul — we uniwersitetiňi reýtinge goş.",
-    "joinCta": "Goşulmak"
-  },
   "OpinionPage": {
     "badge": "Seniň sesiň — seniň festiwalyň",
     "title": "Festiwal barada pikiriňi paýlaş",
@@ -75,11 +64,11 @@
   "FestivalSection": {
     "join": "Goşulmak",
     "participatingUniversities": "Gatnaşyjy uniwersitetler",
-    "festivalAudience": "Festiwal auditoriýasy",
-    "joinedInitiative": "başlangyja goşuldy",
-    "viewFullLeaderboard": "Ähli reýtingi görmek →",
-    "listBeingFormed": "Sanaw düzülýär",
-    "registerToAppear": "Bellige al — we uniwersitetiň reýtingde peýda bolsun."
+    "moreUniversities": "Sanaw ýokardakylar bilen çäklenmeýär. Öz uniwersitetiňizi çekmegiňizi haýyş edýäris — goşulyň we beýlekileri hem çagyryň."
+  },
+  "Gallery": {
+    "title": "Festiwalyň fotogalereýasy",
+    "subtitle": "Geçen festiwallaryň pursatlary — her uniwersitetden"
   },
   "Validation": {
     "nameRequired": "Adyňy ýaz",
@@ -107,8 +96,14 @@
       "alumnus": "Uniwersiteti gutaran"
     },
     "opinionCategories": {
-      "opinion": { "label": "MENIŇ PIKIRIM", "question": "Festiwal barada näme pikir edýärsiň?" },
-      "idea": { "label": "MENIŇ IDEÝAM", "question": "Festiwaly geljekde nähili görmek isleýärsiň?" },
+      "opinion": {
+        "label": "MENIŇ PIKIRIM",
+        "question": "Festiwal barada näme pikir edýärsiň?"
+      },
+      "idea": {
+        "label": "MENIŇ IDEÝAM",
+        "question": "Festiwaly geljekde nähili görmek isleýärsiň?"
+      },
       "proposal": {
         "label": "MENIŇ TEKLIBIM",
         "question": "Näme üýtgedilmeli, goşulmaly ýa-da döredilmeli?"
@@ -121,7 +116,10 @@
         "label": "NÄME ÝETENOK?",
         "question": "Haýsy çäreleri ýa-da formatlary görmek isleýärsiň?"
       },
-      "other": { "label": "BAŞGA", "question": "Islendik teklip üçin erkin meýdan" }
+      "other": {
+        "label": "BAŞGA",
+        "question": "Islendik teklip üçin erkin meýdan"
+      }
     }
   }
 }
