@@ -817,6 +817,27 @@ BEGIN
 END
 $patch$;
 
+-- Заказчик уточнил даты фестиваля: ноябрь 2026. Меняем только если значение всё ещё равно
+-- тексту первого патча, чтобы не затереть правку из админки.
+DO $patch$
+BEGIN
+  IF NOT EXISTS (SELECT 1 FROM content_patches WHERE name = '2026-10-festival-dates') THEN
+    UPDATE site_content sc SET value = v.new_value
+    FROM (VALUES
+      ('ru', 'Прошёл 5–9', 'Прошёл 5–9 ноября 2026'),
+      ('az', '5–9 tarixlərində keçirilib', '2026-cı il noyabrın 5–9-da keçirilib'),
+      ('kk', '5–9 күндері өтті', '2026 жылғы 5–9 қарашада өтті'),
+      ('ky', '5–9 күндөрү өттү', '2026-жылдын 5–9-ноябрында өттү'),
+      ('tk', '5–9 aralygynda geçirildi', '2026-njy ýylyň 5–9-njy noýabrynda geçirildi'),
+      ('tr', '5–9 tarihlerinde gerçekleşti', '5–9 Kasım 2026 tarihlerinde gerçekleşti'),
+      ('uz', '5–9 kunlari oʻtkazildi', '2026-yil 5–9-noyabrda oʻtkazildi')
+    ) AS v(locale, old_value, new_value)
+    WHERE sc.key = 'hero_festival_dates' AND sc.locale = v.locale AND sc.value = v.old_value;
+    INSERT INTO content_patches (name) VALUES ('2026-10-festival-dates');
+  END IF;
+END
+$patch$;
+
 CREATE TABLE IF NOT EXISTS guest_opinions (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   category TEXT NOT NULL CHECK (
