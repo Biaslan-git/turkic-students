@@ -1,5 +1,7 @@
 import { pool } from "./db";
-import { translateToAllLocales, type Translations } from "./translate";
+import { translateText } from "./translate";
+
+export type Translations = Record<string, string>;
 
 export type IdeaComment = {
   id: string;
@@ -166,28 +168,37 @@ export async function insertIdeaComment(input: {
 
 type TranslatableTable = "ideas" | "idea_comments";
 
-export async function translateAndStore(table: TranslatableTable, id: string, text: string): Promise<boolean> {
-  const translations = await translateToAllLocales(text);
-  if (!translations) return false;
-  // table — только из union выше, не пользовательский ввод.
-  await pool.query(`UPDATE ${table} SET translations = $2::jsonb WHERE id = $1`, [id, JSON.stringify(translations)]);
-  return true;
-}
+// Переводим лениво — только на тот язык, на котором запись реально открыли, и кэшируем в
+// БД: бесплатный лимит переводчика (lib/translate.ts) тратится только на нужное.
+// inFlight не даёт нескольким одновременным заходам переводить одно и то же дважды.
+const inFlight = new Set<string>();
+const MAX_PER_RENDER = 8;
 
-// Дозапуск перевода для записей, у которых его нет (например, ключ API добавили позже).
-export async function translateMissing(): Promise<{ done: number; failed: number }> {
-  let done = 0;
-  let failed = 0;
-  for (const table of ["ideas", "idea_comments"] as const) {
-    const rows = await pool.query<{ id: string; text: string }>(
-      `SELECT id, text FROM ${table} WHERE translations = '{}'::jsonb ORDER BY created_at DESC LIMIT 100`,
-    );
-    for (const row of rows.rows) {
-      if (await translateAndStore(table, row.id, row.text)) done++;
-      else failed++;
+export async function ensureTranslations(ideas: Idea[], locale: string): Promise<void> {
+  const pending: { table: TranslatableTable; id: string; text: string }[] = [];
+  for (const idea of ideas) {
+    if (!(locale in idea.translations)) pending.push({ table: "ideas", id: idea.id, text: idea.text });
+    for (const c of idea.comments) {
+      if (!(locale in c.translations)) pending.push({ table: "idea_comments", id: c.id, text: c.text });
     }
   }
-  return { done, failed };
+
+  for (const item of pending.slice(0, MAX_PER_RENDER)) {
+    const key = `${item.id}:${locale}`;
+    if (inFlight.has(key)) continue;
+    inFlight.add(key);
+    try {
+      const translated = await translateText(item.text, locale);
+      if (translated === null) return; // лимит или сбой — не долбим сервис дальше, повторим на следующем заходе
+      // table — только из union выше, не пользовательский ввод.
+      await pool.query(
+        `UPDATE ${item.table} SET translations = translations || jsonb_build_object($2::text, $3::text) WHERE id = $1`,
+        [item.id, locale, translated],
+      );
+    } finally {
+      inFlight.delete(key);
+    }
+  }
 }
 
 export async function moderateIdeaItem(

@@ -15,7 +15,7 @@ import { restoreContentSnapshot } from "@/lib/admin/site-content-history";
 import { createFestivalUniversity, setFestivalUniversityActive } from "@/lib/admin/festival";
 import { festivalUniversitySchema } from "@/lib/validation";
 import { revalidatePath } from "next/cache";
-import { moderateIdeaItem, translateMissing } from "@/lib/ideas";
+import { moderateIdeaItem } from "@/lib/ideas";
 
 export type LoginState = { status: "idle" | "error"; message?: string };
 
@@ -146,11 +146,5 @@ export async function moderateIdea(formData: FormData): Promise<void> {
   if (!["hide", "show", "delete"].includes(action)) return;
 
   await moderateIdeaItem(kind, id, action as "hide" | "show" | "delete");
-  revalidatePath("/", "layout");
-}
-
-export async function retranslateIdeas(): Promise<void> {
-  if (!(await isAdmin())) return;
-  await translateMissing();
   revalidatePath("/", "layout");
 }

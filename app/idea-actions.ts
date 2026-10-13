@@ -1,10 +1,9 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
-import { after } from "next/server";
 import { getLocale, getTranslations } from "next-intl/server";
 import { ideaCommentSchema, ideaSchema } from "@/lib/validation";
-import { ideaExists, insertIdea, insertIdeaComment, translateAndStore } from "@/lib/ideas";
+import { ideaExists, insertIdea, insertIdeaComment } from "@/lib/ideas";
 import { isRateLimited } from "@/lib/rate-limit";
 import { getClientIp } from "@/lib/get-client-ip";
 
@@ -40,14 +39,12 @@ export async function submitIdea(_prevState: IdeaFormState, formData: FormData):
     return { status: "error", message: tErrors("tooManyAttempts") };
   }
 
-  let id: string;
   try {
-    id = await insertIdea({ ...parsed.data, sourceLocale: locale });
+    await insertIdea({ ...parsed.data, sourceLocale: locale });
   } catch {
     return { status: "error", message: tErrors("saveFailed") };
   }
 
-  after(() => translateAndStore("ideas", id, parsed.data.text));
   revalidatePath("/", "layout");
 
   return { status: "success" };
@@ -84,14 +81,12 @@ export async function submitIdeaComment(
     return { status: "error", message: tErrors("saveFailed") };
   }
 
-  let id: string;
   try {
-    id = await insertIdeaComment({ ...parsed.data, sourceLocale: locale });
+    await insertIdeaComment({ ...parsed.data, sourceLocale: locale });
   } catch {
     return { status: "error", message: tErrors("saveFailed") };
   }
 
-  after(() => translateAndStore("idea_comments", id, parsed.data.text));
   revalidatePath("/", "layout");
 
   return { status: "success" };

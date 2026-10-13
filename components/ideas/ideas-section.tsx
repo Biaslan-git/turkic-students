@@ -2,11 +2,13 @@ import { getLocale, getTranslations } from "next-intl/server";
 import { IdeaCard } from "@/components/ideas/idea-card";
 import { getCountryOptions } from "@/components/ideas/ideas-data";
 import { Link } from "@/i18n/navigation";
-import { listIdeas } from "@/lib/ideas";
+import { after } from "next/server";
+import { ensureTranslations, listIdeas } from "@/lib/ideas";
 
 export async function IdeasSection() {
   const [t, locale, ideas] = await Promise.all([getTranslations("Ideas"), getLocale(), listIdeas({ limit: 3 })]);
   const countries = getCountryOptions(locale);
+  after(() => ensureTranslations(ideas, locale));
 
   return (
     <section id="ideas" className="relative scroll-mt-20 bg-background">

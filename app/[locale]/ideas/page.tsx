@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { after } from "next/server";
 import { getTranslations } from "next-intl/server";
 import { Header } from "@/components/sections/header";
 import { Footer } from "@/components/sections/footer";
@@ -8,7 +9,7 @@ import { getCountryOptions } from "@/components/ideas/ideas-data";
 import { Link } from "@/i18n/navigation";
 import { IDEA_COUNTRIES, OPINION_CATEGORIES } from "@/lib/constants";
 import { getSiteContent } from "@/lib/content/site-content";
-import { listIdeas } from "@/lib/ideas";
+import { ensureTranslations, listIdeas } from "@/lib/ideas";
 import { listActiveUniversities } from "@/lib/universities";
 
 export async function generateMetadata({
@@ -45,6 +46,7 @@ export default async function IdeasPage({
     listActiveUniversities(),
   ]);
   const countries = getCountryOptions(locale);
+  after(() => ensureTranslations(ideas, locale));
 
   const href = (next: { country?: string; category?: string }) => {
     const params = new URLSearchParams();

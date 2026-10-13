@@ -1,4 +1,4 @@
-import { moderateIdea, retranslateIdeas } from "@/app/admin/actions";
+import { moderateIdea } from "@/app/admin/actions";
 import { OPINION_CATEGORIES } from "@/lib/constants";
 import { countryFlag } from "@/lib/country";
 import { listAllIdeas } from "@/lib/ideas";
@@ -30,14 +30,6 @@ function ModerationButtons({ kind, id, hidden }: { kind: "idea" | "comment"; id:
 
 export default async function AdminIdeasPage() {
   const ideas = await listAllIdeas();
-  const missing = ideas.reduce(
-    (n, idea) =>
-      n +
-      (Object.keys(idea.translations).length === 0 ? 1 : 0) +
-      idea.comments.filter((c) => Object.keys(c.translations).length === 0).length,
-    0,
-  );
-
   return (
     <div className="flex flex-col gap-6">
       <div className="flex flex-wrap items-center justify-between gap-3">
@@ -47,16 +39,6 @@ export default async function AdminIdeasPage() {
             Новые идеи и ответы сразу видны на сайте — скрывайте лишнее. Всего идей: {ideas.length}.
           </p>
         </div>
-        <form action={retranslateIdeas} className="flex items-center gap-3">
-          <span className="text-sm text-muted">Без перевода: {missing}</span>
-          <button
-            type="submit"
-            disabled={missing === 0}
-            className="rounded-lg border border-border px-3 py-2 text-sm font-medium disabled:opacity-50"
-          >
-            Перевести недостающие
-          </button>
-        </form>
       </div>
 
       {ideas.length === 0 && <p className="text-muted">Пока нет ни одной идеи.</p>}
@@ -76,8 +58,7 @@ export default async function AdminIdeasPage() {
           <p className="whitespace-pre-line text-sm">{idea.text}</p>
           <p className="text-xs text-muted">
             {idea.authorName || "Аноним"} · {countryFlag(idea.country)} {idea.country}
-            {idea.universityName ? ` · ${idea.universityName}` : ""} · переводов:{" "}
-            {Object.keys(idea.translations).length}
+            {idea.universityName ? ` · ${idea.universityName}` : ""}
           </p>
 
           {idea.comments.length > 0 && (
