@@ -44,6 +44,9 @@ export function Select({
   const containerRef = useRef<HTMLDivElement>(null);
   const listRef = useRef<HTMLUListElement>(null);
   const listId = useId();
+  // Фокус при первом клике уже открывает список (onFocus), поэтому "закрыть повторным
+  // кликом" отличаем по состоянию на момент нажатия, а не на момент click.
+  const wasOpenOnPress = useRef(false);
 
   // Пока список закрыт, поле показывает лейбл текущего value напрямую (без
   // отдельного state и эффекта-синхронизации) — как только открыт, показывает то,
@@ -157,8 +160,13 @@ export function Select({
           onKeyDown={onInputKeyDown}
           placeholder={placeholder}
           readOnly={!searchable}
+          onMouseDown={() => {
+            wasOpenOnPress.current = open;
+          }}
           onClick={() => {
             if (!open) openDropdown();
+            // Пока человек что-то печатает, клик — это просто перенос курсора, меню не закрываем.
+            else if (wasOpenOnPress.current && !query) closeDropdown();
           }}
           className={`w-full border border-border bg-background pr-9 outline-none transition-colors focus:ring-2 ${
             searchable ? "" : "cursor-pointer caret-transparent"
