@@ -719,12 +719,26 @@ UPDATE festival_universities
 -- заведён под новым именем, этот UPDATE донастраивает БД, где миграция накатывалась раньше
 -- и строка ещё под старым именем). NOT EXISTS — как в рененйме выше.
 UPDATE festival_universities
-  SET name = 'Узбекистанский государственный институт искусств и культуры'
+  SET name = 'Государственный институт искусств и культуры Узбекистана'
   WHERE lower(name) = lower('Ташкентский государственный институт искусств и культуры')
     AND country = 'Узбекистан'
     AND NOT EXISTS (
       SELECT 1 FROM festival_universities existing
-      WHERE lower(existing.name) = lower('Узбекистанский государственный институт искусств и культуры')
+      WHERE lower(existing.name) = lower('Государственный институт искусств и культуры Узбекистана')
+        AND existing.country = 'Узбекистан'
+    );
+
+-- Заказчик попросил точное официальное название вуза: «Государственный институт искусств и культуры Узбекистана».
+-- Переименование идёт до сидирующего INSERT ниже, иначе тот на каждом старте
+-- заново заведёт строку под новым именем рядом со старой (NOT EXISTS — на случай,
+-- если админ уже завёл вуз под новым именем).
+UPDATE festival_universities
+  SET name = 'Государственный институт искусств и культуры Узбекистана'
+  WHERE lower(name) = lower('Узбекистанский государственный институт искусств и культуры')
+    AND country = 'Узбекистан'
+    AND NOT EXISTS (
+      SELECT 1 FROM festival_universities existing
+      WHERE lower(existing.name) = lower('Государственный институт искусств и культуры Узбекистана')
         AND existing.country = 'Узбекистан'
     );
 
@@ -732,7 +746,7 @@ INSERT INTO festival_universities (name, country) VALUES
   ('Азербайджанский государственный университет культуры и искусств', 'Азербайджан'),
   ('Казахский национальный университет искусств им. К. Байсеитовой', 'Казахстан'),
   ('Казахская национальная академия искусств им. Т. Жургенова', 'Казахстан'),
-  ('Узбекистанский государственный институт искусств и культуры', 'Узбекистан'),
+  ('Государственный институт искусств и культуры Узбекистана', 'Узбекистан'),
   ('Кыргызско-Турецкий университет «Манас»', 'Кыргызстан'),
   ('Кыргызский государственный университет искусств и культуры им. Б. Бейшеналиевой', 'Кыргызстан')
 ON CONFLICT (lower(name), lower(country)) DO NOTHING;
@@ -834,6 +848,42 @@ BEGIN
     ) AS v(locale, old_value, new_value)
     WHERE sc.key = 'hero_festival_dates' AND sc.locale = v.locale AND sc.value = v.old_value;
     INSERT INTO content_patches (name) VALUES ('2026-10-festival-dates');
+  END IF;
+END
+$patch$;
+
+-- Фестиваль пройдёт 5–9 ноября 2026 в Кыргызстане (а не в Туркестане): плашка в хиро и
+-- бейдж секции фестиваля. Меняем только строки, которые всё ещё равны прежнему тексту,
+-- чтобы не затереть правки из админки.
+DO $patch$
+BEGIN
+  IF NOT EXISTS (SELECT 1 FROM content_patches WHERE name = '2026-10-kyrgyzstan') THEN
+    UPDATE site_content sc SET value = v.new_value
+    FROM (VALUES
+      ('hero_festival_title', 'ru', 'IV студенческий фестиваль в Туркестане', 'Международный студенческий фестиваль в Кыргызстане'),
+      ('hero_festival_dates', 'ru', 'Прошёл 5–9 ноября 2026', 'Пройдёт 5–9 ноября 2026'),
+      ('tvoi_golos_badge', 'ru', 'Международный студенческий театральный фестиваль в Туркестане', 'Международный студенческий театральный фестиваль в Кыргызстане'),
+      ('hero_festival_title', 'az', 'Türküstanda IV tələbə festivalı', 'Qırğızıstanda Beynəlxalq Tələbə Festivalı'),
+      ('hero_festival_dates', 'az', '2026-cı il noyabrın 5–9-da keçirilib', '2026-cı il noyabrın 5–9-da keçiriləcək'),
+      ('tvoi_golos_badge', 'az', 'Türküstanda Beynəlxalq Tələbə Teatr Festivalı', 'Qırğızıstanda Beynəlxalq Tələbə Teatr Festivalı'),
+      ('hero_festival_title', 'kk', 'Түркістандағы IV студенттік фестиваль', 'Қырғызстандағы халықаралық студенттік фестиваль'),
+      ('hero_festival_dates', 'kk', '2026 жылғы 5–9 қарашада өтті', '2026 жылғы 5–9 қарашада өтеді'),
+      ('tvoi_golos_badge', 'kk', 'Түркістандағы халықаралық студенттік театр фестивалі', 'Қырғызстандағы халықаралық студенттік театр фестивалі'),
+      ('hero_festival_title', 'ky', 'Түркстандагы IV студенттик фестиваль', 'Кыргызстандагы эл аралык студенттик фестиваль'),
+      ('hero_festival_dates', 'ky', '2026-жылдын 5–9-ноябрында өттү', '2026-жылдын 5–9-ноябрында өтөт'),
+      ('tvoi_golos_badge', 'ky', 'Түркстандагы Эл аралык студенттик театр фестивалы', 'Кыргызстандагы Эл аралык студенттик театр фестивалы'),
+      ('hero_festival_title', 'tk', 'Türkistanda IV talyp festiwaly', 'Gyrgyzystanda halkara talyp festiwaly'),
+      ('hero_festival_dates', 'tk', '2026-njy ýylyň 5–9-njy noýabrynda geçirildi', '2026-njy ýylyň 5–9-njy noýabrynda geçiriler'),
+      ('tvoi_golos_badge', 'tk', 'Türkistanda Halkara talyp teatr festiwaly', 'Gyrgyzystanda Halkara talyp teatr festiwaly'),
+      ('hero_festival_title', 'tr', 'Türkistan’da IV. Öğrenci Festivali', 'Kırgızistan’da Uluslararası Öğrenci Festivali'),
+      ('hero_festival_dates', 'tr', '5–9 Kasım 2026 tarihlerinde gerçekleşti', '5–9 Kasım 2026 tarihlerinde gerçekleşecek'),
+      ('tvoi_golos_badge', 'tr', 'Türkistan''da Uluslararası Öğrenci Tiyatro Festivali', 'Kırgızistan’da Uluslararası Öğrenci Tiyatro Festivali'),
+      ('hero_festival_title', 'uz', 'Turkistonda IV talabalar festivali', 'Qirgʻizistonda xalqaro talabalar festivali'),
+      ('hero_festival_dates', 'uz', '2026-yil 5–9-noyabrda oʻtkazildi', '2026-yil 5–9-noyabrda oʻtkaziladi'),
+      ('tvoi_golos_badge', 'uz', 'Turkistonda Xalqaro talabalar teatr festivali', 'Qirgʻizistonda Xalqaro talabalar teatr festivali')
+    ) AS v(key, locale, old_value, new_value)
+    WHERE sc.key = v.key AND sc.locale = v.locale AND sc.value = v.old_value;
+    INSERT INTO content_patches (name) VALUES ('2026-10-kyrgyzstan');
   END IF;
 END
 $patch$;
