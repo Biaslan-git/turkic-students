@@ -21,7 +21,8 @@
     "opinionLink": "Festiwal barada pikir goýmak",
     "copyright": "© {year} TÜRKSOY STUDENTS",
     "iconsCredit": "Nyşanlar: <link>OpenMoji</link> tarapyndan emoji-illýustrasiýalar — CC BY-SA 4.0",
-    "developedByPrefix": "Işläp taýýarlan"
+    "developedByPrefix": "Işläp taýýarlan",
+    "ideasLink": "Pikirler diwary"
   },
   "WaitlistForm": {
     "nameLabel": "Ady",
@@ -55,6 +56,38 @@
     "successTitle": "Sag bol! Pikiriň kabul edildi",
     "successText": "Ony hökman hasaba alarys."
   },
+  "Ideas": {
+    "badge": "Pikirler diwary",
+    "title": "Indiki festiwal üçin pikirler",
+    "description": "Pikiriňi teklip et ýa-da başga birine jogap ber — habarlary her gatnaşyjynyň diline terjime ederis.",
+    "categoryLabel": "Ugur",
+    "textLabel": "Seniň pikiriň",
+    "textPlaceholder": "Näme görmek ýa-da üýtgetmek isleýäniňi ýaz…",
+    "countryLabel": "Ýurt",
+    "countryPlaceholder": "Ýurdy saýlaň",
+    "nameLabel": "Ady",
+    "optional": "(hökman däl)",
+    "universityLabel": "Uniwersitet",
+    "universityPlaceholder": "Uniwersiteti saýlaň",
+    "submit": "Çap et",
+    "sending": "Çap edilýär…",
+    "successTitle": "Sag boluň! Pikir çap edildi",
+    "successText": "Ol eýýäm diwarda. Beýleki dillere terjime bir minutdan görner.",
+    "toFeed": "Ähli pikirlere seret",
+    "anonymous": "Näbelli",
+    "showOriginal": "Asyl nusgany görkez",
+    "showTranslation": "Terjimäni görkez",
+    "reply": "Jogap ber",
+    "replyPlaceholder": "Seniň jogabyň…",
+    "replySent": "Sag boluň! Jogap iberildi",
+    "send": "Iber",
+    "cancel": "Ýatyr",
+    "allCountries": "Ähli ýurtlar",
+    "allCategories": "Ähli ugurlar",
+    "empty": "Heniz boş — ilkinjileriň biri boluň!",
+    "shareIdea": "Pikir teklip et",
+    "allIdeas": "Ähli pikirler →"
+  },
   "OpinionPage": {
     "badge": "Seniň sesiň — seniň festiwalyň",
     "title": "Festiwal barada pikiriňi paýlaş",
@@ -87,7 +120,9 @@
     "alreadyRegistered": "Sen eýýäm garaşylýan sanawda bellige alyndyň",
     "checkFields": "Doldurylan meýdanlary barla",
     "applicationNotFound": "Arza tapylmady",
-    "chooseCategoryAndWrite": "Kategoriýany saýlap, pikiriňi ýaz"
+    "chooseCategoryAndWrite": "Kategoriýany saýlap, pikiriňi ýaz",
+    "ideaInvalid": "Pikiriňizi ýazyň we ýurdy saýlaň",
+    "commentInvalid": "Jogabyňyzy ýazyň we ýurdy saýlaň"
   },
   "Constants": {
     "festivalRoles": {

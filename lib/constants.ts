@@ -35,3 +35,6 @@ export const OPINION_CATEGORIES = [
   },
   { value: "other", label: "ДРУГОЕ", question: "Свободное поле для любого предложения" },
 ] as const;
+
+// Страны стены идей — ISO 3166-1; название страны локализуется через Intl.DisplayNames.
+export const IDEA_COUNTRIES = ["AZ", "KZ", "KG", "TM", "TR", "UZ"] as const;

@@ -21,7 +21,8 @@
     "opinionLink": "Festival hakkında görüş bırak",
     "copyright": "© {year} TÜRKSOY STUDENTS",
     "iconsCredit": "Simgeler: emoji illüstrasyonları <link>OpenMoji</link> — CC BY-SA 4.0",
-    "developedByPrefix": "Geliştiren"
+    "developedByPrefix": "Geliştiren",
+    "ideasLink": "Fikir Duvarı"
   },
   "WaitlistForm": {
     "nameLabel": "İsim",
@@ -55,6 +56,38 @@
     "successTitle": "Teşekkürler! Görüşün alındı",
     "successText": "Mutlaka dikkate alacağız."
   },
+  "Ideas": {
+    "badge": "Fikir Duvarı",
+    "title": "Bir sonraki festival için fikirler",
+    "description": "Bir fikir öner ya da başkasının fikrine yanıt ver — mesajları her katılımcının diline çevireceğiz.",
+    "categoryLabel": "Yön",
+    "textLabel": "Senin fikrin",
+    "textPlaceholder": "Ne görmek veya neyi değiştirmek istediğini yaz…",
+    "countryLabel": "Ülke",
+    "countryPlaceholder": "Ülke seçin",
+    "nameLabel": "Ad",
+    "optional": "(isteğe bağlı)",
+    "universityLabel": "Üniversite",
+    "universityPlaceholder": "Üniversite seçin",
+    "submit": "Yayınla",
+    "sending": "Yayınlanıyor…",
+    "successTitle": "Teşekkürler! Fikir yayınlandı",
+    "successText": "Fikir duvarda. Diğer dillere çeviri bir dakika içinde görünecek.",
+    "toFeed": "Tüm fikirleri gör",
+    "anonymous": "Anonim",
+    "showOriginal": "Orijinali göster",
+    "showTranslation": "Çeviriyi göster",
+    "reply": "Yanıtla",
+    "replyPlaceholder": "Yanıtın…",
+    "replySent": "Teşekkürler! Yanıt gönderildi",
+    "send": "Gönder",
+    "cancel": "İptal",
+    "allCountries": "Tüm ülkeler",
+    "allCategories": "Tüm yönler",
+    "empty": "Henüz boş — ilk sen ol!",
+    "shareIdea": "Fikir öner",
+    "allIdeas": "Tüm fikirler →"
+  },
   "OpinionPage": {
     "badge": "Senin Sesin — Senin Festivalin",
     "title": "Festival hakkındaki görüşünü paylaş",
@@ -87,7 +120,9 @@
     "alreadyRegistered": "Zaten bekleme listesine kayıtlısınız",
     "checkFields": "Doldurulan alanları kontrol edin",
     "applicationNotFound": "Başvuru bulunamadı",
-    "chooseCategoryAndWrite": "Kategori seçin ve görüşünüzü yazın"
+    "chooseCategoryAndWrite": "Kategori seçin ve görüşünüzü yazın",
+    "ideaInvalid": "Fikrinizi yazın ve ülke seçin",
+    "commentInvalid": "Yanıtınızı yazın ve ülke seçin"
   },
   "Constants": {
     "festivalRoles": {

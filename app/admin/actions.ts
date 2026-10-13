@@ -14,6 +14,8 @@ import { updateSiteContent } from "@/lib/admin/site-content";
 import { restoreContentSnapshot } from "@/lib/admin/site-content-history";
 import { createFestivalUniversity, setFestivalUniversityActive } from "@/lib/admin/festival";
 import { festivalUniversitySchema } from "@/lib/validation";
+import { revalidatePath } from "next/cache";
+import { moderateIdeaItem, translateMissing } from "@/lib/ideas";
 
 export type LoginState = { status: "idle" | "error"; message?: string };
 
@@ -126,4 +128,29 @@ export async function toggleUniversityActive(
   }
 
   return { status: "success" };
+}
+
+async function isAdmin(): Promise<boolean> {
+  const store = await cookies();
+  return verifySessionCookieValue(store.get(SESSION_COOKIE_NAME)?.value);
+}
+
+// Действия модерации стены идей: скрыть/показать/удалить идею или ответ. Вызываются из
+// <form action> без возврата — страница просто перерисовывается.
+export async function moderateIdea(formData: FormData): Promise<void> {
+  if (!(await isAdmin())) return;
+
+  const kind = formData.get("kind") === "comment" ? "comment" : "idea";
+  const action = String(formData.get("action"));
+  const id = String(formData.get("id"));
+  if (!["hide", "show", "delete"].includes(action)) return;
+
+  await moderateIdeaItem(kind, id, action as "hide" | "show" | "delete");
+  revalidatePath("/", "layout");
+}
+
+export async function retranslateIdeas(): Promise<void> {
+  if (!(await isAdmin())) return;
+  await translateMissing();
+  revalidatePath("/", "layout");
 }

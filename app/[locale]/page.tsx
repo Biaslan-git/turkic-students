@@ -7,6 +7,7 @@ import { AudienceSection } from "@/components/sections/audience-section";
 import { PrinciplesSection } from "@/components/sections/principles-section";
 import { ObjectionsSection } from "@/components/sections/objections-section";
 import { FestivalSection } from "@/components/festival/festival-section";
+import { IdeasSection } from "@/components/ideas/ideas-section";
 import { GallerySection } from "@/components/sections/gallery-section";
 import { WaitlistSection } from "@/components/sections/waitlist-section";
 import { Footer } from "@/components/sections/footer";
@@ -123,6 +124,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
           text={c.tvoi_golos_text}
           alumniNote={c.tvoi_golos_alumni_note}
         />
+        <IdeasSection />
         <GallerySection photos={galleryPhotos} />
         <WaitlistSection title={c.waitlist_title} text={c.waitlist_text} universities={universities} />
       </main>

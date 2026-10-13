@@ -896,3 +896,38 @@ CREATE TABLE IF NOT EXISTS guest_opinions (
   text TEXT NOT NULL,
   created_at TIMESTAMPTZ NOT NULL DEFAULT now()
 );
+
+-- «Стена идей»: идеи и ответы без регистрации. Текст хранится в оригинале, переводы на
+-- остальные языки (locale → текст) дописываются фоном (lib/translate.ts), пока их нет —
+-- показываем оригинал. Скрытие вместо удаления — админ может вернуть сообщение.
+CREATE TABLE IF NOT EXISTS ideas (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  category TEXT NOT NULL CHECK (
+    category IN ('opinion', 'idea', 'proposal', 'viewpoint', 'missing', 'other')
+  ),
+  author_name TEXT,
+  country TEXT NOT NULL,
+  university_id UUID REFERENCES festival_universities(id),
+  university_other_name TEXT,
+  text TEXT NOT NULL,
+  source_locale TEXT NOT NULL,
+  translations JSONB NOT NULL DEFAULT '{}'::jsonb,
+  is_hidden BOOLEAN NOT NULL DEFAULT false,
+  created_at TIMESTAMPTZ NOT NULL DEFAULT now()
+);
+
+CREATE INDEX IF NOT EXISTS ideas_created_idx ON ideas (created_at DESC);
+
+CREATE TABLE IF NOT EXISTS idea_comments (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  idea_id UUID NOT NULL REFERENCES ideas(id) ON DELETE CASCADE,
+  author_name TEXT,
+  country TEXT NOT NULL,
+  text TEXT NOT NULL,
+  source_locale TEXT NOT NULL,
+  translations JSONB NOT NULL DEFAULT '{}'::jsonb,
+  is_hidden BOOLEAN NOT NULL DEFAULT false,
+  created_at TIMESTAMPTZ NOT NULL DEFAULT now()
+);
+
+CREATE INDEX IF NOT EXISTS idea_comments_idea_idx ON idea_comments (idea_id, created_at);

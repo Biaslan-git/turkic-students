@@ -21,7 +21,8 @@
     "opinionLink": "Оставить мнение о фестивале",
     "copyright": "© {year} TÜRKSOY STUDENTS",
     "iconsCredit": "Иконки: emoji-иллюстрации by <link>OpenMoji</link> — CC BY-SA 4.0",
-    "developedByPrefix": "Разработал"
+    "developedByPrefix": "Разработал",
+    "ideasLink": "Стена идей"
   },
   "WaitlistForm": {
     "nameLabel": "Имя",
@@ -55,6 +56,38 @@
     "successTitle": "Спасибо! Мнение получено",
     "successText": "Мы обязательно его учтём."
   },
+  "Ideas": {
+    "badge": "Стена идей",
+    "title": "Идеи для следующего фестиваля",
+    "description": "Предложи идею или ответь на чужую — мы переведём сообщения на язык каждого участника.",
+    "categoryLabel": "Направление",
+    "textLabel": "Твоя идея",
+    "textPlaceholder": "Расскажи, что ты хочешь увидеть или изменить…",
+    "countryLabel": "Страна",
+    "countryPlaceholder": "Выберите страну",
+    "nameLabel": "Имя",
+    "optional": "(необязательно)",
+    "universityLabel": "Университет",
+    "universityPlaceholder": "Выберите университет",
+    "submit": "Опубликовать",
+    "sending": "Публикуем…",
+    "successTitle": "Спасибо! Идея опубликована",
+    "successText": "Она уже на стене. Перевод на другие языки появится через минуту.",
+    "toFeed": "Смотреть все идеи",
+    "anonymous": "Аноним",
+    "showOriginal": "Показать оригинал",
+    "showTranslation": "Показать перевод",
+    "reply": "Ответить",
+    "replyPlaceholder": "Твой ответ…",
+    "replySent": "Спасибо! Ответ отправлен",
+    "send": "Отправить",
+    "cancel": "Отмена",
+    "allCountries": "Все страны",
+    "allCategories": "Все направления",
+    "empty": "Пока здесь пусто — станьте первыми!",
+    "shareIdea": "Предложить идею",
+    "allIdeas": "Все идеи →"
+  },
   "OpinionPage": {
     "badge": "Твой голос — твой фестиваль",
     "title": "Поделись мнением о фестивале",
@@ -87,7 +120,9 @@
     "alreadyRegistered": "Вы уже зарегистрированы в списке ожидания",
     "checkFields": "Проверьте заполненные поля",
     "applicationNotFound": "Заявка не найдена",
-    "chooseCategoryAndWrite": "Выберите категорию и напишите мнение"
+    "chooseCategoryAndWrite": "Выберите категорию и напишите мнение",
+    "ideaInvalid": "Напишите идею и выберите страну",
+    "commentInvalid": "Напишите ответ и выберите страну"
   },
   "Constants": {
     "festivalRoles": {

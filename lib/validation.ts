@@ -1,8 +1,10 @@
 import { z } from "zod";
-import { FESTIVAL_ROLES, OPINION_CATEGORIES } from "./constants";
+import { FESTIVAL_ROLES, IDEA_COUNTRIES, OPINION_CATEGORIES } from "./constants";
 
 const festivalRoleValues = FESTIVAL_ROLES.map((r) => r.value) as [string, ...string[]];
 const opinionCategoryValues = OPINION_CATEGORIES.map((c) => c.value) as [string, ...string[]];
+
+const ideaCountryValues = IDEA_COUNTRIES as unknown as [string, ...string[]];
 
 const currentYear = new Date().getFullYear();
 
@@ -68,3 +70,31 @@ export type WaitlistBasicInput = z.infer<ReturnType<typeof makeWaitlistBasicSche
 export type WaitlistDetailsInput = z.infer<ReturnType<typeof makeWaitlistDetailsSchema>>;
 export type FestivalUniversityInput = z.infer<typeof festivalUniversitySchema>;
 export type GuestOpinionInput = z.infer<ReturnType<typeof makeGuestOpinionSchema>>;
+
+const optionalName = z
+  .string()
+  .trim()
+  .max(80)
+  .optional()
+  .transform((value) => value || undefined);
+
+export const ideaSchema = z.object({
+  category: z.enum(opinionCategoryValues),
+  text: z.string().trim().min(2).max(1000),
+  authorName: optionalName,
+  country: z.enum(ideaCountryValues),
+  universityId: z.string().uuid().optional().or(z.literal("")),
+  universityOtherName: z.string().trim().max(200).optional().or(z.literal("")),
+  company: z.string().max(0).optional().or(z.literal("")),
+});
+
+export const ideaCommentSchema = z.object({
+  ideaId: z.string().uuid(),
+  text: z.string().trim().min(2).max(1000),
+  authorName: optionalName,
+  country: z.enum(ideaCountryValues),
+  company: z.string().max(0).optional().or(z.literal("")),
+});
+
+export type IdeaInput = z.infer<typeof ideaSchema>;
+export type IdeaCommentInput = z.infer<typeof ideaCommentSchema>;

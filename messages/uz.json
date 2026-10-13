@@ -21,7 +21,8 @@
     "opinionLink": "Festival haqida fikr qoldirish",
     "copyright": "© {year} TÜRKSOY STUDENTS",
     "iconsCredit": "Belgilar: <link>OpenMoji</link> tomonidan emoji-illyustratsiyalar — CC BY-SA 4.0",
-    "developedByPrefix": "Ishlab chiqdi"
+    "developedByPrefix": "Ishlab chiqdi",
+    "ideasLink": "Gʻoyalar devori"
   },
   "WaitlistForm": {
     "nameLabel": "Ism",
@@ -55,6 +56,38 @@
     "successTitle": "Rahmat! Fikringiz qabul qilindi",
     "successText": "Uni albatta hisobga olamiz."
   },
+  "Ideas": {
+    "badge": "Gʻoyalar devori",
+    "title": "Keyingi festival uchun gʻoyalar",
+    "description": "Gʻoyangni taklif qil yoki boshqalarning gʻoyasiga javob ber — xabarlarni har bir ishtirokchining tiliga tarjima qilamiz.",
+    "categoryLabel": "Yoʻnalish",
+    "textLabel": "Sening gʻoyang",
+    "textPlaceholder": "Nimani koʻrishni yoki oʻzgartirishni xohlayotganingni yoz…",
+    "countryLabel": "Davlat",
+    "countryPlaceholder": "Davlatni tanlang",
+    "nameLabel": "Ism",
+    "optional": "(majburiy emas)",
+    "universityLabel": "Universitet",
+    "universityPlaceholder": "Universitetni tanlang",
+    "submit": "Eʼlon qilish",
+    "sending": "Eʼlon qilinmoqda…",
+    "successTitle": "Rahmat! Gʻoya eʼlon qilindi",
+    "successText": "U allaqachon devorda. Boshqa tillarga tarjima bir daqiqada paydo boʻladi.",
+    "toFeed": "Barcha gʻoyalarni koʻrish",
+    "anonymous": "Anonim",
+    "showOriginal": "Asl nusxani koʻrsatish",
+    "showTranslation": "Tarjimani koʻrsatish",
+    "reply": "Javob berish",
+    "replyPlaceholder": "Sening javobing…",
+    "replySent": "Rahmat! Javob yuborildi",
+    "send": "Yuborish",
+    "cancel": "Bekor qilish",
+    "allCountries": "Barcha davlatlar",
+    "allCategories": "Barcha yoʻnalishlar",
+    "empty": "Hozircha boʻsh — birinchi boʻling!",
+    "shareIdea": "Gʻoya taklif qilish",
+    "allIdeas": "Barcha gʻoyalar →"
+  },
   "OpinionPage": {
     "badge": "Sening ovozing — sening festivaling",
     "title": "Festival haqidagi fikringizni ulashing",
@@ -87,7 +120,9 @@
     "alreadyRegistered": "Siz allaqachon kutish roʻyxatida roʻyxatdan oʻtgansiz",
     "checkFields": "Toʻldirilgan maydonlarni tekshiring",
     "applicationNotFound": "Ariza topilmadi",
-    "chooseCategoryAndWrite": "Kategoriyani tanlang va fikringizni yozing"
+    "chooseCategoryAndWrite": "Kategoriyani tanlang va fikringizni yozing",
+    "ideaInvalid": "Gʻoyangizni yozing va davlatni tanlang",
+    "commentInvalid": "Javobingizni yozing va davlatni tanlang"
   },
   "Constants": {
     "festivalRoles": {

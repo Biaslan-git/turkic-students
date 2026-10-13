@@ -20,6 +20,9 @@ export function Footer({ ctaLabel, text }: { ctaLabel: string; text: string }) {
         <a href="#waitlist" className="font-medium text-accent underline underline-offset-4">
           {ctaLabel}
         </a>
+        <Link href="/ideas" className="text-xs text-muted underline underline-offset-2">
+          {t("ideasLink")}
+        </Link>
         <Link href="/opinion" className="text-xs text-muted underline underline-offset-2">
           {t("opinionLink")}
         </Link>

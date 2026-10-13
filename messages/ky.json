@@ -21,7 +21,8 @@
     "opinionLink": "Фестиваль тууралуу пикир калтыруу",
     "copyright": "© {year} TÜRKSOY STUDENTS",
     "iconsCredit": "Иконкалар: <link>OpenMoji</link> эмодзи-иллюстрациялары — CC BY-SA 4.0",
-    "developedByPrefix": "Иштеп чыккан"
+    "developedByPrefix": "Иштеп чыккан",
+    "ideasLink": "Идеялар дубалы"
   },
   "WaitlistForm": {
     "nameLabel": "Аты",
@@ -55,6 +56,38 @@
     "successTitle": "Рахмат! Пикириң кабыл алынды",
     "successText": "Аны сөзсүз эске алабыз."
   },
+  "Ideas": {
+    "badge": "Идеялар дубалы",
+    "title": "Кийинки фестиваль үчүн идеялар",
+    "description": "Идеяңды сун же башкалардын идеясына жооп бер — билдирүүлөрдү ар бир катышуучунун тилине которобуз.",
+    "categoryLabel": "Багыт",
+    "textLabel": "Сенин идеяң",
+    "textPlaceholder": "Эмнени көргүң же өзгөрткүң келерин жаз…",
+    "countryLabel": "Өлкө",
+    "countryPlaceholder": "Өлкөнү тандаңыз",
+    "nameLabel": "Аты",
+    "optional": "(милдеттүү эмес)",
+    "universityLabel": "Университет",
+    "universityPlaceholder": "Университетти тандаңыз",
+    "submit": "Жарыялоо",
+    "sending": "Жарыяланып жатат…",
+    "successTitle": "Рахмат! Идея жарыяланды",
+    "successText": "Ал азыр эле дубалда. Башка тилдерге которуу бир мүнөттөн кийин пайда болот.",
+    "toFeed": "Бардык идеяларды көрүү",
+    "anonymous": "Аноним",
+    "showOriginal": "Оригиналды көрсөтүү",
+    "showTranslation": "Которууну көрсөтүү",
+    "reply": "Жооп берүү",
+    "replyPlaceholder": "Сенин жообуң…",
+    "replySent": "Рахмат! Жооп жөнөтүлдү",
+    "send": "Жөнөтүү",
+    "cancel": "Жокко чыгаруу",
+    "allCountries": "Бардык өлкөлөр",
+    "allCategories": "Бардык багыттар",
+    "empty": "Азырынча бош — биринчи болуңуздар!",
+    "shareIdea": "Идея сунуштоо",
+    "allIdeas": "Бардык идеялар →"
+  },
   "OpinionPage": {
     "badge": "Сенин үнүң — сенин фестивалың",
     "title": "Фестиваль тууралуу пикириң менен бөлүш",
@@ -87,7 +120,9 @@
     "alreadyRegistered": "Сен күтүү тизмесинде каттелгенсиң",
     "checkFields": "Толтурулган талааларды текшер",
     "applicationNotFound": "Арыз табылган жок",
-    "chooseCategoryAndWrite": "Категорияны тандап, пикириңди жаз"
+    "chooseCategoryAndWrite": "Категорияны тандап, пикириңди жаз",
+    "ideaInvalid": "Идеяңызды жазып, өлкөнү тандаңыз",
+    "commentInvalid": "Жообуңузду жазып, өлкөнү тандаңыз"
   },
   "Constants": {
     "festivalRoles": {

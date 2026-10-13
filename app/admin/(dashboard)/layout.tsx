@@ -30,6 +30,9 @@ export default async function AdminDashboardLayout({
             <Link href="/admin/opinions" className="hover:underline">
               Мнения
             </Link>
+            <Link href="/admin/ideas" className="hover:underline">
+              Стена идей
+            </Link>
             <Link href="/admin/universities" className="hover:underline">
               Вузы
             </Link>

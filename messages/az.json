@@ -21,7 +21,8 @@
     "opinionLink": "Festival haqqında rəy bildir",
     "copyright": "© {year} TÜRKSOY STUDENTS",
     "iconsCredit": "İkonlar: emoji-illüstrasiyalar <link>OpenMoji</link> tərəfindən — CC BY-SA 4.0",
-    "developedByPrefix": "Hazırladı"
+    "developedByPrefix": "Hazırladı",
+    "ideasLink": "İdeyalar divarı"
   },
   "WaitlistForm": {
     "nameLabel": "Ad",
@@ -55,6 +56,38 @@
     "successTitle": "Təşəkkürlər! Rəyiniz qəbul olundu",
     "successText": "Mütləq nəzərə alacağıq."
   },
+  "Ideas": {
+    "badge": "İdeyalar divarı",
+    "title": "Növbəti festival üçün ideyalar",
+    "description": "Öz ideyanı təklif et və ya başqasının ideyasına cavab ver — mesajları hər iştirakçının dilinə tərcümə edəcəyik.",
+    "categoryLabel": "İstiqamət",
+    "textLabel": "Sənin ideyan",
+    "textPlaceholder": "Nə görmək və ya dəyişmək istədiyini yaz…",
+    "countryLabel": "Ölkə",
+    "countryPlaceholder": "Ölkəni seçin",
+    "nameLabel": "Ad",
+    "optional": "(məcburi deyil)",
+    "universityLabel": "Universitet",
+    "universityPlaceholder": "Universiteti seçin",
+    "submit": "Dərc et",
+    "sending": "Dərc olunur…",
+    "successTitle": "Təşəkkür edirik! İdeya dərc olundu",
+    "successText": "İdeya artıq divardadır. Digər dillərə tərcümə bir dəqiqəyə görünəcək.",
+    "toFeed": "Bütün ideyalara bax",
+    "anonymous": "Anonim",
+    "showOriginal": "Orijinalı göstər",
+    "showTranslation": "Tərcüməni göstər",
+    "reply": "Cavab ver",
+    "replyPlaceholder": "Cavabın…",
+    "replySent": "Təşəkkür edirik! Cavab göndərildi",
+    "send": "Göndər",
+    "cancel": "Ləğv et",
+    "allCountries": "Bütün ölkələr",
+    "allCategories": "Bütün istiqamətlər",
+    "empty": "Hələ ki boşdur — ilk siz olun!",
+    "shareIdea": "İdeya təklif et",
+    "allIdeas": "Bütün ideyalar →"
+  },
   "OpinionPage": {
     "badge": "Sənin Səsin — Sənin Festivalın",
     "title": "Festival haqqında fikrini bölüş",
@@ -87,7 +120,9 @@
     "alreadyRegistered": "Siz artıq gözləmə siyahısındasınız",
     "checkFields": "Doldurulan sahələri yoxlayın",
     "applicationNotFound": "Müraciət tapılmadı",
-    "chooseCategoryAndWrite": "Kateqoriya seçin və rəyinizi yazın"
+    "chooseCategoryAndWrite": "Kateqoriya seçin və rəyinizi yazın",
+    "ideaInvalid": "İdeyanı yazın və ölkəni seçin",
+    "commentInvalid": "Cavabı yazın və ölkəni seçin"
   },
   "Constants": {
     "festivalRoles": {

@@ -22,7 +22,7 @@ node scripts/migrate.mjs   # применить scripts/migrate.sql к DATABASE_
 
 ## Переменные окружения
 
-`DATABASE_URL`, `SITE_URL`, `ADMIN_PASSWORD`, `ADMIN_SESSION_SECRET` — см. `.env.local`. Опционально: `NEXT_PUBLIC_YM_COUNTER_ID` (Яндекс.Метрика). Регистрация не отправляет email — намеренно, чтобы не зависеть от лимитов почтового провайдера при всплеске регистраций.
+`DATABASE_URL`, `SITE_URL`, `ADMIN_PASSWORD`, `ADMIN_SESSION_SECRET` — см. `.env.local`. Опционально: `ANTHROPIC_API_KEY` (автоперевод стены идей), `NEXT_PUBLIC_YM_COUNTER_ID` (Яндекс.Метрика). Регистрация не отправляет email — намеренно, чтобы не зависеть от лимитов почтового провайдера при всплеске регистраций.
 
 ## Архитектура
 
@@ -33,6 +33,8 @@ node scripts/migrate.mjs   # применить scripts/migrate.sql к DATABASE_
 2. `submitWaitlistDetails` — роль (студент/выпускник), университет (справочник `festival_universities`, редактируется в `/admin/universities`), год выпуска (опционально), опциональное мнение о фестивале (`opinion_category`/`opinion_text`, 5 фиксированных категорий + «Другое», см. `lib/constants.ts`). Email не отправляется — см. переменные окружения.
 
 Секция фестиваля (`components/festival/festival-section.tsx`) показывает список вузов-участников без рейтинга и счётчиков — соревновательный элемент убран по просьбе клиента. Галерея (`components/sections/gallery-section.tsx`, `lib/gallery.ts`) читает фото из `public/gallery/<папка-вуза>/*` и собирает общую ленту по кругу (по кадру с каждого вуза, без деления по странам); пока папки пусты, секция не рендерится. Первые 3 фото показываются и в хиро рядом с плашкой о прошедшем фестивале.
+
+**Стена идей** (`/ideas` + блок на главной, `components/ideas/*`, `app/idea-actions.ts`, `lib/ideas.ts`) — идеи и ответы без регистрации (категория из `OPINION_CATEGORIES`, страна из `IDEA_COUNTRIES`, вуз опционально, имя опционально), публикуются сразу, honeypot + rate-limit как в остальных формах. Автопереводы на 7 языков делает `lib/translate.ts` через Claude API (`ANTHROPIC_API_KEY`) фоном через `after()`; без ключа или при сбое показывается оригинал, недостающие переводы дозапускаются кнопкой в `/admin/ideas` (там же скрытие/удаление идей и ответов).
 
 **Админка** (`app/admin/`) — route group `(dashboard)` с общим layout, защищена `proxy.ts` + повторной проверкой сессии в server actions (`app/admin/actions.ts`) и route handlers. Сессия — подписанная HMAC-SHA256 cookie (`lib/admin/session.ts`), пароль сверяется через `timingSafeEqual` (`lib/admin/auth.ts`). Экспорт CSV — `app/admin/api/export/route.ts` → `lib/admin/csv.ts`. Дополнительно: `/admin/opinions` (read-only список присланных мнений о фестивале) и `/admin/universities` (CRUD справочника вузов — добавление и скрытие, без удаления, чтобы не ломать FK у уже сохранённых регистраций), оба на `lib/admin/festival.ts`.
 
