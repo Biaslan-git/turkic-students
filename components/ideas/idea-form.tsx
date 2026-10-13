@@ -8,6 +8,9 @@ import { CUSTOM_VALUE_PREFIX, Select, type SelectOption } from "@/components/ui/
 
 const initialState: IdeaFormState = { status: "idle" };
 
+export const selectInputClass =
+  "rounded-xl px-4 py-3.5 text-base focus:border-accent-warm focus:ring-accent-warm/25";
+
 export const inputClass =
   "w-full rounded-xl border border-border bg-background px-4 py-3.5 text-base outline-none transition-colors focus:border-accent-warm focus:ring-2 focus:ring-accent-warm/25";
 
@@ -23,6 +26,7 @@ export function IdeaForm({
   const tWaitlist = useTranslations("WaitlistForm");
   const [state, action, pending] = useActionState(submitIdea, initialState);
   const [category, setCategory] = useState("");
+  const [country, setCountry] = useState("");
   const [universityId, setUniversityId] = useState("");
 
   if (state.status === "success") {
@@ -89,19 +93,16 @@ export function IdeaForm({
 
       <div className="grid gap-4 sm:grid-cols-2">
         <div className="flex flex-col gap-1.5">
-          <label htmlFor="idea-country" className="text-sm font-medium">
-            {t("countryLabel")}
-          </label>
-          <select id="idea-country" name="country" required defaultValue="" className={inputClass}>
-            <option value="" disabled>
-              {t("countryPlaceholder")}
-            </option>
-            {countries.map((c) => (
-              <option key={c.value} value={c.value}>
-                {c.label}
-              </option>
-            ))}
-          </select>
+          <span className="text-sm font-medium">{t("countryLabel")}</span>
+          <Select
+            value={country}
+            onChange={setCountry}
+            options={countries}
+            placeholder={t("countryPlaceholder")}
+            searchable={false}
+            inputClassName={selectInputClass}
+          />
+          <input type="hidden" name="country" value={country} />
         </div>
         <div className="flex flex-col gap-1.5">
           <label htmlFor="idea-name" className="text-sm font-medium">
@@ -128,6 +129,7 @@ export function IdeaForm({
           options={universities}
           placeholder={t("universityPlaceholder")}
           allowCustom
+          inputClassName={selectInputClass}
           noResultsLabel={tWaitlist("noResultsLabel")}
           customValueLabel={(query) => tWaitlist("customValueLabel", { query })}
         />
@@ -152,7 +154,7 @@ export function IdeaForm({
 
       <button
         type="submit"
-        disabled={pending || !category}
+        disabled={pending || !category || !country}
         className="w-full rounded-xl bg-gradient-to-r from-accent-warm to-[#00d6c8] px-6 py-3.5 text-base font-semibold text-accent-ink shadow-[0_10px_28px_-10px_var(--accent-warm)] transition-opacity disabled:opacity-60"
       >
         {pending ? t("sending") : t("submit")}

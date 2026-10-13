@@ -13,6 +13,8 @@ export function Select({
   placeholder,
   className = "",
   allowCustom = false,
+  searchable = true,
+  inputClassName = "rounded-lg px-3 py-2.5 text-base focus:border-accent focus:ring-accent/25 sm:py-2 sm:text-sm",
   noResultsLabel = "Ничего не найдено",
   customValueLabel = (query: string) => `Использовать «${query}» как есть`,
 }: {
@@ -22,6 +24,9 @@ export function Select({
   placeholder: string;
   className?: string;
   allowCustom?: boolean;
+  // false — для коротких списков: поле только для выбора, без ввода и экранной клавиатуры на телефоне.
+  searchable?: boolean;
+  inputClassName?: string;
   noResultsLabel?: string;
   customValueLabel?: (query: string) => string;
 }) {
@@ -151,7 +156,13 @@ export function Select({
           }}
           onKeyDown={onInputKeyDown}
           placeholder={placeholder}
-          className="w-full rounded-lg border border-border bg-background px-3 py-2.5 pr-8 text-base outline-none transition-colors focus:border-accent focus:ring-2 focus:ring-accent/25 sm:py-2 sm:text-sm"
+          readOnly={!searchable}
+          onClick={() => {
+            if (!open) openDropdown();
+          }}
+          className={`w-full border border-border bg-background pr-9 outline-none transition-colors focus:ring-2 ${
+            searchable ? "" : "cursor-pointer caret-transparent"
+          } ${inputClassName}`}
         />
         <svg
           width="14"

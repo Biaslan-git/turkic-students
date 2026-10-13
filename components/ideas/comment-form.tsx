@@ -3,7 +3,7 @@
 import { useActionState, useState } from "react";
 import { useTranslations } from "next-intl";
 import { submitIdeaComment, type IdeaFormState } from "@/app/idea-actions";
-import type { SelectOption } from "@/components/ui/select";
+import { Select, type SelectOption } from "@/components/ui/select";
 import { inputClass } from "@/components/ideas/idea-form";
 
 const initialState: IdeaFormState = { status: "idle" };
@@ -11,6 +11,7 @@ const initialState: IdeaFormState = { status: "idle" };
 export function CommentForm({ ideaId, countries }: { ideaId: string; countries: SelectOption[] }) {
   const t = useTranslations("Ideas");
   const [open, setOpen] = useState(false);
+  const [country, setCountry] = useState("");
   const [state, action, pending] = useActionState(submitIdeaComment, initialState);
 
   if (state.status === "success") {
@@ -43,22 +44,15 @@ export function CommentForm({ ideaId, countries }: { ideaId: string; countries: 
         className={`${inputClass} resize-none py-2.5 text-sm`}
       />
       <div className="grid gap-2 sm:grid-cols-2">
-        <select
-          name="country"
-          required
-          defaultValue=""
-          aria-label={t("countryLabel")}
-          className={`${inputClass} py-2.5 text-sm`}
-        >
-          <option value="" disabled>
-            {t("countryPlaceholder")}
-          </option>
-          {countries.map((c) => (
-            <option key={c.value} value={c.value}>
-              {c.label}
-            </option>
-          ))}
-        </select>
+        <Select
+          value={country}
+          onChange={setCountry}
+          options={countries}
+          placeholder={t("countryPlaceholder")}
+          searchable={false}
+          inputClassName="rounded-xl px-4 py-2.5 text-sm focus:border-accent-warm focus:ring-accent-warm/25"
+        />
+        <input type="hidden" name="country" value={country} />
         <input
           name="authorName"
           type="text"
@@ -82,7 +76,7 @@ export function CommentForm({ ideaId, countries }: { ideaId: string; countries: 
       <div className="flex items-center gap-3">
         <button
           type="submit"
-          disabled={pending}
+          disabled={pending || !country}
           className="rounded-full bg-accent-warm px-5 py-2 text-sm font-semibold text-accent-ink disabled:opacity-60"
         >
           {pending ? t("sending") : t("send")}
