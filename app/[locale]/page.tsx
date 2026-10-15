@@ -9,7 +9,6 @@ import { ObjectionsSection } from "@/components/sections/objections-section";
 import { FestivalSection } from "@/components/festival/festival-section";
 import { IdeasSection } from "@/components/ideas/ideas-section";
 import { GallerySection } from "@/components/sections/gallery-section";
-import type { GalleryVariant } from "@/components/gallery/gallery-view";
 import { WaitlistSection } from "@/components/sections/waitlist-section";
 import { Footer } from "@/components/sections/footer";
 import { getSiteContent } from "@/lib/content/site-content";
@@ -21,15 +20,8 @@ import { listGalleryPhotos } from "@/lib/gallery";
 // статически отрендерена во время `next build`.
 export const dynamic = "force-dynamic";
 
-export default async function Home({
-  params,
-  searchParams,
-}: {
-  params: Promise<{ locale: string }>;
-  searchParams: Promise<{ gallery?: string }>;
-}) {
-  const [{ locale }, query] = await Promise.all([params, searchParams]);
-  const galleryVariant: GalleryVariant = query.gallery === "mosaic" || query.gallery === "combo" ? query.gallery : "marquee";
+export default async function Home({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
   const [c, universities, galleryPhotos] = await Promise.all([
     getSiteContent(locale),
     listActiveUniversities(),
@@ -133,7 +125,7 @@ export default async function Home({
           alumniNote={c.tvoi_golos_alumni_note}
         />
         <IdeasSection />
-        <GallerySection photos={galleryPhotos} variant={galleryVariant} />
+        <GallerySection photos={galleryPhotos} />
         <WaitlistSection title={c.waitlist_title} text={c.waitlist_text} universities={universities} />
       </main>
       <Footer ctaLabel={c.cta_label} text={c.footer_text} />

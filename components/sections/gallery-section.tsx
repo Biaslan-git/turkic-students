@@ -1,15 +1,8 @@
 import { getTranslations } from "next-intl/server";
-import { GalleryView, type GalleryVariant } from "@/components/gallery/gallery-view";
-import { Link } from "@/i18n/navigation";
+import { GalleryView } from "@/components/gallery/gallery-view";
 import type { GalleryPhoto } from "@/lib/gallery";
 
-const VARIANTS: { value: GalleryVariant; label: string }[] = [
-  { value: "marquee", label: "1. Бегущая лента" },
-  { value: "mosaic", label: "2. Мозаика" },
-  { value: "combo", label: "3. Лента + все фото" },
-];
-
-export async function GallerySection({ photos, variant }: { photos: GalleryPhoto[]; variant: GalleryVariant }) {
+export async function GallerySection({ photos }: { photos: GalleryPhoto[] }) {
   if (photos.length === 0) return null;
 
   const t = await getTranslations("Gallery");
@@ -22,23 +15,7 @@ export async function GallerySection({ photos, variant }: { photos: GalleryPhoto
           <p className="text-pretty text-muted">{t("subtitle")}</p>
         </div>
 
-        {/* Временный переключатель вариантов — убрать после выбора. */}
-        <div className="flex flex-wrap gap-2">
-          {VARIANTS.map((v) => (
-            <Link
-              key={v.value}
-              href={`/?gallery=${v.value}#gallery`}
-              scroll={false}
-              className={`rounded-full border px-3 py-1.5 text-xs font-semibold ${
-                v.value === variant ? "border-accent-warm bg-accent-warm/10" : "border-border bg-background text-muted"
-              }`}
-            >
-              {v.label}
-            </Link>
-          ))}
-        </div>
-
-        <GalleryView photos={photos} variant={variant} />
+        <GalleryView photos={photos} />
       </div>
     </section>
   );
