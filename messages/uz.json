@@ -100,7 +100,13 @@
   },
   "Gallery": {
     "title": "Festival fotogalereyasi",
-    "subtitle": "Oʻtgan festivallardan lahzalar — har bir universitetdan"
+    "subtitle": "Oʻtgan festivallardan lahzalar — har bir universitetdan",
+    "showMore": "Yana koʻrsatish",
+    "allPhotos": "Barcha suratlar",
+    "close": "Yopish",
+    "prev": "Orqaga",
+    "next": "Oldinga",
+    "openPhoto": "Suratni ochish"
   },
   "Validation": {
     "nameRequired": "Ismingizni kiriting",

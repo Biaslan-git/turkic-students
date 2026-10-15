@@ -100,7 +100,13 @@
   },
   "Gallery": {
     "title": "Festival fotoğraf galerisi",
-    "subtitle": "Geçmiş festivallerden anlar — her üniversiteden"
+    "subtitle": "Geçmiş festivallerden anlar — her üniversiteden",
+    "showMore": "Daha fazla göster",
+    "allPhotos": "Tüm fotoğraflar",
+    "close": "Kapat",
+    "prev": "Geri",
+    "next": "İleri",
+    "openPhoto": "Fotoğrafı aç"
   },
   "Validation": {
     "nameRequired": "İsim girin",

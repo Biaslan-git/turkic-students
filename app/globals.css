@@ -82,3 +82,9 @@ h3 {
     animation: none !important;
   }
 }
+
+@keyframes gallery-marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
