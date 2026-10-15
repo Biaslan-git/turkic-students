@@ -1,9 +1,9 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { useTranslations } from "next-intl";
 import type { GalleryPhoto } from "@/lib/gallery";
-import { Lightbox } from "@/components/gallery/lightbox";
+import "@fancyapps/ui/dist/fancybox/fancybox.css";
 
 // Три ряда миниатюр едут в разные стороны: на экране сразу десятки фото, а высота блока
 // фиксированная и не зависит от их числа. Ряд дублируется, чтобы прокрутка была бесшовной.
@@ -93,7 +93,19 @@ function MarqueeRow({
 }
 
 export function GalleryView({ photos }: { photos: GalleryPhoto[] }) {
-  const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const t = useTranslations("Gallery");
+
+  // Fancybox подгружаем только при первом клике — на первый показ страницы его код не нужен.
+  async function openFancybox(startIndex: number) {
+    const { Fancybox } = await import("@fancyapps/ui/dist/fancybox/");
+    Fancybox.show(
+      photos.map((photo) => ({ src: photo.full, thumbSrc: photo.thumb, type: "image" })),
+      {
+        startIndex,
+        l10n: { CLOSE: t("close"), NEXT: t("next"), PREV: t("prev") },
+      },
+    );
+  }
 
   const rows = Array.from({ length: ROWS }, (_, r) =>
     photos.map((photo, index) => ({ photo, index })).filter((_, i) => i % ROWS === r),
@@ -105,16 +117,10 @@ export function GalleryView({ photos }: { photos: GalleryPhoto[] }) {
   });
 
   return (
-    <>
-      <div className="flex flex-col gap-2 [mask-image:linear-gradient(to_right,transparent,black_6%,black_94%,transparent)]">
-        {rows.map((row, r) => (
-          <MarqueeRow key={r} row={row} reverse={r % 2 === 1} onOpen={setOpenIndex} />
-        ))}
-      </div>
-
-      {openIndex !== null && (
-        <Lightbox photos={photos} index={openIndex} onChange={setOpenIndex} onClose={() => setOpenIndex(null)} />
-      )}
-    </>
+    <div className="flex flex-col gap-2 [mask-image:linear-gradient(to_right,transparent,black_6%,black_94%,transparent)]">
+      {rows.map((row, r) => (
+        <MarqueeRow key={r} row={row} reverse={r % 2 === 1} onOpen={openFancybox} />
+      ))}
+    </div>
   );
 }
