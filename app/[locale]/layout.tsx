@@ -57,7 +57,7 @@ export async function generateMetadata({
       title,
       description,
       url: `${SITE_URL}/${locale}`,
-      siteName: "TÜRKSOY STUDENTS",
+      siteName: "TURKIC STUDENTS",
       locale: OG_LOCALES[locale] ?? "ru_RU",
       type: "website",
     },

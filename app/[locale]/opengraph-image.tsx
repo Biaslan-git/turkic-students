@@ -47,7 +47,7 @@ export default async function Image({ params }: { params: Promise<{ locale: stri
           <img src={emblemSrc} alt="" width={64} height={64} />
         </div>
         <div style={{ fontSize: 72, fontWeight: 700, letterSpacing: -2 }}>
-          TÜRKSOY STUDENTS
+          TURKIC STUDENTS
         </div>
         <div style={{ fontSize: 32, color: "#9aa9a3", maxWidth: 900, textAlign: "center" }}>
           {t("tagline")}

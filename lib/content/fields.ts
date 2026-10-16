@@ -9,7 +9,6 @@ export type ContentField = {
 export const CONTENT_FIELDS: ContentField[] = [
   { key: "cta_label", section: "Общее", label: "Текст кнопки регистрации (шапка, главный экран, футер)" },
 
-  { key: "hero_badge", section: "Главный экран", label: "Бейдж над заголовком" },
   { key: "hero_title_main", section: "Главный экран", label: "Заголовок, обычная часть", multiline: true },
   {
     key: "hero_title_accent",

@@ -1,6 +1,6 @@
 {
   "Metadata": {
-    "title": "TÜRKSOY STUDENTS — Türk dünyası öğrencileri için tek platform",
+    "title": "TURKIC STUDENTS — Türk dünyası öğrencileri için tek platform",
     "description": "Türk dünyasının festivalleri ve bağlantıları — tek bir yerde. Kayıt olun ve lansmanı ilk öğrenenlerden olun."
   },
   "OgImage": {
@@ -19,7 +19,7 @@
   "Footer": {
     "logoAlt": "TÜRKSOY amblemi",
     "opinionLink": "Fikir bırak",
-    "copyright": "© {year} TÜRKSOY STUDENTS",
+    "copyright": "© {year} TURKIC STUDENTS",
     "iconsCredit": "Simgeler: emoji illüstrasyonları <link>OpenMoji</link> — CC BY-SA 4.0",
     "developedByPrefix": "Geliştiren",
     "ideasLink": "Fikir Duvarı"
@@ -43,7 +43,7 @@
     "customValueLabel": "«{query}» olduğu gibi kullan",
     "saving": "Kaydediliyor…",
     "step2Cta": "Kayıt ol",
-    "successTitle": "Teşekkürler! TÜRKSOY STUDENTS listesindesin",
+    "successTitle": "Teşekkürler! TURKIC STUDENTS listesindesin",
     "successSubtitle": "Platformun lansmanını kaçırmamak için Telegram kanalımıza abone ol.",
     "telegramCta": "Telegram'a abone ol"
   },

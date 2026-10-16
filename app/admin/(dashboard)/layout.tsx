@@ -46,7 +46,7 @@ export default async function AdminDashboardLayout({
       </header>
       <main className="mx-auto w-full max-w-6xl flex-1 px-6 py-8">{children}</main>
       <footer className="border-t border-border px-6 py-4 text-center text-xs text-muted">
-        TÜRKSOY Students · Административная панель
+        Turkic Students · Административная панель
       </footer>
     </div>
   );

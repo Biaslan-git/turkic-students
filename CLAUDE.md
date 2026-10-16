@@ -6,7 +6,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Что это
 
-Лендинг + waitlist для TÜRKSOY STUDENTS (`turkicstudents.org`), Next.js 16 (App Router, React 19). Двухшаговая форма регистрации, Postgres, письмо через Resend, приватная админка для просмотра/экспорта заявок.
+Лендинг + waitlist для TURKIC STUDENTS (`turkicstudents.org`), Next.js 16 (App Router, React 19). Двухшаговая форма регистрации, Postgres, письмо через Resend, приватная админка для просмотра/экспорта заявок.
 
 ## Команды
 

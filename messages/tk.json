@@ -1,6 +1,6 @@
 {
   "Metadata": {
-    "title": "TÜRKSOY STUDENTS — türki dünýäniň talyplary üçin ýeke-täk platforma",
+    "title": "TURKIC STUDENTS — türki dünýäniň talyplary üçin ýeke-täk platforma",
     "description": "Türki dünýäniň festiwallary we gatnaşyklary — bir ýerde. Bellige al we işe girizilişi barada ilkinjileriň biri bol."
   },
   "OgImage": {
@@ -19,7 +19,7 @@
   "Footer": {
     "logoAlt": "TÜRKSOY emblemasy",
     "opinionLink": "Pikir galdyr",
-    "copyright": "© {year} TÜRKSOY STUDENTS",
+    "copyright": "© {year} TURKIC STUDENTS",
     "iconsCredit": "Nyşanlar: <link>OpenMoji</link> tarapyndan emoji-illýustrasiýalar — CC BY-SA 4.0",
     "developedByPrefix": "Işläp taýýarlan",
     "ideasLink": "Pikirler diwary"
@@ -43,7 +43,7 @@
     "customValueLabel": "«{query}» diýeni bar bolşy ýaly ulan",
     "saving": "Ýatda saklanýar…",
     "step2Cta": "Bellige al",
-    "successTitle": "Sag bol! Sen TÜRKSOY STUDENTS sanawynda",
+    "successTitle": "Sag bol! Sen TURKIC STUDENTS sanawynda",
     "successSubtitle": "Platformanyň işe girizilişini elden gidirmezlik üçin Telegram kanalymyza agza bol.",
     "telegramCta": "Telegrama agza bolmak"
   },

@@ -13,7 +13,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "OpinionPage" });
-  return { title: `${t("title")} — TÜRKSOY STUDENTS` };
+  return { title: `${t("title")} — TURKIC STUDENTS` };
 }
 
 // Та же причина, что и у app/[locale]/page.tsx — контент читается из БД на каждый запрос.

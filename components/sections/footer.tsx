@@ -14,7 +14,7 @@ export function Footer({ ctaLabel, text }: { ctaLabel: string; text: string }) {
       <div className="relative mx-auto flex max-w-4xl flex-col items-center gap-4 px-5 py-12 text-center text-sm text-muted sm:px-8 md:px-12">
         <span className="flex items-center gap-2 font-display text-sm font-bold tracking-tight text-foreground">
           <Image src="/turksoy-logo.svg" alt={t("logoAlt")} width={24} height={24} className="h-6 w-6" />
-          TÜRKSOY STUDENTS
+          TURKIC STUDENTS
         </span>
         <p className="max-w-md">{text}</p>
         <a href="#waitlist" className="font-medium text-accent underline underline-offset-4">

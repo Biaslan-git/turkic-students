@@ -45,10 +45,9 @@ DELETE FROM site_content WHERE key IN ('hero_title', 'problem_closing');
 INSERT INTO site_content (key, value) VALUES
   ('cta_label', 'Зарегистрироваться'),
 
-  ('hero_badge', 'Под эгидой и при поддержке ТЮРКСОЙ'),
   ('hero_title_main', 'Фестивали и связи тюркских стран — '),
   ('hero_title_accent', 'в одном месте'),
-  ('hero_subtitle', 'Фестивали и события тюркского мира разбросаны по десяткам сайтов и чатов — а нужные связи теряются вместе с ними. TÜRKSOY STUDENTS собирает всё в одном месте. Оставь имя и email — узнаешь о запуске одним из первых.'),
+  ('hero_subtitle', 'Фестивали и события тюркского мира разбросаны по десяткам сайтов и чатов — а нужные связи теряются вместе с ними. TURKIC STUDENTS собирает всё в одном месте. Оставь имя и email — узнаешь о запуске одним из первых.'),
 
   ('problem_badge', 'Трудность'),
   ('problem_title', 'Информация есть, но ты не там ищешь'),
@@ -127,7 +126,7 @@ INSERT INTO site_content (key, value) VALUES
   ('objections_item_3_question', 'Куда денутся мои данные?'),
   ('objections_item_3_answer', 'Имя и email нужны только для регистрации и уведомления о запуске — больше ни для чего.'),
   ('objections_item_4_question', 'У меня и так получается находить фестивали и стажировки — зачем мне это?'),
-  ('objections_item_4_answer', 'После фестиваля или стажировки связи обычно обрываются. TÜRKSOY STUDENTS — про то, что происходит после.'),
+  ('objections_item_4_answer', 'После фестиваля или стажировки связи обычно обрываются. TURKIC STUDENTS — про то, что происходит после.'),
 
   ('waitlist_title', 'Регистрация открыта'),
   ('waitlist_text', 'Оставь имя и email — и попадёшь в число первых, кто получит доступ.'),
@@ -146,10 +145,9 @@ ON CONFLICT (key, locale) DO NOTHING;
 -- позже отредактируют вручную (когда появится админ-UI для нерусских локалей).
 INSERT INTO site_content (key, locale, value) VALUES
   ('cta_label', 'tr', 'Kayıt ol'),
-  ('hero_badge', 'tr', 'TÜRKSOY''un himayesinde ve desteğiyle'),
   ('hero_title_main', 'tr', 'Türk ülkelerinin festivalleri ve bağlantıları — '),
   ('hero_title_accent', 'tr', 'tek bir yerde'),
-  ('hero_subtitle', 'tr', 'Türk dünyasının festivalleri ve etkinlikleri onlarca site ve sohbete dağılmış durumda — ve gerekli bağlantılar onlarla birlikte kayboluyor. TÜRKSOY STUDENTS her şeyi tek bir yerde topluyor. Adını ve e-postanı bırak — lansmanı ilk öğrenenlerden ol.'),
+  ('hero_subtitle', 'tr', 'Türk dünyasının festivalleri ve etkinlikleri onlarca site ve sohbete dağılmış durumda — ve gerekli bağlantılar onlarla birlikte kayboluyor. TURKIC STUDENTS her şeyi tek bir yerde topluyor. Adını ve e-postanı bırak — lansmanı ilk öğrenenlerden ol.'),
   ('problem_badge', 'tr', 'Zorluk'),
   ('problem_title', 'tr', 'Bilgi var, ama sen yanlış yerde arıyorsun'),
   ('problem_text', 'tr', 'Değişim programı — üniversitenin sitesinde. Festival — Telegram kanalında. Staj — uzun zamandır açmadığın bir sohbette. Her şeyi parça parça toplarken son tarih çoktan geçmiş oluyor.'),
@@ -222,7 +220,7 @@ INSERT INTO site_content (key, locale, value) VALUES
   ('objections_item_3_question', 'tr', 'Verilerim nereye gidiyor?'),
   ('objections_item_3_answer', 'tr', 'İsim ve e-posta sadece kayıt ve lansman bildirimi için gerekli — başka hiçbir şey için değil.'),
   ('objections_item_4_question', 'tr', 'Zaten festival ve staj bulabiliyorum — bu bana neden lazım?'),
-  ('objections_item_4_answer', 'tr', 'Festival veya stajdan sonra bağlantılar genellikle kopar. TÜRKSOY STUDENTS, sonrasında ne olduğuyla ilgili.'),
+  ('objections_item_4_answer', 'tr', 'Festival veya stajdan sonra bağlantılar genellikle kopar. TURKIC STUDENTS, sonrasında ne olduğuyla ilgili.'),
   ('waitlist_title', 'tr', 'Kayıt açık'),
   ('waitlist_text', 'tr', 'Adını ve e-postanı bırak — erişim kazananların ilklerinden ol.'),
   ('footer_text', 'tr', 'Türk dünyası öğrencilerini birbirine bağlayan dijital platform: eğitim, festivaller ve ortak projeler.'),
@@ -233,10 +231,9 @@ INSERT INTO site_content (key, locale, value) VALUES
   ('tvoi_golos_alumni_note', 'tr', 'Girişime yalnızca üniversitenizin mevcut öğrenci topluluğu değil, mezunları da katılabilir — üniversitenin kişisel tarihlerinin bir parçası olarak kaldığı insanlar.'),
 
   ('cta_label', 'az', 'Qeydiyyatdan keç'),
-  ('hero_badge', 'az', 'TÜRKSOY-un himayəsi və dəstəyi ilə'),
   ('hero_title_main', 'az', 'Türk ölkələrinin festivalları və əlaqələri — '),
   ('hero_title_accent', 'az', 'bir yerdə'),
-  ('hero_subtitle', 'az', 'Türk dünyasının festivalları və tədbirləri onlarla sayt və çata səpələnib — və lazımi əlaqələr onlarla birlikdə itir. TÜRKSOY STUDENTS hər şeyi bir yerdə toplayır. Adını və e-poçtunu burax — lansman haqqında ilk bilənlərdən ol.'),
+  ('hero_subtitle', 'az', 'Türk dünyasının festivalları və tədbirləri onlarla sayt və çata səpələnib — və lazımi əlaqələr onlarla birlikdə itir. TURKIC STUDENTS hər şeyi bir yerdə toplayır. Adını və e-poçtunu burax — lansman haqqında ilk bilənlərdən ol.'),
   ('problem_badge', 'az', 'Çətinlik'),
   ('problem_title', 'az', 'Məlumat var, amma sən düz yerdə axtarmırsan'),
   ('problem_text', 'az', 'Mübadilə — universitetin saytında. Festival — Telegram kanalında. Təcrübə — uzun müddətdir açmadığın çatda. Hər şeyi hissə-hissə topladığın müddətdə son tarix artıq keçib.'),
@@ -309,7 +306,7 @@ INSERT INTO site_content (key, locale, value) VALUES
   ('objections_item_3_question', 'az', 'Məlumatlarım hara gedəcək?'),
   ('objections_item_3_answer', 'az', 'Ad və e-poçt yalnız qeydiyyat və lansman bildirişi üçün lazımdır — başqa heç nə üçün deyil.'),
   ('objections_item_4_question', 'az', 'Mən artıq festival və təcrübə tapa bilirəm — bu mənə nəyə lazımdır?'),
-  ('objections_item_4_answer', 'az', 'Festival və ya təcrübədən sonra əlaqələr adətən qırılır. TÜRKSOY STUDENTS bundan sonra nə baş verdiyi ilə bağlıdır.'),
+  ('objections_item_4_answer', 'az', 'Festival və ya təcrübədən sonra əlaqələr adətən qırılır. TURKIC STUDENTS bundan sonra nə baş verdiyi ilə bağlıdır.'),
   ('waitlist_title', 'az', 'Qeydiyyat açıqdır'),
   ('waitlist_text', 'az', 'Adını və e-poçtunu burax — girişi ilk əldə edənlərdən ol.'),
   ('footer_text', 'az', 'Türk dünyası tələbələrini birləşdirən rəqəmsal platforma: təhsil, festivallar və ortaq layihələr.'),
@@ -320,10 +317,9 @@ INSERT INTO site_content (key, locale, value) VALUES
   ('tvoi_golos_alumni_note', 'az', 'Təşəbbüsə təkcə universitetinizin hazırkı tələbə icması deyil, onun məzunları da qoşula bilər — universitetin şəxsi tarixlərinin bir hissəsi olaraq qaldığı insanlar.'),
 
   ('cta_label', 'kk', 'Тіркелу'),
-  ('hero_badge', 'kk', 'ТҮРКСОЙ демеушілігімен және қолдауымен'),
   ('hero_title_main', 'kk', 'Түркі елдерінің фестивальдері мен байланыстары — '),
   ('hero_title_accent', 'kk', 'бір жерде'),
-  ('hero_subtitle', 'kk', 'Түркі әлемінің фестивальдері мен оқиғалары ондаған сайттар мен чаттарға шашылып жатыр — және қажетті байланыстар солармен бірге жоғалады. TÜRKSOY STUDENTS бәрін бір жерге жинайды. Атыңды және email-іңді қалдыр — іске қосылу туралы бірінші болып білесің.'),
+  ('hero_subtitle', 'kk', 'Түркі әлемінің фестивальдері мен оқиғалары ондаған сайттар мен чаттарға шашылып жатыр — және қажетті байланыстар солармен бірге жоғалады. TURKIC STUDENTS бәрін бір жерге жинайды. Атыңды және email-іңді қалдыр — іске қосылу туралы бірінші болып білесің.'),
   ('problem_badge', 'kk', 'Қиындық'),
   ('problem_title', 'kk', 'Ақпарат бар, бірақ сен дұрыс жерден іздемей жүрсің'),
   ('problem_text', 'kk', 'Алмасу — университет сайтында. Фестиваль — Telegram-арнасында. Тағылымдама — сен көптен ашпаған чатта. Бәрін бөлшектеп жинап жатқанда, мерзім қазірдің өзінде өтіп кеткен.'),
@@ -396,7 +392,7 @@ INSERT INTO site_content (key, locale, value) VALUES
   ('objections_item_3_question', 'kk', 'Менің деректерім қайда кетеді?'),
   ('objections_item_3_answer', 'kk', 'Аты мен email тек тіркелу және іске қосылу туралы хабарландыру үшін ғана керек — басқа ешнәрсе үшін емес.'),
   ('objections_item_4_question', 'kk', 'Мен фестивальдер мен тағылымдамаларды өзім де таба аламын — бұл маған неге керек?'),
-  ('objections_item_4_answer', 'kk', 'Фестиваль немесе тағылымдамадан кейін байланыстар әдетте үзіледі. TÜRKSOY STUDENTS — содан кейін не болатыны туралы.'),
+  ('objections_item_4_answer', 'kk', 'Фестиваль немесе тағылымдамадан кейін байланыстар әдетте үзіледі. TURKIC STUDENTS — содан кейін не болатыны туралы.'),
   ('waitlist_title', 'kk', 'Тіркелу ашық'),
   ('waitlist_text', 'kk', 'Атыңды және email-іңді қалдыр — қолжетімділік алғандардың алғашқыларының қатарына кіресің.'),
   ('footer_text', 'kk', 'Түркі әлемінің студенттерін біріктіретін цифрлық платформа: білім, фестивальдер және бірлескен жобалар.'),
@@ -407,10 +403,9 @@ INSERT INTO site_content (key, locale, value) VALUES
   ('tvoi_golos_alumni_note', 'kk', 'Бастамаға тек университетіңіздің қазіргі студенттік қауымдастығы ғана емес, оның түлектері де қосыла алады — университет олардың жеке тарихының бір бөлігі болып қала беретін адамдар.'),
 
   ('cta_label', 'ky', 'Каттоо'),
-  ('hero_badge', 'ky', 'ТҮРКСОЙдун демилгеси жана колдоосу менен'),
   ('hero_title_main', 'ky', 'Түрк өлкөлөрүнүн фестивалдары жана байланыштары — '),
   ('hero_title_accent', 'ky', 'бир жерде'),
-  ('hero_subtitle', 'ky', 'Түрк дүйнөсүнүн фестивалдары жана окуялары ондогон сайттар менен чаттарга чачырап жатат — жана керектүү байланыштар алар менен кошо жоголот. TÜRKSOY STUDENTS баарын бир жерге чогултат. Атыңды жана email''иңди калтыр — иштен баштоо тууралуу биринчилерден бол.'),
+  ('hero_subtitle', 'ky', 'Түрк дүйнөсүнүн фестивалдары жана окуялары ондогон сайттар менен чаттарга чачырап жатат — жана керектүү байланыштар алар менен кошо жоголот. TURKIC STUDENTS баарын бир жерге чогултат. Атыңды жана email''иңди калтыр — иштен баштоо тууралуу биринчилерден бол.'),
   ('problem_badge', 'ky', 'Кыйынчылык'),
   ('problem_title', 'ky', 'Маалымат бар, бирок сен туура жерден издебей жатасың'),
   ('problem_text', 'ky', 'Алмашуу — университеттин сайтында. Фестиваль — Telegram-каналында. Стажировка — сен көптөн бери ачпаган чатта. Баарын бөлүп-бөлүп чогулткуча, мөөнөт өтүп кеткен.'),
@@ -483,7 +478,7 @@ INSERT INTO site_content (key, locale, value) VALUES
   ('objections_item_3_question', 'ky', 'Менин маалыматтарым кайда кетет?'),
   ('objections_item_3_answer', 'ky', 'Аты жана email катталуу жана иштен баштоо тууралуу билдирүү үчүн гана керек — башка эч нерсе үчүн эмес.'),
   ('objections_item_4_question', 'ky', 'Мен фестивалдар менен стажировкаларды өзүм эле таба алам — бул мага эмне үчүн керек?'),
-  ('objections_item_4_answer', 'ky', 'Фестивалдан же стажировкадан кийин байланыштар адатта үзүлөт. TÜRKSOY STUDENTS — андан кийин эмне болору тууралуу.'),
+  ('objections_item_4_answer', 'ky', 'Фестивалдан же стажировкадан кийин байланыштар адатта үзүлөт. TURKIC STUDENTS — андан кийин эмне болору тууралуу.'),
   ('waitlist_title', 'ky', 'Каттоо ачык'),
   ('waitlist_text', 'ky', 'Атыңды жана email''иңди калтыр — мүмкүнчүлүк алгандардын биринчилеринин катарына кошуласың.'),
   ('footer_text', 'ky', 'Түрк дүйнөсүнүн студенттерин бириктирген санарип платформа: билим берүү, фестивалдар жана биргелешкен долбоорлор.'),
@@ -494,10 +489,9 @@ INSERT INTO site_content (key, locale, value) VALUES
   ('tvoi_golos_alumni_note', 'ky', 'Демилгеге сиздин университетиңиздин учурдагы студенттик коомчулугу гана эмес, анын бүтүрүүчүлөрү да кошула алат — университет алардын жеке тарыхынын бир бөлүгү бойдон кала берген адамдар.'),
 
   ('cta_label', 'tk', 'Bellige al'),
-  ('hero_badge', 'tk', 'TÜRKSOY-yň howandarlygynda we goldawy bilen'),
   ('hero_title_main', 'tk', 'Türki ýurtlaryň festiwallary we gatnaşyklary — '),
   ('hero_title_accent', 'tk', 'bir ýerde'),
-  ('hero_subtitle', 'tk', 'Türki dünýäniň festiwallary we wakalary onlarça sahypa we çata pytrap gidipdir — we gerekli gatnaşyklar olar bilen ýitýär. TÜRKSOY STUDENTS ählisini bir ýerde jemleýär. Adyňy we e-poçtaňy goý — işe girizilişi barada ilkinjileriň biri bolarsyň.'),
+  ('hero_subtitle', 'tk', 'Türki dünýäniň festiwallary we wakalary onlarça sahypa we çata pytrap gidipdir — we gerekli gatnaşyklar olar bilen ýitýär. TURKIC STUDENTS ählisini bir ýerde jemleýär. Adyňy we e-poçtaňy goý — işe girizilişi barada ilkinjileriň biri bolarsyň.'),
   ('problem_badge', 'tk', 'Kynçylyk'),
   ('problem_title', 'tk', 'Maglumat bar, ýöne sen dogry ýerden gözlemeýärsiň'),
   ('problem_text', 'tk', 'Alyş-çalyş — uniwersitetiň saýtynda. Festiwal — Telegram-kanalynda. Amaliýat — köpden bäri açmadyk çatyňda. Ählisini bölek-bölek ýygnaýan wagtyň möhlet eýýäm geçip gidýär.'),
@@ -570,7 +564,7 @@ INSERT INTO site_content (key, locale, value) VALUES
   ('objections_item_3_question', 'tk', 'Maglumatlarym nirä gider?'),
   ('objections_item_3_answer', 'tk', 'Ady we e-poçta diňe bellige almak we işe girizilişi barada habar bermek üçin gerek — başga hiç zat üçin däl.'),
   ('objections_item_4_question', 'tk', 'Men eýýäm festiwal we amaliýat tapyp bilýärin — bu maňa näme üçin gerek?'),
-  ('objections_item_4_answer', 'tk', 'Festiwaldan ýa-da amaliýatdan soň gatnaşyklar adatça üzülýär. TÜRKSOY STUDENTS — şondan soň näme bolýany barada.'),
+  ('objections_item_4_answer', 'tk', 'Festiwaldan ýa-da amaliýatdan soň gatnaşyklar adatça üzülýär. TURKIC STUDENTS — şondan soň näme bolýany barada.'),
   ('waitlist_title', 'tk', 'Bellige almak açyk'),
   ('waitlist_text', 'tk', 'Adyňy we e-poçtaňy goý — girişi gazananlaryň ilkinjileriniň hataryna gir.'),
   ('footer_text', 'tk', 'Türki dünýäniň talyplaryny birleşdirýän sanly platforma: bilim, festiwallar we bilelikdäki taslamalar.'),
@@ -581,10 +575,9 @@ INSERT INTO site_content (key, locale, value) VALUES
   ('tvoi_golos_alumni_note', 'tk', 'Başlangyja diňe uniwersitetiňiziň häzirki talyp jemgyýeti däl, onuň uçurymlary hem goşulyp biler — uniwersitet olaryň şahsy taryhynyň bir bölegi bolup galýan adamlar.'),
 
   ('cta_label', 'uz', 'Roʻyxatdan oʻtish'),
-  ('hero_badge', 'uz', 'TURKSOYning homiyligi va qoʻllab-quvvatlashi bilan'),
   ('hero_title_main', 'uz', 'Turkiy mamlakatlarning festivallari va aloqalari — '),
   ('hero_title_accent', 'uz', 'bir joyda'),
-  ('hero_subtitle', 'uz', 'Turkiy dunyoning festivallari va tadbirlari oʻnlab saytlar va chatlarga tarqalib ketgan — va kerakli aloqalar ular bilan birga yoʻqolib ketadi. TÜRKSOY STUDENTS hammasini bir joyga toʻplaydi. Ismingiz va emailingizni qoldiring — ishga tushirilishi haqida birinchilardan boʻlib bilib olasiz.'),
+  ('hero_subtitle', 'uz', 'Turkiy dunyoning festivallari va tadbirlari oʻnlab saytlar va chatlarga tarqalib ketgan — va kerakli aloqalar ular bilan birga yoʻqolib ketadi. TURKIC STUDENTS hammasini bir joyga toʻplaydi. Ismingiz va emailingizni qoldiring — ishga tushirilishi haqida birinchilardan boʻlib bilib olasiz.'),
   ('problem_badge', 'uz', 'Qiyinchilik'),
   ('problem_title', 'uz', 'Maʼlumot bor, lekin sen notoʻgʻri joydan qidiryapsan'),
   ('problem_text', 'uz', 'Almashinuv — universitet saytida. Festival — Telegram kanalida. Amaliyot — koʻpdan beri ochmagan chatingda. Hammasini boʻlak-boʻlak yigʻayotganingda, muddat allaqachon oʻtib ketgan boʻladi.'),
@@ -657,7 +650,7 @@ INSERT INTO site_content (key, locale, value) VALUES
   ('objections_item_3_question', 'uz', 'Mening maʼlumotlarim qayerga ketadi?'),
   ('objections_item_3_answer', 'uz', 'Ism va email faqat roʻyxatdan oʻtish va ishga tushirilishi haqida xabar berish uchun kerak — boshqa hech narsa uchun emas.'),
   ('objections_item_4_question', 'uz', 'Men allaqachon festival va amaliyotlarni topa olaman — bu menga nima uchun kerak?'),
-  ('objections_item_4_answer', 'uz', 'Festival yoki amaliyotdan keyin aloqalar odatda uziladi. TÜRKSOY STUDENTS — bundan keyin nima boʻlishi haqida.'),
+  ('objections_item_4_answer', 'uz', 'Festival yoki amaliyotdan keyin aloqalar odatda uziladi. TURKIC STUDENTS — bundan keyin nima boʻlishi haqida.'),
   ('waitlist_title', 'uz', 'Roʻyxatdan oʻtish ochiq'),
   ('waitlist_text', 'uz', 'Ismingiz va emailingizni qoldiring — kirish huquqini olganlarning birinchilaridan boʻling.'),
   ('footer_text', 'uz', 'Turkiy dunyo talabalarini birlashtiruvchi raqamli platforma: taʼlim, festivallar va qoʻshma loyihalar.'),
@@ -884,6 +877,20 @@ BEGIN
     ) AS v(key, locale, old_value, new_value)
     WHERE sc.key = v.key AND sc.locale = v.locale AND sc.value = v.old_value;
     INSERT INTO content_patches (name) VALUES ('2026-10-kyrgyzstan');
+  END IF;
+END
+$patch$;
+
+-- Название проекта «TURKIC STUDENTS» вместо «TÜRKSOY STUDENTS» во всех сохранённых текстах и удаление
+-- плашки «Под эгидой и при поддержке ТЮРКСОЙ» из хиро. Разово (маркер), чтобы не затирать правки из админки.
+DO $patch$
+BEGIN
+  IF NOT EXISTS (SELECT 1 FROM content_patches WHERE name = '2026-10-turkic-students-name') THEN
+    UPDATE site_content
+      SET value = replace(replace(value, 'TÜRKSOY STUDENTS', 'TURKIC STUDENTS'), 'TÜRKSOY Students', 'Turkic Students')
+      WHERE value LIKE '%TÜRKSOY STUDENTS%' OR value LIKE '%TÜRKSOY Students%';
+    DELETE FROM site_content WHERE key = 'hero_badge';
+    INSERT INTO content_patches (name) VALUES ('2026-10-turkic-students-name');
   END IF;
 END
 $patch$;

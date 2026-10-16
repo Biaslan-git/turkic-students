@@ -35,7 +35,6 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
       <main className="flex flex-1 flex-col">
         <HeroSection
           ctaLabel={c.cta_label}
-          badge={c.hero_badge}
           titleMain={c.hero_title_main}
           titleAccent={c.hero_title_accent}
           subtitle={c.hero_subtitle}

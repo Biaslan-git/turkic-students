@@ -1,6 +1,6 @@
 {
   "Metadata": {
-    "title": "TÜRKSOY STUDENTS — единая платформа для студентов тюркского мира",
+    "title": "TURKIC STUDENTS — единая платформа для студентов тюркского мира",
     "description": "Фестивали и связи тюркского мира — в одном месте. Зарегистрируйтесь и узнайте о запуске первыми."
   },
   "OgImage": {
@@ -19,7 +19,7 @@
   "Footer": {
     "logoAlt": "Эмблема ТЮРКСОЙ",
     "opinionLink": "Оставить мнение",
-    "copyright": "© {year} TÜRKSOY STUDENTS",
+    "copyright": "© {year} TURKIC STUDENTS",
     "iconsCredit": "Иконки: emoji-иллюстрации by <link>OpenMoji</link> — CC BY-SA 4.0",
     "developedByPrefix": "Разработал",
     "ideasLink": "Стена идей"
@@ -43,7 +43,7 @@
     "customValueLabel": "Использовать «{query}» как есть",
     "saving": "Сохраняем…",
     "step2Cta": "Зарегистрироваться",
-    "successTitle": "Спасибо! Ты в списке TÜRKSOY STUDENTS",
+    "successTitle": "Спасибо! Ты в списке TURKIC STUDENTS",
     "successSubtitle": "Подпишись на наш Telegram-канал, чтобы не пропустить запуск платформы.",
     "telegramCta": "Подписаться на Telegram"
   },
