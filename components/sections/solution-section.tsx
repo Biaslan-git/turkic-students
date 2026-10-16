@@ -34,10 +34,10 @@ export function SolutionSection({ badge, title, text, benefits }: SolutionSectio
             />
             <div className="relative aspect-[4/5] overflow-hidden rounded-3xl [clip-path:polygon(8%_0,100%_0,100%_100%,0_100%,0_18%)]">
               <Image
-                src="https://im2.kommersant.ru/Issues.photo/REGIONS/KAZAN_Online/2025/03/24/KKZ_004142_00046_1_t218_144341.jpg"
+                src="/images/solution.jpg"
                 alt={t("solutionPhoto")}
                 fill
-                className="object-cover"
+                className="object-cover object-[38%_50%]"
                 sizes="(min-width: 768px) 360px, 100vw"
               />
             </div>

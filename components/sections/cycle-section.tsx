@@ -21,7 +21,7 @@ export function CycleSection({ badge, title, text, steps }: CycleSectionProps) {
           <div className="relative md:order-1 md:col-span-7">
             <div className="relative aspect-video overflow-hidden rounded-3xl [clip-path:polygon(0_0,92%_0,100%_15%,100%_100%,0_100%)] sm:aspect-[16/10]">
               <Image
-                src="https://roza.kg/media/images/press/%D1%82%D1%8E%D1%80%D0%BA%D1%81%D0%BE%D0%B9.jpg"
+                src="/images/cycle.jpg"
                 alt={t("cyclePhoto")}
                 fill
                 className="object-cover"

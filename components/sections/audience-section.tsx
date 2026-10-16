@@ -23,7 +23,7 @@ export function AudienceSection({ badge, title, intro, segments, outro }: Audien
           />
           <div className="relative aspect-[3/4] overflow-hidden rounded-[3rem_1rem_3rem_1rem] shadow-[0_20px_48px_-24px_rgba(26,26,46,0.35)]">
             <Image
-              src="https://static.yk-news.kz/images/20250616152907.jpeg"
+              src="/images/audience.jpg"
               alt={t("audiencePhoto")}
               fill
               className="object-cover"

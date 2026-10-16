@@ -69,7 +69,7 @@ export function HeroSection({
           />
           <div className="relative overflow-hidden rounded-3xl [clip-path:polygon(0_0,100%_0,100%_92%,92%_100%,0_100%)]">
             <Image
-              src="https://tatar-congress.org/wp-content/uploads/2023/11/WhatsApp-Image-2023-11-03-at-15.30.49-1-e1699015757899.jpeg"
+              src="/images/hero.jpg"
               alt={t("heroPhoto")}
               width={1600}
               height={900}
