@@ -18,7 +18,7 @@
   },
   "Footer": {
     "logoAlt": "TÜRKSOY emblemi",
-    "opinionLink": "Festival haqqında rəy bildir",
+    "opinionLink": "Fikir bildir",
     "copyright": "© {year} TÜRKSOY STUDENTS",
     "iconsCredit": "İkonlar: emoji-illüstrasiyalar <link>OpenMoji</link> tərəfindən — CC BY-SA 4.0",
     "developedByPrefix": "Hazırladı",
@@ -89,9 +89,15 @@
     "allIdeas": "Bütün ideyalar →"
   },
   "OpinionPage": {
-    "badge": "Sənin Səsin — Sənin Festivalın",
-    "title": "Festival haqqında fikrini bölüş",
+    "badge": "Sənin fikrin vacibdir",
+    "title": "Fikrini bölüş",
     "description": "Qeydiyyatdan keçmək məcburi deyil — sadəcə düşündüyünü yaz. Universitetinin auditoriyasına da qoşulmaq istəyirsən? Əsas <link>qeydiyyata</link> nəzər sal."
+  },
+  "OpinionCta": {
+    "title": "Sənin fikrin vacibdir",
+    "text": "Nə düşündüyünü yaz — anonim və bir dəqiqəyə. Və ya lövhəyə baxıb başqalarının nə yazdığını gör.",
+    "leave": "Fikir bildir",
+    "board": "Fikirlər lövhəsi"
   },
   "FestivalSection": {
     "join": "Qoşul",

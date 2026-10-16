@@ -18,7 +18,7 @@
   },
   "Footer": {
     "logoAlt": "TÜRKSOY amblemi",
-    "opinionLink": "Festival hakkında görüş bırak",
+    "opinionLink": "Fikir bırak",
     "copyright": "© {year} TÜRKSOY STUDENTS",
     "iconsCredit": "Simgeler: emoji illüstrasyonları <link>OpenMoji</link> — CC BY-SA 4.0",
     "developedByPrefix": "Geliştiren",
@@ -89,9 +89,15 @@
     "allIdeas": "Tüm fikirler →"
   },
   "OpinionPage": {
-    "badge": "Senin Sesin — Senin Festivalin",
-    "title": "Festival hakkındaki görüşünü paylaş",
+    "badge": "Senin fikrin önemli",
+    "title": "Fikrini paylaş",
     "description": "Kayıt olmak zorunlu değil — sadece düşündüğünü yaz. Üniversitenin kitlesine de katılmak mı istiyorsun? Ana <link>kayıt</link> sayfasına göz at."
+  },
+  "OpinionCta": {
+    "title": "Senin fikrin önemli",
+    "text": "Ne düşündüğünü yaz — anonim ve bir dakikada. Ya da panoya göz at, başkalarının neler yazdığını gör.",
+    "leave": "Fikir bırak",
+    "board": "Fikir panosu"
   },
   "FestivalSection": {
     "join": "Katıl",

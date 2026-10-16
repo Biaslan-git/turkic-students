@@ -8,6 +8,7 @@ import { PrinciplesSection } from "@/components/sections/principles-section";
 import { ObjectionsSection } from "@/components/sections/objections-section";
 import { FestivalSection } from "@/components/festival/festival-section";
 import { IdeasSection } from "@/components/ideas/ideas-section";
+import { OpinionCta } from "@/components/sections/opinion-cta";
 import { GallerySection } from "@/components/sections/gallery-section";
 import { WaitlistSection } from "@/components/sections/waitlist-section";
 import { Footer } from "@/components/sections/footer";
@@ -42,6 +43,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
           festivalDates={c.hero_festival_dates}
           festivalPhotos={galleryPhotos.slice(0, 3).map((p) => p.thumb)}
         />
+        <OpinionCta />
         <ProblemSection
           badge={c.problem_badge}
           title={c.problem_title}

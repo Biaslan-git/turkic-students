@@ -18,7 +18,7 @@
   },
   "Footer": {
     "logoAlt": "TÜRKSOY emblemasy",
-    "opinionLink": "Festiwal barada pikir goýmak",
+    "opinionLink": "Pikir galdyr",
     "copyright": "© {year} TÜRKSOY STUDENTS",
     "iconsCredit": "Nyşanlar: <link>OpenMoji</link> tarapyndan emoji-illýustrasiýalar — CC BY-SA 4.0",
     "developedByPrefix": "Işläp taýýarlan",
@@ -89,9 +89,15 @@
     "allIdeas": "Ähli pikirler →"
   },
   "OpinionPage": {
-    "badge": "Seniň sesiň — seniň festiwalyň",
-    "title": "Festiwal barada pikiriňi paýlaş",
+    "badge": "Seniň pikiriň möhüm",
+    "title": "Pikiriňi paýlaş",
     "description": "Bellige almak hökmany däl — diňe pikiriňi ýaz. Uniwersitetiňiň auditoriýasyna hem goşulmak isleýärmiň? Esasy <link>bellige alşa</link> serediber."
+  },
+  "OpinionCta": {
+    "title": "Seniň pikiriň möhüm",
+    "text": "Näme pikir edýändigiňi ýaz — ady aýdylmaz we bir minutda. Ýa-da tagta göz aýlap, beýlekileriň näme ýazýandygyny gör.",
+    "leave": "Pikir galdyr",
+    "board": "Pikirler tagtasy"
   },
   "FestivalSection": {
     "join": "Goşulmak",

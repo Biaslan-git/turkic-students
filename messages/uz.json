@@ -18,7 +18,7 @@
   },
   "Footer": {
     "logoAlt": "TURKSOY emblemasi",
-    "opinionLink": "Festival haqida fikr qoldirish",
+    "opinionLink": "Fikr qoldirish",
     "copyright": "© {year} TÜRKSOY STUDENTS",
     "iconsCredit": "Belgilar: <link>OpenMoji</link> tomonidan emoji-illyustratsiyalar — CC BY-SA 4.0",
     "developedByPrefix": "Ishlab chiqdi",
@@ -89,9 +89,15 @@
     "allIdeas": "Barcha gʻoyalar →"
   },
   "OpinionPage": {
-    "badge": "Sening ovozing — sening festivaling",
-    "title": "Festival haqidagi fikringizni ulashing",
+    "badge": "Sening fikring muhim",
+    "title": "Fikringni ulash",
     "description": "Roʻyxatdan oʻtish shart emas — shunchaki fikringizni yozing. Universitetingiz auditoriyasiga ham qoʻshilmoqchimisiz? Asosiy <link>roʻyxatdan oʻtishga</link> qarang."
+  },
+  "OpinionCta": {
+    "title": "Sening fikring muhim",
+    "text": "Nima deb oʻylayotganingni yoz — anonim va bir daqiqada. Yoki taxtaga qarab, boshqalar nima yozayotganini koʻr.",
+    "leave": "Fikr qoldirish",
+    "board": "Fikrlar taxtasi"
   },
   "FestivalSection": {
     "join": "Qoʻshilish",
