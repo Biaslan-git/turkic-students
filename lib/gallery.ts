@@ -1,4 +1,4 @@
-import { readdir } from "node:fs/promises";
+import { readdir, stat } from "node:fs/promises";
 import path from "node:path";
 
 const GALLERY_DIR = path.join(process.cwd(), "public", "gallery");
@@ -25,10 +25,19 @@ export async function listGalleryPhotos(): Promise<GalleryPhoto[]> {
       const thumbs = new Set(await readdir(path.join(GALLERY_DIR, folder, "thumbs")).catch(() => [] as string[]));
       const url = (...parts: string[]) => `/gallery/${[folder, ...parts].map(encodeURIComponent).join("/")}`;
 
-      return files.map((file): GalleryPhoto => {
-        const thumbName = `${path.parse(file).name}.webp`;
-        return { full: url(file), thumb: thumbs.has(thumbName) ? url("thumbs", thumbName) : url(file) };
-      });
+      // ?v=<mtime> меняется при замене файла, поэтому картинки можно кэшировать навсегда
+      // (см. headers() в next.config.ts), не боясь отдать устаревшее фото.
+      const version = async (...parts: string[]) =>
+        Math.floor((await stat(path.join(GALLERY_DIR, folder, ...parts))).mtimeMs / 1000);
+
+      return Promise.all(
+        files.map(async (file): Promise<GalleryPhoto> => {
+          const thumbName = `${path.parse(file).name}.webp`;
+          const full = `${url(file)}?v=${await version(file)}`;
+          const thumb = thumbs.has(thumbName) ? `${url("thumbs", thumbName)}?v=${await version("thumbs", thumbName)}` : full;
+          return { full, thumb };
+        }),
+      );
     }),
   );
 

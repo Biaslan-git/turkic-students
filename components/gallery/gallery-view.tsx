@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useTranslations } from "next-intl";
 import type { GalleryPhoto } from "@/lib/gallery";
 import "@fancyapps/ui/dist/fancybox/fancybox.css";
@@ -18,10 +18,12 @@ type Tile = { photo: GalleryPhoto; index: number };
 function MarqueeRow({
   row,
   reverse,
+  eager,
   onOpen,
 }: {
   row: Tile[];
   reverse: boolean;
+  eager: boolean;
   onOpen: (index: number) => void;
 }) {
   const t = useTranslations("Gallery");
@@ -81,7 +83,7 @@ function MarqueeRow({
             <img
               src={photo.thumb}
               alt={tAlt("galleryPhoto")}
-              loading="lazy"
+              loading={eager ? "eager" : "lazy"}
               decoding="async"
               className="h-full w-full object-cover transition-transform duration-300 hover:scale-105"
             />
@@ -94,6 +96,28 @@ function MarqueeRow({
 
 export function GalleryView({ photos }: { photos: GalleryPhoto[] }) {
   const t = useTranslations("Gallery");
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [eager, setEager] = useState(false);
+
+  // Нативный loading="lazy" начинает грузить плитку, только когда она почти на экране, а лента
+  // постоянно подвозит новые — получаются серые пустые плитки. Поэтому, когда до галереи
+  // остаётся пара экранов, просим браузер грузить все миниатюры сразу: HTTP/2 тянет их
+  // параллельно (десятки КБ каждая), и к моменту прокрутки лента уже полная.
+  useEffect(() => {
+    const el = containerRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setEager(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: "2000px 0px" },
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
 
   // Fancybox подгружаем только при первом клике — на первый показ страницы его код не нужен.
   async function openFancybox(startIndex: number) {
@@ -117,9 +141,9 @@ export function GalleryView({ photos }: { photos: GalleryPhoto[] }) {
   });
 
   return (
-    <div className="flex flex-col gap-2 [mask-image:linear-gradient(to_right,transparent,black_6%,black_94%,transparent)]">
+    <div ref={containerRef} className="flex flex-col gap-2 [mask-image:linear-gradient(to_right,transparent,black_6%,black_94%,transparent)]">
       {rows.map((row, r) => (
-        <MarqueeRow key={r} row={row} reverse={r % 2 === 1} onOpen={openFancybox} />
+        <MarqueeRow key={r} row={row} reverse={r % 2 === 1} eager={eager} onOpen={openFancybox} />
       ))}
     </div>
   );
