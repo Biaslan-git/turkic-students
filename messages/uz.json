@@ -110,8 +110,7 @@
   "FestivalSection": {
     "join": "Qoʻshilish",
     "participatingUniversities": "Ishtirokchi OTMlar",
-    "moreUniversities": "Roʻyxat yuqoridagilar bilan cheklanmaydi. Oʻz universitetingizni jalb qilishingizni soʻraymiz — qoʻshiling va boshqalarni ham taklif qiling.",
-    "universitiesNote": "Platformadagi tadbirlar haqidagi maʼlumotni universitet rahbariyati toʻldiradi. Oʻzingiz qoʻshiling va talabalaringizni taklif qiling!"
+    "moreUniversities": "Roʻyxat cheklanmagan: istalgan universitetdan xursand boʻlamiz. Platformadagi tadbirlar haqidagi maʼlumotni universitet rahbariyati toʻldiradi — qoʻshiling va talabalaringizni taklif qiling."
   },
   "Gallery": {
     "title": "Festival fotogalereyasi",
