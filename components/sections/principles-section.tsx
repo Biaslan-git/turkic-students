@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { RouteLinesBackdrop } from "@/components/route-lines";
 import { HandshakeIcon } from "@/components/mood-icons/handshake-icon";
 
@@ -7,7 +6,6 @@ type Principle = { title: string; text: string };
 type PrinciplesSectionProps = {
   badge: string;
   title: string;
-  text: string;
   countries: string[];
   principles: Principle[];
 };
@@ -15,7 +13,6 @@ type PrinciplesSectionProps = {
 export function PrinciplesSection({
   badge,
   title,
-  text,
   countries,
   principles,
 }: PrinciplesSectionProps) {
@@ -37,16 +34,7 @@ export function PrinciplesSection({
           <h2 className="max-w-2xl text-balance font-display text-3xl font-bold tracking-tight sm:text-4xl">
             {title}
           </h2>
-          <p className="max-w-2xl text-pretty text-lg text-white/70">{text}</p>
           <div className="flex flex-wrap items-center gap-2 pt-1">
-            <Image
-              src="/turksoy-emblem.png"
-              alt=""
-              aria-hidden="true"
-              width={14}
-              height={14}
-              className="mr-0.5 h-3.5 w-3.5"
-            />
             {countries.map((country, i) => (
               <span
                 key={i}

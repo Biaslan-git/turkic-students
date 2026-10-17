@@ -17,12 +17,12 @@
     "galleryPhoto": "Festiwaldan surat"
   },
   "Footer": {
-    "logoAlt": "TÜRKSOY emblemasy",
     "opinionLink": "Pikir galdyr",
     "copyright": "© {year} TURKIC STUDENTS",
     "iconsCredit": "Nyşanlar: <link>OpenMoji</link> tarapyndan emoji-illýustrasiýalar — CC BY-SA 4.0",
     "developedByPrefix": "Işläp taýýarlan",
-    "ideasLink": "Pikirler diwary"
+    "ideasLink": "Pikirler diwary",
+    "feedback": "Sahypa boýunça teklipler:"
   },
   "WaitlistForm": {
     "nameLabel": "Ady",
@@ -44,8 +44,8 @@
     "saving": "Ýatda saklanýar…",
     "step2Cta": "Bellige al",
     "successTitle": "Sag bol! Sen TURKIC STUDENTS sanawynda",
-    "successSubtitle": "Platformanyň işe girizilişini elden gidirmezlik üçin Telegram kanalymyza agza bol.",
-    "telegramCta": "Telegrama agza bolmak"
+    "successSubtitle": "Platforma işe başlanda size habar bereris. Häzirlikçe pikirler tagtasyna göz aýla — pikir paýlaş ýa-da beýlekilere jogap ber.",
+    "boardCta": "Pikirler tagtasyna geç"
   },
   "OpinionForm": {
     "direction": "Ugur",
@@ -54,7 +54,8 @@
     "submit": "Iber",
     "sending": "Iberilýär…",
     "successTitle": "Sag bol! Pikiriň kabul edildi",
-    "successText": "Ony hökman hasaba alarys."
+    "successText": "Ony hökman hasaba alarys.",
+    "guidelines": "Hormat bilen ýazyň: ýaramaz we kemsidiji habarlar kabul edilmeýär."
   },
   "Ideas": {
     "badge": "Pikirler diwary",
@@ -86,7 +87,8 @@
     "allCategories": "Ähli ugurlar",
     "empty": "Heniz boş — ilkinjileriň biri boluň!",
     "shareIdea": "Pikir teklip et",
-    "allIdeas": "Ähli pikirler →"
+    "allIdeas": "Ähli pikirler →",
+    "guidelines": "Hormat bilen ýazyň: ýaramaz we kemsidiji habarlar kabul edilmeýär. Ähli pikirler çap edilmezden öň moderasiýadan geçýär."
   },
   "OpinionPage": {
     "badge": "Seniň pikiriň möhüm",
@@ -102,7 +104,8 @@
   "FestivalSection": {
     "join": "Goşulmak",
     "participatingUniversities": "Gatnaşyjy uniwersitetler",
-    "moreUniversities": "Sanaw ýokardakylar bilen çäklenmeýär. Öz uniwersitetiňizi çekmegiňizi haýyş edýäris — goşulyň we beýlekileri hem çagyryň."
+    "moreUniversities": "Sanaw ýokardakylar bilen çäklenmeýär. Öz uniwersitetiňizi çekmegiňizi haýyş edýäris — goşulyň we beýlekileri hem çagyryň.",
+    "universitiesNote": "Platformadaky çäreler baradaky maglumatlary uniwersitetleriň ýolbaşçylary doldurýarlar. Özüňiz goşulyň we talyplaryňyzy çagyryň!"
   },
   "Gallery": {
     "title": "Festiwalyň fotogalereýasy",
@@ -165,5 +168,14 @@
         "question": "Islendik teklip üçin erkin meýdan"
       }
     }
+  },
+  "ShareCta": {
+    "title": "Sahypa bilen paýlaşyň — ol kömek etsin",
+    "text": "TURKIC STUDENTS barada dostlaryňyza, kursdaşlaryňyza we mugallymlaryňyza aýdyň: näçe köp adam goşulsa, platforma şonça peýdaly bolar.",
+    "share": "Paýlaş",
+    "copy": "Salgyny göçür",
+    "copied": "Salgy göçürildi",
+    "feedbackTitle": "Sahypany gowulandyrmak barada pikirleriň barmy?",
+    "feedbackText": "Bize ýazyň — her teklibi okaýarys:"
   }
 }

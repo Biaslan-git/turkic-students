@@ -2,13 +2,14 @@
 
 import { useActionState, useEffect, useState, useSyncExternalStore } from "react";
 import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
 import {
   submitWaitlistBasic,
   submitWaitlistDetails,
   type WaitlistBasicState,
   type WaitlistDetailsState,
 } from "@/app/actions";
-import { FESTIVAL_ROLES, TELEGRAM_CHANNEL_URL } from "@/lib/constants";
+import { FESTIVAL_ROLES } from "@/lib/constants";
 import { trackEvent } from "@/lib/analytics";
 import { CUSTOM_VALUE_PREFIX, Select } from "@/components/ui/select";
 import type { University } from "@/lib/universities";
@@ -277,14 +278,12 @@ function SuccessScreen() {
     <div className="flex flex-col items-center gap-4 text-center">
       <h3 className="font-display text-xl font-bold">{t("successTitle")}</h3>
       <p className="text-muted">{t("successSubtitle")}</p>
-      <a
-        href={TELEGRAM_CHANNEL_URL}
-        target="_blank"
-        rel="noopener noreferrer"
+      <Link
+        href="/ideas"
         className="w-full rounded-xl bg-accent px-6 py-3.5 text-base font-semibold text-accent-ink"
       >
-        {t("telegramCta")}
-      </a>
+        {t("boardCta")}
+      </Link>
     </div>
   );
 }

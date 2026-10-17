@@ -1,4 +1,4 @@
-export const TELEGRAM_CHANNEL_URL = "https://t.me/turksoy_students";
+export const FEEDBACK_EMAIL = "biaslan.pro@ya.ru";
 
 export const INTEREST_AREAS = [
   { value: "education", label: "Образование" },

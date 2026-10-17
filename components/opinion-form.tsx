@@ -83,6 +83,8 @@ export function OpinionForm() {
         <input id="opinion-company" name="company" type="text" tabIndex={-1} autoComplete="off" />
       </div>
 
+      <p className="text-xs text-muted">{t("guidelines")}</p>
+
       {state.status === "error" && (
         <p role="alert" className="text-sm text-red-600">
           {state.message}

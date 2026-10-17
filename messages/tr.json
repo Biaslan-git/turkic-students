@@ -17,12 +17,12 @@
     "galleryPhoto": "Festivalden fotoğraf"
   },
   "Footer": {
-    "logoAlt": "TÜRKSOY amblemi",
     "opinionLink": "Fikir bırak",
     "copyright": "© {year} TURKIC STUDENTS",
     "iconsCredit": "Simgeler: emoji illüstrasyonları <link>OpenMoji</link> — CC BY-SA 4.0",
     "developedByPrefix": "Geliştiren",
-    "ideasLink": "Fikir Duvarı"
+    "ideasLink": "Fikir Duvarı",
+    "feedback": "Site için öneriler:"
   },
   "WaitlistForm": {
     "nameLabel": "İsim",
@@ -44,8 +44,8 @@
     "saving": "Kaydediliyor…",
     "step2Cta": "Kayıt ol",
     "successTitle": "Teşekkürler! TURKIC STUDENTS listesindesin",
-    "successSubtitle": "Platformun lansmanını kaçırmamak için Telegram kanalımıza abone ol.",
-    "telegramCta": "Telegram'a abone ol"
+    "successSubtitle": "Platform başladığında sana haber vereceğiz. Şimdilik fikir panosuna göz at — bir fikir paylaş veya başkalarına yanıt ver.",
+    "boardCta": "Fikir panosuna git"
   },
   "OpinionForm": {
     "direction": "Yön",
@@ -54,7 +54,8 @@
     "submit": "Gönder",
     "sending": "Gönderiliyor…",
     "successTitle": "Teşekkürler! Görüşün alındı",
-    "successText": "Mutlaka dikkate alacağız."
+    "successText": "Mutlaka dikkate alacağız.",
+    "guidelines": "Saygılı yazın: olumsuz ve hakaret içeren mesajlar kabul edilmez."
   },
   "Ideas": {
     "badge": "Fikir Duvarı",
@@ -86,7 +87,8 @@
     "allCategories": "Tüm yönler",
     "empty": "Henüz boş — ilk sen ol!",
     "shareIdea": "Fikir öner",
-    "allIdeas": "Tüm fikirler →"
+    "allIdeas": "Tüm fikirler →",
+    "guidelines": "Saygılı yazın: olumsuz ve hakaret içeren mesajlar kabul edilmez. Tüm görüşler yayımlanmadan önce moderasyondan geçer."
   },
   "OpinionPage": {
     "badge": "Senin fikrin önemli",
@@ -102,7 +104,8 @@
   "FestivalSection": {
     "join": "Katıl",
     "participatingUniversities": "Katılımcı üniversiteler",
-    "moreUniversities": "Liste yukarıdakilerle sınırlı değil. Kendi üniversitenizi de getirmenizi rica ediyoruz — katılın ve başkalarını da davet edin."
+    "moreUniversities": "Liste yukarıdakilerle sınırlı değil. Kendi üniversitenizi de getirmenizi rica ediyoruz — katılın ve başkalarını da davet edin.",
+    "universitiesNote": "Platformdaki etkinlik bilgilerini üniversite yetkilileri girer. Siz de katılın ve öğrencilerinizi davet edin!"
   },
   "Gallery": {
     "title": "Festival fotoğraf galerisi",
@@ -165,5 +168,14 @@
         "question": "Herhangi bir öneri için serbest alan"
       }
     }
+  },
+  "ShareCta": {
+    "title": "Siteyi paylaşın — yardımcı olsun",
+    "text": "TURKIC STUDENTS'i arkadaşlarına, sınıf arkadaşlarına ve hocalarına anlat: ne kadar çok kişi katılırsa platform o kadar faydalı olur.",
+    "share": "Paylaş",
+    "copy": "Bağlantıyı kopyala",
+    "copied": "Bağlantı kopyalandı",
+    "feedbackTitle": "Siteyi geliştirmek için fikirlerin var mı?",
+    "feedbackText": "Bize yazın — her öneriyi okuyoruz:"
   }
 }

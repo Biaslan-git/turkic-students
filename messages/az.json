@@ -17,12 +17,12 @@
     "galleryPhoto": "Festivaldan foto"
   },
   "Footer": {
-    "logoAlt": "TÜRKSOY emblemi",
     "opinionLink": "Fikir bildir",
     "copyright": "© {year} TURKIC STUDENTS",
     "iconsCredit": "İkonlar: emoji-illüstrasiyalar <link>OpenMoji</link> tərəfindən — CC BY-SA 4.0",
     "developedByPrefix": "Hazırladı",
-    "ideasLink": "İdeyalar divarı"
+    "ideasLink": "İdeyalar divarı",
+    "feedback": "Sayt üçün təkliflər:"
   },
   "WaitlistForm": {
     "nameLabel": "Ad",
@@ -44,8 +44,8 @@
     "saving": "Yadda saxlanılır…",
     "step2Cta": "Qeydiyyatdan keç",
     "successTitle": "Təşəkkürlər! Sən TURKIC STUDENTS siyahısındasan",
-    "successSubtitle": "Platformanın lansmanını qaçırmamaq üçün Telegram kanalımıza abunə ol.",
-    "telegramCta": "Telegram-a abunə ol"
+    "successSubtitle": "Platforma işə düşəndə sənə xəbər verəcəyik. Hələlik fikirlər lövhəsinə bax — ideya paylaş və ya başqalarına cavab ver.",
+    "boardCta": "Fikirlər lövhəsinə keç"
   },
   "OpinionForm": {
     "direction": "İstiqamət",
@@ -54,7 +54,8 @@
     "submit": "Göndər",
     "sending": "Göndərilir…",
     "successTitle": "Təşəkkürlər! Rəyiniz qəbul olundu",
-    "successText": "Mütləq nəzərə alacağıq."
+    "successText": "Mütləq nəzərə alacağıq.",
+    "guidelines": "Hörmətlə yazın: mənfi və təhqiredici mesajlar qəbul edilmir."
   },
   "Ideas": {
     "badge": "İdeyalar divarı",
@@ -86,7 +87,8 @@
     "allCategories": "Bütün istiqamətlər",
     "empty": "Hələ ki boşdur — ilk siz olun!",
     "shareIdea": "İdeya təklif et",
-    "allIdeas": "Bütün ideyalar →"
+    "allIdeas": "Bütün ideyalar →",
+    "guidelines": "Hörmətlə yazın: mənfi və təhqiredici mesajlar qəbul edilmir. Bütün fikirlər dərc olunmazdan əvvəl moderasiyadan keçir."
   },
   "OpinionPage": {
     "badge": "Sənin fikrin vacibdir",
@@ -102,7 +104,8 @@
   "FestivalSection": {
     "join": "Qoşul",
     "participatingUniversities": "İştirakçı universitetlər",
-    "moreUniversities": "Siyahı yuxarıdakılarla məhdudlaşmır. Öz universitetinizi cəlb etməyinizi xahiş edirik — qoşulun və başqalarını da dəvət edin."
+    "moreUniversities": "Siyahı yuxarıdakılarla məhdudlaşmır. Öz universitetinizi cəlb etməyinizi xahiş edirik — qoşulun və başqalarını da dəvət edin.",
+    "universitiesNote": "Platformada tədbirlər haqqında məlumatı universitetlərin rəhbərliyi daxil edir. Siz də qoşulun və tələbələrinizi dəvət edin!"
   },
   "Gallery": {
     "title": "Festival foto qalereyası",
@@ -165,5 +168,14 @@
         "question": "İstənilən təklif üçün sərbəst sahə"
       }
     }
+  },
+  "ShareCta": {
+    "title": "Saytı paylaşın — kömək etsin",
+    "text": "TURKIC STUDENTS haqqında dostlarına, qrup yoldaşlarına və müəllimlərə danış: nə qədər çox adam qoşulsa, platforma bir o qədər faydalı olar.",
+    "share": "Paylaş",
+    "copy": "Keçidi kopyala",
+    "copied": "Keçid kopyalandı",
+    "feedbackTitle": "Saytı necə yaxşılaşdırmaq barədə ideyaların var?",
+    "feedbackText": "Bizə yazın — hər təklifi oxuyuruq:"
   }
 }

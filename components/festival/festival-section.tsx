@@ -44,6 +44,7 @@ export async function FestivalSection({ badge, title, subtitle, text, alumniNote
           ))}
         </div>
         <p className="mt-4 text-pretty text-sm text-muted">{t("moreUniversities")}</p>
+        <p className="mt-2 text-pretty text-sm font-medium">{t("universitiesNote")}</p>
       </div>
     </section>
   );

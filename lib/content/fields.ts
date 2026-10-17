@@ -72,7 +72,6 @@ export const CONTENT_FIELDS: ContentField[] = [
 
   { key: "principles_badge", section: "Принципы", label: "Бейдж над заголовком" },
   { key: "principles_title", section: "Принципы", label: "Заголовок" },
-  { key: "principles_text", section: "Принципы", label: "Текст", multiline: true },
   { key: "principles_country_1", section: "Принципы", label: "Страна 1" },
   { key: "principles_country_2", section: "Принципы", label: "Страна 2" },
   { key: "principles_country_3", section: "Принципы", label: "Страна 3" },
