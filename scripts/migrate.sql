@@ -1149,3 +1149,23 @@ BEGIN
   END IF;
 END
 $patch$;
+
+-- Хиро: анонс фестиваля 2027 — место проведения. Только строки, всё ещё равные значению прошлого патча.
+DO $patch$
+BEGIN
+  IF NOT EXISTS (SELECT 1 FROM content_patches WHERE name = '2026-10-hero-2027-kg') THEN
+    UPDATE site_content sc SET value = v.new_value
+    FROM (VALUES
+      ('hero_festival_dates', 'ru', 'Пройдёт в 2027 году', 'Пройдёт в 2027 году в Кыргызстане'),
+      ('hero_festival_dates', 'az', '2027-ci ildə keçiriləcək', '2027-ci ildə Qırğızıstanda keçiriləcək'),
+      ('hero_festival_dates', 'kk', '2027 жылы өтеді', '2027 жылы Қырғызстанда өтеді'),
+      ('hero_festival_dates', 'ky', '2027-жылы өтөт', '2027-жылы Кыргызстанда өтөт'),
+      ('hero_festival_dates', 'tk', '2027-nji ýylda geçiriler', '2027-nji ýylda Gyrgyzystanda geçiriler'),
+      ('hero_festival_dates', 'tr', '2027 yılında yapılacak', '2027 yılında Kırgızistan’da yapılacak'),
+      ('hero_festival_dates', 'uz', '2027-yilda oʻtkaziladi', '2027-yilda Qirgʻizistonda oʻtkaziladi')
+    ) AS v(key, locale, old_value, new_value)
+    WHERE sc.key = v.key AND sc.locale = v.locale AND sc.value = v.old_value;
+    INSERT INTO content_patches (name) VALUES ('2026-10-hero-2027-kg');
+  END IF;
+END
+$patch$;

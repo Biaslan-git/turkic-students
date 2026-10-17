@@ -17,10 +17,9 @@
     "galleryPhoto": "Festivalden fotoğraf",
     "festivalPoster": "Türkistan'da düzenlenen IV. Türk Dünyası Öğrenci Tiyatroları Uluslararası Festivali afişi",
     "turkestanLogo": "Türkistan Bölgesi arması",
-    "ceremony1": "Ödül töreni: mavi takım elbiseli bir erkek yukarı kaldırdığı elinde heykelcikle, yanında diplomalı bir kadın",
-    "ceremony2": "Ödül töreni: bir erkek festival sahnesinde heykelcik ve diploma takdim ediyor",
-    "ceremony3": "Ödül töreni: diplomalı gözlüklü bir kadın heykelcik sahibinin yanında",
-    "ceremony4": "Siyah giyimli bir kadın ve çizgili takım elbiseli bir erkek hatıra plaketiyle"
+    "ceremony1": "Bir erkek festival sahnesinde hatıra plaketi takdim ediyor",
+    "ceremony2": "Ödül töreni: diplomalı gözlüklü bir kadın heykelcik sahibinin yanında",
+    "ceremony3": "Siyah giyimli bir kadın ve çizgili takım elbiseli bir erkek hatıra plaketiyle"
   },
   "Footer": {
     "opinionLink": "Fikir bırak",
@@ -114,7 +113,7 @@
   },
   "Gallery": {
     "title": "Festival fotoğraf galerisi",
-    "subtitle": "Geçmiş festivallerden anlar — her üniversiteden",
+    "subtitle": "Geçen festivalden anlar — her üniversiteden",
     "close": "Kapat",
     "prev": "Geri",
     "next": "İleri",

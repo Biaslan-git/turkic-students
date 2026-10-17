@@ -17,10 +17,9 @@
     "galleryPhoto": "Festiwaldan surat",
     "festivalPoster": "Türküstanda geçirilen IV Türki dünýä talyp teatrlarynyň halkara festiwalynyň afişasy",
     "turkestanLogo": "Türküstan welaýatynyň gerbi",
-    "ceremony1": "Sylaglamak: gök kostýumly erkek ýokary galdyran elinde heýkelçe bilen we diplomly aýal",
-    "ceremony2": "Sylaglamak: erkek festiwal sahnasynda heýkelçäni we diplomy gowşurýar",
-    "ceremony3": "Sylaglamak: diplomly äýnekli aýal heýkelçäniň eýesiniň ýanynda",
-    "ceremony4": "Gara lybaslaky aýal we zolakly kostýumly erkek ýadygärlik tagtajygy bilen"
+    "ceremony1": "Erkek festiwal sahnasynda ýadygärlik tagtajygyny gowşurýar",
+    "ceremony2": "Sylaglamak: diplomly äýnekli aýal heýkelçäniň eýesiniň ýanynda",
+    "ceremony3": "Gara lybaslaky aýal we zolakly kostýumly erkek ýadygärlik tagtajygy bilen"
   },
   "Footer": {
     "opinionLink": "Pikir galdyr",
@@ -114,7 +113,7 @@
   },
   "Gallery": {
     "title": "Festiwalyň fotogalereýasy",
-    "subtitle": "Geçen festiwallaryň pursatlary — her uniwersitetden",
+    "subtitle": "Geçen festiwalyň pursatlary — her uniwersitetden",
     "close": "Ýap",
     "prev": "Yza",
     "next": "Öňe",

@@ -17,10 +17,9 @@
     "galleryPhoto": "Festivaldan foto",
     "festivalPoster": "Türkistanda keçirilən IV Türk dünyası tələbə teatrları beynəlxalq festivalının afişası",
     "turkestanLogo": "Türkistan vilayətinin gerbi",
-    "ceremony1": "Mükafatlandırma: mavi kostyumlu kişi qaldırdığı əlində heykəlciklə və diplomlu qadın",
-    "ceremony2": "Mükafatlandırma: kişi festival səhnəsində heykəlcik və diplom təqdim edir",
-    "ceremony3": "Mükafatlandırma: diplomlu eynəkli qadın heykəlcik sahibinin yanında",
-    "ceremony4": "Qara geyimli qadın və zolaqlı kostyumlu kişi xatirə lövhəsi ilə"
+    "ceremony1": "Kişi festival səhnəsində xatirə lövhəsi təqdim edir",
+    "ceremony2": "Mükafatlandırma: diplomlu eynəkli qadın heykəlcik sahibinin yanında",
+    "ceremony3": "Qara geyimli qadın və zolaqlı kostyumlu kişi xatirə lövhəsi ilə"
   },
   "Footer": {
     "opinionLink": "Fikir bildir",
@@ -114,7 +113,7 @@
   },
   "Gallery": {
     "title": "Festival foto qalereyası",
-    "subtitle": "Keçmiş festivallardan anlar — hər universitetdən",
+    "subtitle": "Keçirilmiş festivaldan anlar — hər universitetdən",
     "close": "Bağla",
     "prev": "Geri",
     "next": "İrəli",

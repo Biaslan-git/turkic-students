@@ -12,7 +12,7 @@ type HeroSectionProps = {
 };
 
 // Снимки награждения IV фестиваля (public/hero/NN.webp, 640x480): порядок задан заказчиком.
-const CEREMONY_PHOTOS = [1, 2, 3, 4] as const;
+const CEREMONY_PHOTOS = [1, 2, 3] as const;
 
 export function HeroSection({
   ctaLabel,
@@ -53,9 +53,9 @@ export function HeroSection({
           <p className="max-w-2xl text-balance font-display text-xl font-bold tracking-tight sm:text-2xl">{festivalTitle}</p>
           <p className="text-sm font-semibold uppercase tracking-[0.14em] text-accent-warm">{festivalDates}</p>
           <figure className="mt-2 flex flex-col items-center gap-2">
-            <ul className="grid grid-cols-2 gap-2 sm:grid-cols-4">
+            <ul className="grid grid-cols-3 gap-2">
               {CEREMONY_PHOTOS.map((n) => (
-                <li key={n} className="relative aspect-[4/3] w-36 overflow-hidden rounded-xl bg-border sm:w-40 md:w-44">
+                <li key={n} className="relative aspect-[4/3] w-24 overflow-hidden rounded-xl bg-border sm:w-40 md:w-44">
                   <Image
                     src={`/hero/${String(n).padStart(2, "0")}.webp`}
                     alt={t(`ceremony${n}`)}

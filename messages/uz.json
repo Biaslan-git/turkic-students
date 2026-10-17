@@ -17,10 +17,9 @@
     "galleryPhoto": "Festivaldan surat",
     "festivalPoster": "Turkistonda o‘tkazilgan IV xalqaro turk dunyosi talabalar teatrlari festivali afishasi",
     "turkestanLogo": "Turkiston viloyati gerbi",
-    "ceremony1": "Taqdirlash: ko‘k kostyumli erkak ko‘targan qo‘lida haykalcha bilan va diplomli ayol",
-    "ceremony2": "Taqdirlash: erkak festival sahnasida haykalcha va diplom topshirmoqda",
-    "ceremony3": "Taqdirlash: diplomli ko‘zoynakli ayol haykalcha egasi yonida",
-    "ceremony4": "Qora kiyimdagi ayol va yo‘l-yo‘l kostyumli erkak xotira lavhasi bilan"
+    "ceremony1": "Erkak festival sahnasida xotira lavhasini topshirmoqda",
+    "ceremony2": "Taqdirlash: diplomli ko‘zoynakli ayol haykalcha egasi yonida",
+    "ceremony3": "Qora kiyimdagi ayol va yo‘l-yo‘l kostyumli erkak xotira lavhasi bilan"
   },
   "Footer": {
     "opinionLink": "Fikr qoldirish",
@@ -114,7 +113,7 @@
   },
   "Gallery": {
     "title": "Festival fotogalereyasi",
-    "subtitle": "Oʻtgan festivallardan lahzalar — har bir universitetdan",
+    "subtitle": "Oʻtgan festivaldan lahzalar — har bir universitetdan",
     "close": "Yopish",
     "prev": "Orqaga",
     "next": "Oldinga",
