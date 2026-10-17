@@ -12,7 +12,7 @@ import {
 const intlProxy = createIntlMiddleware(routing);
 
 export const config = {
-  matcher: ["/((?!api|_next|_vercel|.*\\..*).*)"],
+  matcher: ["/((?!api|icon|apple-icon|_next|_vercel|.*\\..*).*)"],
 };
 
 export function proxy(request: NextRequest) {
