@@ -28,15 +28,15 @@ export function HeroSection({
     <section className="relative overflow-hidden">
       <RouteLinesBackdrop />
       <div className="relative flex flex-col items-center gap-7 px-5 py-16 text-center sm:px-8 sm:py-20 md:px-12 md:py-24">
-        <figure className="flex w-full max-w-sm items-center gap-3 rounded-2xl border border-border bg-background/90 p-2.5 text-left shadow-sm xl:absolute xl:right-10 xl:top-10 xl:w-52 xl:max-w-none xl:flex-col xl:items-stretch xl:gap-2 xl:text-center">
+        <figure className="flex w-fit max-w-full items-center gap-3 rounded-2xl border border-border bg-background/90 p-2.5 text-left shadow-sm">
           <Image
             src="/images/poster.webp"
             alt={t("festivalPoster")}
             width={480}
             height={686}
-            className="h-auto w-20 flex-none rounded-lg xl:w-full"
+            className="h-auto w-20 flex-none rounded-lg"
           />
-          <figcaption className="flex flex-col gap-1.5 text-xs text-muted xl:items-center">
+          <figcaption className="flex flex-col gap-1.5 text-xs text-muted">
             <Image
               src="/images/turkestan-logo.webp"
               alt={t("turkestanLogo")}

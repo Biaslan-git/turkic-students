@@ -1092,3 +1092,23 @@ BEGIN
   END IF;
 END
 $patch$;
+
+-- Хиро: убираем «даты уточняются». Только строки, всё ещё равные значению прошлого патча.
+DO $patch$
+BEGIN
+  IF NOT EXISTS (SELECT 1 FROM content_patches WHERE name = '2026-10-hero-2027-nodates') THEN
+    UPDATE site_content sc SET value = v.new_value
+    FROM (VALUES
+      ('hero_festival_dates', 'ru', 'Пройдёт в 2027 году, даты уточняются', 'Пройдёт в 2027 году'),
+      ('hero_festival_dates', 'az', '2027-ci ildə keçiriləcək, tarixlər dəqiqləşdirilir', '2027-ci ildə keçiriləcək'),
+      ('hero_festival_dates', 'kk', '2027 жылы өтеді, күндері нақтылануда', '2027 жылы өтеді'),
+      ('hero_festival_dates', 'ky', '2027-жылы өтөт, күндөрү тактала элек', '2027-жылы өтөт'),
+      ('hero_festival_dates', 'tk', '2027-nji ýylda geçiriler, senesi anyklanylýar', '2027-nji ýylda geçiriler'),
+      ('hero_festival_dates', 'tr', '2027 yılında yapılacak, tarihler belirleniyor', '2027 yılında yapılacak'),
+      ('hero_festival_dates', 'uz', '2027-yilda oʻtkaziladi, sanalar aniqlanmoqda', '2027-yilda oʻtkaziladi')
+    ) AS v(key, locale, old_value, new_value)
+    WHERE sc.key = v.key AND sc.locale = v.locale AND sc.value = v.old_value;
+    INSERT INTO content_patches (name) VALUES ('2026-10-hero-2027-nodates');
+  END IF;
+END
+$patch$;

@@ -33,8 +33,8 @@ export function AllPhotos({
 
   // В портал: у секции с reveal-on-scroll есть transform, из-за него fixed считался бы от секции, а не от окна.
   return createPortal(
-    <div role="dialog" aria-modal="true" aria-label={t("title")} className="fixed inset-0 z-[1000] flex flex-col bg-black/95">
-      <div className="flex items-center justify-between gap-4 px-5 py-3 text-white sm:px-8">
+    <div role="dialog" aria-modal="true" aria-label={t("title")} className="fixed inset-0 z-[1000] flex flex-col bg-[#0b0b0e]">
+      <div className="flex flex-none items-center justify-between gap-4 border-b border-white/10 px-5 py-3 text-white sm:px-8">
         <p className="font-display text-base font-bold">
           {t("title")} · {photos.length}
         </p>
@@ -46,14 +46,14 @@ export function AllPhotos({
           {t("close")}
         </button>
       </div>
-      <div className="grid flex-1 grid-cols-3 content-start gap-1.5 overflow-y-auto px-5 pb-6 sm:grid-cols-4 sm:px-8 md:grid-cols-6">
+      <div className="grid min-h-0 flex-1 grid-cols-2 auto-rows-[9rem] content-start gap-2 sm:auto-rows-[11rem] overflow-y-auto px-5 py-4 sm:grid-cols-3 sm:px-8 lg:grid-cols-4 xl:grid-cols-5">
         {photos.map((photo, index) => (
           <button
             key={photo.thumb}
             type="button"
             onClick={() => onPick(index)}
             aria-label={t("openPhoto")}
-            className="relative aspect-[4/3] overflow-hidden rounded-lg bg-white/10"
+            className="relative h-full w-full overflow-hidden rounded-lg bg-white/10"
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
@@ -61,7 +61,7 @@ export function AllPhotos({
               alt={tAlt("galleryPhoto")}
               loading="lazy"
               decoding="async"
-              className="h-full w-full object-cover transition-transform duration-200 hover:scale-105"
+              className="absolute inset-0 h-full w-full object-cover transition-transform duration-200 hover:scale-105"
             />
           </button>
         ))}
