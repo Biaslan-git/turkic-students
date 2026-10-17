@@ -58,7 +58,9 @@ export async function tgCall<T = unknown>(method: string, payload: object): Prom
       dispatcher: getDispatcher() ?? undefined,
       signal: AbortSignal.timeout(15_000),
     });
-    return (await response.json()) as TgResponse<T>;
+    const data = (await response.json()) as TgResponse<T>;
+    if (!data.ok) console.error(`Telegram ${method} rejected:`, response.status, data.description);
+    return data;
   } catch (error) {
     // Ошибка может содержать URL с токеном — логируем только метод и код.
     console.error(`Telegram ${method} failed:`, (error as { cause?: { code?: string } }).cause?.code ?? "network error");
@@ -215,6 +217,10 @@ export function isValidWebhookSecret(received: string | null): boolean {
 // Вызывается один раз при старте сервера (instrumentation.ts): регистрирует вебхук, чтобы не
 // запускать отдельные скрипты. Повторная регистрация с теми же параметрами — no-op для Telegram.
 export async function ensureWebhook(): Promise<void> {
+  if (process.env.NODE_ENV === "production") {
+    const set = (name: string) => (process.env[name] ? "ok" : "НЕ ЗАДАНА");
+    console.log(`Telegram env: TOKEN=${set("TELEGRAM_BOT_TOKEN")} CHAT_IDS=${set("TELEGRAM_MODERATOR_CHAT_IDS")} SECRET=${set("TELEGRAM_WEBHOOK_SECRET")} PROXY=${set("TELEGRAM_PROXY_URL")}`);
+  }
   if (process.env.NODE_ENV !== "production" || !process.env.TELEGRAM_BOT_TOKEN || !process.env.TELEGRAM_WEBHOOK_SECRET) return;
   const url = process.env.TELEGRAM_WEBHOOK_URL || (process.env.SITE_URL ? `${process.env.SITE_URL}/api/telegram/webhook` : "");
   if (!url) return;

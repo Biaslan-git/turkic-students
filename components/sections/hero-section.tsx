@@ -28,26 +28,27 @@ export function HeroSection({
     <section className="relative overflow-hidden">
       <RouteLinesBackdrop />
       <div className="relative flex flex-col items-center gap-7 px-5 py-16 text-center sm:px-8 sm:py-20 md:px-12 md:py-24">
-        <figure className="flex w-fit max-w-full items-center gap-3 rounded-2xl border border-border bg-background/90 p-2.5 text-left shadow-sm">
+        {/* До xl афиша и подпись — одной карточкой по центру; на xl расходятся по верхним углам. */}
+        <div className="flex w-fit max-w-full items-center gap-3 rounded-2xl border border-border bg-background/90 p-2.5 text-left shadow-sm xl:contents">
           <Image
             src="/images/poster.webp"
             alt={t("festivalPoster")}
             width={480}
             height={686}
-            className="h-auto w-20 flex-none rounded-lg"
+            className="h-auto w-20 flex-none rounded-lg xl:absolute xl:right-10 xl:top-10 xl:w-44 xl:rounded-xl xl:border xl:border-border xl:shadow-md"
           />
-          <figcaption className="flex flex-col gap-1.5 text-xs text-muted">
+          <div className="flex flex-col gap-1.5 text-xs text-muted xl:absolute xl:left-10 xl:top-10 xl:w-44 xl:gap-2 xl:text-sm">
             <Image
               src="/images/turkestan-logo.webp"
               alt={t("turkestanLogo")}
-              width={36}
-              height={36}
-              className="h-9 w-9"
+              width={72}
+              height={72}
+              className="h-9 w-9 xl:h-16 xl:w-16"
             />
-            <span className="font-display text-sm font-bold leading-tight text-foreground">{tHero("posterCaption")}</span>
+            <span className="font-display text-sm font-bold leading-tight text-foreground xl:text-lg">{tHero("posterCaption")}</span>
             <span>{tHero("posterDates")}</span>
-          </figcaption>
-        </figure>
+          </div>
+        </div>
         <div className="flex flex-col items-center gap-3">
           <p className="max-w-2xl text-balance font-display text-xl font-bold tracking-tight sm:text-2xl">{festivalTitle}</p>
           <p className="text-sm font-semibold uppercase tracking-[0.14em] text-accent-warm">{festivalDates}</p>
