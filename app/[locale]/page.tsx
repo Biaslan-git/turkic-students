@@ -119,7 +119,6 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
           ]}
         />
         <FestivalSection
-          badge={c.tvoi_golos_badge}
           title={c.tvoi_golos_title}
           subtitle={c.tvoi_golos_subtitle}
           text={c.tvoi_golos_text}

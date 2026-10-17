@@ -2,22 +2,18 @@ import { getLocale, getTranslations } from "next-intl/server";
 import { listActiveUniversities, localizedUniversityName } from "@/lib/universities";
 
 type FestivalSectionProps = {
-  badge: string;
   title: string;
   subtitle: string;
   text: string;
   alumniNote: string;
 };
 
-export async function FestivalSection({ badge, title, subtitle, text, alumniNote }: FestivalSectionProps) {
+export async function FestivalSection({ title, subtitle, text, alumniNote }: FestivalSectionProps) {
   const [universities, t, locale] = await Promise.all([listActiveUniversities(), getTranslations("FestivalSection"), getLocale()]);
 
   return (
     <section id="tvoi-golos" className="relative scroll-mt-20 overflow-hidden bg-tint-teal">
       <div className="reveal-on-scroll relative mx-auto flex max-w-3xl flex-col items-start gap-5 px-5 pt-16 sm:px-8 sm:pt-24 md:px-12">
-        <span className="w-fit rounded-full border border-border bg-background px-3 py-1 text-xs font-semibold uppercase tracking-[0.14em] text-muted">
-          {badge}
-        </span>
         <h2 className="text-balance font-display text-3xl font-bold tracking-tight sm:text-4xl">{title}</h2>
         <p className="font-display text-lg font-bold text-accent-warm">{subtitle}</p>
         <p className="text-pretty text-muted">{text}</p>

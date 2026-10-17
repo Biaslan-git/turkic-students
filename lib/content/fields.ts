@@ -106,7 +106,6 @@ export const CONTENT_FIELDS: ContentField[] = [
 
   { key: "footer_text", section: "Футер", label: "Текст", multiline: true },
 
-  { key: "tvoi_golos_badge", section: "Твой голос", label: "Бейдж над заголовком" },
   { key: "tvoi_golos_title", section: "Твой голос", label: "Заголовок" },
   { key: "tvoi_golos_subtitle", section: "Твой голос", label: "Подзаголовок" },
   { key: "tvoi_golos_text", section: "Твой голос", label: "Текст", multiline: true },
