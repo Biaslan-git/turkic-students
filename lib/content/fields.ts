@@ -17,8 +17,8 @@ export const CONTENT_FIELDS: ContentField[] = [
   },
   { key: "hero_subtitle", section: "Главный экран", label: "Подзаголовок", multiline: true },
 
-  { key: "hero_festival_title", section: "Главный экран", label: "Прошедший фестиваль: название" },
-  { key: "hero_festival_dates", section: "Главный экран", label: "Прошедший фестиваль: даты" },
+  { key: "hero_festival_title", section: "Главный экран", label: "Анонс фестиваля: название" },
+  { key: "hero_festival_dates", section: "Главный экран", label: "Анонс фестиваля: даты" },
 
   { key: "problem_badge", section: "Трудность", label: "Бейдж над заголовком" },
   { key: "problem_title", section: "Трудность", label: "Заголовок" },

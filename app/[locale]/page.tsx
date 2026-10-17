@@ -44,7 +44,6 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
           subtitle={c.hero_subtitle}
           festivalTitle={c.hero_festival_title}
           festivalDates={c.hero_festival_dates}
-          festivalPhotos={galleryPhotos.slice(0, 3).map((p) => p.thumb)}
         />
         <OpinionCta />
         <ProblemSection

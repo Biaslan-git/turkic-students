@@ -12,9 +12,15 @@
   "Alt": {
     "heroPhoto": "Festival iştirakçıları milli geyimlərdə, Türkiyə və Qırğızıstan bayraqları ilə teatrın pillələrində",
     "audiencePhoto": "Teatr qrimi ilə gülən tələbə aktrisalar festival məşqində",
-    "cyclePhoto": "Festival iştirakçıları teatrın pillələrində Qırğızıstan bayrağı ilə",
-    "solutionPhoto": "Səhnədə milli geyimlərdə tamaşanın iki iştirakçısı",
-    "galleryPhoto": "Festivaldan foto"
+    "cyclePhoto": "Azərbaycanlı tələbə aktyorlar əl-ələ tutub səhnədə təzim edirlər",
+    "solutionPhoto": "Səhnədə türkmən milli geyimlərində tamaşa iştirakçıları: gəlin, qəhrəman və digər aktyorlar",
+    "galleryPhoto": "Festivaldan foto",
+    "festivalPoster": "Türkistanda keçirilən IV Türk dünyası tələbə teatrları beynəlxalq festivalının afişası",
+    "turkestanLogo": "Türkistan vilayətinin gerbi",
+    "ceremony1": "Mükafatlandırma: mavi kostyumlu kişi qaldırdığı əlində heykəlciklə və diplomlu qadın",
+    "ceremony2": "Mükafatlandırma: kişi festival səhnəsində heykəlcik və diplom təqdim edir",
+    "ceremony3": "Mükafatlandırma: diplomlu eynəkli qadın heykəlcik sahibinin yanında",
+    "ceremony4": "Qara geyimli qadın və zolaqlı kostyumlu kişi xatirə lövhəsi ilə"
   },
   "Footer": {
     "opinionLink": "Fikir bildir",
@@ -181,5 +187,10 @@
   },
   "Nav": {
     "backHome": "← Ana səhifəyə"
+  },
+  "HeroSection": {
+    "posterCaption": "Türkistanda keçirilib",
+    "posterDates": "IV festival · 5–8 oktyabr 2026",
+    "ceremonyCaption": "Türkistan, IV festival"
   }
 }

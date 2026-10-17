@@ -12,9 +12,15 @@
   "Alt": {
     "heroPhoto": "Festival katılımcıları ulusal kıyafetleriyle, Türkiye ve Kırgızistan bayraklarıyla tiyatronun basamaklarında",
     "audiencePhoto": "Tiyatro makyajlı öğrenci oyuncular festival provasında gülüyor",
-    "cyclePhoto": "Festival katılımcıları tiyatronun basamaklarında Kırgız bayrağıyla",
-    "solutionPhoto": "Sahnede ulusal kıyafetler içinde oyunun iki katılımcısı",
-    "galleryPhoto": "Festivalden fotoğraf"
+    "cyclePhoto": "Azerbaycanlı öğrenci oyuncular el ele tutuşup sahnede selam veriyor",
+    "solutionPhoto": "Sahnede Türkmen ulusal kıyafetleriyle oyun katılımcıları: gelin, kahraman ve diğer sanatçılar",
+    "galleryPhoto": "Festivalden fotoğraf",
+    "festivalPoster": "Türkistan'da düzenlenen IV. Türk Dünyası Öğrenci Tiyatroları Uluslararası Festivali afişi",
+    "turkestanLogo": "Türkistan Bölgesi arması",
+    "ceremony1": "Ödül töreni: mavi takım elbiseli bir erkek yukarı kaldırdığı elinde heykelcikle, yanında diplomalı bir kadın",
+    "ceremony2": "Ödül töreni: bir erkek festival sahnesinde heykelcik ve diploma takdim ediyor",
+    "ceremony3": "Ödül töreni: diplomalı gözlüklü bir kadın heykelcik sahibinin yanında",
+    "ceremony4": "Siyah giyimli bir kadın ve çizgili takım elbiseli bir erkek hatıra plaketiyle"
   },
   "Footer": {
     "opinionLink": "Fikir bırak",
@@ -181,5 +187,10 @@
   },
   "Nav": {
     "backHome": "← Ana sayfaya"
+  },
+  "HeroSection": {
+    "posterCaption": "Türkistan'da gerçekleşti",
+    "posterDates": "IV. festival · 5–8 Ekim 2026",
+    "ceremonyCaption": "Türkistan, IV. festival"
   }
 }

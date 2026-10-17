@@ -1064,3 +1064,31 @@ ALTER TABLE ideas ADD COLUMN IF NOT EXISTS tg_messages JSONB NOT NULL DEFAULT '{
 ALTER TABLE idea_comments ADD COLUMN IF NOT EXISTS tg_messages JSONB NOT NULL DEFAULT '{}'::jsonb;
 
 CREATE INDEX IF NOT EXISTS ideas_status_idx ON ideas (status, created_at DESC);
+
+-- Хиро: анонс будущего фестиваля (2027), прошедший (Туркестан) показывается афишей рядом.
+-- Меняем только строки, всё ещё равные значениям прошлого патча, — правки из админки не затираются.
+DO $patch$
+BEGIN
+  IF NOT EXISTS (SELECT 1 FROM content_patches WHERE name = '2026-10-hero-2027') THEN
+    UPDATE site_content sc SET value = v.new_value
+    FROM (VALUES
+      ('hero_festival_title', 'ru', 'Международный студенческий фестиваль в Кыргызстане', 'Международный студенческий фестиваль театральных вузов тюркских стран'),
+      ('hero_festival_dates', 'ru', 'Пройдёт 5–9 ноября 2026', 'Пройдёт в 2027 году, даты уточняются'),
+      ('hero_festival_title', 'az', 'Qırğızıstanda Beynəlxalq Tələbə Festivalı', 'Türk ölkələrinin teatr universitetlərinin beynəlxalq tələbə festivalı'),
+      ('hero_festival_dates', 'az', '2026-cı il noyabrın 5–9-da keçiriləcək', '2027-ci ildə keçiriləcək, tarixlər dəqiqləşdirilir'),
+      ('hero_festival_title', 'kk', 'Қырғызстандағы халықаралық студенттік фестиваль', 'Түркі елдері театр жоғары оқу орындарының халықаралық студенттік фестивалі'),
+      ('hero_festival_dates', 'kk', '2026 жылғы 5–9 қарашада өтеді', '2027 жылы өтеді, күндері нақтылануда'),
+      ('hero_festival_title', 'ky', 'Кыргызстандагы эл аралык студенттик фестиваль', 'Түрк өлкөлөрүнүн театр жогорку окуу жайларынын эл аралык студенттик фестивалы'),
+      ('hero_festival_dates', 'ky', '2026-жылдын 5–9-ноябрында өтөт', '2027-жылы өтөт, күндөрү тактала элек'),
+      ('hero_festival_title', 'tk', 'Gyrgyzystanda halkara talyp festiwaly', 'Türki ýurtlaryň teatr ýokary okuw mekdepleriniň halkara talyp festiwaly'),
+      ('hero_festival_dates', 'tk', '2026-njy ýylyň 5–9-njy noýabrynda geçiriler', '2027-nji ýylda geçiriler, senesi anyklanylýar'),
+      ('hero_festival_title', 'tr', 'Kırgızistan’da Uluslararası Öğrenci Festivali', 'Türk ülkelerinin tiyatro üniversiteleri uluslararası öğrenci festivali'),
+      ('hero_festival_dates', 'tr', '5–9 Kasım 2026 tarihlerinde gerçekleşecek', '2027 yılında yapılacak, tarihler belirleniyor'),
+      ('hero_festival_title', 'uz', 'Qirgʻizistonda xalqaro talabalar festivali', 'Turkiy davlatlar teatr oliy oʻquv yurtlarining xalqaro talabalar festivali'),
+      ('hero_festival_dates', 'uz', '2026-yil 5–9-noyabrda oʻtkaziladi', '2027-yilda oʻtkaziladi, sanalar aniqlanmoqda')
+    ) AS v(key, locale, old_value, new_value)
+    WHERE sc.key = v.key AND sc.locale = v.locale AND sc.value = v.old_value;
+    INSERT INTO content_patches (name) VALUES ('2026-10-hero-2027');
+  END IF;
+END
+$patch$;

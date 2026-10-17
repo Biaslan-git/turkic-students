@@ -9,8 +9,10 @@ type HeroSectionProps = {
   subtitle: string;
   festivalTitle: string;
   festivalDates: string;
-  festivalPhotos: string[];
 };
+
+// Снимки награждения IV фестиваля (public/hero/NN.webp, 640x480): порядок задан заказчиком.
+const CEREMONY_PHOTOS = [1, 2, 3, 4] as const;
 
 export function HeroSection({
   ctaLabel,
@@ -19,31 +21,54 @@ export function HeroSection({
   subtitle,
   festivalTitle,
   festivalDates,
-  festivalPhotos,
 }: HeroSectionProps) {
   const t = useTranslations("Alt");
+  const tHero = useTranslations("HeroSection");
   return (
     <section className="relative overflow-hidden">
       <RouteLinesBackdrop />
       <div className="relative flex flex-col items-center gap-7 px-5 py-16 text-center sm:px-8 sm:py-20 md:px-12 md:py-24">
+        <figure className="flex w-full max-w-sm items-center gap-3 rounded-2xl border border-border bg-background/90 p-2.5 text-left shadow-sm xl:absolute xl:right-10 xl:top-10 xl:w-52 xl:max-w-none xl:flex-col xl:items-stretch xl:gap-2 xl:text-center">
+          <Image
+            src="/images/poster.webp"
+            alt={t("festivalPoster")}
+            width={480}
+            height={686}
+            className="h-auto w-20 flex-none rounded-lg xl:w-full"
+          />
+          <figcaption className="flex flex-col gap-1.5 text-xs text-muted xl:items-center">
+            <Image
+              src="/images/turkestan-logo.webp"
+              alt={t("turkestanLogo")}
+              width={36}
+              height={36}
+              className="h-9 w-9"
+            />
+            <span className="font-display text-sm font-bold leading-tight text-foreground">{tHero("posterCaption")}</span>
+            <span>{tHero("posterDates")}</span>
+          </figcaption>
+        </figure>
         <div className="flex flex-col items-center gap-3">
-          <p className="font-display text-xl font-bold tracking-tight sm:text-2xl">{festivalTitle}</p>
+          <p className="max-w-2xl text-balance font-display text-xl font-bold tracking-tight sm:text-2xl">{festivalTitle}</p>
           <p className="text-sm font-semibold uppercase tracking-[0.14em] text-accent-warm">{festivalDates}</p>
-          {festivalPhotos.length > 0 && (
-            <ul className="mt-1 flex gap-2">
-              {festivalPhotos.map((src) => (
-                <li key={src} className="relative h-16 w-24 overflow-hidden rounded-xl bg-border sm:h-20 sm:w-28">
+          <figure className="mt-2 flex flex-col items-center gap-2">
+            <ul className="grid grid-cols-2 gap-2 sm:grid-cols-4">
+              {CEREMONY_PHOTOS.map((n) => (
+                <li key={n} className="relative aspect-[4/3] w-36 overflow-hidden rounded-xl bg-border sm:w-40 md:w-44">
                   <Image
-                    src={src}
-                    alt={t("galleryPhoto")}
+                    src={`/hero/${String(n).padStart(2, "0")}.webp`}
+                    alt={t(`ceremony${n}`)}
                     fill
-                    sizes="112px"
+                    sizes="176px"
                     className="object-cover"
                   />
                 </li>
               ))}
             </ul>
-          )}
+            <figcaption className="text-xs font-medium uppercase tracking-[0.14em] text-muted">
+              {tHero("ceremonyCaption")}
+            </figcaption>
+          </figure>
         </div>
         <h1 className="w-full max-w-3xl text-balance font-display text-[2.5rem] font-bold leading-[1.08] tracking-tight sm:text-5xl md:text-6xl">
           {titleMain.trim()}{" "}

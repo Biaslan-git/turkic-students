@@ -12,9 +12,15 @@
   "Alt": {
     "heroPhoto": "Festival ishtirokchilari milliy kiyimda, Turkiya va Qirgʻiziston bayroqlari bilan teatr zinapoyasida",
     "audiencePhoto": "Teatr grimidagi talaba aktrisalar festival mashqida kulib turibdi",
-    "cyclePhoto": "Festival ishtirokchilari teatr zinapoyasida Qirgʻiziston bayrogʻi bilan",
-    "solutionPhoto": "Sahnada milliy kiyimdagi spektaklning ikki ishtirokchisi",
-    "galleryPhoto": "Festivaldan surat"
+    "cyclePhoto": "Ozarbayjonlik talaba aktyorlar qo‘l ushlashib, sahnada ta’zim qilmoqda",
+    "solutionPhoto": "Sahnada turkman milliy kiyimlaridagi spektakl ishtirokchilari: kelin, qahramon va boshqa artistlar",
+    "galleryPhoto": "Festivaldan surat",
+    "festivalPoster": "Turkistonda o‘tkazilgan IV xalqaro turk dunyosi talabalar teatrlari festivali afishasi",
+    "turkestanLogo": "Turkiston viloyati gerbi",
+    "ceremony1": "Taqdirlash: ko‘k kostyumli erkak ko‘targan qo‘lida haykalcha bilan va diplomli ayol",
+    "ceremony2": "Taqdirlash: erkak festival sahnasida haykalcha va diplom topshirmoqda",
+    "ceremony3": "Taqdirlash: diplomli ko‘zoynakli ayol haykalcha egasi yonida",
+    "ceremony4": "Qora kiyimdagi ayol va yo‘l-yo‘l kostyumli erkak xotira lavhasi bilan"
   },
   "Footer": {
     "opinionLink": "Fikr qoldirish",
@@ -181,5 +187,10 @@
   },
   "Nav": {
     "backHome": "← Bosh sahifaga"
+  },
+  "HeroSection": {
+    "posterCaption": "Turkistonda o‘tgan",
+    "posterDates": "IV festival · 2026-yil 5–8-oktyabr",
+    "ceremonyCaption": "Turkiston, IV festival"
   }
 }

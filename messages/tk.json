@@ -12,9 +12,15 @@
   "Alt": {
     "heroPhoto": "Festiwalyň gatnaşyjylary milli lybaslarda, Türkiýäniň we Gyrgyzystanyň baýdaklary bilen teatryň basgançaklarynda",
     "audiencePhoto": "Teatr grimli talyp aktrisalar festiwal türgenleşiginde gülýärler",
-    "cyclePhoto": "Festiwalyň gatnaşyjylary teatryň basgançaklarynda gyrgyz baýdagy bilen",
-    "solutionPhoto": "Sahnada milli lybaslardaky spektaklyň iki gatnaşyjysy",
-    "galleryPhoto": "Festiwaldan surat"
+    "cyclePhoto": "Azerbaýjanly talyp artistler el-ele tutuşyp, sahnada baş egýärler",
+    "solutionPhoto": "Sahnada türkmen milli lybaslaryndaky spektakl gatnaşyjylary: gelin, gahryman we beýleki artistler",
+    "galleryPhoto": "Festiwaldan surat",
+    "festivalPoster": "Türküstanda geçirilen IV Türki dünýä talyp teatrlarynyň halkara festiwalynyň afişasy",
+    "turkestanLogo": "Türküstan welaýatynyň gerbi",
+    "ceremony1": "Sylaglamak: gök kostýumly erkek ýokary galdyran elinde heýkelçe bilen we diplomly aýal",
+    "ceremony2": "Sylaglamak: erkek festiwal sahnasynda heýkelçäni we diplomy gowşurýar",
+    "ceremony3": "Sylaglamak: diplomly äýnekli aýal heýkelçäniň eýesiniň ýanynda",
+    "ceremony4": "Gara lybaslaky aýal we zolakly kostýumly erkek ýadygärlik tagtajygy bilen"
   },
   "Footer": {
     "opinionLink": "Pikir galdyr",
@@ -181,5 +187,10 @@
   },
   "Nav": {
     "backHome": "← Baş sahypa"
+  },
+  "HeroSection": {
+    "posterCaption": "Türküstanda geçdi",
+    "posterDates": "IV festiwal · 2026-njy ýylyň 5–8-nji oktýabry",
+    "ceremonyCaption": "Türküstan, IV festiwal"
   }
 }
