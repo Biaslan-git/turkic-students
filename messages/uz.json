@@ -113,7 +113,8 @@
     "close": "Yopish",
     "prev": "Orqaga",
     "next": "Oldinga",
-    "openPhoto": "Suratni ochish"
+    "openPhoto": "Suratni ochish",
+    "openAll": "Galereyani ochish"
   },
   "Validation": {
     "nameRequired": "Ismingizni kiriting",

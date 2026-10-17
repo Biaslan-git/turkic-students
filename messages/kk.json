@@ -113,7 +113,8 @@
     "close": "Жабу",
     "prev": "Артқа",
     "next": "Алға",
-    "openPhoto": "Фотоны ашу"
+    "openPhoto": "Фотоны ашу",
+    "openAll": "Галереяны ашу"
   },
   "Validation": {
     "nameRequired": "Атыңызды енгізіңіз",

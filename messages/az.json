@@ -113,7 +113,8 @@
     "close": "Bağla",
     "prev": "Geri",
     "next": "İrəli",
-    "openPhoto": "Fotonu aç"
+    "openPhoto": "Fotonu aç",
+    "openAll": "Qalereyanı aç"
   },
   "Validation": {
     "nameRequired": "Adınızı daxil edin",

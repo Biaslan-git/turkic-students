@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { useTranslations } from "next-intl";
 import type { GalleryPhoto } from "@/lib/gallery";
+import { AllPhotos } from "@/components/gallery/all-photos";
 import "@fancyapps/ui/dist/fancybox/fancybox.css";
 
 // Три ряда миниатюр едут в разные стороны: на экране сразу десятки фото, а высота блока
@@ -20,11 +21,13 @@ function MarqueeRow({
   reverse,
   eager,
   onOpen,
+  onWarm,
 }: {
   row: Tile[];
   reverse: boolean;
   eager: boolean;
-  onOpen: (index: number) => void;
+  onOpen: (index: number, thumb: HTMLImageElement | null) => void;
+  onWarm: (index: number) => void;
 }) {
   const t = useTranslations("Gallery");
   const tAlt = useTranslations("Alt");
@@ -75,7 +78,8 @@ function MarqueeRow({
           <button
             key={i}
             type="button"
-            onClick={() => onOpen(index)}
+            onPointerDown={() => onWarm(index)}
+            onClick={(e) => onOpen(index, e.currentTarget.querySelector("img"))}
             aria-label={t("openPhoto")}
             className="relative h-24 w-32 flex-none overflow-hidden rounded-xl bg-border sm:h-28 sm:w-40"
           >
@@ -98,6 +102,7 @@ export function GalleryView({ photos }: { photos: GalleryPhoto[] }) {
   const t = useTranslations("Gallery");
   const containerRef = useRef<HTMLDivElement>(null);
   const [eager, setEager] = useState(false);
+  const [allOpen, setAllOpen] = useState(false);
 
   // Нативный loading="lazy" начинает грузить плитку, только когда она почти на экране, а лента
   // постоянно подвозит новые — получаются серые пустые плитки. Поэтому, когда до галереи
@@ -119,14 +124,31 @@ export function GalleryView({ photos }: { photos: GalleryPhoto[] }) {
     return () => observer.disconnect();
   }, []);
 
+  // Телефону хватает 800px — вдвое легче, открывается заметно быстрее.
+  function sourceOf(photo: GalleryPhoto) {
+    return window.innerWidth * window.devicePixelRatio <= 900 ? photo.medium : photo.large;
+  }
+
+  // К моменту клика (pointerdown → click проходит ~100 мс) крупный кадр уже качается.
+  function warm(index: number) {
+    const photo = photos[index];
+    if (photo) new Image().src = sourceOf(photo);
+  }
+
   // Fancybox подгружаем только при первом клике — на первый показ страницы его код не нужен.
-  async function openFancybox(startIndex: number) {
+  async function openFancybox(startIndex: number, thumbEl?: HTMLImageElement | null) {
     const { Fancybox } = await import("@fancyapps/ui/dist/fancybox/");
     Fancybox.show(
-      photos.map((photo) => ({ src: photo.full, thumbSrc: photo.thumb, type: "image" })),
+      photos.map((photo, i) => ({
+        src: sourceOf(photo),
+        thumbSrc: photo.thumb,
+        type: "image" as const,
+        ...(i === startIndex && thumbEl ? { thumbEl } : {}),
+      })),
       {
         startIndex,
         l10n: { CLOSE: t("close"), NEXT: t("next"), PREV: t("prev") },
+        Carousel: { Lazyload: { preload: 2 } },
       },
     );
   }
@@ -141,10 +163,22 @@ export function GalleryView({ photos }: { photos: GalleryPhoto[] }) {
   });
 
   return (
-    <div ref={containerRef} className="flex flex-col gap-2 [mask-image:linear-gradient(to_right,transparent,black_6%,black_94%,transparent)]">
-      {rows.map((row, r) => (
-        <MarqueeRow key={r} row={row} reverse={r % 2 === 1} eager={eager} onOpen={openFancybox} />
-      ))}
+    <div className="flex flex-col items-center gap-6">
+      <div ref={containerRef} className="flex w-full flex-col gap-2 [mask-image:linear-gradient(to_right,transparent,black_6%,black_94%,transparent)]">
+        {rows.map((row, r) => (
+          <MarqueeRow key={r} row={row} reverse={r % 2 === 1} eager={eager} onOpen={openFancybox} onWarm={warm} />
+        ))}
+      </div>
+      <button
+        type="button"
+        onClick={() => setAllOpen(true)}
+        className="rounded-full border border-border bg-background px-6 py-3 text-sm font-semibold transition-colors hover:border-accent hover:text-accent"
+      >
+        {t("openAll")} · {photos.length}
+      </button>
+      {allOpen && (
+        <AllPhotos photos={photos} onPick={(index) => openFancybox(index)} onClose={() => setAllOpen(false)} />
+      )}
     </div>
   );
 }

@@ -113,7 +113,8 @@
     "close": "Ýap",
     "prev": "Yza",
     "next": "Öňe",
-    "openPhoto": "Suraty aç"
+    "openPhoto": "Suraty aç",
+    "openAll": "Galereýany aç"
   },
   "Validation": {
     "nameRequired": "Adyňy ýaz",

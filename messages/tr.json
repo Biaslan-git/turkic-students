@@ -113,7 +113,8 @@
     "close": "Kapat",
     "prev": "Geri",
     "next": "İleri",
-    "openPhoto": "Fotoğrafı aç"
+    "openPhoto": "Fotoğrafı aç",
+    "openAll": "Galeriyi aç"
   },
   "Validation": {
     "nameRequired": "İsim girin",

@@ -113,7 +113,8 @@
     "close": "Закрыть",
     "prev": "Назад",
     "next": "Вперёд",
-    "openPhoto": "Открыть фото"
+    "openPhoto": "Открыть фото",
+    "openAll": "Открыть галерею"
   },
   "Validation": {
     "nameRequired": "Введите имя",
