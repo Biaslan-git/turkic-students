@@ -4,9 +4,11 @@ import { getCountryOptions } from "@/components/ideas/ideas-data";
 import { Link } from "@/i18n/navigation";
 import { after } from "next/server";
 import { ensureTranslations, listIdeas } from "@/lib/ideas";
+import { getMyPosts } from "@/lib/my-posts";
 
 export async function IdeasSection() {
-  const [t, locale, ideas] = await Promise.all([getTranslations("Ideas"), getLocale(), listIdeas({ limit: 3 })]);
+  const [t, locale, mine] = await Promise.all([getTranslations("Ideas"), getLocale(), getMyPosts()]);
+  const ideas = await listIdeas({ limit: 3, mine });
   const countries = getCountryOptions(locale);
   after(() => ensureTranslations(ideas, locale));
 

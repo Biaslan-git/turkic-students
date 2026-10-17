@@ -10,6 +10,7 @@ import { Link } from "@/i18n/navigation";
 import { IDEA_COUNTRIES, OPINION_CATEGORIES } from "@/lib/constants";
 import { getSiteContent } from "@/lib/content/site-content";
 import { ensureTranslations, listIdeas } from "@/lib/ideas";
+import { getMyPosts } from "@/lib/my-posts";
 import { listActiveUniversities } from "@/lib/universities";
 
 export async function generateMetadata({
@@ -38,11 +39,13 @@ export default async function IdeasPage({
   const country = (IDEA_COUNTRIES as readonly string[]).includes(query.country ?? "") ? query.country : undefined;
   const category = OPINION_CATEGORIES.some((c) => c.value === query.category) ? query.category : undefined;
 
-  const [c, t, tCategories, ideas, universities] = await Promise.all([
+  const mine = await getMyPosts();
+  const [c, t, tCategories, tNav, ideas, universities] = await Promise.all([
     getSiteContent(locale),
     getTranslations({ locale, namespace: "Ideas" }),
     getTranslations({ locale, namespace: "Constants.opinionCategories" }),
-    listIdeas({ country, category }),
+    getTranslations({ locale, namespace: "Nav" }),
+    listIdeas({ country, category, mine }),
     listActiveUniversities(),
   ]);
   const countries = getCountryOptions(locale);
@@ -67,6 +70,9 @@ export default async function IdeasPage({
         <section className="relative overflow-hidden bg-tint-teal">
           <div className="reveal-on-scroll relative mx-auto flex max-w-2xl flex-col gap-8 px-5 py-16 sm:px-8 sm:py-24 md:px-12">
             <div className="flex flex-col items-center gap-3 text-center">
+              <Link href="/" className="mb-2 text-sm font-semibold text-accent-warm underline underline-offset-4">
+                {tNav("backHome")}
+              </Link>
               <span className="w-fit rounded-full border border-border bg-background px-3 py-1 text-xs font-semibold uppercase tracking-[0.14em] text-muted">
                 {t("badge")}
               </span>

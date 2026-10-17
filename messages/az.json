@@ -72,15 +72,12 @@
     "universityPlaceholder": "Universiteti seçin",
     "submit": "Dərc et",
     "sending": "Dərc olunur…",
-    "successTitle": "Təşəkkür edirik! İdeya dərc olundu",
-    "successText": "İdeya artıq divardadır. Digər dillərə tərcümə bir dəqiqəyə görünəcək.",
-    "toFeed": "Bütün ideyalara bax",
     "anonymous": "Anonim",
     "showOriginal": "Orijinalı göstər",
     "showTranslation": "Tərcüməni göstər",
     "reply": "Cavab ver",
     "replyPlaceholder": "Cavabın…",
-    "replySent": "Təşəkkür edirik! Cavab göndərildi",
+    "replySent": "Cavab moderasiyaya göndərildi",
     "send": "Göndər",
     "cancel": "Ləğv et",
     "allCountries": "Bütün ölkələr",
@@ -88,7 +85,10 @@
     "empty": "Hələ ki boşdur — ilk siz olun!",
     "shareIdea": "İdeya təklif et",
     "allIdeas": "Bütün ideyalar →",
-    "guidelines": "Hörmətlə yazın: mənfi və təhqiredici mesajlar qəbul edilmir. Bütün fikirlər dərc olunmazdan əvvəl moderasiyadan keçir."
+    "guidelines": "Hörmətlə yazın: mənfi və təhqiredici mesajlar qəbul edilmir. Bütün fikirlər dərc olunmazdan əvvəl moderasiyadan keçir.",
+    "pending": "Moderasiyadadır",
+    "pendingHint": "Yalnız sən görürsən — yoxlamadan sonra lövhədə görünəcək",
+    "sentToModeration": "Təşəkkürlər! Fikrin moderasiyaya göndərildi — yoxlamadan sonra hamı üçün lövhədə görünəcək. Hələlik yalnız sən görürsən."
   },
   "OpinionPage": {
     "badge": "Sənin fikrin vacibdir",
@@ -177,5 +177,8 @@
     "copied": "Keçid kopyalandı",
     "feedbackTitle": "Saytı necə yaxşılaşdırmaq barədə ideyaların var?",
     "feedbackText": "Bizə yazın — hər təklifi oxuyuruq:"
+  },
+  "Nav": {
+    "backHome": "← Ana səhifəyə"
   }
 }

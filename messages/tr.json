@@ -72,15 +72,12 @@
     "universityPlaceholder": "Üniversite seçin",
     "submit": "Yayınla",
     "sending": "Yayınlanıyor…",
-    "successTitle": "Teşekkürler! Fikir yayınlandı",
-    "successText": "Fikir duvarda. Diğer dillere çeviri bir dakika içinde görünecek.",
-    "toFeed": "Tüm fikirleri gör",
     "anonymous": "Anonim",
     "showOriginal": "Orijinali göster",
     "showTranslation": "Çeviriyi göster",
     "reply": "Yanıtla",
     "replyPlaceholder": "Yanıtın…",
-    "replySent": "Teşekkürler! Yanıt gönderildi",
+    "replySent": "Yanıt moderasyona gönderildi",
     "send": "Gönder",
     "cancel": "İptal",
     "allCountries": "Tüm ülkeler",
@@ -88,7 +85,10 @@
     "empty": "Henüz boş — ilk sen ol!",
     "shareIdea": "Fikir öner",
     "allIdeas": "Tüm fikirler →",
-    "guidelines": "Saygılı yazın: olumsuz ve hakaret içeren mesajlar kabul edilmez. Tüm görüşler yayımlanmadan önce moderasyondan geçer."
+    "guidelines": "Saygılı yazın: olumsuz ve hakaret içeren mesajlar kabul edilmez. Tüm görüşler yayımlanmadan önce moderasyondan geçer.",
+    "pending": "Moderasyonda",
+    "pendingHint": "Yalnızca sen görüyorsun — kontrolden sonra panoda yayınlanacak",
+    "sentToModeration": "Teşekkürler! Görüşün moderasyona gönderildi — kontrolden sonra herkes için panoda görünecek. Şimdilik yalnızca sen görüyorsun."
   },
   "OpinionPage": {
     "badge": "Senin fikrin önemli",
@@ -177,5 +177,8 @@
     "copied": "Bağlantı kopyalandı",
     "feedbackTitle": "Siteyi geliştirmek için fikirlerin var mı?",
     "feedbackText": "Bize yazın — her öneriyi okuyoruz:"
+  },
+  "Nav": {
+    "backHome": "← Ana sayfaya"
   }
 }

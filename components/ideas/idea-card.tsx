@@ -13,6 +13,18 @@ function formatDate(iso: string, locale: string): string {
   }
 }
 
+function PendingBadge({ label, hint }: { label: string; hint: string }) {
+  return (
+    <span
+      title={hint}
+      className="rounded-full border border-accent/40 bg-accent/10 px-2.5 py-1 text-xs font-semibold text-accent"
+    >
+      ⏳ {label}
+      <span className="sr-only"> — {hint}</span>
+    </span>
+  );
+}
+
 export async function IdeaCard({
   idea,
   countries,
@@ -41,6 +53,7 @@ export async function IdeaCard({
           {tCategories(`${idea.category}.label`)}
         </span>
         <span className="text-muted">{formatDate(idea.createdAt, locale)}</span>
+        {idea.status === "pending" && <PendingBadge label={t("pending")} hint={t("pendingHint")} />}
       </div>
 
       <TranslatedText
@@ -66,9 +79,10 @@ export async function IdeaCard({
                 className="text-sm"
                 {...textProps}
               />
-              <p className="text-xs text-muted">
+              <p className="flex flex-wrap items-center gap-x-1.5 text-xs text-muted">
                 <span className="font-semibold text-foreground">{author(c.authorName)}</span> ·{" "}
                 {countryFlag(c.country)} {countryName(c.country, locale)} · {formatDate(c.createdAt, locale)}
+                {c.status === "pending" && <PendingBadge label={t("pending")} hint={t("pendingHint")} />}
               </p>
             </li>
           ))}

@@ -25,9 +25,10 @@ export default async function OpinionPage({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-  const [c, t] = await Promise.all([
+  const [c, t, tNav] = await Promise.all([
     getSiteContent(locale),
     getTranslations({ locale, namespace: "OpinionPage" }),
+    getTranslations({ locale, namespace: "Nav" }),
   ]);
 
   return (
@@ -37,6 +38,9 @@ export default async function OpinionPage({
         <section className="relative overflow-hidden bg-tint-teal">
           <div className="reveal-on-scroll relative mx-auto flex max-w-xl flex-col gap-8 px-5 py-16 sm:px-8 sm:py-24 md:px-12">
             <div className="flex flex-col items-center gap-3 text-center">
+              <Link href="/" className="mb-2 text-sm font-semibold text-accent-warm underline underline-offset-4">
+                {tNav("backHome")}
+              </Link>
               <span className="w-fit rounded-full border border-border bg-background px-3 py-1 text-xs font-semibold uppercase tracking-[0.14em] text-muted">
                 {t("badge")}
               </span>

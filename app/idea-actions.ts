@@ -1,9 +1,12 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+import { after } from "next/server";
 import { getLocale, getTranslations } from "next-intl/server";
 import { ideaCommentSchema, ideaSchema } from "@/lib/validation";
 import { ideaExists, insertIdea, insertIdeaComment } from "@/lib/ideas";
+import { getMyPosts, rememberMyPost } from "@/lib/my-posts";
+import { notifyModerators } from "@/lib/telegram";
 import { isRateLimited } from "@/lib/rate-limit";
 import { getClientIp } from "@/lib/get-client-ip";
 
@@ -39,12 +42,15 @@ export async function submitIdea(_prevState: IdeaFormState, formData: FormData):
     return { status: "error", message: tErrors("tooManyAttempts") };
   }
 
+  let id: string;
   try {
-    await insertIdea({ ...parsed.data, sourceLocale: locale });
+    id = await insertIdea({ ...parsed.data, sourceLocale: locale });
   } catch {
     return { status: "error", message: tErrors("saveFailed") };
   }
 
+  await rememberMyPost(id);
+  after(() => notifyModerators("idea", id));
   revalidatePath("/", "layout");
 
   return { status: "success" };
@@ -77,16 +83,19 @@ export async function submitIdeaComment(
     return { status: "error", message: tErrors("tooManyAttempts") };
   }
 
-  if (!(await ideaExists(parsed.data.ideaId))) {
+  if (!(await ideaExists(parsed.data.ideaId, await getMyPosts()))) {
     return { status: "error", message: tErrors("saveFailed") };
   }
 
+  let id: string;
   try {
-    await insertIdeaComment({ ...parsed.data, sourceLocale: locale });
+    id = await insertIdeaComment({ ...parsed.data, sourceLocale: locale });
   } catch {
     return { status: "error", message: tErrors("saveFailed") };
   }
 
+  await rememberMyPost(id);
+  after(() => notifyModerators("comment", id));
   revalidatePath("/", "layout");
 
   return { status: "success" };

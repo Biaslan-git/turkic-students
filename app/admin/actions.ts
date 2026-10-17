@@ -143,8 +143,8 @@ export async function moderateIdea(formData: FormData): Promise<void> {
   const kind = formData.get("kind") === "comment" ? "comment" : "idea";
   const action = String(formData.get("action"));
   const id = String(formData.get("id"));
-  if (!["hide", "show", "delete"].includes(action)) return;
+  if (!["publish", "hide", "delete"].includes(action)) return;
 
-  await moderateIdeaItem(kind, id, action as "hide" | "show" | "delete");
+  await moderateIdeaItem(kind, id, action as "publish" | "hide" | "delete");
   revalidatePath("/", "layout");
 }

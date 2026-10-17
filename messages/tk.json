@@ -72,15 +72,12 @@
     "universityPlaceholder": "Uniwersiteti saýlaň",
     "submit": "Çap et",
     "sending": "Çap edilýär…",
-    "successTitle": "Sag boluň! Pikir çap edildi",
-    "successText": "Ol eýýäm diwarda. Beýleki dillere terjime bir minutdan görner.",
-    "toFeed": "Ähli pikirlere seret",
     "anonymous": "Näbelli",
     "showOriginal": "Asyl nusgany görkez",
     "showTranslation": "Terjimäni görkez",
     "reply": "Jogap ber",
     "replyPlaceholder": "Seniň jogabyň…",
-    "replySent": "Sag boluň! Jogap iberildi",
+    "replySent": "Jogap moderasiýa iberildi",
     "send": "Iber",
     "cancel": "Ýatyr",
     "allCountries": "Ähli ýurtlar",
@@ -88,7 +85,10 @@
     "empty": "Heniz boş — ilkinjileriň biri boluň!",
     "shareIdea": "Pikir teklip et",
     "allIdeas": "Ähli pikirler →",
-    "guidelines": "Hormat bilen ýazyň: ýaramaz we kemsidiji habarlar kabul edilmeýär. Ähli pikirler çap edilmezden öň moderasiýadan geçýär."
+    "guidelines": "Hormat bilen ýazyň: ýaramaz we kemsidiji habarlar kabul edilmeýär. Ähli pikirler çap edilmezden öň moderasiýadan geçýär.",
+    "pending": "Moderasiýada",
+    "pendingHint": "Diňe size görünýär — barlagdan soň tagtada çap ediler",
+    "sentToModeration": "Sag boluň! Pikiriňiz moderasiýa iberildi — barlagdan soň ähli adamlar üçin tagtada görner. Häzirlikçe ony diňe siz görýärsiňiz."
   },
   "OpinionPage": {
     "badge": "Seniň pikiriň möhüm",
@@ -177,5 +177,8 @@
     "copied": "Salgy göçürildi",
     "feedbackTitle": "Sahypany gowulandyrmak barada pikirleriň barmy?",
     "feedbackText": "Bize ýazyň — her teklibi okaýarys:"
+  },
+  "Nav": {
+    "backHome": "← Baş sahypa"
   }
 }

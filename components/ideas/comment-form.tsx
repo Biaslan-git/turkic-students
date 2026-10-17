@@ -12,21 +12,36 @@ export function CommentForm({ ideaId, countries }: { ideaId: string; countries: 
   const t = useTranslations("Ideas");
   const [open, setOpen] = useState(false);
   const [country, setCountry] = useState("");
-  const [state, action, pending] = useActionState(submitIdeaComment, initialState);
+  const [notice, setNotice] = useState(false);
 
-  if (state.status === "success") {
-    return <p className="text-sm text-accent-warm">{t("replySent")}</p>;
-  }
+  // Успех: форма сворачивается обратно в «Ответить», на несколько секунд показываем подтверждение.
+  const [state, action, pending] = useActionState(async (prev: IdeaFormState, formData: FormData) => {
+    const result = await submitIdeaComment(prev, formData);
+    if (result.status === "success") {
+      setOpen(false);
+      setCountry("");
+      setNotice(true);
+      setTimeout(() => setNotice(false), 8000);
+    }
+    return result;
+  }, initialState);
 
   if (!open) {
     return (
-      <button
-        type="button"
-        onClick={() => setOpen(true)}
-        className="w-fit text-sm font-semibold text-accent-warm underline underline-offset-4"
-      >
-        {t("reply")}
-      </button>
+      <div className="flex flex-col gap-2">
+        {notice && (
+          <p role="status" className="text-sm text-accent-warm">
+            {t("replySent")}
+          </p>
+        )}
+        <button
+          type="button"
+          onClick={() => setOpen(true)}
+          className="w-fit text-sm font-semibold text-accent-warm underline underline-offset-4"
+        >
+          {t("reply")}
+        </button>
+      </div>
     );
   }
 
@@ -83,7 +98,11 @@ export function CommentForm({ ideaId, countries }: { ideaId: string; countries: 
         >
           {pending ? t("sending") : t("send")}
         </button>
-        <button type="button" onClick={() => setOpen(false)} className="text-sm text-muted underline underline-offset-2">
+        <button
+          type="button"
+          onClick={() => setOpen(false)}
+          className="text-sm text-muted underline underline-offset-2"
+        >
           {t("cancel")}
         </button>
       </div>

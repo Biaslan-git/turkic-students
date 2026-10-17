@@ -1038,3 +1038,29 @@ CREATE TABLE IF NOT EXISTS idea_comments (
 );
 
 CREATE INDEX IF NOT EXISTS idea_comments_idea_idx ON idea_comments (idea_id, created_at);
+
+-- Модерация доски: идея/ответ сначала pending, публикуются после решения модератора (Telegram-бот или
+-- админка). Старые записи: видимые → published, скрытые → hidden. is_hidden остаётся в таблице без
+-- использования (не дропаем — миграция не должна ничего удалять).
+DO $mod$
+BEGIN
+  IF NOT EXISTS (SELECT 1 FROM information_schema.columns WHERE table_name = 'ideas' AND column_name = 'status') THEN
+    ALTER TABLE ideas ADD COLUMN status TEXT NOT NULL DEFAULT 'published';
+    UPDATE ideas SET status = 'hidden' WHERE is_hidden;
+    ALTER TABLE ideas ALTER COLUMN status SET DEFAULT 'pending';
+    ALTER TABLE ideas ADD CONSTRAINT ideas_status_check CHECK (status IN ('pending', 'published', 'hidden'));
+  END IF;
+  IF NOT EXISTS (SELECT 1 FROM information_schema.columns WHERE table_name = 'idea_comments' AND column_name = 'status') THEN
+    ALTER TABLE idea_comments ADD COLUMN status TEXT NOT NULL DEFAULT 'published';
+    UPDATE idea_comments SET status = 'hidden' WHERE is_hidden;
+    ALTER TABLE idea_comments ALTER COLUMN status SET DEFAULT 'pending';
+    ALTER TABLE idea_comments ADD CONSTRAINT idea_comments_status_check CHECK (status IN ('pending', 'published', 'hidden'));
+  END IF;
+END
+$mod$;
+
+-- chat_id модератора → id его сообщения в Telegram: так бот обновляет карточку у всех модераторов.
+ALTER TABLE ideas ADD COLUMN IF NOT EXISTS tg_messages JSONB NOT NULL DEFAULT '{}'::jsonb;
+ALTER TABLE idea_comments ADD COLUMN IF NOT EXISTS tg_messages JSONB NOT NULL DEFAULT '{}'::jsonb;
+
+CREATE INDEX IF NOT EXISTS ideas_status_idx ON ideas (status, created_at DESC);

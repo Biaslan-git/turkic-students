@@ -2,6 +2,7 @@ import { pool } from "./db";
 import { translateText } from "./translate";
 
 export type Translations = Record<string, string>;
+export type PostStatus = "pending" | "published" | "hidden";
 
 export type IdeaComment = {
   id: string;
@@ -10,7 +11,7 @@ export type IdeaComment = {
   text: string;
   translations: Translations;
   createdAt: string;
-  isHidden?: boolean;
+  status: PostStatus;
 };
 
 export type Idea = {
@@ -23,7 +24,7 @@ export type Idea = {
   translations: Translations;
   createdAt: string;
   comments: IdeaComment[];
-  isHidden?: boolean;
+  status: PostStatus;
 };
 
 type IdeaRow = {
@@ -36,7 +37,7 @@ type IdeaRow = {
   text: string;
   translations: Translations;
   created_at: Date;
-  is_hidden?: boolean;
+  status: PostStatus;
 };
 
 type CommentRow = {
@@ -47,32 +48,34 @@ type CommentRow = {
   text: string;
   translations: Translations;
   created_at: Date;
+  status: PostStatus;
 };
 
-export type IdeaFilters = { country?: string; category?: string; limit?: number };
+export type IdeaFilters = { country?: string; category?: string; limit?: number; mine?: string[] };
 
-export async function listIdeas({ country, category, limit = 50 }: IdeaFilters = {}): Promise<Idea[]> {
+// mine — id записей этого посетителя (cookie): свои идеи/ответы на модерации он видит, чужие — нет.
+export async function listIdeas({ country, category, limit = 50, mine = [] }: IdeaFilters = {}): Promise<Idea[]> {
   const ideasResult = await pool.query<IdeaRow>(
-    `SELECT i.id, i.category, i.author_name, i.country, i.text, i.translations, i.created_at,
+    `SELECT i.id, i.category, i.author_name, i.country, i.text, i.translations, i.created_at, i.status,
             i.university_other_name, u.name AS university_name
      FROM ideas i
      LEFT JOIN festival_universities u ON u.id = i.university_id
-     WHERE NOT i.is_hidden
+     WHERE (i.status = 'published' OR (i.status = 'pending' AND i.id = ANY($4::uuid[])))
        AND ($1::text IS NULL OR i.country = $1)
        AND ($2::text IS NULL OR i.category = $2)
      ORDER BY i.created_at DESC
      LIMIT $3`,
-    [country ?? null, category ?? null, limit],
+    [country ?? null, category ?? null, limit, mine],
   );
 
-  return attachComments(ideasResult.rows, false);
+  return attachComments(ideasResult.rows, false, mine);
 }
 
 // Для админки: все идеи и ответы, включая скрытые.
 export async function listAllIdeas(): Promise<Idea[]> {
   const ideasResult = await pool.query<IdeaRow>(
     `SELECT i.id, i.category, i.author_name, i.country, i.text, i.translations, i.created_at,
-            i.is_hidden, i.university_other_name, u.name AS university_name
+            i.status, i.university_other_name, u.name AS university_name
      FROM ideas i
      LEFT JOIN festival_universities u ON u.id = i.university_id
      ORDER BY i.created_at DESC
@@ -81,15 +84,16 @@ export async function listAllIdeas(): Promise<Idea[]> {
   return attachComments(ideasResult.rows, true);
 }
 
-async function attachComments(rows: IdeaRow[], includeHidden: boolean): Promise<Idea[]> {
+async function attachComments(rows: IdeaRow[], includeAll: boolean, mine: string[] = []): Promise<Idea[]> {
   if (rows.length === 0) return [];
 
-  const commentsResult = await pool.query<CommentRow & { is_hidden: boolean }>(
-    `SELECT id, idea_id, author_name, country, text, translations, created_at, is_hidden
+  const commentsResult = await pool.query<CommentRow>(
+    `SELECT id, idea_id, author_name, country, text, translations, created_at, status
      FROM idea_comments
-     WHERE idea_id = ANY($1::uuid[]) AND ($2::boolean OR NOT is_hidden)
+     WHERE idea_id = ANY($1::uuid[])
+       AND ($2::boolean OR status = 'published' OR (status = 'pending' AND id = ANY($3::uuid[])))
      ORDER BY created_at`,
-    [rows.map((r) => r.id), includeHidden],
+    [rows.map((r) => r.id), includeAll, mine],
   );
 
   const commentsByIdea = new Map<string, IdeaComment[]>();
@@ -102,7 +106,7 @@ async function attachComments(rows: IdeaRow[], includeHidden: boolean): Promise<
       text: c.text,
       translations: c.translations,
       createdAt: c.created_at.toISOString(),
-      isHidden: c.is_hidden,
+      status: c.status,
     });
     commentsByIdea.set(c.idea_id, list);
   }
@@ -117,7 +121,7 @@ async function attachComments(rows: IdeaRow[], includeHidden: boolean): Promise<
     translations: r.translations,
     createdAt: r.created_at.toISOString(),
     comments: commentsByIdea.get(r.id) ?? [],
-    isHidden: r.is_hidden,
+    status: r.status,
   }));
 }
 
@@ -146,8 +150,11 @@ export async function insertIdea(input: {
   return result.rows[0].id;
 }
 
-export async function ideaExists(id: string): Promise<boolean> {
-  const result = await pool.query(`SELECT 1 FROM ideas WHERE id = $1 AND NOT is_hidden`, [id]);
+export async function ideaExists(id: string, mine: string[] = []): Promise<boolean> {
+  const result = await pool.query(
+    `SELECT 1 FROM ideas WHERE id = $1 AND (status = 'published' OR (status = 'pending' AND id = ANY($2::uuid[])))`,
+    [id, mine],
+  );
   return (result.rowCount ?? 0) > 0;
 }
 
@@ -204,12 +211,12 @@ export async function ensureTranslations(ideas: Idea[], locale: string): Promise
 export async function moderateIdeaItem(
   kind: "idea" | "comment",
   id: string,
-  action: "hide" | "show" | "delete",
+  action: "publish" | "hide" | "delete",
 ): Promise<void> {
   const table = kind === "idea" ? "ideas" : "idea_comments";
   if (action === "delete") {
     await pool.query(`DELETE FROM ${table} WHERE id = $1`, [id]);
   } else {
-    await pool.query(`UPDATE ${table} SET is_hidden = $2 WHERE id = $1`, [id, action === "hide"]);
+    await pool.query(`UPDATE ${table} SET status = $2 WHERE id = $1`, [id, action === "publish" ? "published" : "hidden"]);
   }
 }

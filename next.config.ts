@@ -5,6 +5,8 @@ const withNextIntl = createNextIntlPlugin("./i18n/request.ts");
 
 const nextConfig: NextConfig = {
   output: "standalone",
+  // Бот ходит в Telegram через SOCKS5 (lib/telegram.ts) — эти пакеты грузим из node_modules как есть.
+  serverExternalPackages: ["undici", "fetch-socks", "socks"],
   // Без этого Next отдаёт файлы из public/ с max-age=0 — браузер заново запрашивает каждое
   // фото ленты при каждом заходе, а с высокой задержкой до сервера это и есть "долго грузится".
   async headers() {

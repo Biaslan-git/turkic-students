@@ -72,15 +72,12 @@
     "universityPlaceholder": "Universitetni tanlang",
     "submit": "Eʼlon qilish",
     "sending": "Eʼlon qilinmoqda…",
-    "successTitle": "Rahmat! Gʻoya eʼlon qilindi",
-    "successText": "U allaqachon devorda. Boshqa tillarga tarjima bir daqiqada paydo boʻladi.",
-    "toFeed": "Barcha gʻoyalarni koʻrish",
     "anonymous": "Anonim",
     "showOriginal": "Asl nusxani koʻrsatish",
     "showTranslation": "Tarjimani koʻrsatish",
     "reply": "Javob berish",
     "replyPlaceholder": "Sening javobing…",
-    "replySent": "Rahmat! Javob yuborildi",
+    "replySent": "Javob moderatsiyaga yuborildi",
     "send": "Yuborish",
     "cancel": "Bekor qilish",
     "allCountries": "Barcha davlatlar",
@@ -88,7 +85,10 @@
     "empty": "Hozircha boʻsh — birinchi boʻling!",
     "shareIdea": "Gʻoya taklif qilish",
     "allIdeas": "Barcha gʻoyalar →",
-    "guidelines": "Hurmat bilan yozing: salbiy va haqoratli xabarlar qabul qilinmaydi. Barcha fikrlar eʼlon qilinishidan oldin moderatsiyadan oʻtadi."
+    "guidelines": "Hurmat bilan yozing: salbiy va haqoratli xabarlar qabul qilinmaydi. Barcha fikrlar eʼlon qilinishidan oldin moderatsiyadan oʻtadi.",
+    "pending": "Moderatsiyada",
+    "pendingHint": "Faqat sizga koʻrinadi — tekshiruvdan keyin taxtada paydo boʻladi",
+    "sentToModeration": "Rahmat! Fikringiz moderatsiyaga yuborildi — tekshiruvdan keyin hamma uchun taxtada paydo boʻladi. Hozircha uni faqat siz koʻrasiz."
   },
   "OpinionPage": {
     "badge": "Sening fikring muhim",
@@ -177,5 +177,8 @@
     "copied": "Havola nusxalandi",
     "feedbackTitle": "Saytni yaxshilash boʻyicha gʻoyalaringiz bormi?",
     "feedbackText": "Bizga yozing — har bir taklifni oʻqiymiz:"
+  },
+  "Nav": {
+    "backHome": "← Bosh sahifaga"
   }
 }
