@@ -41,7 +41,7 @@ export function IdeaForm({ countries, universities }: { countries: SelectOption[
   return (
     <div className="flex flex-col gap-3">
       {showNotice && (
-        <p role="status" className="rounded-2xl border border-accent-warm/40 bg-accent-warm/10 px-4 py-3 text-sm">
+        <p role="status" className="rounded-2xl border border-accent/50 bg-accent/10 px-4 py-3 text-sm">
           {t("sentToModeration")}
         </p>
       )}
@@ -147,7 +147,10 @@ export function IdeaForm({ countries, universities }: { countries: SelectOption[
           <input id="idea-company" name="company" type="text" tabIndex={-1} autoComplete="off" />
         </div>
 
-        <p className="text-xs text-muted">{t("guidelines")}</p>
+        <p className="flex items-start gap-2 rounded-xl border border-accent/50 bg-accent/10 px-3.5 py-3 text-sm font-medium text-foreground">
+          <span aria-hidden className="text-base leading-5">⚠️</span>
+          <span>{t("guidelines")}</span>
+        </p>
 
         {state.status === "error" && (
           <p role="alert" className="text-sm text-red-600">
