@@ -1134,3 +1134,18 @@ BEGIN
   END IF;
 END
 $patch$;
+
+-- Переводы для вуза Ясави (на уже развёрнутых БД он может числиться под прежним названием).
+DO $patch$
+BEGIN
+  IF NOT EXISTS (SELECT 1 FROM content_patches WHERE name = '2026-10-university-names-i18n-yasawi') THEN
+    UPDATE festival_universities u SET name_i18n = v.names::jsonb
+    FROM (VALUES
+      ('Международный казахско-турецкий университет им. Х.А. Ясави', '{"az": "Xoca Əhməd Yəsəvi adına Beynəlxalq Qazax-Türk Universiteti", "kk": "Қ.А. Ясауи атындағы Халықаралық қазақ-түрік университеті", "ky": "Х.А. Ясави атындагы Эл аралык казак-түрк университети", "tk": "Hoja Ahmet Ýasawy adyndaky Halkara gazak-türk uniwersiteti", "tr": "Hoca Ahmet Yesevi Uluslararası Türk-Kazak Üniversitesi", "uz": "Xoja Ahmad Yassaviy nomidagi Xalqaro qozoq-turk universiteti"}'),
+      ('Казахско-Турецкий университет им. Ахмет Яссауи', '{"az": "Əhməd Yəsəvi adına Qazax-Türk Universiteti", "kk": "Ахмет Ясауи атындағы Қазақ-түрік университеті", "ky": "Ахмет Ясави атындагы Казак-түрк университети", "tk": "Ahmet Ýasawy adyndaky Gazak-türk uniwersiteti", "tr": "Ahmet Yesevi Türk-Kazak Üniversitesi", "uz": "Ahmad Yassaviy nomidagi Qozoq-turk universiteti"}')
+    ) AS v(name, names)
+    WHERE u.name = v.name AND u.name_i18n = '{}'::jsonb;
+    INSERT INTO content_patches (name) VALUES ('2026-10-university-names-i18n-yasawi');
+  END IF;
+END
+$patch$;
