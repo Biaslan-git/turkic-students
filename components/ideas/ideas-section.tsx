@@ -8,7 +8,7 @@ import { getMyPosts } from "@/lib/my-posts";
 
 export async function IdeasSection() {
   const [t, locale, mine] = await Promise.all([getTranslations("Ideas"), getLocale(), getMyPosts()]);
-  const ideas = await listIdeas({ limit: 3, mine });
+  const ideas = await listIdeas({ limit: 3, mine, locale });
   const countries = getCountryOptions(locale);
   after(() => ensureTranslations(ideas, locale));
 

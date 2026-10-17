@@ -1,5 +1,5 @@
-import { getTranslations } from "next-intl/server";
-import { listActiveUniversities } from "@/lib/universities";
+import { getLocale, getTranslations } from "next-intl/server";
+import { listActiveUniversities, localizedUniversityName } from "@/lib/universities";
 
 type FestivalSectionProps = {
   badge: string;
@@ -10,7 +10,7 @@ type FestivalSectionProps = {
 };
 
 export async function FestivalSection({ badge, title, subtitle, text, alumniNote }: FestivalSectionProps) {
-  const [universities, t] = await Promise.all([listActiveUniversities(), getTranslations("FestivalSection")]);
+  const [universities, t, locale] = await Promise.all([listActiveUniversities(), getTranslations("FestivalSection"), getLocale()]);
 
   return (
     <section id="tvoi-golos" className="relative scroll-mt-20 overflow-hidden bg-tint-teal">
@@ -39,7 +39,7 @@ export async function FestivalSection({ badge, title, subtitle, text, alumniNote
               key={university.id}
               className="rounded-full border border-border bg-background px-2.5 py-1 text-[11px] font-medium text-muted"
             >
-              {university.name}
+              {localizedUniversityName(university, locale)}
             </span>
           ))}
         </div>

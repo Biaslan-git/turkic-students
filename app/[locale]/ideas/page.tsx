@@ -11,7 +11,7 @@ import { IDEA_COUNTRIES, OPINION_CATEGORIES } from "@/lib/constants";
 import { getSiteContent } from "@/lib/content/site-content";
 import { ensureTranslations, listIdeas } from "@/lib/ideas";
 import { getMyPosts } from "@/lib/my-posts";
-import { listActiveUniversities } from "@/lib/universities";
+import { listActiveUniversities, universityOptionLabel } from "@/lib/universities";
 
 export async function generateMetadata({
   params,
@@ -45,7 +45,7 @@ export default async function IdeasPage({
     getTranslations({ locale, namespace: "Ideas" }),
     getTranslations({ locale, namespace: "Constants.opinionCategories" }),
     getTranslations({ locale, namespace: "Nav" }),
-    listIdeas({ country, category, mine }),
+    listIdeas({ country, category, mine, locale }),
     listActiveUniversities(),
   ]);
   const countries = getCountryOptions(locale);
@@ -85,7 +85,7 @@ export default async function IdeasPage({
             <div id="form" className="scroll-mt-24">
               <IdeaForm
                 countries={countries}
-                universities={universities.map((u) => ({ value: u.id, label: `${u.name} (${u.country})` }))}
+                universities={universities.map((u) => ({ value: u.id, label: universityOptionLabel(u, locale) }))}
               />
             </div>
           </div>

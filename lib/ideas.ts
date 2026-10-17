@@ -33,6 +33,7 @@ type IdeaRow = {
   author_name: string | null;
   country: string;
   university_name: string | null;
+  university_names: Record<string, string> | null;
   university_other_name: string | null;
   text: string;
   translations: Translations;
@@ -51,13 +52,13 @@ type CommentRow = {
   status: PostStatus;
 };
 
-export type IdeaFilters = { country?: string; category?: string; limit?: number; mine?: string[] };
+export type IdeaFilters = { country?: string; category?: string; limit?: number; mine?: string[]; locale?: string };
 
 // mine — id записей этого посетителя (cookie): свои идеи/ответы на модерации он видит, чужие — нет.
-export async function listIdeas({ country, category, limit = 50, mine = [] }: IdeaFilters = {}): Promise<Idea[]> {
+export async function listIdeas({ country, category, limit = 50, mine = [], locale = "ru" }: IdeaFilters = {}): Promise<Idea[]> {
   const ideasResult = await pool.query<IdeaRow>(
     `SELECT i.id, i.category, i.author_name, i.country, i.text, i.translations, i.created_at, i.status,
-            i.university_other_name, u.name AS university_name
+            i.university_other_name, u.name AS university_name, u.name_i18n AS university_names
      FROM ideas i
      LEFT JOIN festival_universities u ON u.id = i.university_id
      WHERE (i.status = 'published' OR (i.status = 'pending' AND i.id = ANY($4::uuid[])))
@@ -68,23 +69,23 @@ export async function listIdeas({ country, category, limit = 50, mine = [] }: Id
     [country ?? null, category ?? null, limit, mine],
   );
 
-  return attachComments(ideasResult.rows, false, mine);
+  return attachComments(ideasResult.rows, false, locale, mine);
 }
 
 // Для админки: все идеи и ответы, включая скрытые.
 export async function listAllIdeas(): Promise<Idea[]> {
   const ideasResult = await pool.query<IdeaRow>(
     `SELECT i.id, i.category, i.author_name, i.country, i.text, i.translations, i.created_at,
-            i.status, i.university_other_name, u.name AS university_name
+            i.status, i.university_other_name, u.name AS university_name, u.name_i18n AS university_names
      FROM ideas i
      LEFT JOIN festival_universities u ON u.id = i.university_id
      ORDER BY i.created_at DESC
      LIMIT 300`,
   );
-  return attachComments(ideasResult.rows, true);
+  return attachComments(ideasResult.rows, true, "ru");
 }
 
-async function attachComments(rows: IdeaRow[], includeAll: boolean, mine: string[] = []): Promise<Idea[]> {
+async function attachComments(rows: IdeaRow[], includeAll: boolean, locale: string, mine: string[] = []): Promise<Idea[]> {
   if (rows.length === 0) return [];
 
   const commentsResult = await pool.query<CommentRow>(
@@ -116,7 +117,7 @@ async function attachComments(rows: IdeaRow[], includeAll: boolean, mine: string
     category: r.category,
     authorName: r.author_name,
     country: r.country,
-    universityName: r.university_name ?? r.university_other_name,
+    universityName: (r.university_names?.[locale] || r.university_name) ?? r.university_other_name,
     text: r.text,
     translations: r.translations,
     createdAt: r.created_at.toISOString(),

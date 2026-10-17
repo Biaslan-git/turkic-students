@@ -1112,3 +1112,25 @@ BEGIN
   END IF;
 END
 $patch$;
+
+-- Названия вузов на языках сайта (доска мнений, формы). Вузы без перевода показываются по-русски.
+ALTER TABLE festival_universities ADD COLUMN IF NOT EXISTS name_i18n JSONB NOT NULL DEFAULT '{}'::jsonb;
+
+DO $patch$
+BEGIN
+  IF NOT EXISTS (SELECT 1 FROM content_patches WHERE name = '2026-10-university-names-i18n') THEN
+    UPDATE festival_universities u SET name_i18n = v.names::jsonb
+    FROM (VALUES
+      ('Азербайджанский государственный университет культуры и искусств', '{"az": "Azərbaycan Dövlət Mədəniyyət və İncəsənət Universiteti", "kk": "Әзербайжан мемлекеттік мәдениет және өнер университеті", "ky": "Азербайжан мамлекеттик маданият жана искусство университети", "tk": "Azerbaýjan döwlet medeniýet we sungat uniwersiteti", "tr": "Azerbaycan Devlet Kültür ve Sanat Üniversitesi", "uz": "Ozarbayjon davlat madaniyat va san’at universiteti"}'),
+      ('Казахская национальная академия искусств им. Т. Жургенова', '{"az": "T. Jürgenov adına Qazaxıstan Milli İncəsənət Akademiyası", "kk": "Т. Жүргенов атындағы Қазақ ұлттық өнер академиясы", "ky": "Т. Жургенов атындагы Казак улуттук искусство академиясы", "tk": "T. Žurgenow adyndaky Gazak milli sungat akademiýasy", "tr": "T. Jürgenov Kazak Ulusal Sanat Akademisi", "uz": "T. Jurgenov nomidagi Qozogʻiston milliy san’at akademiyasi"}'),
+      ('Казахский национальный университет искусств им. К. Байсеитовой', '{"az": "K. Bayseitova adına Qazaxıstan Milli İncəsənət Universiteti", "kk": "Қ. Байсейітова атындағы Қазақ ұлттық өнер университеті", "ky": "К. Байсеитова атындагы Казак улуттук искусство университети", "tk": "K. Baýseitowa adyndaky Gazak milli sungat uniwersiteti", "tr": "K. Baiseitova Kazak Ulusal Sanat Üniversitesi", "uz": "K. Bayseitova nomidagi Qozogʻiston milliy san’at universiteti"}'),
+      ('Кыргызский государственный университет искусств и культуры им. Б. Бейшеналиевой', '{"az": "B. Beyşenalıyeva adına Qırğız Dövlət İncəsənət və Mədəniyyət Universiteti", "kk": "Б. Бейшеналиева атындағы Қырғыз мемлекеттік өнер және мәдениет университеті", "ky": "Б. Бейшеналиева атындагы Кыргыз мамлекеттик искусство жана маданият университети", "tk": "B. Beýşenaliýewa adyndaky Gyrgyz döwlet sungat we medeniýet uniwersiteti", "tr": "B. Beyşenalieva Kırgız Devlet Sanat ve Kültür Üniversitesi", "uz": "B. Beyshenalieva nomidagi Qirgʻiz davlat san’at va madaniyat universiteti"}'),
+      ('Кыргызско-Турецкий университет «Манас»', '{"az": "Qırğızıstan-Türkiyə «Manas» Universiteti", "kk": "Қырғыз-Түрік «Манас» университеті", "ky": "Кыргыз-Түрк «Манас» университети", "tk": "Gyrgyz-Türk «Manas» uniwersiteti", "tr": "Kırgızistan-Türkiye Manas Üniversitesi", "uz": "Qirgʻiz-turk «Manas» universiteti"}'),
+      ('Туркменский государственный университет им. Махтумкули', '{"az": "Məhtimqulu adına Türkmənistan Dövlət Universiteti", "kk": "Мақтымқұлы атындағы Түрікмен мемлекеттік университеті", "ky": "Махтумкули атындагы Түркмөн мамлекеттик университети", "tk": "Magtymguly adyndaky Türkmen döwlet uniwersiteti", "tr": "Mahtumkulu Türkmen Devlet Üniversitesi", "uz": "Maxtumquli nomidagi Turkman davlat universiteti"}'),
+      ('Государственный институт искусств и культуры Узбекистана', '{"az": "Özbəkistan Dövlət İncəsənət və Mədəniyyət İnstitutu", "kk": "Өзбекстан мемлекеттік өнер және мәдениет институты", "ky": "Өзбекстан мамлекеттик искусство жана маданият институту", "tk": "Özbegistan döwlet sungat we medeniýet instituty", "tr": "Özbekistan Devlet Sanat ve Kültür Enstitüsü", "uz": "Oʻzbekiston davlat san’at va madaniyat instituti"}')
+    ) AS v(name, names)
+    WHERE u.name = v.name AND u.name_i18n = '{}'::jsonb;
+    INSERT INTO content_patches (name) VALUES ('2026-10-university-names-i18n');
+  END IF;
+END
+$patch$;

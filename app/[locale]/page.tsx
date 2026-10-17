@@ -8,7 +8,6 @@ import { PrinciplesSection } from "@/components/sections/principles-section";
 import { ObjectionsSection } from "@/components/sections/objections-section";
 import { FestivalSection } from "@/components/festival/festival-section";
 import { IdeasSection } from "@/components/ideas/ideas-section";
-import { OpinionCta } from "@/components/sections/opinion-cta";
 import { ShareCta } from "@/components/sections/share-cta";
 import { GallerySection } from "@/components/sections/gallery-section";
 import { WaitlistSection } from "@/components/sections/waitlist-section";
@@ -16,7 +15,7 @@ import { Footer } from "@/components/sections/footer";
 import { SITE_URL } from "@/lib/constants";
 import { getTranslations } from "next-intl/server";
 import { getSiteContent } from "@/lib/content/site-content";
-import { listActiveUniversities } from "@/lib/universities";
+import { listActiveUniversities, localizedUniversityCountry, localizedUniversityName } from "@/lib/universities";
 import { listGalleryPhotos } from "@/lib/gallery";
 
 // Текст секций хранится в БД и редактируется из /admin/content — DATABASE_URL недоступна
@@ -45,7 +44,6 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
           festivalTitle={c.hero_festival_title}
           festivalDates={c.hero_festival_dates}
         />
-        <OpinionCta />
         <ProblemSection
           badge={c.problem_badge}
           title={c.problem_title}
@@ -130,7 +128,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
         <IdeasSection />
         <GallerySection photos={galleryPhotos} />
         <ShareCta url={`${SITE_URL}/${locale}`} shareTitle={tMeta("title")} />
-        <WaitlistSection title={c.waitlist_title} text={c.waitlist_text} universities={universities} />
+        <WaitlistSection title={c.waitlist_title} text={c.waitlist_text} universities={universities.map((u) => ({ ...u, name: localizedUniversityName(u, locale), country: localizedUniversityCountry(u.country, locale) }))} />
       </main>
       <Footer ctaLabel={c.cta_label} text={c.footer_text} />
     </div>
